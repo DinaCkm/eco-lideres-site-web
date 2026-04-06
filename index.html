@@ -3,638 +3,737 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ECO do BEM | Soluções em Desenvolvimento Humano</title>
-  <meta name="description" content="Conheça as soluções da ECO do BEM para liderança, equipes e desenvolvimento humano." />
+  <title>ECO do B.E.M. | Desenvolvimento Humano que Transforma Organizações</title>
+  <meta name="description" content="Somos um ecossistema de desenvolvimento humano corporativo que une metodologia autoral, conteúdos imersivos, mentoria especializada e tecnologia para gerar resultados reais e mensuráveis." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#0b0820;
-      --bg-2:#140d38;
-      --panel:rgba(255,255,255,0.06);
-      --panel-strong:rgba(255,255,255,0.10);
-      --border:rgba(255,255,255,0.12);
-      --text:#ffffff;
-      --muted:rgba(255,255,255,0.72);
-      --muted-2:rgba(255,255,255,0.55);
-      --purple:#6c3cff;
-      --purple-2:#8c68ff;
-      --teal:#00c2d7;
-      --green:#6de0a0;
-      --gold:#f2b53f;
-      --shadow:0 20px 60px rgba(0,0,0,0.35);
-      --radius:22px;
-      --max:1200px;
-    }
-
-    *{box-sizing:border-box;}
+    :root{--bg:#080618;--bg2:#0D0920;--purple:#5B2EFF;--purple2:#7044FF;--deep:#1A0A5E;--teal:#00B8D9;--green:#5ED38C;--gold:#F59E0B;--white:#fff;--muted:rgba(255,255,255,.58);--muted2:rgba(255,255,255,.35);--border:rgba(255,255,255,.09);--card:rgba(255,255,255,.04);--max:1160px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
-    body{
-      margin:0;
-      font-family:'Inter',sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(108,60,255,0.25), transparent 35%),
-        radial-gradient(circle at bottom right, rgba(0,194,215,0.18), transparent 30%),
-        linear-gradient(180deg, var(--bg), #090615 100%);
-      overflow-x:hidden;
-    }
-
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
     a{color:inherit;text-decoration:none;}
-    img{max-width:100%;display:block;}
+    .wrap{width:min(calc(100% - 40px),var(--max));margin:0 auto;}
+    ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--purple);border-radius:2px}
 
-    .container{
-      width:min(calc(100% - 32px), var(--max));
-      margin:0 auto;
+    /* ANIMATIONS */
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes glowPulse{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.12) translate(10px,-10px);opacity:1}}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .r1{transition-delay:.1s}.r2{transition-delay:.2s}.r3{transition-delay:.3s}.r4{transition-delay:.4s}
+
+    /* NAV */
+    .site-header{position:sticky;top:0;z-index:50;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(8,6,24,.9);border-bottom:1px solid var(--border);}
+    .nav{display:flex;align-items:center;justify-content:space-between;min-height:70px;gap:20px;}
+    .brand{display:flex;align-items:center;gap:12px;}
+    .brand-mark{width:40px;height:40px;border-radius:11px;background:linear-gradient(135deg,var(--deep),var(--purple),var(--teal));display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-size:10px;font-weight:800;color:#fff;flex-shrink:0;}
+    .brand-text{display:flex;flex-direction:column;line-height:1.15;}
+    .brand-name{font-family:'Poppins',sans-serif;font-size:15px;font-weight:800;letter-spacing:-.3px;}
+    .brand-sub{font-size:11px;color:var(--muted2);font-weight:500;}
+    .nav-links{display:flex;align-items:center;gap:26px;}
+    .nav-links a{color:var(--muted);font-size:14px;font-weight:600;transition:color .2s;}
+    .nav-links a:hover{color:#fff;}
+    .nav-cta{background:var(--purple);color:#fff!important;padding:10px 22px;border-radius:9px;font-weight:700!important;transition:background .2s,transform .2s!important;}
+    .nav-cta:hover{background:var(--purple2)!important;transform:translateY(-1px)!important;}
+    .hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+    .hbg span{display:block;width:24px;height:2px;background:rgba(255,255,255,.8);border-radius:2px;transition:all .3s;}
+    .hbg.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .hbg.open span:nth-child(2){opacity:0;}
+    .hbg.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    .mob-menu{display:none;position:fixed;inset:0;background:rgba(8,6,24,.97);backdrop-filter:blur(20px);z-index:49;flex-direction:column;align-items:center;justify-content:center;gap:28px;}
+    .mob-menu.open{display:flex;}
+    .mob-menu a{color:rgba(255,255,255,.85);font-family:'Poppins',sans-serif;font-size:22px;font-weight:700;}
+    .mob-menu a:hover{color:var(--teal);}
+    .mob-menu .nav-cta{padding:14px 40px;border-radius:10px;font-size:16px;}
+
+    /* BUTTONS */
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border-radius:10px;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;transition:all .22s ease;border:none;cursor:pointer;}
+    .btn-p{background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;box-shadow:0 0 36px rgba(91,46,255,.32);}
+    .btn-p:hover{transform:translateY(-2px);box-shadow:0 0 54px rgba(91,46,255,.52);}
+    .btn-o{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.18);}
+    .btn-o:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px);}
+
+    /* SECTION COMMONS */
+    section{padding:88px 0;}
+    .sec-label{display:flex;align-items:center;gap:10px;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:14px;}
+    .sec-label::before{content:'';width:22px;height:1px;background:var(--teal);flex-shrink:0;}
+    .sec-title{font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(28px,4vw,48px);line-height:1.1;letter-spacing:-1px;margin-bottom:18px;}
+    .sec-sub{font-size:16px;color:var(--muted);line-height:1.78;max-width:600px;}
+    .ctr{text-align:center;}.ctr .sec-label{justify-content:center;}.ctr .sec-sub{margin:0 auto;}
+
+    /* HERO */
+    .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding:100px 0 72px;}
+    .hero-glow{position:absolute;border-radius:50%;pointer-events:none;}
+    .g1{width:700px;height:700px;background:radial-gradient(circle,rgba(91,46,255,.2) 0%,transparent 70%);top:-180px;left:-220px;animation:glowPulse 8s ease-in-out infinite;}
+    .g2{width:500px;height:500px;background:radial-gradient(circle,rgba(0,184,217,.15) 0%,transparent 70%);bottom:-120px;right:-100px;animation:glowPulse 10s ease-in-out infinite reverse;}
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(91,46,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(91,46,255,.05) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 10%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 10%,transparent 100%);}
+    .hero-inner{position:relative;z-index:2;width:100%;}
+    .hero-content{max-width:780px;}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(91,46,255,.16);border:1px solid rgba(91,46,255,.34);border-radius:100px;padding:7px 18px;margin-bottom:30px;animation:fadeUp .8s ease both;}
+    .eyebrow-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:blink 2s infinite;flex-shrink:0;}
+    .eyebrow-txt{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(196,184,255,.9);}
+    .hero-h1{font-family:'Poppins',sans-serif;font-weight:900;font-size:clamp(42px,6.5vw,80px);line-height:1.03;letter-spacing:-2.5px;margin-bottom:12px;animation:fadeUp .9s .1s ease both;}
+    .hero-h1 .eco{color:#fff;}
+    .hero-h1 .bem{background:linear-gradient(90deg,var(--purple),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .hero-tagline{font-family:'Poppins',sans-serif;font-size:clamp(16px,2.2vw,23px);font-weight:300;color:rgba(255,255,255,.72);margin-bottom:22px;line-height:1.5;animation:fadeUp .95s .18s ease both;}
+    .hero-tagline em{color:var(--teal);font-style:normal;font-weight:600;}
+    .hero-desc{font-size:15.5px;color:var(--muted);line-height:1.8;max-width:600px;margin-bottom:44px;animation:fadeUp 1s .28s ease both;}
+    .hero-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp 1s .4s ease both;}
+    .hero-stats{display:flex;gap:0;margin-top:64px;background:linear-gradient(135deg,rgba(91,46,255,.12),rgba(0,184,217,.08));border:1px solid var(--border);border-radius:18px;padding:28px 36px;animation:fadeUp 1s .52s ease both;}
+    .h-stat{flex:1;text-align:center;position:relative;}
+    .h-stat:not(:last-child)::after{content:'';position:absolute;right:0;top:15%;bottom:15%;width:1px;background:rgba(255,255,255,.1);}
+    .h-val{font-family:'Poppins',sans-serif;font-size:34px;font-weight:800;line-height:1;margin-bottom:6px;}
+    .h-val.p{color:var(--purple2)}.h-val.t{color:var(--teal)}.h-val.g{color:var(--green)}.h-val.gd{color:var(--gold)}
+    .h-label{font-size:12px;color:var(--muted);line-height:1.45;}
+
+    /* HISTORIA */
+    #historia{background:linear-gradient(180deg,transparent,rgba(91,46,255,.04),transparent);}
+    .hist-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+    .hist-text .sec-sub{max-width:100%;margin-bottom:20px;}
+    .hist-quote{background:linear-gradient(135deg,rgba(91,46,255,.12),rgba(0,184,217,.05));border:1px solid rgba(91,46,255,.22);border-left:3px solid var(--purple);border-radius:0 14px 14px 0;padding:22px 24px;margin-top:28px;}
+    .hist-quote p{font-size:15px;font-style:italic;color:rgba(196,184,255,.9);line-height:1.72;margin:0;}
+    .vals-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    .val{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;display:flex;align-items:flex-start;gap:12px;transition:border-color .25s,transform .25s;}
+    .val:hover{border-color:rgba(91,46,255,.3);transform:translateY(-3px);}
+    .val-icon{font-size:20px;flex-shrink:0;}
+    .val h5{font-size:12.5px;font-weight:700;margin-bottom:3px;font-family:'Poppins',sans-serif;}
+    .val p{font-size:11.5px;color:var(--muted);line-height:1.55;margin:0;}
+
+    /* QUEM SOMOS */
+    .quem-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+    .quem-big{background:linear-gradient(145deg,rgba(91,46,255,.12),rgba(0,184,217,.06));border:1px solid rgba(91,46,255,.22);border-radius:22px;padding:34px;position:relative;overflow:hidden;}
+    .quem-big::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--purple),var(--teal),var(--green));}
+    .qb-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:10px;}
+    .qb-title{font-family:'Poppins',sans-serif;font-size:19px;font-weight:800;margin-bottom:14px;line-height:1.25;}
+    .qb-text{font-size:13.5px;color:var(--muted);line-height:1.72;}
+    .q-stats{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:14px;}
+    .q-stat{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:16px;text-align:center;transition:all .25s;}
+    .q-stat:hover{border-color:rgba(91,46,255,.28);transform:translateY(-2px);}
+    .q-val{font-family:'Poppins',sans-serif;font-size:28px;font-weight:800;line-height:1;margin-bottom:5px;}
+    .q-val.p{color:var(--purple2)}.q-val.t{color:var(--teal)}.q-val.g{color:var(--green)}.q-val.gd{color:var(--gold)}
+    .q-label{font-size:11px;color:var(--muted);line-height:1.4;}
+
+    /* METODOLOGIA */
+    #metodologia{background:linear-gradient(180deg,transparent,rgba(0,184,217,.04),transparent);}
+    .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:52px;}
+    .pillar{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:30px 24px;text-align:center;transition:all .3s;position:relative;overflow:hidden;}
+    .pillar::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .3s;}
+    .pillar:hover{transform:translateY(-6px);}
+    .pillar:hover::before{opacity:1;}
+    .p1:hover{border-color:rgba(91,46,255,.3);}.p1::before{background:linear-gradient(145deg,rgba(91,46,255,.1),transparent);}
+    .p2:hover{border-color:rgba(0,184,217,.25);}.p2::before{background:linear-gradient(145deg,rgba(0,184,217,.08),transparent);}
+    .p3:hover{border-color:rgba(94,211,140,.22);}.p3::before{background:linear-gradient(145deg,rgba(94,211,140,.07),transparent);}
+    .p-num{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;position:relative;z-index:1;}
+    .p1 .p-num{color:var(--purple2)}.p2 .p-num{color:var(--teal)}.p3 .p-num{color:var(--green)}
+    .p-ico{font-size:38px;margin-bottom:14px;display:block;position:relative;z-index:1;}
+    .pillar h3{font-family:'Poppins',sans-serif;font-size:16px;font-weight:800;margin-bottom:10px;position:relative;z-index:1;}
+    .pillar p{font-size:13px;color:var(--muted);line-height:1.68;margin:0;position:relative;z-index:1;}
+    .mf{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;}
+    .mf::before{content:'';position:absolute;top:27px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--purple),var(--teal),var(--green),var(--gold));z-index:0;}
+    .mf-step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px;position:relative;z-index:1;}
+    .mf-dot{width:54px;height:54px;border-radius:50%;border:2px solid;background:var(--bg);display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-size:12px;font-weight:800;margin-bottom:16px;}
+    .mf-step:nth-child(1) .mf-dot{border-color:var(--purple2);color:var(--purple2);}
+    .mf-step:nth-child(2) .mf-dot{border-color:#9066FF;color:#9066FF;}
+    .mf-step:nth-child(3) .mf-dot{border-color:var(--teal);color:var(--teal);}
+    .mf-step:nth-child(4) .mf-dot{border-color:var(--green);color:var(--green);}
+    .mf-step:nth-child(5) .mf-dot{border-color:var(--gold);color:var(--gold);}
+    .mf-step h4{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;margin-bottom:5px;}
+    .mf-step p{font-size:11px;color:var(--muted);line-height:1.55;margin:0;}
+
+    /* PRODUTOS */
+    .prod-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+    .pcard{border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:transform .32s,box-shadow .32s;position:relative;}
+    .pcard:hover{transform:translateY(-8px);}
+    .pcard.lid{background:linear-gradient(145deg,#14094A,#220E7A,#3D1CC0);box-shadow:0 0 70px rgba(91,46,255,.18);}
+    .pcard.lid:hover{box-shadow:0 0 110px rgba(91,46,255,.38);}
+    .pcard.equ{background:linear-gradient(145deg,#002A3A,#004460,#006890);box-shadow:0 0 70px rgba(0,184,217,.13);}
+    .pcard.equ:hover{box-shadow:0 0 110px rgba(0,184,217,.28);}
+    .pcard.pdi{background:linear-gradient(145deg,#1A120A,#2E1E06,#4A3210);box-shadow:0 0 70px rgba(245,158,11,.12);}
+    .pcard.pdi:hover{box-shadow:0 0 110px rgba(245,158,11,.25);}
+    .pcard-head{padding:28px 26px 20px;border-bottom:1px solid rgba(255,255,255,.1);display:flex;align-items:flex-start;justify-content:space-between;}
+    .pcard-icon{width:50px;height:50px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:22px;}
+    .lid .pcard-icon{background:rgba(91,46,255,.28);}
+    .equ .pcard-icon{background:rgba(0,184,217,.2);}
+    .pdi .pcard-icon{background:rgba(245,158,11,.2);}
+    .pcard-badges{display:flex;flex-direction:column;align-items:flex-end;gap:5px;}
+    .pcard-tag{font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:100px;}
+    .lid .pcard-tag{background:rgba(91,46,255,.28);color:#C4B8FF;border:1px solid rgba(91,46,255,.4);}
+    .equ .pcard-tag{background:rgba(0,184,217,.18);color:var(--teal);border:1px solid rgba(0,184,217,.3);}
+    .pdi .pcard-tag{background:rgba(245,158,11,.2);color:var(--gold);border:1px solid rgba(245,158,11,.3);}
+    .pcard-status{font-size:8px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:3px 9px;border-radius:100px;}
+    .s-live{background:rgba(94,211,140,.15);color:var(--green);border:1px solid rgba(94,211,140,.25);}
+    .s-soon{background:rgba(0,184,217,.1);color:var(--teal);border:1px solid rgba(0,184,217,.2);}
+    .s-dev{background:rgba(245,158,11,.12);color:var(--gold);border:1px solid rgba(245,158,11,.22);}
+    .pcard-body{padding:20px 26px 28px;flex:1;display:flex;flex-direction:column;}
+    .pcard-name{font-family:'Poppins',sans-serif;font-size:21px;font-weight:800;letter-spacing:-.3px;margin-bottom:5px;}
+    .pcard-line{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:18px;}
+    .pcard-feats{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px;flex:1;}
+    .pcard-feats li{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:rgba(255,255,255,.8);line-height:1.5;}
+    .fd{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:6px;}
+    .lid .fd{background:#A88BFF;}.equ .fd{background:var(--teal);}.pdi .fd{background:var(--gold);}
+    .pcard-cta{display:inline-flex;align-items:center;gap:7px;padding:12px 20px;border-radius:10px;font-weight:700;font-size:13px;transition:all .22s;align-self:flex-start;}
+    .lid .pcard-cta{background:var(--purple);color:#fff;}.lid .pcard-cta:hover{background:var(--purple2);transform:translateX(4px);}
+    .equ .pcard-cta{background:var(--teal);color:var(--bg);}.equ .pcard-cta:hover{background:#00D4FF;transform:translateX(4px);}
+    .pdi .pcard-cta{background:var(--gold);color:var(--bg);}.pdi .pcard-cta:hover{background:#FBB12E;transform:translateX(4px);}
+    .soon-ov{position:absolute;inset:0;background:rgba(8,6,24,.58);backdrop-filter:blur(2px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;border-radius:22px;}
+    .soon-badge{padding:9px 22px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+    .soon-txt{font-size:13px;color:rgba(255,255,255,.55);text-align:center;padding:0 28px;line-height:1.6;}
+
+    /* DIFERENCIAIS */
+    #diferenciais{background:linear-gradient(180deg,transparent,rgba(91,46,255,.04),transparent);}
+    .diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .diff-card{background:var(--card);border:1px solid var(--border);border-radius:17px;padding:26px;display:flex;gap:17px;align-items:flex-start;transition:all .25s;}
+    .diff-card:hover{border-color:rgba(91,46,255,.28);transform:translateY(-3px);}
+    .diff-card.hl{background:linear-gradient(135deg,rgba(91,46,255,.1),rgba(0,184,217,.05));border-color:rgba(91,46,255,.22);}
+    .diff-ico{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,rgba(91,46,255,.28),rgba(0,184,217,.18));display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;}
+    .diff-card h4{font-family:'Poppins',sans-serif;font-size:14.5px;font-weight:700;margin-bottom:7px;}
+    .diff-card p{font-size:13px;color:var(--muted);line-height:1.65;margin:0;}
+    .dtag{display:inline-block;margin-top:10px;padding:3px 11px;border-radius:100px;font-size:9.5px;font-weight:700;}
+
+    /* SEBRAE */
+    .parc-box{max-width:840px;margin:0 auto;}
+    .parc-strip{background:linear-gradient(135deg,rgba(91,46,255,.1),rgba(0,184,217,.07));border:1px solid rgba(91,46,255,.22);border-radius:20px;padding:34px 42px;display:flex;align-items:center;gap:26px;}
+    .parc-ico{font-size:42px;flex-shrink:0;}
+    .parc-text strong{display:block;font-family:'Poppins',sans-serif;font-size:18px;font-weight:800;margin-bottom:6px;}
+    .parc-text p{font-size:14px;color:var(--muted);line-height:1.72;margin:0;}
+
+    /* DEPOIMENTOS */
+    #depoimentos{background:linear-gradient(180deg,transparent,rgba(91,46,255,.04),transparent);}
+    .dep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+    .dep-card{background:var(--card);border:1px solid var(--border);border-radius:17px;padding:28px 24px;position:relative;overflow:hidden;transition:all .25s;}
+    .dep-card::after{content:'"';position:absolute;right:18px;top:8px;font-family:'Poppins',sans-serif;font-size:66px;color:rgba(91,46,255,.12);line-height:1;pointer-events:none;}
+    .dep-card:hover{border-color:rgba(91,46,255,.24);transform:translateY(-4px);}
+    .dep-txt{font-size:14px;line-height:1.72;color:rgba(255,255,255,.78);margin-bottom:20px;font-style:italic;}
+    .dep-author{display:flex;align-items:center;gap:12px;}
+    .dep-av{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--deep),var(--teal));display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-weight:800;font-size:13px;}
+    .dep-name{font-size:13px;font-weight:700;}
+    .dep-role{font-size:11px;color:var(--muted2);margin-top:2px;}
+    .dep-prod{font-size:9px;font-weight:700;color:var(--teal);margin-top:3px;letter-spacing:.3px;}
+
+    /* CTA */
+    #cta{padding:100px 0 120px;text-align:center;position:relative;overflow:hidden;}
+    #cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 50% 50%,rgba(91,46,255,.15),transparent);pointer-events:none;}
+    .cta-inner{position:relative;z-index:2;max-width:700px;margin:0 auto;}
+    .cta-title{font-family:'Poppins',sans-serif;font-weight:900;font-size:clamp(32px,5vw,58px);line-height:1.08;letter-spacing:-1.5px;margin-bottom:20px;}
+    .cta-title em{color:var(--teal);font-style:italic;}
+    .cta-sub{font-size:16px;color:var(--muted);line-height:1.78;margin-bottom:44px;}
+    .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+    .cta-note{margin-top:20px;font-size:12px;color:var(--muted2);}
+    .cta-note a{color:var(--teal);}
+
+    /* FOOTER */
+    footer{border-top:1px solid var(--border);padding:50px 0 34px;position:relative;z-index:1;}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;margin-bottom:40px;}
+    .footer-brand p{font-size:13px;color:var(--muted2);line-height:1.72;margin-top:14px;max-width:270px;}
+    .footer-tagline{margin-top:14px;font-size:11px;color:var(--muted2);font-style:italic;}
+    .footer-col h5{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted2);font-weight:600;margin-bottom:14px;}
+    .footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.55);margin-bottom:10px;transition:color .2s;}
+    .footer-col a:hover{color:var(--teal);}
+    .footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--muted2);}
+    .footer-bottom a{color:var(--teal);}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .footer-top{grid-template-columns:1fr 1fr;gap:30px;}
+      .mf{grid-template-columns:1fr 1fr;gap:24px;}
+      .mf::before{display:none;}
+      .nav-links a:not(.nav-cta){display:none;}
+      .hbg{display:flex;}
     }
-
-    .section{
-      padding:88px 0;
+    @media(max-width:767px){
+      section{padding:56px 0;}
+      .hero{padding:84px 0 52px;min-height:auto;}
+      .hero-h1{font-size:clamp(36px,9vw,52px);letter-spacing:-1.8px;}
+      .hero-tagline{font-size:16px;}
+      .hero-btns{flex-direction:column;}
+      .btn{width:100%;}
+      .hero-stats{flex-direction:column;gap:20px;padding:22px 24px;}
+      .h-stat:not(:last-child)::after{display:none;}
+      .hist-grid,.quem-grid{grid-template-columns:1fr;gap:32px;}
+      .vals-grid,.q-stats{grid-template-columns:1fr 1fr;}
+      .pillars{grid-template-columns:1fr;gap:14px;}
+      .mf{grid-template-columns:1fr;gap:14px;}
+      .mf::before{display:none;}
+      .mf-step{flex-direction:row;text-align:left;align-items:flex-start;gap:14px;padding:14px;background:var(--card);border:1px solid var(--border);border-radius:14px;}
+      .mf-dot{width:46px;height:46px;flex-shrink:0;margin:0;font-size:11px;}
+      .prod-cards{grid-template-columns:1fr;gap:16px;}
+      .diff-grid{grid-template-columns:1fr;gap:12px;}
+      .dep-grid{grid-template-columns:1fr;gap:14px;}
+      .cta-btns{flex-direction:column;align-items:center;}
+      .cta-btns .btn{max-width:320px;}
+      .footer-top{grid-template-columns:1fr;gap:26px;}
+      .footer-bottom{flex-direction:column;align-items:flex-start;}
+      .parc-strip{flex-direction:column;text-align:center;padding:26px 20px;}
+      .sec-title{font-size:clamp(24px,7vw,36px);}
     }
-
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      font-size:12px;
-      font-weight:700;
-      letter-spacing:2px;
-      text-transform:uppercase;
-      color:var(--teal);
-      margin-bottom:18px;
-    }
-
-    .eyebrow::before{
-      content:"";
-      width:24px;
-      height:1px;
-      background:var(--teal);
-      display:block;
-    }
-
-    .title{
-      font-family:'Poppins',sans-serif;
-      font-size:clamp(2rem, 5vw, 4.5rem);
-      line-height:1.05;
-      letter-spacing:-0.03em;
-      margin:0 0 18px;
-    }
-
-    .subtitle{
-      font-size:clamp(1rem, 1.8vw, 1.1rem);
-      line-height:1.75;
-      color:var(--muted);
-      max-width:760px;
-      margin:0;
-    }
-
-    .btn-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      margin-top:34px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:50px;
-      padding:0 22px;
-      border-radius:12px;
-      font-weight:700;
-      font-size:15px;
-      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
-      border:1px solid transparent;
-    }
-
-    .btn:hover{
-      transform:translateY(-2px);
-    }
-
-    .btn-primary{
-      background:linear-gradient(135deg, var(--purple), var(--purple-2));
-      color:#fff;
-      box-shadow:0 18px 40px rgba(108,60,255,0.35);
-    }
-
-    .btn-secondary{
-      background:rgba(255,255,255,0.04);
-      border-color:var(--border);
-      color:#fff;
-    }
-
-    .btn-secondary:hover{
-      border-color:rgba(255,255,255,0.22);
-    }
-
-    .site-header{
-      position:sticky;
-      top:0;
-      z-index:20;
-      backdrop-filter:blur(16px);
-      background:rgba(11,8,32,0.72);
-      border-bottom:1px solid rgba(255,255,255,0.06);
-    }
-
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-      min-height:76px;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width:0;
-    }
-
-    .brand-badge{
-      width:40px;
-      height:40px;
-      border-radius:12px;
-      display:grid;
-      place-items:center;
-      background:linear-gradient(135deg, var(--purple), var(--teal));
-      font-weight:800;
-      font-size:12px;
-      box-shadow:0 10px 28px rgba(108,60,255,0.25);
-    }
-
-    .brand-text{
-      display:flex;
-      flex-direction:column;
-      line-height:1.1;
-    }
-
-    .brand-text strong{
-      font-size:15px;
-      font-weight:800;
-    }
-
-    .brand-text span{
-      font-size:12px;
-      color:var(--muted-2);
-    }
-
-    .nav-links{
-      display:flex;
-      align-items:center;
-      gap:18px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-
-    .nav-links a{
-      color:var(--muted);
-      font-size:14px;
-      font-weight:600;
-    }
-
-    .nav-links a:hover{
-      color:#fff;
-    }
-
-    .hero{
-      position:relative;
-      padding:96px 0 72px;
-    }
-
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:32px;
-      align-items:center;
-    }
-
-    .hero-card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      border:1px solid var(--border);
-      border-radius:28px;
-      padding:28px;
-      box-shadow:var(--shadow);
-    }
-
-    .hero-stat-grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:16px;
-    }
-
-    .stat{
-      background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.08);
-      border-radius:20px;
-      padding:18px 18px;
-    }
-
-    .stat strong{
-      display:block;
-      font-size:1.9rem;
-      font-weight:800;
-      margin-bottom:4px;
-    }
-
-    .stat p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.6;
-      font-size:14px;
-    }
-
-    .purple{color:var(--purple-2);}
-    .teal{color:var(--teal);}
-    .green{color:var(--green);}
-
-    .section-header{
-      text-align:center;
-      margin-bottom:40px;
-    }
-
-    .section-header .subtitle{
-      margin:0 auto;
-    }
-
-    .product-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:22px;
-    }
-
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
-      border:1px solid var(--border);
-      border-radius:24px;
-      padding:26px;
-      display:flex;
-      flex-direction:column;
-      min-height:100%;
-      box-shadow:var(--shadow);
-      transition:transform .22s ease, border-color .22s ease;
-    }
-
-    .card:hover{
-      transform:translateY(-6px);
-      border-color:rgba(255,255,255,0.20);
-    }
-
-    .card-badge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      width:max-content;
-      padding:7px 12px;
-      border-radius:999px;
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:1.2px;
-      text-transform:uppercase;
-      margin-bottom:18px;
-    }
-
-    .badge-purple{
-      background:rgba(108,60,255,0.18);
-      color:#d6cbff;
-      border:1px solid rgba(108,60,255,0.28);
-    }
-
-    .badge-teal{
-      background:rgba(0,194,215,0.14);
-      color:#baf7ff;
-      border:1px solid rgba(0,194,215,0.24);
-    }
-
-    .badge-gold{
-      background:rgba(242,181,63,0.16);
-      color:#ffe0a0;
-      border:1px solid rgba(242,181,63,0.28);
-    }
-
-    .card h3{
-      margin:0 0 10px;
-      font-family:'Poppins',sans-serif;
-      font-size:1.55rem;
-    }
-
-    .card p{
-      margin:0 0 18px;
-      color:var(--muted);
-      line-height:1.75;
-    }
-
-    .feature-list{
-      list-style:none;
-      padding:0;
-      margin:0 0 24px;
-      display:grid;
-      gap:10px;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.6;
-      flex:1;
-    }
-
-    .feature-list li{
-      display:flex;
-      align-items:flex-start;
-      gap:10px;
-    }
-
-    .feature-list li::before{
-      content:"•";
-      color:var(--teal);
-      font-weight:800;
-      line-height:1;
-      margin-top:2px;
-    }
-
-    .card .btn{
-      width:max-content;
-    }
-
-    .card-disabled{
-      opacity:.72;
-    }
-
-    .about-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:22px;
-    }
-
-    .about-box{
-      background:rgba(255,255,255,0.04);
-      border:1px solid var(--border);
-      border-radius:22px;
-      padding:26px;
-    }
-
-    .about-box h4{
-      margin:0 0 10px;
-      font-size:1.1rem;
-      font-family:'Poppins',sans-serif;
-    }
-
-    .about-box p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.8;
-    }
-
-    .cta{
-      padding:90px 0 110px;
-    }
-
-    .cta-panel{
-      background:
-        radial-gradient(circle at top right, rgba(0,194,215,0.16), transparent 28%),
-        linear-gradient(135deg, rgba(108,60,255,0.18), rgba(255,255,255,0.05));
-      border:1px solid var(--border);
-      border-radius:30px;
-      padding:38px;
-      text-align:center;
-      box-shadow:var(--shadow);
-    }
-
-    .cta-panel h2{
-      margin:0 0 14px;
-      font-family:'Poppins',sans-serif;
-      font-size:clamp(1.8rem, 4vw, 3rem);
-    }
-
-    .cta-panel p{
-      margin:0 auto;
-      max-width:740px;
-      color:var(--muted);
-      line-height:1.8;
-    }
-
-    .site-footer{
-      padding:24px 0 42px;
-      border-top:1px solid rgba(255,255,255,0.06);
-      color:var(--muted-2);
-      font-size:14px;
-    }
-
-    .footer-row{
-      display:flex;
-      justify-content:space-between;
-      gap:18px;
-      flex-wrap:wrap;
-    }
-
-    @media (max-width: 980px){
-      .hero-grid,
-      .product-grid,
-      .about-grid{
-        grid-template-columns:1fr;
-      }
-
-      .hero{
-        padding-top:72px;
-      }
-
-      .nav{
-        align-items:flex-start;
-        padding:14px 0;
-        flex-direction:column;
-      }
-
-      .nav-links{
-        width:100%;
-        justify-content:flex-start;
-      }
-    }
-
-    @media (max-width: 640px){
-      .section{
-        padding:72px 0;
-      }
-
-      .hero-card,
-      .card,
-      .about-box,
-      .cta-panel{
-        padding:22px;
-      }
-
-      .btn{
-        width:100%;
-      }
-
-      .btn-row{
-        flex-direction:column;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      html{scroll-behavior:auto;}
-      *{
-        animation:none !important;
-        transition:none !important;
-      }
+    @media(max-width:400px){
+      .vals-grid,.q-stats{grid-template-columns:1fr;}
     }
   </style>
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="container nav">
-      <a href="index.html" class="brand" aria-label="Ir para a página inicial">
-        <div class="brand-badge">ECO</div>
-        <div class="brand-text">
-          <strong>ECO do BEM</strong>
-          <span>Desenvolvimento Humano</span>
-        </div>
-      </a>
+<div class="mob-menu" id="mobMenu">
+  <a href="#historia" class="ml">Nossa História</a>
+  <a href="#metodologia" class="ml">Metodologia</a>
+  <a href="#produtos" class="ml">Produtos</a>
+  <a href="#depoimentos" class="ml">Cases</a>
+  <a href="#cta" class="nav-cta ml">Fale Conosco</a>
+</div>
 
-      <nav class="nav-links">
-        <a href="#produtos">Produtos</a>
-        <a href="#sobre">Sobre</a>
-        <a href="eco-lideres.html">ECO Líderes</a>
-      </nav>
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="index.html" class="brand">
+      <div class="brand-mark">ECO</div>
+      <div class="brand-text">
+        <strong class="brand-name">ECO do B.E.M.</strong>
+        <span class="brand-sub">Desenvolvimento Humano</span>
+      </div>
+    </a>
+    <nav class="nav-links">
+      <a href="#historia">Nossa História</a>
+      <a href="#metodologia">Metodologia</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#depoimentos">Cases</a>
+      <a href="#cta" class="nav-cta">Fale Conosco</a>
+    </nav>
+    <button class="hbg" id="hbg" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow g1"></div>
+  <div class="hero-glow g2"></div>
+  <div class="hero-grid"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="eyebrow-dot"></div>
+        <span class="eyebrow-txt">Plataforma B2B · Desenvolvimento Humano Corporativo</span>
+      </div>
+      <h1 class="hero-h1">
+        <span class="eco">ECO do</span><br>
+        <span class="bem">B.E.M.</span>
+      </h1>
+      <p class="hero-tagline">Desenvolvimento humano que <em>transforma</em> organizações.</p>
+      <p class="hero-desc">Somos um ecossistema de desenvolvimento de líderes e equipes que une mais de 30 anos de expertise em psicologia organizacional, metodologia autoral, conteúdos imersivos, mentorias individuais e tecnologia — para gerar resultados reais e mensuráveis nas pessoas e nas organizações.</p>
+      <div class="hero-btns">
+        <a href="#produtos" class="btn btn-p">Conhecer nossos produtos ↓</a>
+        <a href="#historia" class="btn btn-o">Nossa história</a>
+      </div>
     </div>
-  </header>
+    <div class="hero-stats">
+      <div class="h-stat">
+        <div class="h-val p">30+</div>
+        <div class="h-label">Anos de expertise em psicologia organizacional</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-val t">147+</div>
+        <div class="h-label">Colaboradores em desenvolvimento ativo</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-val g">536</div>
+        <div class="h-label">Ações de PDI criadas na plataforma</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-val gd">3</div>
+        <div class="h-label">Produtos para toda a jornada de desenvolvimento</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
+<!-- HISTÓRIA / MANIFESTO -->
+<section id="historia">
+  <div class="wrap hist-grid">
+    <div class="hist-text">
+      <div class="sec-label reveal">Nossa história</div>
+      <h2 class="sec-title reveal">Nascemos de uma convicção: desenvolvimento humano precisa ser real.</h2>
+      <p class="sec-sub reveal">Por mais de 30 anos, vimos PDIs serem criados e esquecidos. Vimos treinamentos acontecerem sem mudar comportamento. Vimos líderes sendo promovidos sem suporte. E decidimos fazer diferente.</p>
+      <p class="sec-sub reveal r1" style="margin-top:16px;font-size:14.5px;">A ECO do B.E.M. nasceu da união entre décadas de expertise em psicologia organizacional — condensadas na metodologia autoral de Mapeamento de Potencialidades — e a tecnologia necessária para tornar o desenvolvimento humano estruturado, mensurável e sustentável nas organizações.</p>
+      <div class="hist-quote reveal r2">
+        <p>"Não criamos cursos. Criamos jornadas. Não medimos presença. Medimos transformação. Não entregamos conteúdo. Entregamos mudança de comportamento com impacto comprovado."</p>
+      </div>
+    </div>
+    <div>
+      <div class="vals-grid">
+        <div class="val reveal"><div class="val-icon">🧬</div><div><h5>Metodologia Autoral</h5><p>Desenvolvida ao longo de décadas de prática clínica e organizacional real</p></div></div>
+        <div class="val reveal r1"><div class="val-icon">🎯</div><div><h5>100% Personalizado</h5><p>Cada pessoa recebe um plano baseado no seu perfil real — nada genérico</p></div></div>
+        <div class="val reveal r2"><div class="val-icon">📊</div><div><h5>Resultados Mensuráveis</h5><p>Desenvolvimento que vira dado — transparente para RH e diretoria</p></div></div>
+        <div class="val reveal r3"><div class="val-icon">🤝</div><div><h5>Acompanhamento Humano</h5><p>Mentores e psicólogos presentes em cada etapa, não só no início</p></div></div>
+        <div class="val reveal r2"><div class="val-icon">🧠</div><div><h5>Psicologia no Core</h5><p>A única plataforma com psicólogos integrados ao processo de desenvolvimento</p></div></div>
+        <div class="val reveal r3"><div class="val-icon">🔄</div><div><h5>Evolução Contínua</h5><p>Múltiplos ciclos de crescimento — o desenvolvimento não para na 1ª certificação</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUEM SOMOS -->
+<section id="quem">
+  <div class="wrap quem-grid">
+    <div>
+      <div class="sec-label reveal">Quem somos</div>
+      <h2 class="sec-title reveal">Desenvolvimento humano é ciência — não achismo.</h2>
+      <p class="sec-sub reveal" style="max-width:100%;">Na ECO do B.E.M., cada ação de desenvolvimento parte de um diagnóstico comportamental preciso, segue uma trilha personalizada e termina com comprovação real de impacto. Nossos psicólogos e mentores garantem que o aprendizado saia do conteúdo e chegue no comportamento.</p>
+      <p class="sec-sub reveal r1" style="max-width:100%;margin-top:16px;font-size:14.5px;">Somos parceiros estratégicos do SEBRAE no desenvolvimento de líderes e equipes de pequenas e médias empresas em todo o Brasil — o que valida nossa metodologia na escala e na prática.</p>
+      <div class="q-stats">
+        <div class="q-stat reveal r1"><div class="q-val p">88%</div><div class="q-label">dos PDIs corporativos não são executados — o problema que existimos para resolver</div></div>
+        <div class="q-stat reveal r2"><div class="q-val t">6</div><div class="q-label">meses por ciclo, com 6 mentorias individuais mensais com especialista</div></div>
+        <div class="q-stat reveal r1"><div class="q-val g">4+</div><div class="q-label">certificações possíveis — a jornada de desenvolvimento nunca tem fim</div></div>
+        <div class="q-stat reveal r2"><div class="q-val gd">6</div><div class="q-label">formatos de conteúdo: filmes, podcasts, TED Talks, livros, vídeos e exercícios</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="quem-big reveal">
+        <div class="qb-label">Nossa essência</div>
+        <div class="qb-title">"Não existe desenvolvimento humano real sem diagnóstico, acompanhamento e comprovação de impacto."</div>
+        <div class="qb-text">A maioria das plataformas entrega conteúdo e chama de desenvolvimento. Nós entregamos um processo completo: diagnóstico DISC, trilha personalizada, mentoria individual mensal, aulas de mudança comportamental com filmes, podcasts e TED Talks — e um sistema de 7 indicadores que mostram em tempo real a evolução de cada pessoa. Do líder ao colaborador, do diagnóstico à certificação.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METODOLOGIA -->
+<section id="metodologia">
+  <div class="wrap">
+    <div class="ctr" style="max-width:680px;margin:0 auto 52px;">
+      <div class="sec-label reveal">Nossa metodologia</div>
+      <h2 class="sec-title reveal">Ciência + Tecnologia + Humanidade</h2>
+      <p class="sec-sub reveal">Uma metodologia autoral que integra diagnóstico comportamental, conteúdo imersivo e acompanhamento contínuo — transformando aprendizado em resultado real e mensurável.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar p1 reveal">
+        <div class="p-num">Pilar 01</div>
+        <span class="p-ico">🧬</span>
+        <h3>Diagnóstico Preciso</h3>
+        <p>Teste DISC + Autopercepção identificam o perfil comportamental de cada pessoa. Sem diagnóstico real, não há desenvolvimento verdadeiro.</p>
+      </div>
+      <div class="pillar p2 reveal r1">
+        <div class="p-num">Pilar 02</div>
+        <span class="p-ico">🎬</span>
+        <h3>Conteúdo Imersivo</h3>
+        <p>Filmes, vídeos, podcasts, TED Talks, livros e exercícios. Aulas de mudança comportamental nos formatos que engajam e que as pessoas realmente absorvem.</p>
+      </div>
+      <div class="pillar p3 reveal r2">
+        <div class="p-num">Pilar 03</div>
+        <span class="p-ico">📈</span>
+        <h3>Impacto Comprovado</h3>
+        <p>Cada competência aprendida é aplicada e documentada com resultados mensuráveis. Casos de Sucesso comprovam a transformação real na organização.</p>
+      </div>
+    </div>
+    <div class="mf">
+      <div class="mf-step reveal">
+        <div class="mf-dot">01</div>
+        <div><h4>Diagnóstico DISC</h4><p>Assessment comportamental e autopercepção — identificação dos gaps prioritários de cada pessoa</p></div>
+      </div>
+      <div class="mf-step reveal r1">
+        <div class="mf-dot">02</div>
+        <div><h4>Plano Individual</h4><p>Trilha 100% personalizada com base no perfil mapeado — nada genérico, tudo focado</p></div>
+      </div>
+      <div class="mf-step reveal r2">
+        <div class="mf-dot">03</div>
+        <div><h4>Conteúdo + Mentoria</h4><p>Filmes, TED Talks, podcasts, livros e sessões mensais com mentor especialista</p></div>
+      </div>
+      <div class="mf-step reveal r3">
+        <div class="mf-dot">04</div>
+        <div><h4>Aplicação Prática</h4><p>Implementação no dia a dia com documentação de resultados reais na organização</p></div>
+      </div>
+      <div class="mf-step reveal r4">
+        <div class="mf-dot">05</div>
+        <div><h4>Certificação</h4><p>7 indicadores avaliados, certificado digital. Opção de novo ciclo com novas competências</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUTOS -->
+<section id="produtos">
+  <div class="wrap">
+    <div class="ctr" style="max-width:680px;margin:0 auto 52px;">
+      <div class="sec-label reveal">Nosso ecossistema</div>
+      <h2 class="sec-title reveal">Três produtos.<br>Uma transformação.</h2>
+      <p class="sec-sub reveal">Cada produto atende uma necessidade específica — e juntos cobrem toda a jornada de desenvolvimento humano da sua empresa, do líder ao colaborador.</p>
+    </div>
+    <div class="prod-cards">
+
+      <!-- ECO Líderes -->
+      <article class="pcard lid reveal">
+        <div class="pcard-head">
+          <div class="pcard-icon">👑</div>
+          <div class="pcard-badges">
+            <div class="pcard-tag">ECO Líderes</div>
+            <div class="pcard-status s-live">● Disponível</div>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <h3 class="pcard-name">ECO Líderes</h3>
+          <p class="pcard-line">Certificação de Liderança — ciclo de 6 meses</p>
+          <ul class="pcard-feats">
+            <li><span class="fd"></span>Diagnóstico DISC + Autopercepção personalizado</li>
+            <li><span class="fd"></span>Trilha imersiva: filmes, TED Talks, podcasts e livros</li>
+            <li><span class="fd"></span>6 mentorias individuais mensais com especialista</li>
+            <li><span class="fd"></span>7 indicadores de desempenho em tempo real</li>
+            <li><span class="fd"></span>Casos de Sucesso com impacto mensurável comprovado</li>
+            <li><span class="fd"></span>Certificado digital + múltiplos ciclos de crescimento</li>
+          </ul>
+          <a href="eco-lideres.html" class="pcard-cta">Ver o produto completo →</a>
+        </div>
+      </article>
+
+      <!-- ECO Times -->
+      <article class="pcard equ reveal r1" style="position:relative;">
+        <div class="pcard-head">
+          <div class="pcard-icon">👥</div>
+          <div class="pcard-badges">
+            <div class="pcard-tag">ECO Times</div>
+            <div class="pcard-status s-soon">⚙ Em Construção</div>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <h3 class="pcard-name">ECO Times</h3>
+          <p class="pcard-line">Desenvolvimento de Equipes e Colaboradores</p>
+          <ul class="pcard-feats">
+            <li><span class="fd"></span>Trilhas de soft skills para times inteiros</li>
+            <li><span class="fd"></span>Gestão de PDI corporativo com rastreabilidade total</li>
+            <li><span class="fd"></span>Dashboards gerenciais por área e competência</li>
+            <li><span class="fd"></span>Relatórios estratégicos para RH e diretoria</li>
+            <li><span class="fd"></span>Mapeamento de potencialidades de toda a equipe</li>
+            <li><span class="fd"></span>Alertas automáticos de prazo e engajamento</li>
+          </ul>
+          <a href="mailto:relacionamento@ckmtalents.net" class="pcard-cta">Quero ser avisada(o) →</a>
+        </div>
+        <div class="soon-ov">
+          <div class="soon-badge" style="background:rgba(0,184,217,.2);color:var(--teal);border:1px solid rgba(0,184,217,.35);">⚙ Em Construção</div>
+          <p class="soon-txt">O ECO Times está sendo desenvolvido com todo o cuidado que a sua equipe merece. Em breve.</p>
+          <a href="mailto:relacionamento@ckmtalents.net" class="btn btn-o" style="font-size:13px;padding:10px 22px;width:auto;">Quero ser avisada(o)</a>
+        </div>
+      </article>
+
+      <!-- Evoluir PDI -->
+      <article class="pcard pdi reveal r2">
+        <div class="pcard-head">
+          <div class="pcard-icon">📋</div>
+          <div class="pcard-badges">
+            <div class="pcard-tag">Evoluir PDI</div>
+            <div class="pcard-status s-dev">◆ Em Desenvolvimento</div>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <h3 class="pcard-name">Evoluir PDI</h3>
+          <p class="pcard-line">Sistema de Gestão de PDI Corporativo</p>
+          <ul class="pcard-feats">
+            <li><span class="fd"></span>Gestão centralizada de todos os PDIs da empresa</li>
+            <li><span class="fd"></span>Funil de execução com rastreabilidade completa</li>
+            <li><span class="fd"></span>Dashboard de progresso por colaborador e área</li>
+            <li><span class="fd"></span>Alertas automáticos de prazo e acompanhamento</li>
+            <li><span class="fd"></span>Relatórios de ROI em desenvolvimento para o RH</li>
+            <li><span class="fd"></span>Integração futura com ECO Líderes e ECO Times</li>
+          </ul>
+          <a href="mailto:relacionamento@ckmtalents.net" class="pcard-cta">Quero saber mais →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section id="diferenciais">
+  <div class="wrap">
+    <div class="ctr" style="max-width:640px;margin:0 auto 50px;">
+      <div class="sec-label reveal">Por que a ECO do B.E.M.</div>
+      <h2 class="sec-title reveal">O que nos torna únicos</h2>
+      <p class="sec-sub reveal">Não somos mais uma plataforma de treinamento. Somos o único ecossistema que une diagnóstico, conteúdo imersivo, mentoria e comprovação de impacto em um processo contínuo.</p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card hl reveal">
+        <div class="diff-ico">🧬</div>
         <div>
-          <div class="eyebrow">Soluções em liderança e desenvolvimento</div>
-          <h1 class="title">Transforme cultura, liderança e resultados com experiências que geram evolução real.</h1>
-          <p class="subtitle">
-            A ECO do BEM reúne metodologias, jornadas e produtos voltados ao desenvolvimento humano nas organizações.
-            Comece pela nossa vitrine principal e avance para a página específica do produto pelo botão, exatamente como você quer.
-          </p>
-
-          <div class="btn-row">
-            <a class="btn btn-primary" href="eco-lideres.html">Conhecer o ECO Líderes</a>
-            <a class="btn btn-secondary" href="#produtos">Ver soluções</a>
-          </div>
-        </div>
-
-        <aside class="hero-card">
-          <div class="hero-stat-grid">
-            <div class="stat">
-              <strong class="purple">01</strong>
-              <p>Página inicial estável, elegante e pronta para ser a porta de entrada do site.</p>
-            </div>
-            <div class="stat">
-              <strong class="teal">02</strong>
-              <p>Navegação simples: primeiro a home, depois o acesso ao produto por botão.</p>
-            </div>
-            <div class="stat">
-              <strong class="green">03</strong>
-              <p>Layout responsivo, sem efeitos exagerados que costumam causar problemas de zoom e leitura.</p>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section" id="produtos">
-      <div class="container">
-        <div class="section-header">
-          <div class="eyebrow" style="justify-content:center;">Produtos</div>
-          <h2 class="title" style="font-size:clamp(1.9rem,4vw,3.3rem);">Conheça as soluções da ECO do BEM</h2>
-          <p class="subtitle">
-            A página inicial apresenta seus produtos e direciona para a página de detalhe do ECO Líderes.
-          </p>
-        </div>
-
-        <div class="product-grid">
-          <article class="card">
-            <div class="card-badge badge-purple">Produto em destaque</div>
-            <h3>ECO Líderes</h3>
-            <p>Certificação de liderança com trilha estruturada, aplicação prática e foco em desenvolvimento consistente.</p>
-            <ul class="feature-list">
-              <li>Jornada com identidade forte e apresentação profissional</li>
-              <li>Estrutura própria para página de vendas ou apresentação institucional</li>
-              <li>Acesso direto pela home, com navegação simples</li>
-            </ul>
-            <a class="btn btn-primary" href="eco-lideres.html">Abrir página do ECO Líderes</a>
-          </article>
-
-          <article class="card card-disabled">
-            <div class="card-badge badge-teal">Em construção</div>
-            <h3>ECO Equipes</h3>
-            <p>Espaço reservado para expansão futura do portfólio, sem comprometer a estabilidade da página principal.</p>
-            <ul class="feature-list">
-              <li>Área preparada para produto futuro</li>
-              <li>Mesma linguagem visual da marca</li>
-              <li>Sem links quebrados ou rotas desnecessárias agora</li>
-            </ul>
-            <span class="btn btn-secondary">Disponível em breve</span>
-          </article>
-
-          <article class="card card-disabled">
-            <div class="card-badge badge-gold">Em construção</div>
-            <h3>ECO PDI</h3>
-            <p>Outra trilha futura do ecossistema, preservando a organização do site desde o início.</p>
-            <ul class="feature-list">
-              <li>Pronto para crescimento organizado</li>
-              <li>Visual alinhado ao restante do site</li>
-              <li>Estrutura simples para manutenção</li>
-            </ul>
-            <span class="btn btn-secondary">Disponível em breve</span>
-          </article>
+          <h4>Metodologia Autoral — 30+ Anos</h4>
+          <p>A metodologia de Mapeamento de Potencialidades foi desenvolvida ao longo de décadas de prática clínica e organizacional. Nenhum outro player no mercado brasileiro tem essa profundidade científica.</p>
+          <div class="dtag" style="background:rgba(91,46,255,.18);color:#A88BFF;border:1px solid rgba(91,46,255,.25);">Diferencial exclusivo</div>
         </div>
       </div>
-    </section>
-
-    <section class="section" id="sobre">
-      <div class="container">
-        <div class="section-header">
-          <div class="eyebrow" style="justify-content:center;">Sobre</div>
-          <h2 class="title" style="font-size:clamp(1.9rem,4vw,3rem);">Uma base mais segura para publicar</h2>
-          <p class="subtitle">
-            Nesta primeira versão, a prioridade é ficar bonito, claro e estável. Por isso, evitamos elementos que costumam atrapalhar em mobile, zoom, leitura e performance.
-          </p>
-        </div>
-
-        <div class="about-grid">
-          <div class="about-box">
-            <h4>O que foi mantido</h4>
-            <p>
-              Uma estética moderna, com identidade forte, blocos bem definidos, contraste adequado e navegação objetiva.
-            </p>
-          </div>
-          <div class="about-box">
-            <h4>O que foi evitado</h4>
-            <p>
-              Cursores customizados, efeitos excessivos, animações pesadas e estruturas que costumam quebrar no celular ou causar sensação de “zoom estranho”.
-            </p>
-          </div>
+      <div class="diff-card reveal r1">
+        <div class="diff-ico">🧠</div>
+        <div>
+          <h4>Psicologia Organizacional no Core</h4>
+          <p>Psicólogos especializados integrados no processo — não como consultoria separada, mas como parte de cada jornada. Desenvolvimento humano com base científica real e aplicada.</p>
+          <div class="dtag" style="background:rgba(0,184,217,.14);color:var(--teal);border:1px solid rgba(0,184,217,.22);">Base científica</div>
         </div>
       </div>
-    </section>
-
-    <section class="cta">
-      <div class="container">
-        <div class="cta-panel">
-          <h2>Pronta para seguir para a página do produto?</h2>
-          <p>
-            A sua navegação principal já está ajustada: o visitante entra pela home e, quando clicar no botão, segue para a página específica do ECO Líderes.
-          </p>
-          <div class="btn-row" style="justify-content:center;">
-            <a class="btn btn-primary" href="eco-lideres.html">Ir para ECO Líderes</a>
-          </div>
+      <div class="diff-card reveal r2">
+        <div class="diff-ico">🎬</div>
+        <div>
+          <h4>Conteúdos que Pessoas Consomem</h4>
+          <p>Filmes, podcasts, TED Talks, livros e vídeos — não aulas expositivas chatas. Aprendizado comportamental nos formatos que engajam de verdade e que as pessoas realmente absorvem.</p>
+          <div class="dtag" style="background:rgba(94,211,140,.12);color:var(--green);border:1px solid rgba(94,211,140,.2);">6 formatos de mídia</div>
         </div>
       </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-row">
-      <span>© 2026 ECO do BEM</span>
-      <span>Site institucional em HTML estático</span>
+      <div class="diff-card reveal r3">
+        <div class="diff-ico">📊</div>
+        <div>
+          <h4>PDI que Sai do Papel</h4>
+          <p>88% dos PDIs corporativos não são executados. Nossos sistemas transformam o PDI em processo vivo — com funil de execução, 7 indicadores em tempo real e rastreabilidade total.</p>
+          <div class="dtag" style="background:rgba(245,158,11,.12);color:var(--gold);border:1px solid rgba(245,158,11,.2);">Dados reais</div>
+        </div>
+      </div>
     </div>
-  </footer>
+  </div>
+</section>
 
+<!-- SEBRAE / PARCEIROS -->
+<section id="parceiros">
+  <div class="wrap">
+    <div class="ctr" style="margin-bottom:34px;">
+      <div class="sec-label reveal">Quem confia na ECO do B.E.M.</div>
+      <h2 class="sec-title reveal" style="font-size:clamp(22px,3.5vw,36px);">Validados pela prática, na escala real</h2>
+    </div>
+    <div class="parc-box">
+      <div class="parc-strip reveal">
+        <div class="parc-ico">🏆</div>
+        <div class="parc-text">
+          <strong>Parceiro estratégico do SEBRAE</strong>
+          <p>A ECO do B.E.M. é parceira do SEBRAE no desenvolvimento de líderes e equipes de pequenas e médias empresas em todo o Brasil — validando nossa metodologia na escala e na prática real. 147+ colaboradores em desenvolvimento ativo, 536 ações de PDI criadas, resultados documentados e mensuráveis.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos">
+  <div class="wrap">
+    <div class="ctr" style="max-width:560px;margin:0 auto 48px;">
+      <div class="sec-label reveal">Resultados reais</div>
+      <h2 class="sec-title reveal">O que dizem quem já transformou</h2>
+    </div>
+    <div class="dep-grid">
+      <div class="dep-card reveal">
+        <p class="dep-txt">"A ECO do B.E.M. foi a primeira plataforma que fez nossos PDIs saírem do papel de verdade. A visibilidade gerencial que temos hoje é algo que nunca tivemos — e os números comprovam a evolução das pessoas."</p>
+        <div class="dep-author">
+          <div class="dep-av">AM</div>
+          <div><div class="dep-name">Ana Maria Santos</div><div class="dep-role">Gerente de RH · Empresa de Tecnologia</div><div class="dep-prod">ECO Líderes</div></div>
+        </div>
+      </div>
+      <div class="dep-card reveal r1">
+        <p class="dep-txt">"O acompanhamento psicológico integrado à liderança foi transformador. Não é mais um curso — é um processo real com suporte especializado em cada etapa. Em 6 meses mudei como líder e como pessoa."</p>
+        <div class="dep-author">
+          <div class="dep-av">RJ</div>
+          <div><div class="dep-name">Roberto Junqueira</div><div class="dep-role">Diretor Comercial · Empresa de Serviços</div><div class="dep-prod">ECO Líderes</div></div>
+        </div>
+      </div>
+      <div class="dep-card reveal r2">
+        <p class="dep-txt">"A metodologia DISC identificou exatamente onde eu precisava focar. Em 6 meses minha equipe ficou mais engajada, os conflitos reduziram 40% e os resultados melhoraram — tudo com dados reais."</p>
+        <div class="dep-author">
+          <div class="dep-av">CM</div>
+          <div><div class="dep-name">Carla Medeiros</div><div class="dep-role">Gestora de Projetos · Varejo</div><div class="dep-prod">ECO Líderes</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="wrap">
+    <div class="cta-inner">
+      <div class="sec-label reveal" style="justify-content:center;">Próximo passo</div>
+      <h2 class="cta-title reveal">Pronto para transformar<br>o desenvolvimento <em>da sua empresa?</em></h2>
+      <p class="cta-sub reveal">Agende uma conversa com nossa equipe. Vamos entender seu contexto, apresentar o produto certo para a sua necessidade e montar uma proposta sob medida — sem compromisso.</p>
+      <div class="cta-btns reveal">
+        <a href="eco-lideres.html" class="btn btn-p">Conhecer o ECO Líderes →</a>
+        <a href="mailto:relacionamento@ckmtalents.net" class="btn btn-o">✉ Falar com a equipe</a>
+      </div>
+      <p class="cta-note reveal">Ou escreva diretamente para <a href="mailto:relacionamento@ckmtalents.net">relacionamento@ckmtalents.net</a></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand" style="pointer-events:none;">
+          <div class="brand-mark">ECO</div>
+          <div class="brand-text">
+            <strong class="brand-name">ECO do B.E.M.</strong>
+            <span class="brand-sub">Desenvolvimento Humano</span>
+          </div>
+        </div>
+        <p>Ecossistema de desenvolvimento humano corporativo que une metodologia autoral, conteúdos imersivos, mentoria especializada e tecnologia para gerar resultados reais.</p>
+        <p class="footer-tagline">🌿 Lideranças melhores. Equipes mais fortes.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Produtos</h5>
+        <a href="eco-lideres.html">ECO Líderes</a>
+        <a href="mailto:relacionamento@ckmtalents.net">ECO Times <span style="font-size:10px;color:var(--teal);">(em breve)</span></a>
+        <a href="mailto:relacionamento@ckmtalents.net">Evoluir PDI <span style="font-size:10px;color:var(--gold);">(em breve)</span></a>
+      </div>
+      <div class="footer-col">
+        <h5>Empresa</h5>
+        <a href="#historia">Nossa História</a>
+        <a href="#metodologia">Metodologia</a>
+        <a href="#diferenciais">Diferenciais</a>
+        <a href="#depoimentos">Cases</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contato</h5>
+        <a href="mailto:relacionamento@ckmtalents.net">relacionamento@ckmtalents.net</a>
+        <a href="https://www.instagram.com/ecodobem" target="_blank" rel="noopener">@ecodobem</a>
+        <a href="https://www.ecodobem.com" target="_blank" rel="noopener">www.ecodobem.com</a>
+        <a href="#cta">Fale Conosco</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 ECO do B.E.M. · Todos os direitos reservados.</span>
+      <span>Parceiro estratégico do <a href="#parceiros">SEBRAE</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.09 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Hamburger
+  const hbg = document.getElementById('hbg');
+  const mob = document.getElementById('mobMenu');
+  hbg.addEventListener('click', () => {
+    const open = hbg.classList.toggle('open');
+    mob.classList.toggle('open', open);
+    hbg.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  document.querySelectorAll('.ml').forEach(a => {
+    a.addEventListener('click', () => {
+      hbg.classList.remove('open');
+      mob.classList.remove('open');
+      hbg.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
 </body>
 </html>

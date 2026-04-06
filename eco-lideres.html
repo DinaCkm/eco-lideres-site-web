@@ -1,1 +1,544 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ECO Líderes | Certificação de Liderança</title>
+  <meta name="description" content="Conheça o ECO Líderes, certificação de liderança da ECO do BEM." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 
+  <style>
+    :root{
+      --bg:#0a071c;
+      --bg-2:#120c31;
+      --panel:rgba(255,255,255,0.06);
+      --border:rgba(255,255,255,0.12);
+      --text:#fff;
+      --muted:rgba(255,255,255,0.74);
+      --muted-2:rgba(255,255,255,0.58);
+      --purple:#6c3cff;
+      --purple-2:#8b66ff;
+      --teal:#00c2d7;
+      --green:#67dda0;
+      --gold:#efb345;
+      --radius:24px;
+      --shadow:0 24px 70px rgba(0,0,0,0.35);
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      font-family:'Inter',sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(108,60,255,0.22), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(0,194,215,0.14), transparent 28%),
+        linear-gradient(180deg, var(--bg), #090612 100%);
+      overflow-x:hidden;
+    }
+
+    a{text-decoration:none;color:inherit;}
+    .container{width:min(calc(100% - 32px), var(--max));margin:0 auto;}
+    .section{padding:88px 0;}
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:20;
+      backdrop-filter:blur(16px);
+      background:rgba(10,7,28,0.78);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+
+    .topbar-inner{
+      min-height:74px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .back-link{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-size:14px;
+      font-weight:700;
+      color:rgba(255,255,255,0.86);
+    }
+
+    .back-link:hover{color:#fff;}
+
+    .top-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:48px;
+      padding:0 20px;
+      border-radius:12px;
+      font-weight:700;
+      font-size:15px;
+      border:1px solid transparent;
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+
+    .btn:hover{transform:translateY(-2px);}
+
+    .btn-primary{
+      background:linear-gradient(135deg, var(--purple), var(--purple-2));
+      box-shadow:0 16px 36px rgba(108,60,255,0.35);
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,0.04);
+      border-color:var(--border);
+    }
+
+    .hero{
+      padding:90px 0 70px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 14px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:1.4px;
+      text-transform:uppercase;
+      color:#dcd3ff;
+      background:rgba(108,60,255,0.16);
+      border:1px solid rgba(108,60,255,0.25);
+      margin-bottom:20px;
+    }
+
+    .title{
+      margin:0 0 18px;
+      font-family:'Poppins',sans-serif;
+      font-size:clamp(2.1rem, 5vw, 4.6rem);
+      line-height:1.05;
+      letter-spacing:-0.03em;
+    }
+
+    .title span{color:var(--teal);}
+
+    .subtitle{
+      margin:0;
+      max-width:740px;
+      color:var(--muted);
+      line-height:1.8;
+      font-size:clamp(1rem, 1.7vw, 1.08rem);
+    }
+
+    .hero-panel{
+      background:linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
+      border:1px solid var(--border);
+      border-radius:28px;
+      padding:26px;
+      box-shadow:var(--shadow);
+    }
+
+    .mini-grid{
+      display:grid;
+      gap:14px;
+    }
+
+    .mini-item{
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:18px;
+      padding:18px;
+    }
+
+    .mini-item strong{
+      display:block;
+      margin-bottom:6px;
+      font-size:1.55rem;
+      font-weight:800;
+    }
+
+    .mini-item p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:14px;
+    }
+
+    .purple{color:var(--purple-2);}
+    .teal{color:var(--teal);}
+    .green{color:var(--green);}
+
+    .section-head{
+      text-align:center;
+      margin-bottom:40px;
+    }
+
+    .section-head h2{
+      margin:0 0 12px;
+      font-family:'Poppins',sans-serif;
+      font-size:clamp(1.9rem, 4vw, 3rem);
+    }
+
+    .section-head p{
+      margin:0 auto;
+      max-width:760px;
+      color:var(--muted);
+      line-height:1.8;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:22px;
+    }
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:26px;
+      box-shadow:var(--shadow);
+    }
+
+    .card h3{
+      margin:0 0 12px;
+      font-family:'Poppins',sans-serif;
+      font-size:1.3rem;
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.8;
+    }
+
+    .list{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:grid;
+      gap:12px;
+    }
+
+    .list li{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .list li::before{
+      content:"•";
+      color:var(--teal);
+      font-weight:800;
+      margin-top:1px;
+    }
+
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+
+    .step{
+      background:rgba(255,255,255,0.04);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:24px;
+    }
+
+    .step-number{
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      margin-bottom:14px;
+      background:rgba(108,60,255,0.14);
+      border:1px solid rgba(108,60,255,0.24);
+      color:#ddd3ff;
+      font-weight:800;
+      font-size:14px;
+    }
+
+    .step h4{
+      margin:0 0 10px;
+      font-family:'Poppins',sans-serif;
+      font-size:1.05rem;
+    }
+
+    .step p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:14px;
+    }
+
+    .cta{
+      padding:0 0 110px;
+    }
+
+    .cta-panel{
+      background:
+        radial-gradient(circle at top right, rgba(0,194,215,0.18), transparent 28%),
+        linear-gradient(135deg, rgba(108,60,255,0.18), rgba(255,255,255,0.06));
+      border:1px solid var(--border);
+      border-radius:30px;
+      padding:38px;
+      text-align:center;
+      box-shadow:var(--shadow);
+    }
+
+    .cta-panel h2{
+      margin:0 0 14px;
+      font-family:'Poppins',sans-serif;
+      font-size:clamp(1.8rem, 4vw, 3rem);
+    }
+
+    .cta-panel p{
+      margin:0 auto;
+      max-width:760px;
+      color:var(--muted);
+      line-height:1.8;
+    }
+
+    .btn-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      justify-content:center;
+      margin-top:28px;
+    }
+
+    .footer{
+      border-top:1px solid rgba(255,255,255,0.06);
+      padding:24px 0 40px;
+      color:var(--muted-2);
+      font-size:14px;
+    }
+
+    @media (max-width: 980px){
+      .hero-grid,
+      .grid-3,
+      .grid-2,
+      .steps{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 640px){
+      .section{padding:72px 0;}
+      .hero{padding:72px 0 56px;}
+      .card,
+      .hero-panel,
+      .cta-panel,
+      .step{
+        padding:22px;
+      }
+      .top-actions,
+      .btn-row{
+        width:100%;
+      }
+      .btn{
+        width:100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto;}
+      *{
+        animation:none !important;
+        transition:none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="back-link" href="index.html">← Voltar para a página inicial</a>
+      <div class="top-actions">
+        <a class="btn btn-secondary" href="#metodologia">Ver metodologia</a>
+        <a class="btn btn-primary" href="#contato">Quero saber mais</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="pill">Certificação de Liderança</div>
+          <h1 class="title">ECO <span>Líderes</span></h1>
+          <p class="subtitle">
+            Uma jornada estruturada para fortalecer competências de liderança, ampliar consciência de papel e desenvolver gestores com mais clareza, consistência e capacidade de influenciar resultados.
+          </p>
+
+          <div class="btn-row" style="justify-content:flex-start;">
+            <a class="btn btn-primary" href="#contato">Quero apresentar este produto</a>
+            <a class="btn btn-secondary" href="index.html">Voltar à home</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel">
+          <div class="mini-grid">
+            <div class="mini-item">
+              <strong class="purple">Liderança</strong>
+              <p>Desenvolvimento de gestores com foco em repertório, postura e aplicação prática.</p>
+            </div>
+            <div class="mini-item">
+              <strong class="teal">Estrutura</strong>
+              <p>Trilha organizada para comunicar valor com clareza e apoiar venda institucional.</p>
+            </div>
+            <div class="mini-item">
+              <strong class="green">Consistência</strong>
+              <p>Página estável, limpa e preparada para funcionar bem no desktop e no celular.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>O que é o ECO Líderes</h2>
+          <p>
+            O ECO Líderes é uma certificação voltada ao desenvolvimento de lideranças, unindo conteúdo, reflexão, prática e aplicação no contexto organizacional.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Desenvolvimento de competências</h3>
+            <p>Fortalece competências essenciais para liderança contemporânea, sem perder consistência, clareza de papel e responsabilidade de gestão.</p>
+          </div>
+          <div class="card">
+            <h3>Aprendizagem com aplicação</h3>
+            <p>Vai além do conteúdo expositivo e busca transformar aprendizado em atitude, repertório e ação no dia a dia.</p>
+          </div>
+          <div class="card">
+            <h3>Experiência de evolução</h3>
+            <p>Organiza uma jornada que valoriza autoconhecimento, leitura de contexto e amadurecimento da atuação da liderança.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="metodologia">
+      <div class="container">
+        <div class="section-head">
+          <h2>Metodologia</h2>
+          <p>
+            Uma trilha clara, com etapas que ajudam a comunicar melhor o produto e a sustentar a proposta comercial.
+          </p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h4>Diagnóstico</h4>
+            <p>Levantamento do contexto, do público e dos objetivos do desenvolvimento.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h4>Trilha</h4>
+            <p>Definição da jornada, da lógica dos encontros e da progressão do aprendizado.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h4>Vivência</h4>
+            <p>Experiências práticas, debates, exercícios e reflexão aplicada à realidade da liderança.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <h4>Consolidação</h4>
+            <p>Fechamento com direcionamentos, compromissos e fortalecimento da transferência para o trabalho.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Diferenciais</h2>
+          <p>
+            Elementos que ajudam a fortalecer a percepção de valor do produto e tornam a comunicação mais segura.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Comunicação clara</h3>
+            <ul class="list">
+              <li>Linguagem direta e profissional</li>
+              <li>Organização visual mais limpa</li>
+              <li>Fluxo simples para o visitante</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Mais estabilidade técnica</h3>
+            <ul class="list">
+              <li>Sem cursores customizados e sem efeitos que costumam quebrar em mobile</li>
+              <li>Layout responsivo com blocos fluidos</li>
+              <li>Sem dependência de bibliotecas externas pesadas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contato">
+      <div class="container">
+        <div class="cta-panel">
+          <h2>Quer usar esta página para apresentar o produto?</h2>
+          <p>
+            Você já pode publicar esta versão. Depois, com calma, refinamos textos comerciais, depoimentos, logos, provas sociais e botões finais com seus contatos oficiais.
+          </p>
+
+          <div class="btn-row">
+            <a class="btn btn-primary" href="mailto:contato@ecodobem.com">Falar por e-mail</a>
+            <a class="btn btn-secondary" href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © 2026 ECO do BEM — Página do produto ECO Líderes
+    </div>
+  </footer>
+
+</body>
+</html>

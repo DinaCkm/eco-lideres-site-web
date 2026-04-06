@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECO Líderes — Programa Completo</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --roxo: #5B2EFF;
+    --roxo-escuro: #3A1D8F;
+    --quase-preto: #1A0A5E;
+    --base-dark: #0D0920;
+    --teal: #00B8D9;
+    --verde: #5ED38C;
+    --lilas: #E8E4FF;
+    --lilas-mid: #C4B8FF;
+    --branco: #FFFFFF;
+    --off-white: #F5F3FF;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0618;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+
+  .banner {
+    width: 1200px;
+    background: var(--base-dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ========================================
+     HERO SECTION
+     ======================================== */
+  .hero {
+    position: relative;
+    padding: 56px 64px 48px;
+    background: linear-gradient(160deg, #0D0920 0%, #1A0A5E 50%, #2a1590 100%);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 600px 400px at 85% 30%, rgba(0, 184, 217, 0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 500px 500px at 15% 80%, rgba(91, 46, 255, 0.1) 0%, transparent 60%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    border: 1px solid rgba(91, 46, 255, 0.12);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .hero-left { flex: 1; }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(91, 46, 255, 0.2);
+    border: 1px solid rgba(91, 46, 255, 0.4);
+    border-radius: 100px;
+    padding: 6px 18px;
+    margin-bottom: 20px;
+  }
+  .hero-badge-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--verde);
+    box-shadow: 0 0 8px rgba(94, 211, 140, 0.5);
+  }
+  .hero-badge span {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--lilas);
+  }
+
+  .hero-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 1.05;
+    color: var(--branco);
+    margin-bottom: 6px;
+  }
+  .hero-title .gradient {
+    background: linear-gradient(90deg, #00B8D9, #5ED38C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    color: rgba(232, 228, 255, 0.6);
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  .hero-desc {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(232, 228, 255, 0.55);
+    max-width: 520px;
+  }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 360px;
+    flex-shrink: 0;
+  }
+
+  .hero-stat {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 14px;
+    padding: 16px 20px;
+    backdrop-filter: blur(8px);
+  }
+  .hero-stat-num {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    min-width: 56px;
+    text-align: center;
+  }
+  .hero-stat-num.purple { color: var(--roxo); }
+  .hero-stat-num.teal { color: var(--teal); }
+  .hero-stat-num.green { color: var(--verde); }
+  .hero-stat-divider {
+    width: 1.5px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+  }
+  .hero-stat-text {
+    font-size: 12.5px;
+    color: rgba(232, 228, 255, 0.65);
+    line-height: 1.4;
+  }
+  .hero-stat-text strong {
+    color: rgba(232, 228, 255, 0.9);
+    font-weight: 600;
+  }
+
+  .hero-brand {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-slogan {
+    font-family: 'Inter', sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(232, 228, 255, 0.25);
+  }
+  .hero-logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: rgba(232, 228, 255, 0.35);
+  }
+  .hero-logo .bold { color: rgba(232, 228, 255, 0.55); }
+
+  /* ========================================
+     SECTION: O QUE É
+     ======================================== */
+  .section-what {
+    padding: 48px 64px;
+    background: linear-gradient(180deg, #110840 0%, #0f0730 100%);
+    position: relative;
+  }
+  .section-what::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(91, 46, 255, 0.3), rgba(0, 184, 217, 0.2), transparent);
+  }
+
+  .section-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--branco);
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .what-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .what-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 24px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .what-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: 16px 16px 0 0;
+  }
+  .what-card:nth-child(1)::before { background: var(--roxo); }
+  .what-card:nth-child(2)::before { background: var(--teal); }
+  .what-card:nth-child(3)::before { background: var(--verde); }
+  .what-card:nth-child(4)::before { background: linear-gradient(90deg, var(--roxo), var(--teal)); }
+
+  .what-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .what-card:nth-child(1) .what-card-icon { background: rgba(91, 46, 255, 0.2); }
+  .what-card:nth-child(2) .what-card-icon { background: rgba(0, 184, 217, 0.2); }
+  .what-card:nth-child(3) .what-card-icon { background: rgba(94, 211, 140, 0.2); }
+  .what-card:nth-child(4) .what-card-icon { background: rgba(91, 46, 255, 0.15); }
+
+  .what-card-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .what-card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--branco);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .what-card p {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: rgba(232, 228, 255, 0.55);
+    line-height: 1.6;
+  }
+
+  /* ========================================
+     SECTION: JORNADA DE 6 MESES
+     ======================================== */
+  .section-journey {
+    padding: 48px 64px;
+    background: linear-gradient(180deg, #0f0730 0%, #0D0920 100%);
+    position: relative;
+  }
+  .section-journey::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 184, 217, 0.2), rgba(94, 211, 140, 0.15), transparent);
+  }
+
+  .journey-timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 24px;
+    position: relative;
+  }
+
+  /* Connecting line */
+  .journey-timeline::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 60px;
+    right: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--roxo), var(--teal), var(--verde), #FFD166);
+    border-radius: 4px;
+    z-index: 0;
+  }
+
+  .journey-phase {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 0 8px;
+  }
+
+  .journey-dot {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--branco);
+    position: relative;
+  }
+  .journey-phase:nth-child(1) .journey-dot { background: linear-gradient(135deg, #3A1D8F, #5B2EFF); box-shadow: 0 0 20px rgba(91, 46, 255, 0.3); }
+  .journey-phase:nth-child(2) .journey-dot { background: linear-gradient(135deg, #0088a3, #00B8D9); box-shadow: 0 0 20px rgba(0, 184, 217, 0.3); }
+  .journey-phase:nth-child(3) .journey-dot { background: linear-gradient(135deg, #3aaa5e, #5ED38C); box-shadow: 0 0 20px rgba(94, 211, 140, 0.3); }
+  .journey-phase:nth-child(4) .journey-dot { background: linear-gradient(135deg, #cc9a20, #FFD166); box-shadow: 0 0 20px rgba(255, 209, 102, 0.3); color: #1A0A5E; }
+
+  .journey-name {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--branco);
+    margin-bottom: 4px;
+  }
+
+  .journey-time {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 10.5px;
+    color: var(--teal);
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+
+  .journey-details {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 14px 12px;
+    text-align: left;
+  }
+  .journey-details li {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: rgba(232, 228, 255, 0.55);
+    line-height: 1.5;
+    margin-bottom: 4px;
+    list-style: none;
+    padding-left: 14px;
+    position: relative;
+  }
+  .journey-details li::before {
+    content: '›';
+    position: absolute;
+    left: 2px;
+    color: rgba(232, 228, 255, 0.3);
+    font-weight: 700;
+  }
+
+  /* ========================================
+     SECTION: CONTEÚDOS
+     ======================================== */
+  .section-content {
+    padding: 48px 64px;
+    background: linear-gradient(180deg, #0D0920 0%, #110840 100%);
+    position: relative;
+  }
+  .section-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(94, 211, 140, 0.15), rgba(91, 46, 255, 0.2), transparent);
+  }
+
+  .content-layout {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+    align-items: flex-start;
+  }
+
+  .content-left {
+    flex: 1;
+  }
+
+  .content-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    color: rgba(232, 228, 255, 0.6);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    max-width: 480px;
+  }
+
+  .media-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .media-item {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+    padding: 18px 14px;
+    text-align: center;
+    transition: border-color 0.3s;
+  }
+
+  .media-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .media-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 11.5px;
+    color: rgba(232, 228, 255, 0.85);
+    margin-bottom: 3px;
+  }
+  .media-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: rgba(232, 228, 255, 0.4);
+    line-height: 1.4;
+  }
+
+  .content-right {
+    width: 420px;
+    flex-shrink: 0;
+  }
+
+  .how-it-works {
+    background: rgba(91, 46, 255, 0.08);
+    border: 1px solid rgba(91, 46, 255, 0.15);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  .how-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--branco);
+    margin-bottom: 16px;
+  }
+
+  .how-step {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 14px;
+    align-items: flex-start;
+  }
+  .how-step:last-child { margin-bottom: 0; }
+
+  .how-step-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--branco);
+    flex-shrink: 0;
+  }
+  .how-step:nth-child(1) .how-step-num { background: var(--roxo); }
+  .how-step:nth-child(2) .how-step-num { background: var(--teal); }
+  .how-step:nth-child(3) .how-step-num { background: var(--verde); }
+  .how-step:nth-child(4) .how-step-num { background: #FFD166; color: var(--quase-preto); }
+
+  .how-step-content h4 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 12.5px;
+    color: rgba(232, 228, 255, 0.9);
+    margin-bottom: 2px;
+  }
+  .how-step-content p {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: rgba(232, 228, 255, 0.45);
+    line-height: 1.5;
+  }
+
+  /* ========================================
+     SECTION: 7 INDICADORES
+     ======================================== */
+  .section-indicators {
+    padding: 48px 64px;
+    background: linear-gradient(180deg, #110840 0%, #0f0730 100%);
+    position: relative;
+  }
+  .section-indicators::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(91, 46, 255, 0.25), transparent);
+  }
+
+  .indicators-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .indicator-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    padding: 18px 12px 16px;
+    text-align: center;
+    position: relative;
+  }
+  .indicator-card.bonus {
+    border-color: rgba(255, 209, 102, 0.2);
+    background: rgba(255, 209, 102, 0.04);
+  }
+  .indicator-card.final {
+    border-color: rgba(94, 211, 140, 0.2);
+    background: rgba(94, 211, 140, 0.04);
+  }
+
+  .ind-number {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+  .indicator-card:nth-child(1) .ind-number { color: var(--roxo); }
+  .indicator-card:nth-child(2) .ind-number { color: var(--teal); }
+  .indicator-card:nth-child(3) .ind-number { color: var(--lilas-mid); }
+  .indicator-card:nth-child(4) .ind-number { color: var(--roxo); }
+  .indicator-card:nth-child(5) .ind-number { color: var(--teal); }
+  .indicator-card.bonus .ind-number { color: #FFD166; }
+  .indicator-card.final .ind-number { color: var(--verde); }
+
+  .ind-name {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 10.5px;
+    color: rgba(232, 228, 255, 0.85);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .ind-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 9.5px;
+    color: rgba(232, 228, 255, 0.4);
+    line-height: 1.4;
+  }
+
+  .ind-badge {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 100px;
+    margin-top: 8px;
+  }
+  .ind-badge.bonus-badge { background: rgba(255, 209, 102, 0.15); color: #FFD166; }
+  .ind-badge.final-badge { background: rgba(94, 211, 140, 0.15); color: var(--verde); }
+
+  /* Formula row */
+  .formula-row {
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .formula-item {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--lilas-mid);
+  }
+  .formula-op {
+    font-family: 'Sora', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: rgba(232, 228, 255, 0.3);
+  }
+  .formula-result {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--verde);
+  }
+  .formula-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: rgba(232, 228, 255, 0.45);
+    margin-left: 4px;
+  }
+
+  /* ========================================
+     SECTION: NÍVEIS + BENEFÍCIOS
+     ======================================== */
+  .section-levels {
+    padding: 48px 64px;
+    background: linear-gradient(180deg, #0f0730 0%, #0D0920 100%);
+    position: relative;
+  }
+  .section-levels::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(94, 211, 140, 0.2), rgba(0, 184, 217, 0.15), transparent);
+  }
+
+  .levels-layout {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+  }
+
+  .levels-left { flex: 1; }
+
+  .level-bar-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .level-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 40px;
+  }
+
+  .level-name {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    color: rgba(232, 228, 255, 0.7);
+    width: 100px;
+    text-align: right;
+  }
+
+  .level-track {
+    flex: 1;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+  .level-fill {
+    height: 100%;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+  }
+  .level-bar:nth-child(1) .level-fill { width: 20%; background: rgba(91, 46, 255, 0.25); }
+  .level-bar:nth-child(2) .level-fill { width: 40%; background: rgba(91, 46, 255, 0.35); }
+  .level-bar:nth-child(3) .level-fill { width: 60%; background: rgba(0, 184, 217, 0.3); }
+  .level-bar:nth-child(4) .level-fill { width: 80%; background: rgba(0, 184, 217, 0.45); }
+  .level-bar:nth-child(5) .level-fill { width: 100%; background: linear-gradient(90deg, rgba(91, 46, 255, 0.4), rgba(0, 184, 217, 0.5), rgba(94, 211, 140, 0.6)); }
+
+  .level-pct {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    color: rgba(232, 228, 255, 0.6);
+  }
+  .level-bar:nth-child(5) .level-name {
+    color: var(--verde);
+    font-weight: 700;
+  }
+  .level-bar:nth-child(5) .level-pct { color: var(--verde); }
+
+  .level-note {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: rgba(232, 228, 255, 0.4);
+    margin-top: 14px;
+    line-height: 1.5;
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* Benefits side */
+  .levels-right {
+    width: 440px;
+    flex-shrink: 0;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .benefit-item {
+    display: flex;
+    gap: 10px;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    align-items: flex-start;
+  }
+
+  .benefit-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+  }
+  .benefit-item:nth-child(odd) .benefit-icon { background: rgba(91, 46, 255, 0.15); }
+  .benefit-item:nth-child(even) .benefit-icon { background: rgba(0, 184, 217, 0.12); }
+
+  .benefit-text h4 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    color: rgba(232, 228, 255, 0.85);
+    margin-bottom: 2px;
+    line-height: 1.3;
+  }
+  .benefit-text p {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: rgba(232, 228, 255, 0.4);
+    line-height: 1.45;
+  }
+
+  /* ========================================
+     SECTION: CASOS DE SUCESSO + CERTIFICAÇÃO
+     ======================================== */
+  .section-success {
+    padding: 48px 64px 40px;
+    background: linear-gradient(180deg, #0D0920 0%, #110840 100%);
+    position: relative;
+  }
+  .section-success::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(91, 46, 255, 0.2), transparent);
+  }
+
+  .success-layout {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+  }
+
+  .success-left {
+    flex: 1;
+  }
+
+  .case-flow {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .case-step {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 16px 12px;
+    text-align: center;
+    position: relative;
+  }
+  .case-step::after {
+    content: '→';
+    position: absolute;
+    right: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: rgba(232, 228, 255, 0.2);
+  }
+  .case-step:last-child::after { display: none; }
+
+  .case-step-icon {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+  .case-step h4 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    color: rgba(232, 228, 255, 0.85);
+    margin-bottom: 4px;
+  }
+  .case-step p {
+    font-family: 'Inter', sans-serif;
+    font-size: 9.5px;
+    color: rgba(232, 228, 255, 0.4);
+    line-height: 1.4;
+  }
+
+  .success-right {
+    width: 360px;
+    flex-shrink: 0;
+  }
+
+  .cert-card {
+    background: linear-gradient(135deg, rgba(91, 46, 255, 0.12), rgba(0, 184, 217, 0.08));
+    border: 1px solid rgba(91, 46, 255, 0.2);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .cert-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--branco);
+    margin-bottom: 12px;
+  }
+
+  .cert-levels {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .cert-level {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--branco);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+  }
+  .cert-level:nth-child(1) { background: rgba(91, 46, 255, 0.3); border-color: rgba(91, 46, 255, 0.5); }
+  .cert-level:nth-child(2) { background: rgba(0, 184, 217, 0.25); border-color: rgba(0, 184, 217, 0.4); }
+  .cert-level:nth-child(3) { background: rgba(94, 211, 140, 0.25); border-color: rgba(94, 211, 140, 0.4); }
+  .cert-level:nth-child(4) { background: rgba(255, 209, 102, 0.25); border-color: rgba(255, 209, 102, 0.4); }
+
+  .cert-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: rgba(232, 228, 255, 0.55);
+    line-height: 1.6;
+  }
+  .cert-desc strong {
+    color: rgba(232, 228, 255, 0.85);
+  }
+
+  /* ========================================
+     FOOTER
+     ======================================== */
+  .footer {
+    padding: 28px 64px;
+    background: var(--base-dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(91, 46, 255, 0.1);
+  }
+
+  .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .footer-logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--branco);
+  }
+  .footer-logo .do { font-weight: 400; color: rgba(232, 228, 255, 0.4); font-size: 14px; }
+
+  .footer-divider {
+    width: 1px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .footer-slogan {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: rgba(232, 228, 255, 0.4);
+    font-style: italic;
+  }
+
+  .footer-right {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: rgba(232, 228, 255, 0.25);
+    text-align: right;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<div class="banner">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-left">
+        <div class="hero-badge">
+          <div class="hero-badge-dot"></div>
+          <span>Programa de Certificação em Liderança</span>
+        </div>
+        <h1 class="hero-title">
+          ECO Líderes<br>
+          <span class="gradient">Sua Jornada de<br>Transformação.</span>
+        </h1>
+        <p class="hero-subtitle">Desenvolvimento de liderança personalizado,<br>com resultados mensuráveis e certificação.</p>
+        <p class="hero-desc">
+          Uma jornada completa de 6 meses que combina diagnóstico comportamental DISC, 
+          mentoria individual com especialistas, conteúdos imersivos em múltiplos formatos 
+          e aplicação prática acompanhada — tudo medido em tempo real por 7 indicadores de performance.
+        </p>
+      </div>
+      <div class="hero-right">
+        <div class="hero-stat">
+          <div class="hero-stat-num purple">6</div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat-text"><strong>Meses</strong> de jornada com<br>mentorias mensais individuais</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num teal">7</div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat-text"><strong>Indicadores</strong> de desempenho<br>atualizados em tempo real</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num green">∞</div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat-text"><strong>Certificações</strong> em múltiplos<br>níveis de competência</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-brand">
+      <span class="hero-slogan">Lideranças melhores. Equipes mais fortes.</span>
+      <span class="hero-logo">ECO <span class="bold">do BEM</span></span>
+    </div>
+  </section>
+
+  <!-- ===== O QUE É ===== -->
+  <section class="section-what">
+    <div class="section-label">O Que É</div>
+    <div class="section-title">Não é um treinamento. É um ecossistema de evolução.</div>
+    <div class="what-grid">
+      <div class="what-card">
+        <div class="what-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#B8A4FF" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/><path d="M2 12h20"/></svg>
+        </div>
+        <h3>Diagnóstico DISC + Autopercepção</h3>
+        <p>Teste de personalidade em 4 dimensões (D, I, S, C) cruzado com como você se enxerga. Revela os gaps reais de desenvolvimento.</p>
+      </div>
+      <div class="what-card">
+        <div class="what-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#66D4E8" stroke-width="1.8" stroke-linecap="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        </div>
+        <h3>Plano Individual Personalizado</h3>
+        <p>Trilha de Competências 100% sob medida, baseada nos seus gaps. Cada líder tem um caminho único de evolução.</p>
+      </div>
+      <div class="what-card">
+        <div class="what-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#8DE8B1" stroke-width="1.8" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Mentorias Individuais Mensais</h3>
+        <p>6 sessões 1-a-1 com especialistas ao longo do programa. Feedback direto, desafios e acompanhamento contínuo.</p>
+      </div>
+      <div class="what-card">
+        <div class="what-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#B8A4FF" stroke-width="1.8" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Resultados Mensuráveis</h3>
+        <p>Dashboard com 7 indicadores em tempo real. Casos de Sucesso com evidências. Impacto comprovado na organização.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== JORNADA ===== -->
+  <section class="section-journey">
+    <div class="section-label">A Jornada de 6 Meses</div>
+    <div class="section-title">Do diagnóstico à certificação — passo a passo.</div>
+    <div class="journey-timeline">
+      <div class="journey-phase">
+        <div class="journey-dot">1</div>
+        <div class="journey-name">Assessment</div>
+        <div class="journey-time">1ª Mentoria</div>
+        <div class="journey-details">
+          <li>Teste DISC (28 blocos)</li>
+          <li>Teste de Autopercepção</li>
+          <li>Análise do perfil de liderança</li>
+          <li>Plano Individual gerado</li>
+        </div>
+      </div>
+      <div class="journey-phase">
+        <div class="journey-dot">2</div>
+        <div class="journey-name">Desenvolvimento</div>
+        <div class="journey-time">Mentorias 2 a 4</div>
+        <div class="journey-details">
+          <li>Conteúdos imersivos</li>
+          <li>Avaliações de competências</li>
+          <li>Tarefas práticas</li>
+          <li>Acompanhamento mensal</li>
+        </div>
+      </div>
+      <div class="journey-phase">
+        <div class="journey-dot">3</div>
+        <div class="journey-name">Aplicação</div>
+        <div class="journey-time">Mentorias 5 e 6</div>
+        <div class="journey-details">
+          <li>Prática no dia a dia</li>
+          <li>Documentar resultados</li>
+          <li>Casos de Sucesso</li>
+          <li>Evidências mensuráveis</li>
+        </div>
+      </div>
+      <div class="journey-phase">
+        <div class="journey-dot">✦</div>
+        <div class="journey-name">Certificação</div>
+        <div class="journey-time">Encerramento</div>
+        <div class="journey-details">
+          <li>Avaliação dos 7 indicadores</li>
+          <li>Feedback final do mentor</li>
+          <li>Certificado digital + badge</li>
+          <li>Opção de novo ciclo</li>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTEÚDOS ===== -->
+  <section class="section-content">
+    <div class="section-label">Aprendizado Diferenciado</div>
+    <div class="section-title">Conteúdos imersivos para mudança comportamental real.</div>
+    <div class="content-layout">
+      <div class="content-left">
+        <p class="content-desc">
+          As competências identificadas como gaps no seu Assessment são desenvolvidas através de uma 
+          curadoria rica em múltiplos formatos. Não é ensino tradicional — é uma experiência de 
+          aprendizado que combina entretenimento, reflexão e aplicação prática.
+        </p>
+        <div class="media-grid">
+          <div class="media-item">
+            <span class="media-icon">🎬</span>
+            <div class="media-label">Filmes</div>
+            <div class="media-sub">Análise comportamental através do cinema</div>
+          </div>
+          <div class="media-item">
+            <span class="media-icon">🎥</span>
+            <div class="media-label">Vídeos</div>
+            <div class="media-sub">Aulas online estruturadas por competência</div>
+          </div>
+          <div class="media-item">
+            <span class="media-icon">🎤</span>
+            <div class="media-label">TED Talks</div>
+            <div class="media-sub">Palestras inspiradoras e insights práticos</div>
+          </div>
+          <div class="media-item">
+            <span class="media-icon">🎧</span>
+            <div class="media-label">Podcasts</div>
+            <div class="media-sub">Aprendizado flexível, onde e quando quiser</div>
+          </div>
+          <div class="media-item">
+            <span class="media-icon">📚</span>
+            <div class="media-label">Livros</div>
+            <div class="media-sub">Referências de liderança e comportamento</div>
+          </div>
+          <div class="media-item">
+            <span class="media-icon">📝</span>
+            <div class="media-label">Exercícios</div>
+            <div class="media-sub">Atividades práticas para fixação</div>
+          </div>
+        </div>
+      </div>
+      <div class="content-right">
+        <div class="how-it-works">
+          <div class="how-title">Como o aprendizado acontece:</div>
+          <div class="how-step">
+            <div class="how-step-num">1</div>
+            <div class="how-step-content">
+              <h4>Aprender</h4>
+              <p>Consumir os conteúdos da competência, nos formatos que mais engajam você</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">2</div>
+            <div class="how-step-content">
+              <h4>Mudar</h4>
+              <p>Implementar novas atitudes e ações práticas na sua rotina de trabalho</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">3</div>
+            <div class="how-step-content">
+              <h4>Medir</h4>
+              <p>Comparar o cenário "antes vs. depois" com dados e evidências reais</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">4</div>
+            <div class="how-step-content">
+              <h4>Comprovar</h4>
+              <p>Documentar o impacto no Caso de Sucesso e ganhar +10% de bônus</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 7 INDICADORES ===== -->
+  <section class="section-indicators">
+    <div class="section-label">Telemetria em Tempo Real</div>
+    <div class="section-title">7 indicadores que medem sua evolução a cada passo.</div>
+    <div class="indicators-grid">
+      <div class="indicator-card">
+        <div class="ind-number">1</div>
+        <div class="ind-name">Webinars</div>
+        <div class="ind-desc">Participação em eventos e webinários</div>
+      </div>
+      <div class="indicator-card">
+        <div class="ind-number">2</div>
+        <div class="ind-name">Avaliações</div>
+        <div class="ind-desc">Notas nos testes de conhecimento</div>
+      </div>
+      <div class="indicator-card">
+        <div class="ind-number">3</div>
+        <div class="ind-name">Competências</div>
+        <div class="ind-desc">Conteúdos concluídos na trilha</div>
+      </div>
+      <div class="indicator-card">
+        <div class="ind-number">4</div>
+        <div class="ind-name">Tarefas</div>
+        <div class="ind-desc">Entregas de atividades práticas</div>
+      </div>
+      <div class="indicator-card">
+        <div class="ind-number">5</div>
+        <div class="ind-name">Engajamento</div>
+        <div class="ind-desc">Nota de evolução do mentor</div>
+      </div>
+      <div class="indicator-card bonus">
+        <div class="ind-number">6</div>
+        <div class="ind-name">Aplicabilidade</div>
+        <div class="ind-desc">Bônus por Caso de Sucesso</div>
+        <span class="ind-badge bonus-badge">+10% cada</span>
+      </div>
+      <div class="indicator-card final">
+        <div class="ind-number">7</div>
+        <div class="ind-name">Final</div>
+        <div class="ind-desc">Média geral = seu nível</div>
+        <span class="ind-badge final-badge">Resultado</span>
+      </div>
+    </div>
+    <div class="formula-row">
+      <span class="formula-item">Ind.1</span>
+      <span class="formula-op">+</span>
+      <span class="formula-item">Ind.2</span>
+      <span class="formula-op">+</span>
+      <span class="formula-item">Ind.3</span>
+      <span class="formula-op">+</span>
+      <span class="formula-item">Ind.4</span>
+      <span class="formula-op">+</span>
+      <span class="formula-item">Ind.5</span>
+      <span class="formula-op">÷</span>
+      <span class="formula-item">5</span>
+      <span class="formula-op">=</span>
+      <span class="formula-result">Ind. 7 (Engajamento Final)</span>
+      <span class="formula-label">→ define seu nível de reconhecimento</span>
+    </div>
+  </section>
+
+  <!-- ===== NÍVEIS + BENEFÍCIOS ===== -->
+  <section class="section-levels">
+    <div style="display: flex; gap: 40px;">
+      <div class="levels-left">
+        <div class="section-label">Níveis de Reconhecimento</div>
+        <div class="section-title" style="margin-bottom: 20px;">Do Iniciante à Excelência.</div>
+        <div class="level-bar-container">
+          <div class="level-bar">
+            <div class="level-name">Iniciante</div>
+            <div class="level-track"><div class="level-fill"><span class="level-pct">0-20%</span></div></div>
+          </div>
+          <div class="level-bar">
+            <div class="level-name">Básico</div>
+            <div class="level-track"><div class="level-fill"><span class="level-pct">21-40%</span></div></div>
+          </div>
+          <div class="level-bar">
+            <div class="level-name">Intermediário</div>
+            <div class="level-track"><div class="level-fill"><span class="level-pct">41-60%</span></div></div>
+          </div>
+          <div class="level-bar">
+            <div class="level-name">Avançado</div>
+            <div class="level-track"><div class="level-fill"><span class="level-pct">61-80%</span></div></div>
+          </div>
+          <div class="level-bar">
+            <div class="level-name">Excelência</div>
+            <div class="level-track"><div class="level-fill"><span class="level-pct">81-100%</span></div></div>
+          </div>
+        </div>
+        <p class="level-note">O nível Excelência significa ser reconhecido como um líder<br>que transforma a organização.</p>
+      </div>
+      <div class="levels-right">
+        <div class="section-label">Benefícios do Programa</div>
+        <div class="section-title" style="margin-bottom: 20px;">O que você ganha.</div>
+        <div class="benefits-grid">
+          <div class="benefit-item">
+            <div class="benefit-icon">🧠</div>
+            <div class="benefit-text">
+              <h4>Autoconhecimento Profundo</h4>
+              <p>DISC + Autopercepção revelam quem você é como líder</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">🎯</div>
+            <div class="benefit-text">
+              <h4>Trilha 100% Personalizada</h4>
+              <p>Estude apenas o que você precisa, nada genérico</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">🤝</div>
+            <div class="benefit-text">
+              <h4>Mentoria com Especialistas</h4>
+              <p>6 sessões individuais com feedback direto</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">📊</div>
+            <div class="benefit-text">
+              <h4>Dashboard em Tempo Real</h4>
+              <p>7 indicadores que mostram exatamente sua evolução</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">🏆</div>
+            <div class="benefit-text">
+              <h4>Certificação + Badge</h4>
+              <p>Certificado digital com reconhecimento de nível</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">🔄</div>
+            <div class="benefit-text">
+              <h4>Múltiplas Certificações</h4>
+              <p>Avance para cert. 2, 3, 4... com novas competências</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CASOS DE SUCESSO + CERTIFICAÇÃO ===== -->
+  <section class="section-success">
+    <div class="success-layout">
+      <div class="success-left">
+        <div class="section-label">Impacto Comprovado</div>
+        <div class="section-title" style="margin-bottom: 20px;">Casos de Sucesso: da teoria à prática.</div>
+        <div class="case-flow">
+          <div class="case-step">
+            <div class="case-step-icon">📖</div>
+            <h4>O que aprendi</h4>
+            <p>Conceitos-chave da competência estudada</p>
+          </div>
+          <div class="case-step">
+            <div class="case-step-icon">⚡</div>
+            <h4>O que mudei</h4>
+            <p>Ações práticas implementadas na rotina</p>
+          </div>
+          <div class="case-step">
+            <div class="case-step-icon">📈</div>
+            <h4>Resultado</h4>
+            <p>Impacto mensurável: ex. -40% conflitos</p>
+          </div>
+          <div class="case-step">
+            <div class="case-step-icon">✅</div>
+            <h4>Evidência</h4>
+            <p>Dados, relatórios e comparação antes vs. depois</p>
+          </div>
+        </div>
+      </div>
+      <div class="success-right">
+        <div class="cert-card">
+          <div class="cert-title">Múltiplas Certificações</div>
+          <div class="cert-levels">
+            <div class="cert-level">1ª</div>
+            <div class="cert-level">2ª</div>
+            <div class="cert-level">3ª</div>
+            <div class="cert-level">4ª</div>
+          </div>
+          <p class="cert-desc">
+            Após concluir a 1ª certificação, <strong>inicie novos ciclos</strong> para 
+            desenvolver competências diferentes. Cada certificação foca em <strong>novas 
+            habilidades</strong>, garantindo evolução contínua da sua carreira de liderança.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <div class="footer">
+    <div class="footer-left">
+      <span class="footer-logo">ECO <span class="do">do</span> BEM</span>
+      <div class="footer-divider"></div>
+      <span class="footer-slogan">Lideranças melhores. Equipes mais fortes.</span>
+    </div>
+    <div class="footer-right">
+      ecodobem.com.br<br>
+      contato@ecodobem.com.br
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

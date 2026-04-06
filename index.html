@@ -6,10 +6,10 @@
     name="viewport"
     content="width=device-width, initial-scale=1, viewport-fit=cover"
   />
-  <title>ECO do BEM | Soluções em Desenvolvimento Humano</title>
+  <title>ECO do B.E.M. | Desenvolvimento Humano Corporativo</title>
   <meta
     name="description"
-    content="Conheça as soluções da ECO do BEM para liderança, equipes e desenvolvimento humano."
+    content="Ecossistema de desenvolvimento humano corporativo com metodologia autoral, mentorias especializadas, conteúdos imersivos e tecnologia para gerar resultados reais."
   />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -34,7 +34,7 @@
       --gold:#f2b53f;
       --shadow:0 20px 50px rgba(0,0,0,0.28);
       --radius:22px;
-      --max:1120px;
+      --max:1140px;
       --gutter:20px;
       --section-space:88px;
     }
@@ -235,7 +235,7 @@
 
     .hero-grid{
       display:grid;
-      grid-template-columns:minmax(0, 1.1fr) minmax(0, .9fr);
+      grid-template-columns:minmax(0, 1.12fr) minmax(0, .88fr);
       gap:28px;
       align-items:center;
     }
@@ -281,6 +281,7 @@
     .purple{color:var(--purple-2);}
     .teal{color:var(--teal);}
     .green{color:var(--green);}
+    .gold{color:var(--gold);}
 
     .section-header{
       text-align:center;
@@ -291,13 +292,84 @@
       margin:0 auto;
     }
 
-    .product-grid{
+    .numbers-grid{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0, 1fr));
+      gap:18px;
+    }
+
+    .number-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:22px;
+      box-shadow:var(--shadow);
+    }
+
+    .number-card strong{
+      display:block;
+      font-family:'Poppins',sans-serif;
+      font-size:2rem;
+      margin-bottom:8px;
+    }
+
+    .number-card span{
+      color:var(--muted);
+      line-height:1.6;
+      font-size:14px;
+      display:block;
+    }
+
+    .story-grid{
+      display:grid;
+      grid-template-columns:minmax(0, 1.1fr) minmax(0, .9fr);
+      gap:22px;
+      align-items:start;
+    }
+
+    .story-box,
+    .about-box,
+    .trust-box{
+      background:rgba(255,255,255,0.04);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:24px;
+      min-width:0;
+      box-shadow:var(--shadow);
+    }
+
+    .story-box h3,
+    .about-box h4,
+    .trust-box h4{
+      margin:0 0 12px;
+      font-size:1.15rem;
+      font-family:'Poppins',sans-serif;
+    }
+
+    .story-box p,
+    .about-box p,
+    .trust-box p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.8;
+    }
+
+    .quote{
+      font-size:1.05rem;
+      color:#fff;
+      line-height:1.8;
+      font-weight:600;
+    }
+
+    .pillars-grid{
       display:grid;
       grid-template-columns:repeat(3, minmax(0, 1fr));
       gap:22px;
     }
 
-    .card{
+    .pillar-card,
+    .product-card,
+    .diff-card{
       background:linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
       border:1px solid var(--border);
       border-radius:24px;
@@ -310,52 +382,36 @@
       transition:transform .22s ease, border-color .22s ease;
     }
 
-    .card:hover{
+    .pillar-card:hover,
+    .product-card:hover,
+    .diff-card:hover{
       transform:translateY(-4px);
       border-color:rgba(255,255,255,0.20);
     }
 
-    .card-badge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      width:max-content;
-      max-width:100%;
-      padding:7px 12px;
-      border-radius:999px;
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:1.1px;
-      text-transform:uppercase;
-      margin-bottom:18px;
-    }
-
-    .badge-purple{
+    .icon{
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      font-size:22px;
       background:rgba(108,60,255,0.18);
-      color:#d6cbff;
       border:1px solid rgba(108,60,255,0.28);
+      margin-bottom:16px;
     }
 
-    .badge-teal{
-      background:rgba(0,194,215,0.14);
-      color:#baf7ff;
-      border:1px solid rgba(0,194,215,0.24);
-    }
-
-    .badge-gold{
-      background:rgba(242,181,63,0.16);
-      color:#ffe0a0;
-      border:1px solid rgba(242,181,63,0.28);
-    }
-
-    .card h3{
+    .pillar-card h3,
+    .product-card h3,
+    .diff-card h3{
       margin:0 0 10px;
       font-family:'Poppins',sans-serif;
-      font-size:1.5rem;
-      overflow-wrap:break-word;
+      font-size:1.35rem;
     }
 
-    .card p{
+    .pillar-card p,
+    .product-card p,
+    .diff-card p{
       margin:0 0 18px;
       color:var(--muted);
       line-height:1.75;
@@ -390,38 +446,43 @@
       flex:0 0 auto;
     }
 
-    .card .btn{
+    .product-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       width:max-content;
+      max-width:100%;
+      padding:7px 12px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:1.1px;
+      text-transform:uppercase;
+      margin-bottom:18px;
     }
 
-    .card-disabled{
-      opacity:.72;
+    .badge-purple{
+      background:rgba(108,60,255,0.18);
+      color:#d6cbff;
+      border:1px solid rgba(108,60,255,0.28);
     }
 
-    .about-grid{
+    .badge-teal{
+      background:rgba(0,194,215,0.14);
+      color:#baf7ff;
+      border:1px solid rgba(0,194,215,0.24);
+    }
+
+    .badge-gold{
+      background:rgba(242,181,63,0.16);
+      color:#ffe0a0;
+      border:1px solid rgba(242,181,63,0.28);
+    }
+
+    .trust-grid{
       display:grid;
       grid-template-columns:repeat(2, minmax(0, 1fr));
       gap:22px;
-    }
-
-    .about-box{
-      background:rgba(255,255,255,0.04);
-      border:1px solid var(--border);
-      border-radius:22px;
-      padding:24px;
-      min-width:0;
-    }
-
-    .about-box h4{
-      margin:0 0 10px;
-      font-size:1.1rem;
-      font-family:'Poppins',sans-serif;
-    }
-
-    .about-box p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.8;
     }
 
     .cta{
@@ -473,13 +534,11 @@
       }
 
       .hero-grid,
-      .product-grid,
-      .about-grid{
+      .numbers-grid,
+      .story-grid,
+      .pillars-grid,
+      .trust-grid{
         grid-template-columns:1fr;
-      }
-
-      .hero{
-        padding-top:72px;
       }
 
       .nav{
@@ -492,8 +551,8 @@
         justify-content:flex-start;
       }
 
-      .card .btn{
-        width:100%;
+      .hero{
+        padding-top:72px;
       }
     }
 
@@ -508,8 +567,13 @@
       }
 
       .hero-card,
-      .card,
+      .number-card,
+      .story-box,
       .about-box,
+      .trust-box,
+      .pillar-card,
+      .product-card,
+      .diff-card,
       .cta-panel{
         padding:20px;
       }
@@ -543,14 +607,15 @@
       <a href="index.html" class="brand" aria-label="Ir para a página inicial">
         <div class="brand-badge">ECO</div>
         <div class="brand-text">
-          <strong>ECO do BEM</strong>
-          <span>Desenvolvimento Humano</span>
+          <strong>ECO do B.E.M.</strong>
+          <span>Desenvolvimento Humano Corporativo</span>
         </div>
       </a>
 
       <nav class="nav-links">
+        <a href="#historia">Nossa História</a>
+        <a href="#metodologia">Metodologia</a>
         <a href="#produtos">Produtos</a>
-        <a href="#sobre">Sobre</a>
         <a href="eco-lideres.html">ECO Líderes</a>
       </nav>
     </div>
@@ -560,106 +625,244 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow">Soluções em liderança e desenvolvimento</div>
-          <h1 class="title">Transforme cultura, liderança e resultados com experiências que geram evolução real.</h1>
+          <div class="eyebrow">Plataforma B2B · Desenvolvimento Humano Corporativo</div>
+          <h1 class="title">Desenvolvimento humano que transforma organizações.</h1>
           <p class="subtitle">
-            A ECO do BEM reúne metodologias, jornadas e produtos voltados ao desenvolvimento humano nas organizações.
-            O visitante entra primeiro na home e segue para a página do produto pelo botão.
+            Somos um ecossistema de desenvolvimento de líderes e equipes que une mais de 30 anos de expertise em psicologia organizacional, metodologia autoral, conteúdos imersivos, mentorias individuais e tecnologia para gerar resultados reais e mensuráveis nas pessoas e nas organizações.
           </p>
 
           <div class="btn-row">
             <a class="btn btn-primary" href="eco-lideres.html">Conhecer o ECO Líderes</a>
-            <a class="btn btn-secondary" href="#produtos">Ver soluções</a>
+            <a class="btn btn-secondary" href="#produtos">Conhecer nossos produtos</a>
           </div>
         </div>
 
         <aside class="hero-card">
           <div class="hero-stat-grid">
             <div class="stat">
-              <strong class="purple">01</strong>
-              <p>Página inicial estável e organizada para ser a entrada principal do site.</p>
+              <strong class="purple">30+</strong>
+              <p>Anos de expertise em psicologia organizacional e metodologia autoral aplicada ao desenvolvimento humano. </p>
             </div>
             <div class="stat">
-              <strong class="teal">02</strong>
-              <p>Navegação simples: home primeiro, produto depois, sem quebrar layout.</p>
+              <strong class="teal">147+</strong>
+              <p>Colaboradores em desenvolvimento ativo dentro do ecossistema da ECO do B.E.M.</p>
             </div>
             <div class="stat">
-              <strong class="green">03</strong>
-              <p>Layout responsivo, com menos risco de problema de zoom e margem lateral.</p>
+              <strong class="green">536</strong>
+              <p>Ações de PDI criadas na plataforma, com foco em desenvolvimento estruturado e mensurável.</p>
             </div>
           </div>
         </aside>
       </div>
     </section>
 
-    <section class="section" id="produtos">
+    <section class="section" id="historia">
       <div class="container">
         <div class="section-header">
-          <div class="eyebrow" style="justify-content:center;">Produtos</div>
-          <h2 class="title" style="font-size:clamp(1.9rem, 3vw, 3.1rem);">Conheça as soluções da ECO do BEM</h2>
+          <div class="eyebrow" style="justify-content:center;">Nossa história</div>
+          <h2 class="title" style="font-size:clamp(1.9rem, 3vw, 3.1rem);">Nascemos de uma convicção: desenvolvimento humano precisa ser real.</h2>
           <p class="subtitle">
-            A página inicial apresenta suas soluções e direciona o visitante para a página detalhada do ECO Líderes.
+            Por décadas, vimos PDIs serem criados e esquecidos, treinamentos acontecerem sem mudar comportamento e líderes serem promovidos sem suporte. A ECO do B.E.M. nasceu para fazer diferente.
           </p>
         </div>
 
-        <div class="product-grid">
-          <article class="card">
-            <div class="card-badge badge-purple">Produto em destaque</div>
-            <h3>ECO Líderes</h3>
-            <p>Certificação de liderança com trilha estruturada, aplicação prática e foco em desenvolvimento consistente.</p>
+        <div class="story-grid">
+          <div class="story-box">
+            <h3>Quem somos</h3>
+            <p>
+              A ECO do B.E.M. nasceu da união entre décadas de expertise em psicologia organizacional e a tecnologia necessária para tornar o desenvolvimento humano estruturado, mensurável e sustentável nas organizações. Cada ação parte de um diagnóstico comportamental preciso, segue uma trilha personalizada e termina com comprovação real de impacto.
+            </p>
+          </div>
+
+          <div class="story-box">
+            <h3>Nosso posicionamento</h3>
+            <p class="quote">
+              “Não criamos cursos. Criamos jornadas. Não medimos presença. Medimos transformação. Não entregamos conteúdo. Entregamos mudança de comportamento com impacto comprovado.”
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="numbers-grid">
+          <div class="number-card">
+            <strong class="purple">30+</strong>
+            <span>Anos de expertise em psicologia organizacional.</span>
+          </div>
+          <div class="number-card">
+            <strong class="teal">147+</strong>
+            <span>Colaboradores em desenvolvimento ativo.</span>
+          </div>
+          <div class="number-card">
+            <strong class="green">536</strong>
+            <span>Ações de PDI criadas na plataforma.</span>
+          </div>
+          <div class="number-card">
+            <strong class="gold">3</strong>
+            <span>Produtos para toda a jornada de desenvolvimento.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="metodologia">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow" style="justify-content:center;">Metodologia</div>
+          <h2 class="title" style="font-size:clamp(1.9rem, 3vw, 2.95rem);">Ciência + tecnologia + humanidade</h2>
+          <p class="subtitle">
+            Nossa metodologia integra diagnóstico comportamental, conteúdo imersivo e acompanhamento contínuo, transformando aprendizado em resultado real e mensurável.
+          </p>
+        </div>
+
+        <div class="pillars-grid">
+          <article class="pillar-card">
+            <div class="icon">🧬</div>
+            <h3>Diagnóstico preciso</h3>
+            <p>Teste DISC e autopercepção identificam o perfil comportamental de cada pessoa. Sem diagnóstico real, não há desenvolvimento verdadeiro.</p>
             <ul class="feature-list">
-              <li>Jornada com identidade forte e apresentação profissional</li>
-              <li>Estrutura própria para página institucional do produto</li>
-              <li>Acesso direto pela home, com navegação simples</li>
+              <li>Leitura comportamental individual</li>
+              <li>Mapeamento de gaps prioritários</li>
+              <li>Base para trilhas realmente personalizadas</li>
             </ul>
-            <a class="btn btn-primary" href="eco-lideres.html">Abrir página do ECO Líderes</a>
           </article>
 
-          <article class="card card-disabled">
-            <div class="card-badge badge-teal">Em construção</div>
-            <h3>ECO Equipes</h3>
-            <p>Espaço reservado para expansão futura do portfólio, sem comprometer a estabilidade da página principal.</p>
+          <article class="pillar-card">
+            <div class="icon">🎬</div>
+            <h3>Conteúdo imersivo</h3>
+            <p>Filmes, vídeos, podcasts, TED Talks, livros e exercícios para promover mudança comportamental nos formatos que as pessoas realmente absorvem.</p>
             <ul class="feature-list">
-              <li>Área preparada para produto futuro</li>
-              <li>Mesma linguagem visual da marca</li>
-              <li>Sem links quebrados neste momento</li>
+              <li>6 formatos de mídia</li>
+              <li>Aprendizagem mais engajadora</li>
+              <li>Conteúdo conectado à prática</li>
             </ul>
-            <span class="btn btn-secondary">Disponível em breve</span>
           </article>
 
-          <article class="card card-disabled">
-            <div class="card-badge badge-gold">Em construção</div>
-            <h3>ECO PDI</h3>
-            <p>Outra trilha futura do ecossistema, preservando a organização do site desde o início.</p>
+          <article class="pillar-card">
+            <div class="icon">📈</div>
+            <h3>Impacto comprovado</h3>
+            <p>Cada competência aprendida é aplicada e documentada com resultados mensuráveis, dando transparência para RH, liderança e diretoria.</p>
             <ul class="feature-list">
-              <li>Pronto para crescimento organizado</li>
-              <li>Visual alinhado ao restante do site</li>
-              <li>Estrutura simples para manutenção</li>
+              <li>Casos de sucesso documentados</li>
+              <li>Evolução acompanhada em indicadores</li>
+              <li>Desenvolvimento que vira dado</li>
             </ul>
-            <span class="btn btn-secondary">Disponível em breve</span>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="sobre">
+    <section class="section" id="produtos">
       <div class="container">
         <div class="section-header">
-          <div class="eyebrow" style="justify-content:center;">Sobre</div>
-          <h2 class="title" style="font-size:clamp(1.9rem, 3vw, 2.9rem);">Uma base mais segura para publicar</h2>
+          <div class="eyebrow" style="justify-content:center;">Nosso ecossistema</div>
+          <h2 class="title" style="font-size:clamp(1.9rem, 3vw, 3rem);">Três produtos. Uma transformação.</h2>
           <p class="subtitle">
-            Nesta versão, a prioridade é ficar bonito, claro e estável. Por isso, evitamos elementos que costumam atrapalhar em mobile, zoom, leitura e performance.
+            Cada produto atende uma necessidade específica — e juntos cobrem a jornada de desenvolvimento humano da empresa, do líder ao colaborador.
           </p>
         </div>
 
-        <div class="about-grid">
-          <div class="about-box">
-            <h4>O que foi mantido</h4>
-            <p>Uma estética moderna, com identidade forte, blocos bem definidos, contraste adequado e navegação objetiva.</p>
+        <div class="pillars-grid">
+          <article class="product-card">
+            <div class="product-badge badge-purple">Disponível</div>
+            <h3>ECO Líderes</h3>
+            <p>Certificação de liderança em ciclo de 6 meses, com diagnóstico, trilha imersiva, mentorias individuais e comprovação de evolução.</p>
+            <ul class="feature-list">
+              <li>Diagnóstico DISC + autopercepção</li>
+              <li>6 mentorias individuais mensais com especialista</li>
+              <li>7 indicadores de desempenho em tempo real</li>
+              <li>Casos de sucesso com impacto mensurável</li>
+              <li>Certificado digital e múltiplos ciclos de crescimento</li>
+            </ul>
+            <a class="btn btn-primary" href="eco-lideres.html">Ver o produto completo</a>
+          </article>
+
+          <article class="product-card">
+            <div class="product-badge badge-teal">Em construção</div>
+            <h3>ECO Times</h3>
+            <p>Desenvolvimento de equipes e colaboradores com trilhas de soft skills, dashboards gerenciais e rastreabilidade do desenvolvimento.</p>
+            <ul class="feature-list">
+              <li>Trilhas para times inteiros</li>
+              <li>Gestão de PDI corporativo</li>
+              <li>Dashboards por área e competência</li>
+              <li>Relatórios estratégicos para RH e diretoria</li>
+            </ul>
+            <span class="btn btn-secondary">Em breve</span>
+          </article>
+
+          <article class="product-card">
+            <div class="product-badge badge-gold">Em desenvolvimento</div>
+            <h3>Evoluir PDI</h3>
+            <p>Sistema de gestão de PDI corporativo com funil de execução, alertas automáticos, visão por colaborador e centralização da jornada.</p>
+            <ul class="feature-list">
+              <li>Gestão centralizada dos PDIs</li>
+              <li>Dashboard por colaborador e área</li>
+              <li>Rastreabilidade completa da execução</li>
+              <li>Integração futura com o ecossistema ECO</li>
+            </ul>
+            <span class="btn btn-secondary">Quero saber mais</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow" style="justify-content:center;">Diferenciais</div>
+          <h2 class="title" style="font-size:clamp(1.9rem, 3vw, 2.9rem);">O que nos torna únicos</h2>
+          <p class="subtitle">
+            Não somos mais uma plataforma de treinamento. Somos um ecossistema que une diagnóstico, conteúdo imersivo, mentoria e comprovação de impacto em um processo contínuo.
+          </p>
+        </div>
+
+        <div class="pillars-grid">
+          <article class="diff-card">
+            <div class="icon">🧠</div>
+            <h3>Psicologia organizacional no core</h3>
+            <p>Psicólogos especializados integrados ao processo — não como consultoria separada, mas como parte da jornada.</p>
+          </article>
+
+          <article class="diff-card">
+            <div class="icon">🤝</div>
+            <h3>Acompanhamento humano</h3>
+            <p>Mentores e psicólogos presentes em cada etapa, garantindo desenvolvimento sustentado e não apenas um início promissor.</p>
+          </article>
+
+          <article class="diff-card">
+            <div class="icon">📊</div>
+            <h3>PDI que sai do papel</h3>
+            <p>Transformamos o PDI em processo vivo, com execução, indicadores em tempo real e rastreabilidade para a organização.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow" style="justify-content:center;">Confiança</div>
+          <h2 class="title" style="font-size:clamp(1.9rem, 3vw, 2.85rem);">Validados pela prática, na escala real</h2>
+          <p class="subtitle">
+            Somos parceiros estratégicos do SEBRAE no desenvolvimento de líderes e equipes de pequenas e médias empresas em todo o Brasil, validando a metodologia na prática e em escala.
+          </p>
+        </div>
+
+        <div class="trust-grid">
+          <div class="trust-box">
+            <h4>Parceiro estratégico do SEBRAE</h4>
+            <p>
+              A parceria com o SEBRAE reforça a solidez da metodologia da ECO do B.E.M. no desenvolvimento de líderes e equipes, com resultados reais, documentados e mensuráveis.
+            </p>
           </div>
-          <div class="about-box">
-            <h4>O que foi evitado</h4>
-            <p>Cursores customizados, efeitos excessivos, animações pesadas e estruturas que costumam quebrar no celular ou causar sensação de zoom estranho.</p>
+
+          <div class="trust-box">
+            <h4>Resultados sustentáveis</h4>
+            <p>
+              Mais do que presença em treinamentos, buscamos mudança de comportamento, aplicação prática e evolução acompanhada ao longo do tempo.
+            </p>
           </div>
         </div>
       </div>
@@ -668,12 +871,13 @@
     <section class="cta">
       <div class="container">
         <div class="cta-panel">
-          <h2>Pronta para seguir para a página do produto?</h2>
+          <h2>Pronto para transformar o desenvolvimento da sua empresa?</h2>
           <p>
-            A navegação principal já está ajustada: o visitante entra pela home e, quando clicar no botão, segue para a página específica do ECO Líderes.
+            Agende uma conversa com nossa equipe. Vamos entender seu contexto, apresentar o produto mais adequado e montar uma proposta sob medida para sua realidade.
           </p>
           <div class="btn-row" style="justify-content:center;">
-            <a class="btn btn-primary" href="eco-lideres.html">Ir para ECO Líderes</a>
+            <a class="btn btn-primary" href="eco-lideres.html">Conhecer o ECO Líderes</a>
+            <a class="btn btn-secondary" href="mailto:relacionamento@ckmtalents.net">Falar com a equipe</a>
           </div>
         </div>
       </div>
@@ -682,8 +886,8 @@
 
   <footer class="site-footer">
     <div class="container footer-row">
-      <span>© 2026 ECO do BEM</span>
-      <span>Site institucional em HTML estático</span>
+      <span>© 2026 ECO do B.E.M.</span>
+      <span>relacionamento@ckmtalents.net · www.ecodobem.com</span>
     </div>
   </footer>
 

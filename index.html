@@ -1,1 +1,640 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ECO do BEM | Soluções em Desenvolvimento Humano</title>
+  <meta name="description" content="Conheça as soluções da ECO do BEM para liderança, equipes e desenvolvimento humano." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 
+  <style>
+    :root{
+      --bg:#0b0820;
+      --bg-2:#140d38;
+      --panel:rgba(255,255,255,0.06);
+      --panel-strong:rgba(255,255,255,0.10);
+      --border:rgba(255,255,255,0.12);
+      --text:#ffffff;
+      --muted:rgba(255,255,255,0.72);
+      --muted-2:rgba(255,255,255,0.55);
+      --purple:#6c3cff;
+      --purple-2:#8c68ff;
+      --teal:#00c2d7;
+      --green:#6de0a0;
+      --gold:#f2b53f;
+      --shadow:0 20px 60px rgba(0,0,0,0.35);
+      --radius:22px;
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      font-family:'Inter',sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(108,60,255,0.25), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(0,194,215,0.18), transparent 30%),
+        linear-gradient(180deg, var(--bg), #090615 100%);
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none;}
+    img{max-width:100%;display:block;}
+
+    .container{
+      width:min(calc(100% - 32px), var(--max));
+      margin:0 auto;
+    }
+
+    .section{
+      padding:88px 0;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      color:var(--teal);
+      margin-bottom:18px;
+    }
+
+    .eyebrow::before{
+      content:"";
+      width:24px;
+      height:1px;
+      background:var(--teal);
+      display:block;
+    }
+
+    .title{
+      font-family:'Poppins',sans-serif;
+      font-size:clamp(2rem, 5vw, 4.5rem);
+      line-height:1.05;
+      letter-spacing:-0.03em;
+      margin:0 0 18px;
+    }
+
+    .subtitle{
+      font-size:clamp(1rem, 1.8vw, 1.1rem);
+      line-height:1.75;
+      color:var(--muted);
+      max-width:760px;
+      margin:0;
+    }
+
+    .btn-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:34px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:50px;
+      padding:0 22px;
+      border-radius:12px;
+      font-weight:700;
+      font-size:15px;
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+      border:1px solid transparent;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg, var(--purple), var(--purple-2));
+      color:#fff;
+      box-shadow:0 18px 40px rgba(108,60,255,0.35);
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,0.04);
+      border-color:var(--border);
+      color:#fff;
+    }
+
+    .btn-secondary:hover{
+      border-color:rgba(255,255,255,0.22);
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:20;
+      backdrop-filter:blur(16px);
+      background:rgba(11,8,32,0.72);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      min-height:76px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+
+    .brand-badge{
+      width:40px;
+      height:40px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg, var(--purple), var(--teal));
+      font-weight:800;
+      font-size:12px;
+      box-shadow:0 10px 28px rgba(108,60,255,0.25);
+    }
+
+    .brand-text{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+    }
+
+    .brand-text strong{
+      font-size:15px;
+      font-weight:800;
+    }
+
+    .brand-text span{
+      font-size:12px;
+      color:var(--muted-2);
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .nav-links a{
+      color:var(--muted);
+      font-size:14px;
+      font-weight:600;
+    }
+
+    .nav-links a:hover{
+      color:#fff;
+    }
+
+    .hero{
+      position:relative;
+      padding:96px 0 72px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:32px;
+      align-items:center;
+    }
+
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border:1px solid var(--border);
+      border-radius:28px;
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-stat-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
+    }
+
+    .stat{
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:20px;
+      padding:18px 18px;
+    }
+
+    .stat strong{
+      display:block;
+      font-size:1.9rem;
+      font-weight:800;
+      margin-bottom:4px;
+    }
+
+    .stat p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:14px;
+    }
+
+    .purple{color:var(--purple-2);}
+    .teal{color:var(--teal);}
+    .green{color:var(--green);}
+
+    .section-header{
+      text-align:center;
+      margin-bottom:40px;
+    }
+
+    .section-header .subtitle{
+      margin:0 auto;
+    }
+
+    .product-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    }
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:26px;
+      display:flex;
+      flex-direction:column;
+      min-height:100%;
+      box-shadow:var(--shadow);
+      transition:transform .22s ease, border-color .22s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(255,255,255,0.20);
+    }
+
+    .card-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      width:max-content;
+      padding:7px 12px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:1.2px;
+      text-transform:uppercase;
+      margin-bottom:18px;
+    }
+
+    .badge-purple{
+      background:rgba(108,60,255,0.18);
+      color:#d6cbff;
+      border:1px solid rgba(108,60,255,0.28);
+    }
+
+    .badge-teal{
+      background:rgba(0,194,215,0.14);
+      color:#baf7ff;
+      border:1px solid rgba(0,194,215,0.24);
+    }
+
+    .badge-gold{
+      background:rgba(242,181,63,0.16);
+      color:#ffe0a0;
+      border:1px solid rgba(242,181,63,0.28);
+    }
+
+    .card h3{
+      margin:0 0 10px;
+      font-family:'Poppins',sans-serif;
+      font-size:1.55rem;
+    }
+
+    .card p{
+      margin:0 0 18px;
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    .feature-list{
+      list-style:none;
+      padding:0;
+      margin:0 0 24px;
+      display:grid;
+      gap:10px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.6;
+      flex:1;
+    }
+
+    .feature-list li{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+    }
+
+    .feature-list li::before{
+      content:"•";
+      color:var(--teal);
+      font-weight:800;
+      line-height:1;
+      margin-top:2px;
+    }
+
+    .card .btn{
+      width:max-content;
+    }
+
+    .card-disabled{
+      opacity:.72;
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+    }
+
+    .about-box{
+      background:rgba(255,255,255,0.04);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:26px;
+    }
+
+    .about-box h4{
+      margin:0 0 10px;
+      font-size:1.1rem;
+      font-family:'Poppins',sans-serif;
+    }
+
+    .about-box p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.8;
+    }
+
+    .cta{
+      padding:90px 0 110px;
+    }
+
+    .cta-panel{
+      background:
+        radial-gradient(circle at top right, rgba(0,194,215,0.16), transparent 28%),
+        linear-gradient(135deg, rgba(108,60,255,0.18), rgba(255,255,255,0.05));
+      border:1px solid var(--border);
+      border-radius:30px;
+      padding:38px;
+      text-align:center;
+      box-shadow:var(--shadow);
+    }
+
+    .cta-panel h2{
+      margin:0 0 14px;
+      font-family:'Poppins',sans-serif;
+      font-size:clamp(1.8rem, 4vw, 3rem);
+    }
+
+    .cta-panel p{
+      margin:0 auto;
+      max-width:740px;
+      color:var(--muted);
+      line-height:1.8;
+    }
+
+    .site-footer{
+      padding:24px 0 42px;
+      border-top:1px solid rgba(255,255,255,0.06);
+      color:var(--muted-2);
+      font-size:14px;
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    @media (max-width: 980px){
+      .hero-grid,
+      .product-grid,
+      .about-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero{
+        padding-top:72px;
+      }
+
+      .nav{
+        align-items:flex-start;
+        padding:14px 0;
+        flex-direction:column;
+      }
+
+      .nav-links{
+        width:100%;
+        justify-content:flex-start;
+      }
+    }
+
+    @media (max-width: 640px){
+      .section{
+        padding:72px 0;
+      }
+
+      .hero-card,
+      .card,
+      .about-box,
+      .cta-panel{
+        padding:22px;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .btn-row{
+        flex-direction:column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto;}
+      *{
+        animation:none !important;
+        transition:none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="brand" aria-label="Ir para a página inicial">
+        <div class="brand-badge">ECO</div>
+        <div class="brand-text">
+          <strong>ECO do BEM</strong>
+          <span>Desenvolvimento Humano</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#produtos">Produtos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="eco-lideres.html">ECO Líderes</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Soluções em liderança e desenvolvimento</div>
+          <h1 class="title">Transforme cultura, liderança e resultados com experiências que geram evolução real.</h1>
+          <p class="subtitle">
+            A ECO do BEM reúne metodologias, jornadas e produtos voltados ao desenvolvimento humano nas organizações.
+            Comece pela nossa vitrine principal e avance para a página específica do produto pelo botão, exatamente como você quer.
+          </p>
+
+          <div class="btn-row">
+            <a class="btn btn-primary" href="eco-lideres.html">Conhecer o ECO Líderes</a>
+            <a class="btn btn-secondary" href="#produtos">Ver soluções</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="hero-stat-grid">
+            <div class="stat">
+              <strong class="purple">01</strong>
+              <p>Página inicial estável, elegante e pronta para ser a porta de entrada do site.</p>
+            </div>
+            <div class="stat">
+              <strong class="teal">02</strong>
+              <p>Navegação simples: primeiro a home, depois o acesso ao produto por botão.</p>
+            </div>
+            <div class="stat">
+              <strong class="green">03</strong>
+              <p>Layout responsivo, sem efeitos exagerados que costumam causar problemas de zoom e leitura.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="produtos">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow" style="justify-content:center;">Produtos</div>
+          <h2 class="title" style="font-size:clamp(1.9rem,4vw,3.3rem);">Conheça as soluções da ECO do BEM</h2>
+          <p class="subtitle">
+            A página inicial apresenta seus produtos e direciona para a página de detalhe do ECO Líderes.
+          </p>
+        </div>
+
+        <div class="product-grid">
+          <article class="card">
+            <div class="card-badge badge-purple">Produto em destaque</div>
+            <h3>ECO Líderes</h3>
+            <p>Certificação de liderança com trilha estruturada, aplicação prática e foco em desenvolvimento consistente.</p>
+            <ul class="feature-list">
+              <li>Jornada com identidade forte e apresentação profissional</li>
+              <li>Estrutura própria para página de vendas ou apresentação institucional</li>
+              <li>Acesso direto pela home, com navegação simples</li>
+            </ul>
+            <a class="btn btn-primary" href="eco-lideres.html">Abrir página do ECO Líderes</a>
+          </article>
+
+          <article class="card card-disabled">
+            <div class="card-badge badge-teal">Em construção</div>
+            <h3>ECO Equipes</h3>
+            <p>Espaço reservado para expansão futura do portfólio, sem comprometer a estabilidade da página principal.</p>
+            <ul class="feature-list">
+              <li>Área preparada para produto futuro</li>
+              <li>Mesma linguagem visual da marca</li>
+              <li>Sem links quebrados ou rotas desnecessárias agora</li>
+            </ul>
+            <span class="btn btn-secondary">Disponível em breve</span>
+          </article>
+
+          <article class="card card-disabled">
+            <div class="card-badge badge-gold">Em construção</div>
+            <h3>ECO PDI</h3>
+            <p>Outra trilha futura do ecossistema, preservando a organização do site desde o início.</p>
+            <ul class="feature-list">
+              <li>Pronto para crescimento organizado</li>
+              <li>Visual alinhado ao restante do site</li>
+              <li>Estrutura simples para manutenção</li>
+            </ul>
+            <span class="btn btn-secondary">Disponível em breve</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sobre">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow" style="justify-content:center;">Sobre</div>
+          <h2 class="title" style="font-size:clamp(1.9rem,4vw,3rem);">Uma base mais segura para publicar</h2>
+          <p class="subtitle">
+            Nesta primeira versão, a prioridade é ficar bonito, claro e estável. Por isso, evitamos elementos que costumam atrapalhar em mobile, zoom, leitura e performance.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-box">
+            <h4>O que foi mantido</h4>
+            <p>
+              Uma estética moderna, com identidade forte, blocos bem definidos, contraste adequado e navegação objetiva.
+            </p>
+          </div>
+          <div class="about-box">
+            <h4>O que foi evitado</h4>
+            <p>
+              Cursores customizados, efeitos excessivos, animações pesadas e estruturas que costumam quebrar no celular ou causar sensação de “zoom estranho”.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-panel">
+          <h2>Pronta para seguir para a página do produto?</h2>
+          <p>
+            A sua navegação principal já está ajustada: o visitante entra pela home e, quando clicar no botão, segue para a página específica do ECO Líderes.
+          </p>
+          <div class="btn-row" style="justify-content:center;">
+            <a class="btn btn-primary" href="eco-lideres.html">Ir para ECO Líderes</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>© 2026 ECO do BEM</span>
+      <span>Site institucional em HTML estático</span>
+    </div>
+  </footer>
+
+</body>
+</html>

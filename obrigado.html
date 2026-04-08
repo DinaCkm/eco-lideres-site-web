@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Mensagem enviada | ECO do B.E.M.</title>
+  <meta
+    name="description"
+    content="Obrigado pelo seu contato. Recebemos sua mensagem e retornaremos em breve."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root{
+      --bg:#0b0820;
+      --bg-2:#140d38;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,0.78);
+      --border:rgba(255,255,255,0.12);
+      --purple:#6c3cff;
+      --purple-2:#8c68ff;
+      --teal:#00c2d7;
+      --shadow:0 20px 50px rgba(0,0,0,0.28);
+      --radius:28px;
+      --max:1140px;
+      --gutter:20px;
+    }
+
+    *{
+      box-sizing:border-box;
+      -webkit-text-size-adjust:100%;
+    }
+
+    html, body{
+      margin:0;
+      min-height:100%;
+      font-family:'Inter',sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(108,60,255,0.22), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(0,194,215,0.16), transparent 28%),
+        linear-gradient(180deg, var(--bg), #090615 100%);
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .page{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px 20px;
+    }
+
+    .card{
+      width:100%;
+      max-width:760px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:40px 28px;
+      text-align:center;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:72px;
+      height:72px;
+      border-radius:20px;
+      margin-bottom:22px;
+      background:linear-gradient(135deg, var(--purple), var(--teal));
+      font-size:34px;
+      font-weight:800;
+      box-shadow:0 16px 34px rgba(108,60,255,0.30);
+    }
+
+    .eyebrow{
+      display:inline-block;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      color:var(--teal);
+      margin-bottom:16px;
+    }
+
+    h1{
+      margin:0 0 14px;
+      font-family:'Poppins',sans-serif;
+      font-size:clamp(2rem, 4vw, 3.3rem);
+      line-height:1.1;
+      letter-spacing:-0.03em;
+    }
+
+    p{
+      margin:0 auto;
+      max-width:560px;
+      color:var(--muted);
+      line-height:1.8;
+      font-size:1rem;
+    }
+
+    .box{
+      margin:28px auto 0;
+      max-width:560px;
+      padding:18px;
+      border-radius:18px;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      text-align:left;
+    }
+
+    .box strong{
+      display:block;
+      margin-bottom:8px;
+      font-size:1rem;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      justify-content:center;
+      margin-top:30px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:50px;
+      padding:12px 22px;
+      border-radius:12px;
+      font-weight:700;
+      font-size:15px;
+      text-align:center;
+      border:1px solid transparent;
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg, var(--purple), var(--purple-2));
+      color:#fff;
+      box-shadow:0 16px 34px rgba(108,60,255,0.30);
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,0.04);
+      border-color:var(--border);
+      color:#fff;
+    }
+
+    .footer-note{
+      margin-top:22px;
+      font-size:14px;
+      color:rgba(255,255,255,0.60);
+    }
+
+    @media (max-width: 640px){
+      .card{
+        padding:32px 20px;
+      }
+
+      .actions{
+        flex-direction:column;
+      }
+
+      .btn{
+        width:100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="card">
+      <div class="badge">✓</div>
+      <div class="eyebrow">Mensagem enviada com sucesso</div>
+      <h1>Obrigada pelo seu contato.</h1>
+      <p>
+        Recebemos sua mensagem e nossa equipe retornará em breve para entender sua necessidade
+        e indicar a melhor solução para o desenvolvimento da sua empresa.
+      </p>
+
+      <div class="box">
+        <strong>Próximos passos</strong>
+        <p>
+          Seu envio foi registrado corretamente. Se necessário, entraremos em contato pelo e-mail informado.
+        </p>
+      </div>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="index.html">Voltar para a página inicial</a>
+        <a class="btn btn-secondary" href="eco-lideres.html">Conhecer o ECO Líderes</a>
+      </div>
+
+      <div class="footer-note">
+        ECO do B.E.M. · Desenvolvimento Humano Corporativo
+      </div>
+    </section>
+  </main>
+</body>
+</html>

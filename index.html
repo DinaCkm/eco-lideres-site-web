@@ -885,8 +885,8 @@
             Agende uma conversa com nossa equipe. Vamos entender seu contexto, apresentar o produto mais adequado e montar uma proposta sob medida para sua realidade.
           </p>
           <div style="max-width: 560px; margin: 32px auto 0; text-align: left;">
-  <form action="https://formspree.io/f/mojpbgal" method="POST">
-    <input type="hidden" name="_language" value="pt-BR">
+<form id="contato-form" action="https://formspree.io/f/mojpbgal" method="POST">
+  <input type="hidden" name="_language" value="pt-BR">
     <label for="nome" style="display:block; margin-bottom:8px; font-weight:700;">Nome</label>
     <input
       id="nome"
@@ -918,6 +918,7 @@
     <button type="submit" class="btn btn-primary" style="width:100%;">
       Enviar mensagem
     </button>
+  <p id="form-status" style="margin-top:12px; color:#fff; font-size:14px;"></p>
   </form>
 </div>
         </div>
@@ -931,6 +932,49 @@
       <span>relacionamento@ckmtalents.net · www.ecodobem.com</span>
     </div>
   </footer>
+<script>
+  const form = document.getElementById("contato-form");
+  const status = document.getElementById("form-status");
+  const botao = document.getElementById("btn-enviar");
 
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    status.textContent = "Enviando sua mensagem...";
+    botao.disabled = true;
+    botao.textContent = "Enviando...";
+
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: {
+          "Accept": "application/json"
+        }
+      });
+
+      if (response.ok) {
+        window.location.href = "https://www.ecodobem.com/obrigado.html";
+      } else {
+        const resultado = await response.json();
+        if (resultado.errors) {
+          status.textContent = resultado.errors.map(erro => erro.message).join(", ");
+        } else {
+          status.textContent = "Não foi possível enviar agora. Tente novamente em instantes.";
+        }
+        botao.disabled = false;
+        botao.textContent = "Enviar mensagem";
+      }
+    } catch (error) {
+      status.textContent = "Não foi possível enviar agora. Verifique sua conexão e tente novamente.";
+      botao.disabled = false;
+      botao.textContent = "Enviar mensagem";
+    }
+  }
+
+  form.addEventListener("submit", handleSubmit);
+</script>
 </body>
 </html>

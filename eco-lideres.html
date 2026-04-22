@@ -3,48 +3,235 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ECO Líderes — Certificação de Liderança | ECO do BEM</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+<title>ECO Líderes — Certificação de Liderança | ECO do B.E.M.</title>
+<meta name="description" content="ECO Líderes: certificação de liderança em 6 meses com diagnóstico comportamental, trilha imersiva, mentorias individuais e 7 indicadores de evolução.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-text-size-adjust:100%;}
 :root{
-  --roxo:#5B2EFF;--roxo-d:#3A1D8F;--deep:#1A0A5E;
-  --dark:#0D0920;--darkest:#080618;
-  --teal:#00B8D9;--verde:#5ED38C;--gold:#F59E0B;
-  --lilas:#E8E4FF;--lilas-m:#C4B8FF;
-  --branco:#FFFFFF;--off:#F5F3FF;
-  --card:rgba(255,255,255,0.05);--border:rgba(255,255,255,0.09);
+  /* Cores oficiais ECO */
+  --purple:       #5B2EFF;
+  --purple-deep:  #1A0A5E;
+  --purple-dark:  #3A1D8F;
+  --purple-light: #8C68FF;
+  --teal:         #00B8D9;
+  --teal-soft:    #5DCAA5;
+  --green:        #5ED38C;
+  --blue:         #4A9FFF;
+  --gold:         #F59E0B;
+  /* Fundos */
+  --bg-white:     #FFFFFF;
+  --bg-lilac:     #F5F3FF;
+  --bg-lilac-2:   #E8E4FF;
+  /* Texto */
+  --text-dark:    #1A0A5E;
+  --text-body:    #3A3559;
+  --text-muted:   #6B6389;
+  --text-white:   #FFFFFF;
+  --text-lilac:   #C4B8FF;
+  /* Bordas e sombras */
+  --border-light: #E8E4FF;
+  --border-soft:  #EFECFF;
+  --shadow-sm:    0 4px 16px rgba(26, 10, 94, 0.06);
+  --shadow-md:    0 12px 32px rgba(26, 10, 94, 0.08);
+  --shadow-lg:    0 24px 60px rgba(26, 10, 94, 0.12);
+  --shadow-purple:0 18px 40px rgba(91, 46, 255, 0.22);
+  --shadow-teal:  0 18px 40px rgba(0, 184, 217, 0.22);
+  --shadow-green: 0 18px 40px rgba(94, 211, 140, 0.22);
+  --radius-sm:    12px;
+  --radius-md:    20px;
+  --radius-lg:    28px;
+  --radius-xl:    36px;
+  --max:          1200px;
+  --gutter:       24px;
+  --section-space: 110px;
 }
 html{scroll-behavior:smooth;overflow-x:hidden;}
-body{font-family:'Inter',sans-serif;background:var(--darkest);color:var(--branco);overflow-x:hidden;min-width:0;width:100%;cursor:auto;}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg-white);
+  color:var(--text-body);
+  overflow-x:hidden;
+  min-width:0;width:100%;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
 img,video,canvas,svg{max-width:100%;height:auto;display:block;}
 section,div,article,aside,nav,footer,header{min-width:0;}
-.title,.sub,.hero-h1,.hero-desc,.stat-txt,.oque-card p,.phase p,.pd-list li,.disc-card p,.ap-card p,.media-desc,.ind-desc,.ment-content p,.caso-step p,.web-card p,.cert-info p{overflow-wrap:break-word;word-break:normal;}
-#cur,#cur-t{display:none;}
+a{color:inherit;text-decoration:none;}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 32px;display:flex;align-items:center;justify-content:space-between;transition:all .35s;width:100%;max-width:100%;}
-nav.scrolled{background:rgba(8,6,24,.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);padding:12px 32px;}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
-.logo-box{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--deep),var(--teal));display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-size:9px;font-weight:800;color:#fff;letter-spacing:-.3px;}
-.logo-txt{font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;color:#fff;}
-.logo-txt em{color:var(--teal);font-style:normal;}
-.nav-links{display:flex;align-items:center;gap:24px;}
-.nav-links a{color:rgba(255,255,255,.72);text-decoration:none;font-size:14px;font-weight:600;transition:color .2s;position:relative;}
-.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--teal);transform:scaleX(0);transition:transform .2s;}
-.nav-links a:hover{color:#fff;}.nav-links a:hover::after{transform:scaleX(1);}
-.nav-cta{background:var(--roxo);color:#fff;padding:10px 22px;border-radius:9px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s;}
-.nav-cta:hover{background:#7044FF;transform:translateY(-1px);}
+.container{
+  width:100%;
+  max-width:calc(var(--max) + (var(--gutter) * 2));
+  margin:0 auto;
+  padding-left:var(--gutter);
+  padding-right:var(--gutter);
+}
 
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.32;}
-#cv{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.35;}
+/* =========== HEADER ROXO PROFUNDO =========== */
+nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:100;
+  padding:14px 32px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(26, 10, 94, 0.88);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  transition:all .35s;
+  width:100%;max-width:100%;
+}
+nav.scrolled{
+  background:rgba(13, 6, 42, 0.95);
+  padding:10px 32px;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;
+  text-decoration:none;
+}
+.brand-logo{
+  height:44px;width:auto;display:block;
+  transition:transform .25s ease;
+}
+.nav-logo:hover .brand-logo{transform:scale(1.02);}
+.brand-logo-text{
+  font-family:'Poppins',sans-serif;
+  font-weight:800;font-size:22px;
+  color:#fff;letter-spacing:-0.02em;line-height:1;
+}
+.brand-logo-text em{
+  font-style:normal;font-weight:400;
+  opacity:0.7;font-size:14px;margin:0 2px;
+}
+.brand-logo-text .prod{
+  color:var(--teal);font-weight:600;
+  font-size:15px;margin-left:6px;
+}
+.nav-links{display:flex;align-items:center;gap:22px;}
+.nav-links a{
+  color:rgba(255,255,255,0.82);
+  font-size:14px;font-weight:600;
+  transition:color .18s ease;
+  position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;
+  bottom:-4px;left:0;right:0;
+  height:1px;background:var(--teal);
+  transform:scaleX(0);transition:transform .2s;
+}
+.nav-links a:hover{color:#fff;}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-cta{
+  background:linear-gradient(135deg,var(--teal),var(--blue));
+  color:#fff !important;
+  padding:10px 20px;
+  border-radius:999px;
+  font-size:13px;font-weight:700;
+  box-shadow:var(--shadow-teal);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.nav-cta::after{display:none !important;}
+.nav-cta:hover{
+  transform:translateY(-1px);
+  box-shadow:0 22px 48px rgba(0,184,217,0.32);
+}
 
-section{position:relative;z-index:1;}
-.label{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);display:flex;align-items:center;gap:10px;margin-bottom:16px;}
-.label::before{content:'';width:24px;height:1px;background:var(--teal);}
-.title{font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(36px,4.2vw,56px);line-height:1.1;letter-spacing:-1.2px;margin-bottom:18px;}
-.sub{font-size:18px;color:rgba(255,255,255,.7);line-height:1.8;max-width:660px;}
-.tag{display:inline-block;padding:4px 13px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.5px;}
+/* Mobile hamburger */
+.nav-hamburger{
+  display:none;flex-direction:column;gap:5px;
+  cursor:pointer;padding:4px;
+  background:none;border:none;z-index:200;
+}
+.nav-hamburger span{
+  display:block;width:24px;height:2px;
+  background:#fff;border-radius:2px;
+  transition:all .3s;
+}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-mobile-menu{
+  display:none;
+  position:fixed;inset:0;
+  background:rgba(26,10,94,0.97);
+  backdrop-filter:blur(20px);
+  z-index:150;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:28px;padding:24px;
+}
+.nav-mobile-menu.open{display:flex;}
+.nav-mobile-menu a{
+  color:rgba(255,255,255,0.9);
+  font-family:'Poppins',sans-serif;
+  font-size:22px;font-weight:600;
+  text-align:center;transition:color .2s;
+}
+.nav-mobile-menu a:hover{color:var(--teal);}
+.nav-mobile-menu .nav-cta{
+  padding:14px 32px;font-size:16px;
+}
 
+/* =========== COMPONENTES COMUNS =========== */
+.label{
+  font-family:'Inter',sans-serif;
+  font-size:11px;font-weight:700;
+  letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--purple);
+  display:inline-flex;align-items:center;gap:10px;
+  margin-bottom:16px;
+}
+.label::before{
+  content:'';width:28px;height:2px;
+  background:linear-gradient(90deg,var(--purple),var(--teal));
+  border-radius:2px;
+}
+.label.on-dark{color:var(--teal);}
+.label.on-dark::before{background:linear-gradient(90deg,var(--teal),var(--green));}
+.label.center{justify-content:center;}
+
+.title{
+  font-family:'Poppins',sans-serif;
+  font-weight:800;
+  font-size:clamp(32px,4vw,52px);
+  line-height:1.08;
+  letter-spacing:-0.03em;
+  color:var(--text-dark);
+  margin-bottom:18px;
+}
+.title.on-dark{color:#fff;}
+.title .hl-purple{color:var(--purple);}
+.title .hl-teal{color:var(--teal);}
+.title .hl-green{color:var(--green);}
+.title .hl-grad{
+  background:linear-gradient(90deg,var(--purple),var(--teal));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.sub{
+  font-size:17px;
+  color:var(--text-muted);
+  line-height:1.75;
+  max-width:720px;
+}
+.sub.on-dark{color:rgba(255,255,255,0.78);}
+
+/* Tag/pill */
+.tag,.phase-tag,.oque-pill,.media-ind,.ment-tag{
+  display:inline-block;
+  padding:4px 12px;
+  border-radius:999px;
+  font-size:10px;font-weight:700;
+  letter-spacing:0.8px;
+  text-transform:uppercase;
+}
+
+/* Reveal animations */
 @keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 @keyframes gp{0%,100%{transform:scale(1) translate(0,0)}50%{transform:scale(1.12) translate(14px,-14px)}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
@@ -53,706 +240,2527 @@ section{position:relative;z-index:1;}
 .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;}
 .rv.vis{opacity:1;transform:translateY(0);}
 .rv1{transition-delay:.1s}.rv2{transition-delay:.2s}.rv3{transition-delay:.3s}.rv4{transition-delay:.4s}
-::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--darkest)}::-webkit-scrollbar-thumb{background:var(--roxo);border-radius:3px}
 
-#hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:112px 32px 72px;width:100%;}
-.hero-glow{position:absolute;border-radius:50%;pointer-events:none;}
-.g1{width:700px;height:700px;background:radial-gradient(circle,rgba(91,46,255,.22) 0%,transparent 70%);top:-180px;left:-220px;animation:gp 7s ease-in-out infinite;}
-.g2{width:500px;height:500px;background:radial-gradient(circle,rgba(0,184,217,.18) 0%,transparent 70%);bottom:-120px;right:-80px;animation:gp 9s ease-in-out infinite reverse;}
-.g3{width:300px;height:300px;background:radial-gradient(circle,rgba(94,211,140,.1) 0%,transparent 70%);top:30%;right:20%;animation:gp 11s ease-in-out infinite 2s;}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(91,46,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(91,46,255,.05) 1px,transparent 1px);background-size:58px 58px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%);}
-.hero-inner{position:relative;z-index:2;width:100%;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,430px);gap:52px;align-items:center;}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(91,46,255,.18);border:1px solid rgba(91,46,255,.38);border-radius:100px;padding:8px 18px;margin-bottom:30px;animation:fu .8s ease both;}
-.badge-dot{width:7px;height:7px;border-radius:50%;background:var(--verde);animation:blink 2s infinite;box-shadow:0 0 8px rgba(94,211,140,.5);}
-.badge-txt{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--lilas-m);}
-.hero-h1{font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(50px,6vw,80px);line-height:1.03;letter-spacing:-2px;margin-bottom:12px;animation:fu .9s .1s ease both;}
-.hero-h1 .grad{background:linear-gradient(90deg,var(--teal),var(--verde));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hero-h1 .line2{color:rgba(255,255,255,.82);font-weight:300;font-size:.64em;}
-.hero-desc{font-size:19px;color:rgba(255,255,255,.72);line-height:1.8;max-width:620px;margin-bottom:38px;animation:fu 1s .25s ease both;}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fu 1s .4s ease both;}
-.btn{padding:15px 30px;border-radius:10px;font-family:'Inter',sans-serif;font-size:15px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .25s;cursor:pointer;}
-.btn-p{background:linear-gradient(135deg,var(--roxo),#7044FF);color:#fff;box-shadow:0 0 36px rgba(91,46,255,.32);}
-.btn-p:hover{transform:translateY(-2px);box-shadow:0 0 56px rgba(91,46,255,.52);}
-.btn-s{border:1.5px solid rgba(255,255,255,.18);color:#fff;backdrop-filter:blur(8px);}
-.btn-s:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px);}
-.hero-stats{display:flex;flex-direction:column;gap:16px;animation:slideInR .9s .3s ease both;}
-.stat-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:20px 22px;display:flex;align-items:center;gap:16px;backdrop-filter:blur(8px);transition:all .3s;}
-.stat-card:hover{border-color:rgba(91,46,255,.3);background:rgba(91,46,255,.08);}
-.stat-num{font-family:'Sora',sans-serif;font-weight:800;font-size:36px;min-width:60px;text-align:center;line-height:1;}
-.stat-num.p{color:var(--roxo);}.stat-num.t{color:var(--teal);}.stat-num.g{color:var(--verde);}
-.stat-div{width:1.5px;height:34px;background:rgba(255,255,255,.1);border-radius:2px;flex-shrink:0;}
-.stat-txt{font-size:14px;color:rgba(232,228,255,.74);line-height:1.55;}
-.stat-txt strong{color:rgba(232,228,255,.95);font-weight:700;}
-.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.34);font-size:10px;letter-spacing:2px;text-transform:uppercase;animation:fu 1s .8s ease both;}
-.scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,rgba(255,255,255,.3),transparent);animation:sa 2s ease infinite;}
-@keyframes sa{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg-lilac)}
+::-webkit-scrollbar-thumb{background:var(--purple);border-radius:3px}
 
-#oque,#jornada,#disc,#trilha,#indicadores,#mentorias,#casos,#dashboard,#niveis,#webinarios,#certs,#cta{padding-left:56px;padding-right:56px;}
-#oque{padding-top:96px;padding-bottom:96px;background:linear-gradient(180deg,transparent,rgba(91,46,255,.04),transparent);}
-.oque-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1200px;margin:0 auto;}
-.oque-header{max-width:1200px;margin:0 auto 52px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;}
-.oque-card{padding:30px 24px;background:var(--card);border:1px solid var(--border);border-radius:18px;transition:all .3s;position:relative;overflow:hidden;}
-.oque-card::before{content:'';position:absolute;inset:0;background:linear-gradient(145deg,rgba(91,46,255,.08),transparent);opacity:0;transition:opacity .3s;}
-.oque-card:hover{border-color:rgba(91,46,255,.28);transform:translateY(-4px);} .oque-card:hover::before{opacity:1;}
-.oque-icon{font-size:32px;margin-bottom:16px;}
-.oque-card h4{font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;margin-bottom:10px;}
-.oque-card p{font-size:15px;color:rgba(255,255,255,.7);line-height:1.72;}
-.oque-pill{display:inline-block;margin-top:14px;padding:4px 10px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.5px;}
+/* Buttons */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  gap:8px;
+  min-height:54px;
+  padding:14px 26px;
+  border-radius:999px;
+  font-family:'Inter',sans-serif;
+  font-size:15px;font-weight:700;
+  cursor:pointer;
+  transition:transform .2s ease, box-shadow .2s ease;
+  border:1px solid transparent;
+}
+.btn:hover{transform:translateY(-2px);}
+.btn-p{
+  background:linear-gradient(135deg,var(--purple),var(--purple-light));
+  color:#fff;
+  box-shadow:var(--shadow-purple);
+}
+.btn-p:hover{box-shadow:0 22px 48px rgba(91,46,255,0.32);}
+.btn-s{
+  background:#fff;
+  color:var(--purple);
+  border-color:var(--border-light);
+  box-shadow:var(--shadow-sm);
+}
+.btn-s:hover{border-color:var(--purple);}
+.btn-ghost-dark{
+  background:rgba(255,255,255,0.08);
+  color:#fff;
+  border:1px solid rgba(255,255,255,0.22);
+  backdrop-filter:blur(8px);
+}
+.btn-ghost-dark:hover{
+  background:rgba(255,255,255,0.14);
+  border-color:var(--teal);
+}
+.btn-teal{
+  background:linear-gradient(135deg,var(--teal),var(--blue));
+  color:#fff;
+  box-shadow:var(--shadow-teal);
+}
 
-#jornada{padding-top:96px;padding-bottom:96px;}
-.jornada-header{text-align:center;max-width:760px;margin:0 auto 74px;}
-.jornada-header .label{justify-content:center;}
-.jornada-header .sub{margin:0 auto;}
-.phases-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;max-width:1200px;margin:0 auto 60px;position:relative;}
-.phases-row::before{content:'';position:absolute;top:44px;left:12.5%;right:12.5%;height:2px;background:linear-gradient(to right,var(--roxo),var(--teal),var(--verde),var(--gold));z-index:0;}
-.phase{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 16px;position:relative;z-index:1;}
-.phase-circle{width:88px;height:88px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:20px;border:2px solid;background:var(--darkest);transition:all .3s;}
+/* =========== HERO ============ */
+#hero{
+  position:relative;
+  min-height:92vh;
+  padding:120px 0 72px;
+  display:flex;align-items:center;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(91,46,255,0.38), transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(0,184,217,0.22), transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(94,211,140,0.08), transparent 50%),
+    linear-gradient(160deg, var(--purple-deep) 0%, #0D062A 100%);
+  color:#fff;
+}
+#hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size:80px 80px;
+  opacity:0.5;pointer-events:none;
+}
+.hero-inner{
+  position:relative;z-index:2;
+  width:100%;
+  max-width:calc(var(--max) + (var(--gutter) * 2));
+  margin:0 auto;
+  padding:0 var(--gutter);
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
+  gap:52px;
+  align-items:center;
+}
+.hero-left{position:relative;z-index:3;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.18);
+  border-radius:999px;
+  padding:8px 16px;
+  margin-bottom:26px;
+  animation:fu .8s ease both;
+  backdrop-filter:blur(10px);
+}
+.badge-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 12px rgba(94,211,140,0.6);
+  animation:blink 2s infinite;
+}
+.badge-txt{
+  font-size:11px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  color:#fff;
+}
+.hero-h1{
+  font-family:'Poppins',sans-serif;
+  font-weight:800;
+  font-size:clamp(42px,5.5vw,72px);
+  line-height:1.04;
+  letter-spacing:-0.03em;
+  margin-bottom:18px;
+  animation:fu .9s .1s ease both;
+  color:#fff;
+}
+.hero-h1 .grad{
+  background:linear-gradient(90deg,var(--teal),var(--green));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.hero-h1 .line2{
+  display:block;
+  color:rgba(255,255,255,0.82);
+  font-weight:400;
+  font-size:0.5em;
+  margin-top:10px;
+  letter-spacing:-0.01em;
+}
+.hero-desc{
+  font-size:18px;
+  color:rgba(255,255,255,0.82);
+  line-height:1.75;
+  max-width:600px;
+  margin-bottom:36px;
+  animation:fu 1s .25s ease both;
+}
+.hero-btns{
+  display:flex;gap:14px;flex-wrap:wrap;
+  animation:fu 1s .4s ease both;
+}
+
+/* Hero visual — imagem + stats */
+.hero-visual{
+  position:relative;
+  animation:slideInR .9s .3s ease both;
+}
+.hero-image-wrap{
+  position:relative;
+  aspect-ratio: 4 / 5;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  background:linear-gradient(135deg, var(--purple), var(--teal));
+  box-shadow:var(--shadow-lg);
+}
+.hero-image{
+  width:100%;height:100%;
+  object-fit:cover;display:block;
+}
+/* Stats float */
+.hero-stats-float{
+  position:absolute;
+  bottom:-30px;left:-24px;right:-24px;
+  background:rgba(255,255,255,0.96);
+  backdrop-filter:blur(16px);
+  border-radius:var(--radius-md);
+  padding:20px 22px;
+  box-shadow:var(--shadow-lg);
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:16px;
+}
+.hero-stat{
+  text-align:center;
+  border-right:1px solid var(--border-light);
+  padding-right:12px;
+}
+.hero-stat:last-child{border-right:none;padding-right:0;}
+.hero-stat strong{
+  display:block;
+  font-family:'Sora',sans-serif;
+  font-weight:800;
+  font-size:28px;line-height:1;
+  margin-bottom:4px;
+}
+.hero-stat:nth-child(1) strong{color:var(--purple);}
+.hero-stat:nth-child(2) strong{color:var(--teal);}
+.hero-stat:nth-child(3) strong{color:var(--green);}
+.hero-stat:nth-child(4) strong{color:var(--gold);}
+.hero-stat span{
+  display:block;
+  font-size:11px;
+  color:var(--text-muted);
+  line-height:1.35;
+  font-weight:600;
+}
+
+.hero-scroll{
+  position:absolute;
+  bottom:20px;left:50%;
+  transform:translateX(-50%);
+  display:flex;flex-direction:column;
+  align-items:center;gap:8px;
+  color:rgba(255,255,255,0.5);
+  font-size:10px;letter-spacing:2px;
+  text-transform:uppercase;
+  z-index:2;
+}
+.scroll-line{
+  width:1px;height:40px;
+  background:linear-gradient(to bottom,rgba(255,255,255,0.4),transparent);
+  animation:sa 2s ease infinite;
+}
+@keyframes sa{
+  0%{transform:scaleY(0);transform-origin:top}
+  50%{transform:scaleY(1);transform-origin:top}
+  51%{transform-origin:bottom}
+  100%{transform:scaleY(0);transform-origin:bottom}
+}
+
+/* =========== SEÇÃO GENÉRICA =========== */
+.section{
+  padding:var(--section-space) 0;
+  position:relative;
+}
+.section-dark{
+  background:
+    radial-gradient(circle at 10% 20%, rgba(91,46,255,0.32), transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(0,184,217,0.2), transparent 40%),
+    linear-gradient(160deg, var(--purple-deep) 0%, #0D062A 100%);
+  color:#fff;
+}
+.section-dark::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size:80px 80px;
+  opacity:0.45;pointer-events:none;
+}
+.section-dark > *{position:relative;z-index:1;}
+.section-lilac{background:var(--bg-lilac);}
+.section-header{
+  text-align:center;
+  max-width:800px;
+  margin:0 auto 56px;
+}
+.section-header.left{
+  text-align:left;
+  margin-left:0;
+}
+
+/* =========== SEÇÃO "O QUE É" =========== */
+#oque .section-header-split{
+  max-width:var(--max);
+  margin:0 auto 52px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:end;
+}
+.oque-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:20px;
+}
+.oque-card{
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius:var(--radius-md);
+  padding:28px 24px;
+  transition:transform .25s ease, box-shadow .25s ease;
+  position:relative;
+  overflow:hidden;
+}
+.oque-card::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:4px;
+  background:var(--purple);
+}
+.oque-card:nth-child(2)::before{background:var(--teal);}
+.oque-card:nth-child(3)::before{background:var(--green);}
+.oque-card:nth-child(4)::before{background:var(--gold);}
+.oque-card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-md);
+}
+.oque-icon{
+  width:54px;height:54px;
+  border-radius:16px;
+  display:grid;place-items:center;
+  font-size:24px;
+  margin-bottom:18px;
+  background:rgba(91,46,255,0.10);
+}
+.oque-card:nth-child(2) .oque-icon{background:rgba(0,184,217,0.10);}
+.oque-card:nth-child(3) .oque-icon{background:rgba(94,211,140,0.14);}
+.oque-card:nth-child(4) .oque-icon{background:rgba(245,158,11,0.12);}
+.oque-card h4{
+  font-family:'Poppins',sans-serif;
+  font-size:19px;font-weight:800;
+  color:var(--text-dark);
+  margin-bottom:10px;
+}
+.oque-card p{
+  font-size:14.5px;
+  color:var(--text-muted);
+  line-height:1.7;
+  margin-bottom:14px;
+}
+.oque-pill{
+  background:rgba(91,46,255,0.08);
+  color:var(--purple);
+}
+.oque-card:nth-child(2) .oque-pill{background:rgba(0,184,217,0.10);color:#0A82A0;}
+.oque-card:nth-child(3) .oque-pill{background:rgba(94,211,140,0.15);color:#2D9C5A;}
+.oque-card:nth-child(4) .oque-pill{background:rgba(245,158,11,0.14);color:#B87A06;}
+
+/* =========== JORNADA =========== */
+.phases-row{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:0;
+  max-width:var(--max);
+  margin:0 auto 60px;
+  position:relative;
+}
+.phases-row::before{
+  content:'';position:absolute;
+  top:44px;left:12.5%;right:12.5%;
+  height:2px;
+  background:linear-gradient(to right,var(--purple),var(--teal),var(--green),var(--gold));
+  z-index:0;
+}
+.phase{
+  display:flex;flex-direction:column;
+  align-items:center;text-align:center;
+  padding:0 16px;
+  position:relative;z-index:1;
+}
+.phase-circle{
+  width:88px;height:88px;
+  border-radius:50%;
+  display:grid;place-items:center;
+  font-size:28px;
+  margin-bottom:20px;
+  border:2px solid;
+  background:#fff;
+  transition:transform .25s ease;
+}
 .phase:hover .phase-circle{transform:scale(1.08);}
-.phase:nth-child(1) .phase-circle{border-color:var(--roxo);box-shadow:0 0 24px rgba(91,46,255,.25);} .phase:nth-child(2) .phase-circle{border-color:var(--teal);box-shadow:0 0 24px rgba(0,184,217,.2);} .phase:nth-child(3) .phase-circle{border-color:var(--verde);box-shadow:0 0 24px rgba(94,211,140,.2);} .phase:nth-child(4) .phase-circle{border-color:var(--gold);box-shadow:0 0 24px rgba(245,158,11,.2);}
-.phase-num{font-family:'Sora',sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;opacity:.7;}
-.phase h3{font-family:'Poppins',sans-serif;font-size:20px;font-weight:700;margin-bottom:10px;}
-.phase p{font-size:15px;color:rgba(255,255,255,.68);line-height:1.72;}
-.phase-tag{display:inline-block;margin-top:12px;padding:4px 10px;border-radius:100px;font-size:10px;font-weight:700;}
-.phase-details{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1200px;margin:0 auto;}
-.pd-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px 22px;transition:all .3s;}
-.pd-card:hover{transform:translateY(-3px);} .pd-card:nth-child(1){border-top:3px solid var(--roxo);} .pd-card:nth-child(2){border-top:3px solid var(--teal);} .pd-card:nth-child(3){border-top:3px solid var(--verde);} .pd-card:nth-child(4){border-top:3px solid var(--gold);}
-.pd-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;}
+.phase:nth-child(1) .phase-circle{border-color:var(--purple);box-shadow:0 0 24px rgba(91,46,255,0.18);}
+.phase:nth-child(2) .phase-circle{border-color:var(--teal);box-shadow:0 0 24px rgba(0,184,217,0.18);}
+.phase:nth-child(3) .phase-circle{border-color:var(--green);box-shadow:0 0 24px rgba(94,211,140,0.18);}
+.phase:nth-child(4) .phase-circle{border-color:var(--gold);box-shadow:0 0 24px rgba(245,158,11,0.18);}
+.phase-num{
+  font-family:'Sora',sans-serif;
+  font-size:11px;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;
+  color:var(--text-muted);
+  margin-bottom:8px;
+}
+.phase h3{
+  font-family:'Poppins',sans-serif;
+  font-size:20px;font-weight:700;
+  color:var(--text-dark);
+  margin-bottom:10px;
+}
+.phase p{
+  font-size:14.5px;
+  color:var(--text-muted);
+  line-height:1.7;
+}
+.phase-tag{margin-top:12px;}
+.phase:nth-child(1) .phase-tag{background:rgba(91,46,255,0.10);color:var(--purple);}
+.phase:nth-child(2) .phase-tag{background:rgba(0,184,217,0.10);color:#0A82A0;}
+.phase:nth-child(3) .phase-tag{background:rgba(94,211,140,0.15);color:#2D9C5A;}
+.phase:nth-child(4) .phase-tag{background:rgba(245,158,11,0.14);color:#B87A06;}
+
+.phase-details{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:18px;
+  max-width:var(--max);
+  margin:0 auto;
+}
+.pd-card{
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius:var(--radius-md);
+  padding:24px 22px;
+  transition:transform .25s ease;
+  position:relative;
+}
+.pd-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm);}
+.pd-card:nth-child(1){border-top:4px solid var(--purple);}
+.pd-card:nth-child(2){border-top:4px solid var(--teal);}
+.pd-card:nth-child(3){border-top:4px solid var(--green);}
+.pd-card:nth-child(4){border-top:4px solid var(--gold);}
+.pd-label{
+  font-size:10px;font-weight:800;
+  letter-spacing:1.5px;text-transform:uppercase;
+  margin-bottom:14px;
+}
 .pd-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
-.pd-list li{font-size:14px;color:rgba(255,255,255,.72);display:flex;align-items:flex-start;gap:8px;line-height:1.6;}
-.pd-list li::before{content:'·';flex-shrink:0;margin-top:1px;}
+.pd-list li{
+  font-size:14px;
+  color:var(--text-body);
+  display:flex;align-items:flex-start;gap:10px;
+  line-height:1.55;
+}
+.pd-list li::before{
+  content:'✓';
+  color:var(--purple);font-weight:800;
+  flex-shrink:0;line-height:1.4;
+}
+.pd-card:nth-child(2) .pd-list li::before{color:var(--teal);}
+.pd-card:nth-child(3) .pd-list li::before{color:var(--green);}
+.pd-card:nth-child(4) .pd-list li::before{color:var(--gold);}
 
-#disc{padding-top:96px;padding-bottom:96px;background:linear-gradient(180deg,transparent,rgba(0,184,217,.04),transparent);}
-.disc-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;max-width:1200px;margin:0 auto;align-items:start;}
-.disc-card,.ap-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px;transition:all .3s;}
-.disc-card:hover{border-color:rgba(91,46,255,.28);} .ap-card:hover{border-color:rgba(0,184,217,.28);}
-.disc-card h3,.ap-card h3{font-family:'Poppins',sans-serif;font-size:24px;font-weight:700;margin-bottom:10px;}
-.disc-card p,.ap-card p{font-size:16px;color:rgba(255,255,255,.72);line-height:1.8;margin-bottom:24px;}
-.disc-dims{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.disc-dim{padding:18px;border-radius:12px;border:1px solid var(--border);} .disc-dim-letter{font-family:'Sora',sans-serif;font-size:30px;font-weight:800;margin-bottom:6px;}
-.disc-dim h5{font-size:14px;font-weight:700;margin-bottom:5px;} .disc-dim p{font-size:13px;color:rgba(255,255,255,.62);line-height:1.6;margin:0;}
-.disc-dim.d{background:rgba(91,46,255,.1);border-color:rgba(91,46,255,.2);} .disc-dim.d .disc-dim-letter{color:var(--roxo);} .disc-dim.i{background:rgba(0,184,217,.08);border-color:rgba(0,184,217,.2);} .disc-dim.i .disc-dim-letter{color:var(--teal);} .disc-dim.s{background:rgba(94,211,140,.08);border-color:rgba(94,211,140,.2);} .disc-dim.s .disc-dim-letter{color:var(--verde);} .disc-dim.c{background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.2);} .disc-dim.c .disc-dim-letter{color:var(--gold);}
-.ap-steps{display:flex;flex-direction:column;gap:14px;}
-.ap-step{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;background:rgba(255,255,255,.03);border-radius:10px;border:1px solid rgba(255,255,255,.06);} .ap-step-icon{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,rgba(91,46,255,.3),rgba(0,184,217,.2));display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
-.ap-step h5{font-size:14px;font-weight:700;margin-bottom:4px;} .ap-step p{font-size:13px;color:rgba(255,255,255,.62);line-height:1.6;margin:0;}
-.disc-result-box{margin-top:20px;padding:18px;background:linear-gradient(135deg,rgba(91,46,255,.12),rgba(0,184,217,.06));border:1px solid rgba(91,46,255,.25);border-radius:12px;}
-.disc-result-box p{font-size:14px;color:rgba(232,228,255,.8);line-height:1.7;margin:0;} .disc-result-box strong{color:var(--lilas-m);}
+/* =========== DISC (escuro) =========== */
+#disc .disc-split{
+  display:grid;
+  grid-template-columns:minmax(0, 0.9fr) minmax(0, 1fr);
+  gap:56px;
+  max-width:var(--max);
+  margin:0 auto;
+  align-items:center;
+}
+.disc-image-wrap{
+  position:relative;
+  aspect-ratio: 4 / 5;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  background:linear-gradient(135deg,var(--purple),var(--teal));
+  box-shadow:var(--shadow-lg);
+}
+.disc-image-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
 
-#trilha{padding-top:96px;padding-bottom:96px;}
-.trilha-header{max-width:1200px;margin:0 auto 56px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;}
-.media-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;max-width:1200px;margin:0 auto 48px;}
-.media-card{padding:28px 24px;border-radius:18px;background:var(--card);border:1px solid var(--border);text-align:center;transition:all .3s;position:relative;overflow:hidden;}
-.media-card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .3s;}
-.media-card:hover{transform:translateY(-5px);} .media-card:hover::before{opacity:1;}
-.media-card.filme::before{background:linear-gradient(145deg,rgba(91,46,255,.1),transparent);} .media-card.video::before{background:linear-gradient(145deg,rgba(0,184,217,.08),transparent);} .media-card.podcast::before{background:linear-gradient(145deg,rgba(94,211,140,.08),transparent);} .media-card.ted::before{background:linear-gradient(145deg,rgba(245,158,11,.08),transparent);} .media-card.livro::before{background:linear-gradient(145deg,rgba(91,46,255,.1),transparent);} .media-card.exercicio::before{background:linear-gradient(145deg,rgba(0,184,217,.08),transparent);}
-.media-icon{font-size:36px;margin-bottom:14px;display:block;} .media-name{font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;margin-bottom:8px;} .media-desc{font-size:14px;color:rgba(255,255,255,.68);line-height:1.68;} .media-ind{margin-top:12px;padding:4px 10px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.5px;display:inline-block;}
-.comps-box{max-width:1200px;margin:0 auto;background:linear-gradient(135deg,rgba(91,46,255,.08),rgba(0,184,217,.04));border:1px solid rgba(91,46,255,.2);border-radius:20px;padding:36px;}
-.comps-box-title{font-family:'Poppins',sans-serif;font-size:22px;font-weight:700;margin-bottom:10px;} .comps-box-sub{font-size:16px;color:rgba(255,255,255,.7);margin-bottom:28px;line-height:1.75;}
-.comps-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
-.comp-pill{display:flex;align-items:center;gap:10px;padding:14px 16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;transition:all .3s;}
-.comp-pill:hover{border-color:rgba(91,46,255,.3);background:rgba(91,46,255,.08);} .comp-dot{width:8px;height:8px;border-radius:50%;background:var(--roxo);flex-shrink:0;} .comp-pill span{font-size:14px;color:rgba(255,255,255,.82);font-weight:500;}
-.how-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:1200px;margin:48px auto 0;position:relative;}
-.how-row::before{content:'';position:absolute;top:30px;left:12.5%;right:12.5%;height:2px;background:linear-gradient(to right,var(--roxo),var(--teal));z-index:0;}
-.how-step-item{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 16px;position:relative;z-index:1;}
-.how-num{width:60px;height:60px;border-radius:50%;background:var(--darkest);border:2px solid;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-size:16px;font-weight:800;margin-bottom:16px;}
-.how-step-item:nth-child(1) .how-num{border-color:var(--roxo);color:var(--roxo);} .how-step-item:nth-child(2) .how-num{border-color:#7044FF;color:#7044FF;} .how-step-item:nth-child(3) .how-num{border-color:var(--teal);color:var(--teal);} .how-step-item:nth-child(4) .how-num{border-color:var(--verde);color:var(--verde);}
-.how-step-item h4{font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;margin-bottom:8px;} .how-step-item p{font-size:14px;color:rgba(255,255,255,.68);line-height:1.68;}
+.disc-cards{display:flex;flex-direction:column;gap:24px;}
+.disc-card,.ap-card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:var(--radius-lg);
+  padding:30px 28px;
+  backdrop-filter:blur(12px);
+  transition:border-color .25s ease;
+}
+.disc-card:hover,.ap-card:hover{border-color:rgba(255,255,255,0.24);}
+.disc-card h3,.ap-card h3{
+  font-family:'Poppins',sans-serif;
+  font-size:22px;font-weight:700;
+  color:#fff;
+  margin-bottom:10px;
+}
+.disc-card p,.ap-card p{
+  font-size:15px;
+  color:rgba(255,255,255,0.78);
+  line-height:1.7;
+  margin-bottom:20px;
+}
+.disc-dims{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.disc-dim{
+  padding:16px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.04);
+}
+.disc-dim-letter{
+  font-family:'Sora',sans-serif;
+  font-size:28px;font-weight:800;
+  margin-bottom:4px;
+  line-height:1;
+}
+.disc-dim h5{
+  font-size:13px;font-weight:700;
+  color:#fff;
+  margin-bottom:4px;
+}
+.disc-dim p{
+  font-size:12.5px;
+  color:rgba(255,255,255,0.65);
+  line-height:1.5;
+  margin:0;
+}
+.disc-dim.d{background:rgba(91,46,255,0.12);border-color:rgba(91,46,255,0.3);}
+.disc-dim.d .disc-dim-letter{color:var(--purple-light);}
+.disc-dim.i{background:rgba(0,184,217,0.1);border-color:rgba(0,184,217,0.3);}
+.disc-dim.i .disc-dim-letter{color:var(--teal);}
+.disc-dim.s{background:rgba(94,211,140,0.1);border-color:rgba(94,211,140,0.3);}
+.disc-dim.s .disc-dim-letter{color:var(--green);}
+.disc-dim.c{background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.3);}
+.disc-dim.c .disc-dim-letter{color:var(--gold);}
 
-#indicadores{padding-top:96px;padding-bottom:96px;background:linear-gradient(180deg,transparent,rgba(91,46,255,.05),transparent);}
-.ind-header{text-align:center;max-width:740px;margin:0 auto 56px;} .ind-header .label{justify-content:center;}
-.ind-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;max-width:1200px;margin:0 auto 20px;}
-.ind-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 22px;transition:all .3s;position:relative;}
-.ind-card:hover{border-color:rgba(91,46,255,.3);transform:translateY(-4px);} .ind-card.bonus{border-color:rgba(245,158,11,.25);background:rgba(245,158,11,.05);} .ind-card.final{grid-column:span 2;border-color:rgba(91,46,255,.3);background:linear-gradient(135deg,rgba(91,46,255,.1),rgba(0,184,217,.05));}
-.ind-num{font-family:'Sora',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:10px;} .ind-name{font-family:'Poppins',sans-serif;font-size:20px;font-weight:700;margin-bottom:8px;} .ind-range{font-size:12px;color:var(--teal);font-weight:700;margin-bottom:12px;} .ind-desc{font-size:15px;color:rgba(255,255,255,.72);line-height:1.72;margin-bottom:14px;} .ind-formula{font-size:12px;color:rgba(255,255,255,.48);font-style:italic;line-height:1.6;}
-.ind-badge{position:absolute;top:16px;right:16px;padding:4px 10px;border-radius:100px;font-size:9px;font-weight:700;} .badge-bonus{background:rgba(245,158,11,.2);color:var(--gold);border:1px solid rgba(245,158,11,.3);} .badge-final{background:rgba(91,46,255,.25);color:var(--lilas-m);border:1px solid rgba(91,46,255,.35);}
-.formula-bar{max-width:1200px;margin:20px auto 0;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:22px 28px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;}
-.f-item{padding:8px 14px;background:rgba(91,46,255,.18);border:1px solid rgba(91,46,255,.3);border-radius:8px;font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:var(--lilas-m);} .f-op{font-size:16px;color:rgba(255,255,255,.3);font-weight:700;} .f-result{padding:10px 20px;background:linear-gradient(135deg,var(--roxo),var(--teal));border-radius:8px;font-family:'Sora',sans-serif;font-size:13px;font-weight:800;color:#fff;} .f-note{font-size:12px;color:rgba(255,255,255,.42);flex-basis:100%;text-align:center;margin-top:8px;line-height:1.65;}
-.ind-row2{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;max-width:1200px;margin:16px auto 0;}
-
-#mentorias{padding-top:96px;padding-bottom:96px;}
-.ment-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;max-width:1200px;margin:0 auto;align-items:start;}
-.ment-timeline{display:flex;flex-direction:column;gap:0;position:relative;}
-.ment-timeline::before{content:'';position:absolute;left:22px;top:24px;bottom:24px;width:2px;background:linear-gradient(to bottom,var(--roxo),var(--teal),var(--verde),var(--gold));}
-.ment-item{display:flex;gap:20px;padding-bottom:28px;position:relative;} .ment-item:last-child{padding-bottom:0;}
-.ment-dot{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-size:12px;font-weight:800;flex-shrink:0;border:2px solid;background:var(--darkest);position:relative;z-index:1;}
-.ment-item:nth-child(1) .ment-dot{border-color:var(--roxo);color:var(--roxo);} .ment-item:nth-child(2) .ment-dot{border-color:var(--teal);color:var(--teal);} .ment-item:nth-child(3) .ment-dot{border-color:var(--verde);color:var(--verde);} .ment-item:nth-child(4) .ment-dot{border-color:var(--gold);color:var(--gold);}
-.ment-content{flex:1;padding-top:8px;} .ment-content h4{font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;margin-bottom:6px;} .ment-content p{font-size:15px;color:rgba(255,255,255,.72);line-height:1.75;margin-bottom:10px;}
-.ment-tags{display:flex;flex-wrap:wrap;gap:6px;} .ment-tag{padding:4px 10px;border-radius:100px;font-size:10px;font-weight:700;}
-.ment-right{display:flex;flex-direction:column;gap:16px;}
-.ment-info-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;transition:all .3s;} .ment-info-card:hover{border-color:rgba(91,46,255,.28);} .ment-info-card h4{font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;margin-bottom:8px;} .ment-info-card p{font-size:15px;color:rgba(255,255,255,.72);line-height:1.75;}
-.ment-impact{background:linear-gradient(135deg,rgba(91,46,255,.1),rgba(0,184,217,.06));border:1px solid rgba(91,46,255,.22);border-radius:16px;padding:24px;} .ment-impact h4{font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;margin-bottom:14px;color:var(--lilas-m);} .impact-rows{display:flex;flex-direction:column;gap:8px;} .impact-row{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:rgba(255,255,255,.04);border-radius:8px;gap:12px;} .impact-row span{font-size:14px;color:rgba(255,255,255,.72);} .impact-ind{font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:var(--teal);white-space:nowrap;}
-
-#casos{padding-top:96px;padding-bottom:96px;background:linear-gradient(180deg,transparent,rgba(94,211,140,.04),transparent);}
-.casos-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;max-width:1200px;margin:0 auto;align-items:start;}
-.caso-flow{display:flex;flex-direction:column;gap:14px;} .caso-step{display:flex;gap:16px;align-items:flex-start;padding:18px 20px;background:var(--card);border:1px solid var(--border);border-radius:14px;transition:all .3s;} .caso-step:hover{border-color:rgba(94,211,140,.25);background:rgba(94,211,140,.04);} .caso-step-icon{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,rgba(94,211,140,.2),rgba(91,46,255,.1));display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;} .caso-step h4{font-family:'Poppins',sans-serif;font-size:16px;font-weight:700;margin-bottom:4px;} .caso-step p{font-size:14px;color:rgba(255,255,255,.72);line-height:1.68;}
-.caso-example{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:28px;margin-top:16px;} .caso-example h5{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--verde);margin-bottom:14px;} .caso-example-title{font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;margin-bottom:16px;} .caso-rows{display:flex;flex-direction:column;gap:10px;} .caso-row{display:flex;gap:10px;font-size:14px;line-height:1.68;} .caso-row-label{color:rgba(255,255,255,.48);flex-shrink:0;width:138px;} .caso-row-val{color:rgba(255,255,255,.82);}
-.bonus-box{background:linear-gradient(135deg,rgba(245,158,11,.1),rgba(94,211,140,.06));border:1px solid rgba(245,158,11,.25);border-radius:14px;padding:20px;display:flex;align-items:center;gap:14px;} .bonus-icon{font-size:28px;flex-shrink:0;} .bonus-box h4{font-family:'Poppins',sans-serif;font-size:17px;font-weight:700;color:var(--gold);margin-bottom:4px;} .bonus-box p{font-size:14px;color:rgba(255,255,255,.72);line-height:1.68;}
-
-#niveis{padding-top:96px;padding-bottom:96px;}
-.niveis-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;max-width:1200px;margin:0 auto;align-items:center;}
-.level-bars{display:flex;flex-direction:column;gap:16px;} .lbar{display:grid;grid-template-columns:110px 1fr 60px;gap:14px;align-items:center;} .lbar-name{font-size:15px;font-weight:600;color:rgba(255,255,255,.84);} .lbar-track{height:10px;background:rgba(255,255,255,.06);border-radius:100px;overflow:hidden;} .lbar-fill{height:100%;border-radius:100px;transition:width 1.2s ease;} .lbar:nth-child(1) .lbar-fill{width:20%;background:rgba(255,255,255,.3);} .lbar:nth-child(2) .lbar-fill{width:40%;background:linear-gradient(90deg,rgba(91,46,255,.6),rgba(91,46,255,.4));} .lbar:nth-child(3) .lbar-fill{width:60%;background:linear-gradient(90deg,var(--roxo),#7044FF);} .lbar:nth-child(4) .lbar-fill{width:80%;background:linear-gradient(90deg,var(--roxo),var(--teal));} .lbar:nth-child(5) .lbar-fill{width:100%;background:linear-gradient(90deg,var(--roxo),var(--teal),var(--verde));} .lbar-pct{font-family:'Sora',sans-serif;font-size:12px;font-weight:700;text-align:right;white-space:nowrap;} .lbar:nth-child(1) .lbar-pct{color:rgba(255,255,255,.4);} .lbar:nth-child(2) .lbar-pct{color:rgba(91,46,255,.7);} .lbar:nth-child(3) .lbar-pct{color:var(--roxo);} .lbar:nth-child(4) .lbar-pct{color:var(--teal);} .lbar:nth-child(5) .lbar-pct{color:var(--verde);} 
-.excelencia-box{margin-top:24px;background:linear-gradient(135deg,rgba(94,211,140,.1),rgba(91,46,255,.06));border:1px solid rgba(94,211,140,.25);border-radius:14px;padding:18px 22px;} .excelencia-box p{font-size:15px;color:rgba(255,255,255,.74);line-height:1.72;} .excelencia-box strong{color:var(--verde);}
-.benefits-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;} .bfit{display:flex;gap:14px;align-items:flex-start;padding:18px;background:var(--card);border:1px solid var(--border);border-radius:14px;transition:all .3s;} .bfit:hover{border-color:rgba(91,46,255,.25);transform:translateY(-2px);} .bfit-icon{font-size:24px;flex-shrink:0;} .bfit h4{font-family:'Poppins',sans-serif;font-size:16px;font-weight:700;margin-bottom:4px;} .bfit p{font-size:13px;color:rgba(255,255,255,.68);line-height:1.65;}
-
-#certs{padding-top:96px;padding-bottom:96px;background:linear-gradient(180deg,transparent,rgba(91,46,255,.06),transparent);}
-.certs-header{text-align:center;max-width:760px;margin:0 auto 56px;} .certs-header .label{justify-content:center;}
-.cert-path{display:flex;align-items:center;justify-content:center;gap:0;max-width:1000px;margin:0 auto 48px;}
-.cert-node{display:flex;flex-direction:column;align-items:center;gap:10px;} .cert-badge{width:96px;height:96px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-size:20px;font-weight:800;border:2px solid;background:var(--darkest);transition:all .4s;cursor:pointer;} .cert-badge:hover{transform:scale(1.1);} .cert-node:nth-child(1) .cert-badge{border-color:var(--roxo);color:var(--roxo);box-shadow:0 0 28px rgba(91,46,255,.25);} .cert-node:nth-child(3) .cert-badge{border-color:var(--teal);color:var(--teal);box-shadow:0 0 28px rgba(0,184,217,.2);} .cert-node:nth-child(5) .cert-badge{border-color:var(--verde);color:var(--verde);box-shadow:0 0 28px rgba(94,211,140,.2);} .cert-node:nth-child(7) .cert-badge{border-color:var(--gold);color:var(--gold);box-shadow:0 0 28px rgba(245,158,11,.2);} .cert-label{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:rgba(255,255,255,.7);} .cert-arrow{font-size:22px;color:rgba(255,255,255,.2);margin:0 8px;padding-bottom:24px;}
-.cert-info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1200px;margin:0 auto;} .cert-info{padding:22px;background:var(--card);border:1px solid var(--border);border-radius:14px;transition:all .3s;} .cert-info:hover{border-color:rgba(91,46,255,.25);transform:translateY(-3px);} .cert-info-num{font-family:'Sora',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;} .cert-info:nth-child(1) .cert-info-num{color:var(--roxo);} .cert-info:nth-child(2) .cert-info-num{color:var(--teal);} .cert-info:nth-child(3) .cert-info-num{color:var(--verde);} .cert-info:nth-child(4) .cert-info-num{color:var(--gold);} .cert-info h4{font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;margin-bottom:8px;} .cert-info p{font-size:14px;color:rgba(255,255,255,.7);line-height:1.68;}
-
-#webinarios{padding-top:96px;padding-bottom:96px;}
-.web-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;max-width:1200px;margin:0 auto;align-items:center;}
-.web-cards{display:flex;flex-direction:column;gap:14px;} .web-card{display:flex;gap:16px;align-items:flex-start;padding:18px 20px;background:var(--card);border:1px solid var(--border);border-radius:14px;transition:all .3s;} .web-card:hover{border-color:rgba(0,184,217,.25);transform:translateX(6px);} .web-card-icon{width:42px;height:42px;border-radius:11px;background:linear-gradient(135deg,rgba(0,184,217,.2),rgba(91,46,255,.1));display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;} .web-card h4{font-family:'Poppins',sans-serif;font-size:16px;font-weight:700;margin-bottom:4px;} .web-card p{font-size:14px;color:rgba(255,255,255,.7);line-height:1.68;}
-.web-ind-box{background:linear-gradient(135deg,rgba(0,184,217,.1),rgba(91,46,255,.05));border:1px solid rgba(0,184,217,.22);border-radius:16px;padding:24px;} .web-ind-box h4{font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;color:var(--teal);margin-bottom:12px;} .web-ind-box p{font-size:15px;color:rgba(255,255,255,.72);line-height:1.75;} .web-formula{margin-top:16px;padding:14px 16px;background:rgba(255,255,255,.04);border-radius:10px;font-family:'Sora',sans-serif;font-size:13px;color:var(--teal);font-weight:600;line-height:1.6;}
-
-#dashboard{padding-top:96px;padding-bottom:96px;background:linear-gradient(180deg,transparent,rgba(91,46,255,.05),transparent);}
-.dash-header{text-align:center;max-width:720px;margin:0 auto 56px;} .dash-header .label{justify-content:center;}
-.dash-mockup{max-width:900px;margin:0 auto;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:28px;backdrop-filter:blur(8px);} .dash-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,.07);gap:14px;flex-wrap:wrap;} .dash-user{display:flex;align-items:center;gap:14px;} .dash-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--roxo),var(--teal));display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:800;font-size:16px;} .dash-user-info h4{font-family:'Poppins',sans-serif;font-size:16px;font-weight:700;} .dash-user-info p{font-size:12px;color:rgba(255,255,255,.5);} .dash-status{padding:6px 16px;border-radius:100px;font-family:'Sora',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;background:linear-gradient(135deg,rgba(94,211,140,.15),rgba(91,46,255,.1));border:1px solid rgba(94,211,140,.3);color:var(--verde);}
-.dash-inds{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px;margin-bottom:20px;} .dash-ind{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px 10px;text-align:center;} .dash-ind-num{font-family:'Sora',sans-serif;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:6px;} .dash-ind-val{font-family:'Sora',sans-serif;font-size:18px;font-weight:800;margin-bottom:4px;} .dash-ind:nth-child(1) .dash-ind-val{color:var(--roxo);} .dash-ind:nth-child(2) .dash-ind-val{color:#7044FF;} .dash-ind:nth-child(3) .dash-ind-val{color:var(--teal);} .dash-ind:nth-child(4) .dash-ind-val{color:#00D4FF;} .dash-ind:nth-child(5) .dash-ind-val{color:var(--verde);} .dash-ind:nth-child(6) .dash-ind-val{color:var(--gold);} .dash-ind:nth-child(7) .dash-ind-val{color:var(--verde);} .dash-ind-name{font-size:10px;color:rgba(255,255,255,.46);} .dash-ind.bonus-ind{background:rgba(245,158,11,.06);border-color:rgba(245,158,11,.18);} .dash-ind.final-ind{background:rgba(91,46,255,.1);border-color:rgba(91,46,255,.25);} 
-.dash-bar{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px 18px;} .dash-bar-label{font-size:12px;color:rgba(255,255,255,.52);margin-bottom:10px;} .dash-progress{height:8px;background:rgba(255,255,255,.06);border-radius:100px;overflow:hidden;} .dash-progress-fill{height:100%;width:82%;background:linear-gradient(90deg,var(--roxo),var(--teal),var(--verde));border-radius:100px;animation:pulse 3s ease-in-out infinite;} .dash-pct{font-family:'Sora',sans-serif;font-size:12px;color:var(--verde);font-weight:700;margin-top:8px;}
-
-#cta{padding-top:100px;padding-bottom:120px;text-align:center;position:relative;overflow:hidden;} #cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 50% 50%,rgba(91,46,255,.16),transparent);} .cta-inner{position:relative;z-index:2;max-width:760px;margin:0 auto;} .cta-inner .label{justify-content:center;} .cta-title{font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(40px,5.5vw,66px);line-height:1.08;letter-spacing:-1.5px;margin-bottom:20px;} .cta-title em{color:var(--teal);font-style:italic;} .cta-sub{font-size:19px;color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:44px;} .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;} .cta-note{margin-top:20px;font-size:13px;color:rgba(255,255,255,.34);}
-footer{border-top:1px solid var(--border);padding:40px 56px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;position:relative;z-index:1;font-size:14px;color:rgba(255,255,255,.4);} footer a{color:var(--teal);text-decoration:none;} .footer-logo{display:flex;align-items:center;gap:10px;}
-
-.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;z-index:200;} .nav-hamburger span{display:block;width:24px;height:2px;background:rgba(255,255,255,.8);border-radius:2px;transition:all .3s;} .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);} .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);} .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);} 
-.nav-mobile-menu{display:none;position:fixed;inset:0;background:rgba(8,6,24,.97);backdrop-filter:blur(20px);z-index:150;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:24px;} .nav-mobile-menu.open{display:flex;} .nav-mobile-menu a{color:rgba(255,255,255,.86);text-decoration:none;font-family:'Poppins',sans-serif;font-size:22px;font-weight:600;text-align:center;transition:color .2s;} .nav-mobile-menu a:hover{color:var(--teal);} .nav-mobile-menu .nav-cta{background:var(--roxo);color:#fff;padding:14px 36px;border-radius:10px;font-size:16px;}
-
-@media(max-width:1024px){
-  nav{padding:16px 24px;} nav.scrolled{padding:12px 24px;} .nav-links a:not(.nav-cta){display:none;} .nav-hamburger{display:flex;}
-  #hero{padding:96px 24px 56px;min-height:auto;} .hero-inner{grid-template-columns:1fr;gap:36px;} .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;} .hero-h1{font-size:clamp(42px,5.8vw,68px);} .hero-desc{font-size:17px;}
-  #oque,#jornada,#disc,#trilha,#indicadores,#mentorias,#casos,#dashboard,#niveis,#webinarios,#certs,#cta{padding-left:24px;padding-right:24px;}
-  .oque-header,.trilha-header,.ment-grid,.casos-grid,.niveis-grid,.web-grid,.disc-grid{grid-template-columns:1fr;gap:28px;}
-  .oque-grid,.phase-details,.cert-info-grid{grid-template-columns:1fr 1fr;}
-  .phases-row{grid-template-columns:1fr 1fr;gap:28px;} .phases-row::before,.how-row::before{display:none;}
-  .media-grid{grid-template-columns:1fr 1fr 1fr;} .comps-wrap{grid-template-columns:1fr 1fr;} .ind-grid{grid-template-columns:1fr 1fr;} .ind-row2{grid-template-columns:1fr 1fr 1fr;} .ind-card.final{grid-column:span 1;} .dash-inds{grid-template-columns:repeat(4,minmax(0,1fr));} .benefits-grid{grid-template-columns:1fr 1fr;} .cert-path{flex-wrap:wrap;justify-content:center;} footer{padding:32px 24px;}
+.disc-result-box{
+  margin-top:18px;padding:16px 18px;
+  background:linear-gradient(135deg,rgba(91,46,255,0.16),rgba(0,184,217,0.08));
+  border:1px solid rgba(91,46,255,0.3);
+  border-radius:12px;
+}
+.disc-result-box p{
+  font-size:13.5px;
+  color:rgba(255,255,255,0.9);
+  line-height:1.65;margin:0;
 }
 
-@media(max-width:767px){
-  body::before{opacity:.16;} #cv{opacity:.18;} nav{padding:14px 16px;} nav.scrolled{padding:11px 16px;}
-  #hero{padding:88px 16px 48px;min-height:auto;} .hero-inner{grid-template-columns:1fr;gap:28px;} .hero-h1{font-size:clamp(38px,9vw,54px);letter-spacing:-1.2px;} .hero-h1 .line2{font-size:.62em;} .hero-desc{font-size:16px;max-width:100%;} .hero-btns{flex-direction:column;gap:10px;} .btn{width:100%;justify-content:center;padding:14px 18px;} .hero-stats{grid-template-columns:1fr;gap:10px;} .stat-card{padding:16px 16px;gap:12px;} .stat-num{font-size:26px;min-width:44px;} .stat-txt{font-size:13px;} .hero-scroll{display:none;}
-  #oque,#jornada,#disc,#trilha,#indicadores,#mentorias,#casos,#dashboard,#niveis,#webinarios,#certs,#cta{padding-top:60px;padding-bottom:60px;padding-left:16px;padding-right:16px;}
-  .title{font-size:clamp(30px,7vw,42px);letter-spacing:-0.8px;} .sub{font-size:16px;line-height:1.75;max-width:100%;}
-  .oque-header,.trilha-header,.ment-grid,.casos-grid,.niveis-grid,.web-grid,.disc-grid,.oque-grid,.phase-details,.cert-info-grid,.media-grid,.comps-wrap,.ind-grid,.ind-row2,.benefits-grid,.disc-dims{grid-template-columns:1fr;gap:16px;} .phases-row,.how-row{grid-template-columns:1fr;gap:18px;}
-  .phase,.phase-detail,.oque-card,.disc-card,.ap-card,.media-card,.ind-card,.ment-info-card,.dash-card,.nivel-card,.web-card,.cert-info,.comps-box{padding-left:18px;padding-right:18px;}
-  .phase h3,.media-name,.ind-name,.ment-content h4,.web-card h4,.cert-info h4,.caso-example-title{font-size:18px;} .phase p,.oque-card p,.ind-desc,.ment-content p,.web-card p,.cert-info p,.caso-step p,.disc-card p,.ap-card p{font-size:14px;line-height:1.7;}
-  .formula-bar{padding:16px;gap:8px;} .f-item,.f-result{width:100%;text-align:center;} .f-op{display:none;} .dash-inds{grid-template-columns:1fr 1fr;} .cert-arrow{display:none;} .cert-path{gap:10px;} .cta-title{font-size:clamp(34px,9vw,50px);} .cta-sub{font-size:16px;line-height:1.75;} .cta-btns{flex-direction:column;} footer{padding:28px 16px;gap:10px;text-align:center;justify-content:center;}
+.ap-steps{display:flex;flex-direction:column;gap:12px;}
+.ap-step{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:14px 16px;
+  background:rgba(255,255,255,0.04);
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.08);
+}
+.ap-step-icon{
+  width:40px;height:40px;
+  border-radius:12px;
+  background:linear-gradient(135deg,rgba(91,46,255,0.35),rgba(0,184,217,0.25));
+  display:grid;place-items:center;
+  font-size:18px;flex-shrink:0;
+}
+.ap-step h5{
+  font-size:14px;font-weight:700;
+  color:#fff;margin-bottom:4px;
+}
+.ap-step p{
+  font-size:13px;
+  color:rgba(255,255,255,0.7);
+  line-height:1.6;margin:0;
 }
 
-@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation:none !important;transition:none !important;} }
+/* =========== TRILHA (claro) =========== */
+#trilha .trilha-header{
+  max-width:var(--max);
+  margin:0 auto 56px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:end;
+}
+#trilha .trilha-image{
+  max-width:var(--max);
+  margin:0 auto 48px;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  box-shadow:var(--shadow-lg);
+  aspect-ratio: 21 / 9;
+  background:linear-gradient(135deg,var(--teal),var(--green));
+}
+#trilha .trilha-image img{width:100%;height:100%;object-fit:cover;}
+
+.media-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+  max-width:var(--max);
+  margin:0 auto 48px;
+}
+.media-card{
+  padding:28px 24px;
+  border-radius:var(--radius-md);
+  background:#fff;
+  border:1px solid var(--border-light);
+  text-align:center;
+  transition:transform .25s ease, box-shadow .25s ease;
+  position:relative;
+  overflow:hidden;
+}
+.media-card:hover{
+  transform:translateY(-5px);
+  box-shadow:var(--shadow-md);
+}
+.media-icon{
+  width:56px;height:56px;
+  border-radius:16px;
+  display:grid;place-items:center;
+  font-size:26px;
+  margin:0 auto 14px;
+  background:rgba(91,46,255,0.08);
+}
+.media-card:nth-child(2) .media-icon{background:rgba(0,184,217,0.10);}
+.media-card:nth-child(3) .media-icon{background:rgba(94,211,140,0.14);}
+.media-card:nth-child(4) .media-icon{background:rgba(245,158,11,0.12);}
+.media-card:nth-child(5) .media-icon{background:rgba(74,159,255,0.12);}
+.media-card:nth-child(6) .media-icon{background:rgba(140,104,255,0.12);}
+.media-name{
+  font-family:'Poppins',sans-serif;
+  font-size:18px;font-weight:700;
+  color:var(--text-dark);
+  margin-bottom:8px;
+}
+.media-desc{
+  font-size:14px;
+  color:var(--text-muted);
+  line-height:1.65;
+  margin-bottom:12px;
+}
+.media-ind{background:rgba(91,46,255,0.10);color:var(--purple);}
+.media-card:nth-child(2) .media-ind{background:rgba(0,184,217,0.10);color:#0A82A0;}
+.media-card:nth-child(3) .media-ind{background:rgba(94,211,140,0.15);color:#2D9C5A;}
+.media-card:nth-child(4) .media-ind{background:rgba(245,158,11,0.14);color:#B87A06;}
+.media-card:nth-child(5) .media-ind{background:rgba(74,159,255,0.14);color:#2060B8;}
+.media-card:nth-child(6) .media-ind{background:rgba(140,104,255,0.14);color:var(--purple);}
+
+.comps-box{
+  max-width:var(--max);
+  margin:0 auto;
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius:var(--radius-lg);
+  padding:36px;
+  box-shadow:var(--shadow-sm);
+}
+.comps-box-title{
+  font-family:'Poppins',sans-serif;
+  font-size:22px;font-weight:800;
+  color:var(--text-dark);
+  margin-bottom:8px;
+}
+.comps-box-sub{
+  font-size:15px;
+  color:var(--text-muted);
+  margin-bottom:24px;
+  line-height:1.65;
+}
+.comps-wrap{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+.comp-pill{
+  display:flex;align-items:center;gap:10px;
+  padding:14px 16px;
+  background:var(--bg-lilac);
+  border:1px solid var(--border-light);
+  border-radius:12px;
+  transition:all .25s ease;
+}
+.comp-pill:hover{
+  border-color:var(--purple);
+  background:#fff;
+  transform:translateY(-2px);
+}
+.comp-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--purple);flex-shrink:0;
+}
+.comp-pill span{
+  font-size:14px;
+  color:var(--text-body);
+  font-weight:600;
+}
+
+.how-row{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:0;
+  max-width:var(--max);
+  margin:56px auto 0;
+  position:relative;
+}
+.how-row::before{
+  content:'';position:absolute;
+  top:30px;left:12.5%;right:12.5%;
+  height:2px;
+  background:linear-gradient(to right,var(--purple),var(--teal),var(--green));
+  z-index:0;
+}
+.how-step-item{
+  display:flex;flex-direction:column;
+  align-items:center;text-align:center;
+  padding:0 16px;
+  position:relative;z-index:1;
+}
+.how-num{
+  width:60px;height:60px;
+  border-radius:50%;
+  background:#fff;
+  border:2px solid;
+  display:grid;place-items:center;
+  font-family:'Sora',sans-serif;
+  font-size:18px;font-weight:800;
+  margin-bottom:16px;
+}
+.how-step-item:nth-child(1) .how-num{border-color:var(--purple);color:var(--purple);}
+.how-step-item:nth-child(2) .how-num{border-color:var(--purple-light);color:var(--purple-light);}
+.how-step-item:nth-child(3) .how-num{border-color:var(--teal);color:var(--teal);}
+.how-step-item:nth-child(4) .how-num{border-color:var(--green);color:var(--green);}
+.how-step-item h4{
+  font-family:'Poppins',sans-serif;
+  font-size:17px;font-weight:700;
+  color:var(--text-dark);
+  margin-bottom:8px;
+}
+.how-step-item p{
+  font-size:14px;
+  color:var(--text-muted);
+  line-height:1.65;
+}
+
+/* =========== INDICADORES (escuro) =========== */
+.ind-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:16px;
+  max-width:var(--max);
+  margin:0 auto 20px;
+}
+.ind-card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:var(--radius-md);
+  padding:26px 22px;
+  transition:transform .25s ease, border-color .25s ease;
+  position:relative;
+  backdrop-filter:blur(10px);
+}
+.ind-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(255,255,255,0.24);
+}
+.ind-card.bonus{
+  border-color:rgba(245,158,11,0.3);
+  background:rgba(245,158,11,0.06);
+}
+.ind-card.final{
+  grid-column:span 2;
+  border-color:rgba(94,211,140,0.3);
+  background:linear-gradient(135deg,rgba(94,211,140,0.1),rgba(0,184,217,0.06));
+}
+.ind-num{
+  font-family:'Sora',sans-serif;
+  font-size:11px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--teal);
+  margin-bottom:10px;
+}
+.ind-name{
+  font-family:'Poppins',sans-serif;
+  font-size:20px;font-weight:700;
+  color:#fff;
+  margin-bottom:8px;
+}
+.ind-range{
+  font-size:12px;
+  color:var(--teal);
+  font-weight:700;
+  margin-bottom:12px;
+}
+.ind-desc{
+  font-size:14px;
+  color:rgba(255,255,255,0.78);
+  line-height:1.65;
+  margin-bottom:12px;
+}
+.ind-formula{
+  font-size:12px;
+  color:rgba(255,255,255,0.5);
+  font-style:italic;
+  line-height:1.55;
+}
+.ind-badge{
+  position:absolute;
+  top:16px;right:16px;
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:9px;font-weight:700;
+}
+.badge-bonus{
+  background:rgba(245,158,11,0.2);
+  color:var(--gold);
+  border:1px solid rgba(245,158,11,0.3);
+}
+.badge-final{
+  background:rgba(94,211,140,0.2);
+  color:var(--green);
+  border:1px solid rgba(94,211,140,0.3);
+}
+.ind-row2{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+  max-width:var(--max);
+  margin:16px auto 0;
+}
+
+.formula-bar{
+  max-width:var(--max);
+  margin:32px auto 0;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:var(--radius-md);
+  padding:22px 26px;
+  display:flex;align-items:center;
+  gap:10px;flex-wrap:wrap;
+  justify-content:center;
+}
+.f-item{
+  padding:8px 14px;
+  background:rgba(91,46,255,0.18);
+  border:1px solid rgba(91,46,255,0.3);
+  border-radius:8px;
+  font-family:'Sora',sans-serif;
+  font-size:13px;font-weight:700;
+  color:var(--text-lilac);
+}
+.f-op{
+  font-size:16px;
+  color:rgba(255,255,255,0.3);
+  font-weight:700;
+}
+.f-result{
+  padding:10px 20px;
+  background:linear-gradient(135deg,var(--purple),var(--teal));
+  border-radius:8px;
+  font-family:'Sora',sans-serif;
+  font-size:13px;font-weight:800;
+  color:#fff;
+}
+.f-note{
+  font-size:12px;
+  color:rgba(255,255,255,0.5);
+  flex-basis:100%;
+  text-align:center;
+  margin-top:8px;
+  line-height:1.6;
+}
+
+/* =========== MENTORIAS (claro) =========== */
+.ment-split{
+  display:grid;
+  grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);
+  gap:56px;
+  max-width:var(--max);
+  margin:0 auto;
+  align-items:start;
+}
+.ment-image-wrap{
+  position:sticky;top:100px;
+  aspect-ratio: 4 / 5;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  box-shadow:var(--shadow-lg);
+  background:linear-gradient(135deg,var(--teal),var(--blue));
+}
+.ment-image-wrap img{width:100%;height:100%;object-fit:cover;}
+
+.ment-timeline{
+  display:flex;flex-direction:column;
+  position:relative;
+}
+.ment-timeline::before{
+  content:'';position:absolute;
+  left:22px;top:24px;bottom:24px;
+  width:2px;
+  background:linear-gradient(to bottom,var(--purple),var(--teal),var(--green),var(--gold));
+}
+.ment-item{
+  display:flex;gap:20px;
+  padding-bottom:28px;
+  position:relative;
+}
+.ment-item:last-child{padding-bottom:0;}
+.ment-dot{
+  width:46px;height:46px;
+  border-radius:50%;
+  display:grid;place-items:center;
+  font-family:'Sora',sans-serif;
+  font-size:12px;font-weight:800;
+  flex-shrink:0;
+  border:2px solid;
+  background:#fff;
+  position:relative;z-index:1;
+}
+.ment-item:nth-child(1) .ment-dot{border-color:var(--purple);color:var(--purple);}
+.ment-item:nth-child(2) .ment-dot{border-color:var(--teal);color:var(--teal);}
+.ment-item:nth-child(3) .ment-dot{border-color:var(--green);color:var(--green);}
+.ment-item:nth-child(4) .ment-dot{border-color:var(--gold);color:var(--gold);}
+.ment-content{
+  flex:1;padding-top:10px;
+}
+.ment-content h4{
+  font-family:'Poppins',sans-serif;
+  font-size:18px;font-weight:700;
+  color:var(--text-dark);
+  margin-bottom:6px;
+}
+.ment-content p{
+  font-size:14.5px;
+  color:var(--text-muted);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+.ment-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.ment-item:nth-child(1) .ment-tag{background:rgba(91,46,255,0.10);color:var(--purple);}
+.ment-item:nth-child(2) .ment-tag{background:rgba(0,184,217,0.10);color:#0A82A0;}
+.ment-item:nth-child(3) .ment-tag{background:rgba(94,211,140,0.15);color:#2D9C5A;}
+.ment-item:nth-child(4) .ment-tag{background:rgba(245,158,11,0.14);color:#B87A06;}
+
+.ment-infos{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+  max-width:var(--max);
+  margin:56px auto 0;
+}
+.ment-info-card{
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius:var(--radius-md);
+  padding:24px;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.ment-info-card:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-sm);
+}
+.ment-info-card h4{
+  font-family:'Poppins',sans-serif;
+  font-size:18px;font-weight:700;
+  color:var(--text-dark);
+  margin-bottom:10px;
+}
+.ment-info-card p{
+  font-size:14.5px;
+  color:var(--text-muted);
+  line-height:1.7;
+}
+
+.ment-impact{
+  grid-column:span 2;
+  background:linear-gradient(135deg,rgba(91,46,255,0.08),rgba(0,184,217,0.05));
+  border:1px solid rgba(91,46,255,0.18);
+  border-radius:var(--radius-md);
+  padding:28px;
+}
+.ment-impact h4{
+  font-family:'Poppins',sans-serif;
+  font-size:18px;font-weight:700;
+  color:var(--purple);
+  margin-bottom:18px;
+}
+.impact-rows{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.impact-row{
+  display:flex;align-items:center;
+  justify-content:space-between;
+  padding:12px 14px;
+  background:#fff;
+  border-radius:10px;
+  gap:12px;
+  border:1px solid var(--border-soft);
+}
+.impact-row span{
+  font-size:13.5px;
+  color:var(--text-body);
+}
+.impact-ind{
+  font-family:'Sora',sans-serif;
+  font-size:11px;font-weight:800;
+  color:var(--teal);
+  white-space:nowrap;
+  padding:3px 10px;
+  background:rgba(0,184,217,0.1);
+  border-radius:999px;
+  letter-spacing:0.5px;
+}
+
+/* =========== CASOS (claro lilás) =========== */
+.casos-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:48px;
+  max-width:var(--max);
+  margin:0 auto;
+  align-items:start;
+}
+.caso-flow{display:flex;flex-direction:column;gap:14px;}
+.caso-step{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:20px 22px;
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius:var(--radius-md);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.caso-step:hover{
+  transform:translateX(6px);
+  box-shadow:var(--shadow-sm);
+}
+.caso-step-icon{
+  width:48px;height:48px;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--green),var(--teal));
+  display:grid;place-items:center;
+  font-size:20px;color:#fff;
+  flex-shrink:0;
+}
+.caso-step h4{
+  font-family:'Poppins',sans-serif;
+  font-size:17px;font-weight:700;
+  color:var(--text-dark);
+  margin-bottom:4px;
+}
+.caso-step p{
+  font-size:14px;
+  color:var(--text-muted);
+  line-height:1.65;
+}
+
+.caso-example{
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius:var(--radius-lg);
+  padding:30px;
+  box-shadow:var(--shadow-sm);
+  border-left:5px solid var(--green);
+}
+.caso-example h5{
+  font-size:10px;font-weight:800;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--green);
+  margin-bottom:14px;
+}
+.caso-example-title{
+  font-family:'Poppins',sans-serif;
+  font-size:19px;font-weight:800;
+  color:var(--text-dark);
+  margin-bottom:20px;
+}
+.caso-rows{display:flex;flex-direction:column;gap:14px;}
+.caso-row{
+  display:flex;gap:12px;
+  font-size:14px;line-height:1.6;
+  padding-bottom:14px;
+  border-bottom:1px solid var(--border-soft);
+}
+.caso-row:last-child{border-bottom:none;padding-bottom:0;}
+.caso-row-label{
+  color:var(--text-muted);
+  font-weight:700;
+  flex-shrink:0;
+  width:130px;
+  font-size:13px;
+}
+.caso-row-val{color:var(--text-body);}
+.caso-row-val.ok{color:var(--green);font-weight:600;}
+
+.bonus-box{
+  margin-top:20px;
+  background:linear-gradient(135deg,rgba(245,158,11,0.1),rgba(94,211,140,0.08));
+  border:1px solid rgba(245,158,11,0.25);
+  border-radius:var(--radius-md);
+  padding:22px 24px;
+  display:flex;align-items:center;gap:16px;
+}
+.bonus-icon{
+  font-size:30px;flex-shrink:0;
+  width:54px;height:54px;
+  border-radius:14px;
+  background:rgba(245,158,11,0.15);
+  display:grid;place-items:center;
+}
+.bonus-box h4{
+  font-family:'Poppins',sans-serif;
+  font-size:17px;font-weight:800;
+  color:#B87A06;
+  margin-bottom:4px;
+}
+.bonus-box p{
+  font-size:14px;
+  color:var(--text-body);
+  line-height:1.65;
+}
+
+/* =========== DASHBOARD (escuro) =========== */
+.dash-mockup{
+  max-width:960px;
+  margin:0 auto;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.14);
+  border-radius:var(--radius-lg);
+  padding:30px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 30px 80px rgba(0,0,0,0.4);
+}
+.dash-top{
+  display:flex;align-items:center;
+  justify-content:space-between;
+  margin-bottom:24px;
+  padding-bottom:20px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  gap:14px;flex-wrap:wrap;
+}
+.dash-user{display:flex;align-items:center;gap:14px;}
+.dash-avatar{
+  width:50px;height:50px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--purple),var(--teal));
+  display:grid;place-items:center;
+  font-family:'Sora',sans-serif;
+  font-weight:800;font-size:16px;color:#fff;
+}
+.dash-user-info h4{
+  font-family:'Poppins',sans-serif;
+  font-size:16px;font-weight:700;
+  color:#fff;
+}
+.dash-user-info p{
+  font-size:12px;
+  color:rgba(255,255,255,0.55);
+  margin-top:2px;
+}
+.dash-status{
+  padding:6px 16px;
+  border-radius:999px;
+  font-family:'Sora',sans-serif;
+  font-size:10px;font-weight:800;
+  letter-spacing:1px;
+  background:linear-gradient(135deg,rgba(94,211,140,0.2),rgba(0,184,217,0.12));
+  border:1px solid rgba(94,211,140,0.35);
+  color:var(--green);
+}
+.dash-inds{
+  display:grid;
+  grid-template-columns:repeat(7,minmax(0,1fr));
+  gap:10px;
+  margin-bottom:20px;
+}
+.dash-ind{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:12px;
+  padding:14px 10px;text-align:center;
+}
+.dash-ind-num{
+  font-family:'Sora',sans-serif;
+  font-size:9px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:rgba(255,255,255,0.5);
+  margin-bottom:6px;
+}
+.dash-ind-val{
+  font-family:'Sora',sans-serif;
+  font-size:20px;font-weight:800;
+  margin-bottom:4px;
+}
+.dash-ind:nth-child(1) .dash-ind-val{color:var(--purple-light);}
+.dash-ind:nth-child(2) .dash-ind-val{color:#A88BFF;}
+.dash-ind:nth-child(3) .dash-ind-val{color:var(--teal);}
+.dash-ind:nth-child(4) .dash-ind-val{color:var(--blue);}
+.dash-ind:nth-child(5) .dash-ind-val{color:var(--green);}
+.dash-ind:nth-child(6) .dash-ind-val{color:var(--gold);}
+.dash-ind:nth-child(7) .dash-ind-val{color:var(--green);}
+.dash-ind-name{
+  font-size:10px;
+  color:rgba(255,255,255,0.55);
+}
+.dash-ind.bonus-ind{
+  background:rgba(245,158,11,0.08);
+  border-color:rgba(245,158,11,0.22);
+}
+.dash-ind.final-ind{
+  background:rgba(94,211,140,0.1);
+  border-color:rgba(94,211,140,0.3);
+}
+.dash-bar{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:12px;
+  padding:16px 20px;
+}
+.dash-bar-label{
+  font-size:12px;
+  color:rgba(255,255,255,0.6);
+  margin-bottom:10px;
+}
+.dash-progress{
+  height:10px;
+  background:rgba(255,255,255,0.06);
+  border-radius:999px;
+  overflow:hidden;
+}
+.dash-progress-fill{
+  height:100%;width:82%;
+  background:linear-gradient(90deg,var(--purple),var(--teal),var(--green));
+  border-radius:999px;
+  animation:pulse 3s ease-in-out infinite;
+}
+.dash-pct{
+  font-family:'Sora',sans-serif;
+  font-size:12px;
+  color:var(--green);
+  font-weight:700;
+  margin-top:10px;
+}
+
+/* =========== NÍVEIS =========== */
+.niveis-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:56px;
+  max-width:var(--max);
+  margin:0 auto;
+  align-items:start;
+}
+.level-bars{
+  display:flex;flex-direction:column;gap:16px;
+  margin-top:28px;
+}
+.lbar{
+  display:grid;
+  grid-template-columns:120px 1fr 60px;
+  gap:14px;align-items:center;
+}
+.lbar-name{
+  font-size:15px;font-weight:600;
+  color:var(--text-body);
+}
+.lbar-track{
+  height:12px;
+  background:var(--border-soft);
+  border-radius:999px;
+  overflow:hidden;
+}
+.lbar-fill{
+  height:100%;
+  border-radius:999px;
+  transition:width 1.2s ease;
+}
+.lbar:nth-child(1) .lbar-fill{width:20%;background:rgba(107,99,137,0.4);}
+.lbar:nth-child(2) .lbar-fill{width:40%;background:linear-gradient(90deg,rgba(91,46,255,0.5),rgba(91,46,255,0.35));}
+.lbar:nth-child(3) .lbar-fill{width:60%;background:linear-gradient(90deg,var(--purple),var(--purple-light));}
+.lbar:nth-child(4) .lbar-fill{width:80%;background:linear-gradient(90deg,var(--purple),var(--teal));}
+.lbar:nth-child(5) .lbar-fill{width:100%;background:linear-gradient(90deg,var(--purple),var(--teal),var(--green));}
+.lbar-pct{
+  font-family:'Sora',sans-serif;
+  font-size:13px;font-weight:800;
+  text-align:right;white-space:nowrap;
+}
+.lbar:nth-child(1) .lbar-pct{color:var(--text-muted);}
+.lbar:nth-child(2) .lbar-pct{color:var(--purple-light);}
+.lbar:nth-child(3) .lbar-pct{color:var(--purple);}
+.lbar:nth-child(4) .lbar-pct{color:var(--teal);}
+.lbar:nth-child(5) .lbar-pct{color:var(--green);}
+
+.excelencia-box{
+  margin-top:24px;
+  background:linear-gradient(135deg,rgba(94,211,140,0.1),rgba(91,46,255,0.05));
+  border:1px solid rgba(94,211,140,0.28);
+  border-radius:var(--radius-md);
+  padding:20px 24px;
+}
+.excelencia-box p{
+  font-size:15px;
+  color:var(--text-body);
+  line-height:1.7;
+}
+.excelencia-box strong{color:#2D9C5A;}
+
+.benefits-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:28px;
+}
+.bfit{
+  display:flex;gap:14px;
+  align-items:flex-start;
+  padding:20px;
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius:var(--radius-md);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.bfit:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-sm);
+}
+.bfit-icon{
+  width:44px;height:44px;
+  border-radius:12px;
+  display:grid;place-items:center;
+  font-size:22px;flex-shrink:0;
+  background:rgba(91,46,255,0.08);
+}
+.bfit:nth-child(2) .bfit-icon{background:rgba(0,184,217,0.10);}
+.bfit:nth-child(3) .bfit-icon{background:rgba(94,211,140,0.14);}
+.bfit:nth-child(4) .bfit-icon{background:rgba(245,158,11,0.12);}
+.bfit:nth-child(5) .bfit-icon{background:rgba(74,159,255,0.12);}
+.bfit:nth-child(6) .bfit-icon{background:rgba(140,104,255,0.14);}
+.bfit h4{
+  font-family:'Poppins',sans-serif;
+  font-size:16px;font-weight:700;
+  color:var(--text-dark);
+  margin-bottom:4px;
+}
+.bfit p{
+  font-size:13.5px;
+  color:var(--text-muted);
+  line-height:1.6;
+}
+
+/* =========== WEBINÁRIOS (claro lilás) =========== */
+.web-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:56px;
+  max-width:var(--max);
+  margin:0 auto;
+  align-items:center;
+}
+.web-image-wrap{
+  aspect-ratio: 4 / 5;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  box-shadow:var(--shadow-lg);
+  background:linear-gradient(135deg,var(--teal),var(--green));
+}
+.web-image-wrap img{width:100%;height:100%;object-fit:cover;}
+
+.web-cards{
+  display:flex;flex-direction:column;
+  gap:14px;margin-top:28px;
+}
+.web-card{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:20px 22px;
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius:var(--radius-md);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.web-card:hover{
+  transform:translateX(6px);
+  box-shadow:var(--shadow-sm);
+}
+.web-card-icon{
+  width:46px;height:46px;
+  border-radius:12px;
+  background:linear-gradient(135deg,var(--teal),var(--blue));
+  display:grid;place-items:center;
+  font-size:20px;color:#fff;
+  flex-shrink:0;
+}
+.web-card h4{
+  font-family:'Poppins',sans-serif;
+  font-size:17px;font-weight:700;
+  color:var(--text-dark);
+  margin-bottom:4px;
+}
+.web-card p{
+  font-size:14px;
+  color:var(--text-muted);
+  line-height:1.65;
+}
+
+.web-ind-box{
+  background:linear-gradient(135deg,rgba(0,184,217,0.1),rgba(91,46,255,0.05));
+  border:1px solid rgba(0,184,217,0.25);
+  border-radius:var(--radius-md);
+  padding:26px;
+  margin-top:20px;
+}
+.web-ind-box h4{
+  font-family:'Poppins',sans-serif;
+  font-size:17px;font-weight:700;
+  color:#0A82A0;
+  margin-bottom:10px;
+}
+.web-ind-box p{
+  font-size:14.5px;
+  color:var(--text-body);
+  line-height:1.7;
+}
+.web-formula{
+  margin-top:14px;
+  padding:14px 16px;
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius:10px;
+  font-family:'Sora',sans-serif;
+  font-size:13px;
+  color:var(--teal);
+  font-weight:700;
+  line-height:1.5;
+}
+
+/* =========== CERTS (escuro) =========== */
+.cert-path{
+  display:flex;align-items:center;justify-content:center;
+  gap:0;max-width:1000px;
+  margin:0 auto 48px;flex-wrap:wrap;
+}
+.cert-node{display:flex;flex-direction:column;align-items:center;gap:10px;}
+.cert-badge{
+  width:96px;height:96px;
+  border-radius:50%;
+  display:grid;place-items:center;
+  font-family:'Sora',sans-serif;
+  font-size:20px;font-weight:800;
+  border:2px solid;
+  background:rgba(255,255,255,0.04);
+  transition:transform .4s ease;
+  cursor:pointer;
+}
+.cert-badge:hover{transform:scale(1.1);}
+.cert-node:nth-child(1) .cert-badge{border-color:var(--purple);color:var(--purple-light);box-shadow:0 0 28px rgba(91,46,255,0.3);}
+.cert-node:nth-child(3) .cert-badge{border-color:var(--teal);color:var(--teal);box-shadow:0 0 28px rgba(0,184,217,0.25);}
+.cert-node:nth-child(5) .cert-badge{border-color:var(--green);color:var(--green);box-shadow:0 0 28px rgba(94,211,140,0.25);}
+.cert-node:nth-child(7) .cert-badge{border-color:var(--gold);color:var(--gold);box-shadow:0 0 28px rgba(245,158,11,0.25);}
+.cert-label{
+  font-family:'Poppins',sans-serif;
+  font-size:13px;font-weight:700;
+  color:rgba(255,255,255,0.75);
+}
+.cert-arrow{
+  font-size:24px;
+  color:rgba(255,255,255,0.25);
+  margin:0 8px;
+  padding-bottom:24px;
+}
+
+.cert-info-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  max-width:var(--max);
+  margin:0 auto;
+}
+.cert-info{
+  padding:24px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:var(--radius-md);
+  transition:transform .25s ease, border-color .25s ease;
+  backdrop-filter:blur(10px);
+}
+.cert-info:hover{
+  transform:translateY(-3px);
+  border-color:rgba(255,255,255,0.22);
+}
+.cert-info-num{
+  font-family:'Sora',sans-serif;
+  font-size:11px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  margin-bottom:10px;
+}
+.cert-info:nth-child(1) .cert-info-num{color:var(--purple-light);}
+.cert-info:nth-child(2) .cert-info-num{color:var(--teal);}
+.cert-info:nth-child(3) .cert-info-num{color:var(--green);}
+.cert-info:nth-child(4) .cert-info-num{color:var(--gold);}
+.cert-info h4{
+  font-family:'Poppins',sans-serif;
+  font-size:18px;font-weight:700;
+  color:#fff;
+  margin-bottom:10px;
+}
+.cert-info p{
+  font-size:14px;
+  color:rgba(255,255,255,0.72);
+  line-height:1.65;
+}
+
+/* =========== CTA FINAL =========== */
+#cta{
+  padding:var(--section-space) 0 140px;
+  background:var(--bg-white);
+}
+.cta-panel{
+  max-width:var(--max);
+  margin:0 auto;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(0,184,217,0.28), transparent 45%),
+    radial-gradient(circle at 15% 85%, rgba(94,211,140,0.2), transparent 40%),
+    linear-gradient(135deg, var(--purple) 0%, var(--purple-deep) 100%);
+  border-radius:var(--radius-xl);
+  padding:70px 40px;
+  color:#fff;
+  text-align:center;
+  box-shadow:var(--shadow-lg);
+  position:relative;
+  overflow:hidden;
+}
+.cta-panel::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size:60px 60px;
+  opacity:0.55;pointer-events:none;
+}
+.cta-inner{position:relative;z-index:2;max-width:780px;margin:0 auto;}
+.cta-title{
+  font-family:'Poppins',sans-serif;
+  font-weight:800;
+  font-size:clamp(34px,4.2vw,56px);
+  line-height:1.1;
+  letter-spacing:-0.02em;
+  margin-bottom:20px;
+  color:#fff;
+}
+.cta-title em{
+  color:var(--teal);
+  font-style:italic;
+}
+.cta-sub{
+  font-size:17px;
+  color:rgba(255,255,255,0.85);
+  line-height:1.75;
+  margin-bottom:40px;
+}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.cta-note{
+  margin-top:22px;
+  font-size:13px;
+  color:rgba(255,255,255,0.5);
+}
+
+/* =========== FOOTER =========== */
+footer{
+  background:var(--bg-white);
+  border-top:1px solid var(--border-soft);
+  padding:40px 0;
+  color:var(--text-muted);
+  font-size:14px;
+}
+.footer-row{
+  max-width:calc(var(--max) + (var(--gutter) * 2));
+  margin:0 auto;
+  padding:0 var(--gutter);
+  display:flex;align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;gap:18px;
+}
+.footer-brand{
+  display:flex;align-items:center;gap:12px;
+}
+.footer-logo{height:36px;width:auto;display:block;}
+.footer-logo-text{
+  font-family:'Poppins',sans-serif;
+  font-weight:800;font-size:18px;
+  color:var(--text-dark);
+  letter-spacing:-0.02em;
+}
+.footer-logo-text em{
+  font-style:normal;font-weight:400;
+  opacity:0.6;font-size:12px;margin:0 2px;
+}
+footer a{
+  color:var(--purple);
+  transition:color .2s;
+}
+footer a:hover{color:var(--teal);}
+.footer-right{
+  display:flex;gap:24px;flex-wrap:wrap;
+  align-items:center;
+}
+
+/* =========== RESPONSIVE =========== */
+@media (max-width: 1024px){
+  :root{--section-space:80px;}
+  nav{padding:12px 24px;}
+  nav.scrolled{padding:10px 24px;}
+  .nav-links a:not(.nav-cta){display:none;}
+  .nav-links{gap:14px;}
+  .nav-hamburger{display:flex;}
+  .hero-inner,
+  #oque .section-header-split,
+  #trilha .trilha-header,
+  #disc .disc-split,
+  .ment-split,
+  .casos-grid,
+  .niveis-grid,
+  .web-grid{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+  .ment-image-wrap{position:relative;top:0;max-width:500px;margin:0 auto;}
+  .hero-image-wrap,
+  .disc-image-wrap,
+  .web-image-wrap{max-width:500px;margin:0 auto;}
+  .oque-grid,
+  .phase-details,
+  .cert-info-grid,
+  .ind-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+  .phases-row{grid-template-columns:repeat(2,1fr);gap:32px;}
+  .phases-row::before,.how-row::before{display:none;}
+  .media-grid{grid-template-columns:repeat(3,1fr);}
+  .comps-wrap{grid-template-columns:1fr 1fr;}
+  .ind-card.final{grid-column:span 2;}
+  .ind-row2{grid-template-columns:1fr;}
+  .dash-inds{grid-template-columns:repeat(4,1fr);}
+  .benefits-grid{grid-template-columns:1fr 1fr;}
+  .impact-rows{grid-template-columns:1fr;}
+  .cert-path{gap:10px;}
+  .hero-stats-float{
+    position:relative;bottom:auto;left:auto;right:auto;
+    margin-top:20px;
+  }
+}
+
+@media (max-width: 767px){
+  :root{--section-space:64px;--gutter:16px;}
+  nav{padding:12px 16px;}
+  nav.scrolled{padding:10px 16px;}
+  .brand-logo{height:38px;}
+  .footer-logo{height:30px;}
+  #hero{padding:100px 0 60px;min-height:auto;}
+  .hero-inner{padding:0 16px;gap:32px;}
+  .hero-h1{font-size:clamp(34px,8vw,48px);}
+  .hero-h1 .line2{font-size:0.55em;}
+  .hero-desc{font-size:16px;}
+  .hero-btns{flex-direction:column;}
+  .btn{width:100%;}
+  .hero-stats-float{
+    grid-template-columns:1fr 1fr;gap:14px;
+    padding:16px;
+  }
+  .hero-stat{border-right:none;padding:0;}
+  .hero-stat:nth-child(1),
+  .hero-stat:nth-child(2){border-bottom:1px solid var(--border-light);padding-bottom:14px;}
+  .hero-scroll{display:none;}
+  .oque-grid,
+  .phase-details,
+  .phases-row,
+  .how-row,
+  .cert-info-grid,
+  .ind-grid,
+  .ind-row2,
+  .media-grid,
+  .comps-wrap,
+  .benefits-grid,
+  .disc-dims{grid-template-columns:1fr;gap:16px;}
+  .ind-card.final{grid-column:span 1;}
+  .dash-mockup{padding:20px;}
+  .dash-inds{grid-template-columns:repeat(2,1fr);}
+  .formula-bar{padding:16px;gap:8px;}
+  .f-item,.f-result{width:100%;text-align:center;}
+  .f-op{display:none;}
+  .cert-arrow{display:none;}
+  .cta-panel{padding:48px 24px;}
+  .cta-btns{flex-direction:column;}
+  .footer-row{flex-direction:column;align-items:flex-start;text-align:left;}
+  .footer-right{flex-direction:column;align-items:flex-start;gap:10px;}
+  .caso-row{flex-direction:column;gap:4px;}
+  .caso-row-label{width:auto;}
+  .lbar{grid-template-columns:100px 1fr 48px;}
+  .ment-impact{grid-column:span 1;}
+  .ment-infos{grid-template-columns:1fr;}
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation:none !important;transition:none !important;}
+}
 </style>
 </head>
 <body>
 
-<canvas id="cv"></canvas>
-
+<!-- ============ NAV ============ -->
 <nav id="nav">
-  <a href="index.html" class="nav-logo" aria-label="Voltar para a home ECO do BEM">
-    <div class="logo-box">eco</div>
-    <div class="logo-txt">ECO <em>Líderes</em></div>
+  <a href="index.html" class="nav-logo" aria-label="Voltar para a home ECO do B.E.M.">
+    <img src="img/logo-branco.png" alt="ECO do B.E.M." class="brand-logo"
+         onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;>eco <em>do</em> bem<span class=&quot;prod&quot;>| Líderes</span></span>';" />
   </a>
   <div class="nav-links">
-    <a href="index.html">Home ECO do BEM</a>
+    <a href="index.html">Home</a>
     <a href="#jornada">Jornada</a>
-    <a href="#disc">DISC</a>
+    <a href="#disc">Diagnóstico</a>
     <a href="#trilha">Conteúdos</a>
     <a href="#indicadores">Indicadores</a>
     <a href="#mentorias">Mentorias</a>
     <a href="#certs">Certificações</a>
-    <a href="index.html" class="nav-cta">Voltar para a home</a>
+    <a href="#cta" class="nav-cta">Fale com a equipe</a>
   </div>
   <button class="nav-hamburger" id="hamburger" aria-label="Abrir menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 <div class="nav-mobile-menu" id="mobileMenu">
-  <a href="index.html" class="mobile-link">Home ECO do BEM</a>
+  <a href="index.html" class="mobile-link">Home</a>
   <a href="#jornada" class="mobile-link">Jornada</a>
-  <a href="#disc" class="mobile-link">DISC</a>
+  <a href="#disc" class="mobile-link">Diagnóstico</a>
   <a href="#trilha" class="mobile-link">Conteúdos</a>
   <a href="#indicadores" class="mobile-link">Indicadores</a>
   <a href="#mentorias" class="mobile-link">Mentorias</a>
   <a href="#certs" class="mobile-link">Certificações</a>
-  <a href="index.html" class="nav-cta mobile-link" style="margin-top:8px;">Voltar para a home</a>
+  <a href="#cta" class="nav-cta mobile-link" style="margin-top:8px;">Fale com a equipe</a>
 </div>
 
+<!-- ============ HERO ============ -->
 <section id="hero">
-  <div class="hero-glow g1"></div>
-  <div class="hero-glow g2"></div>
-  <div class="hero-glow g3"></div>
-  <div class="hero-grid"></div>
   <div class="hero-inner">
     <div class="hero-left">
-      <div class="hero-badge"><div class="badge-dot"></div><span class="badge-txt">Produto oficial da ECO do BEM</span></div>
+      <div class="hero-badge">
+        <div class="badge-dot"></div>
+        <span class="badge-txt">Produto oficial da ECO do B.E.M.</span>
+      </div>
       <h1 class="hero-h1">
-        ECO <span class="grad">Líderes</span><br>
-        <span class="line2">Certificação de liderança com desenvolvimento real</span>
+        ECO <span class="grad">Líderes</span>
+        <span class="line2">Certificação de liderança com desenvolvimento real.</span>
       </h1>
-      <p class="hero-desc">O ECO Líderes é um produto da ECO do BEM criado para desenvolver líderes com método, acompanhamento e evidência de evolução. Em um ciclo de 6 meses, cada participante percorre uma jornada com diagnóstico individual, conteúdos imersivos, mentorias mensais e indicadores que mostram, com clareza, o progresso construído ao longo do processo.</p>
+      <p class="hero-desc">
+        O ECO Líderes é um produto da ECO do B.E.M. criado para desenvolver líderes com método, acompanhamento e evidência de evolução. Em um ciclo de 6 meses, cada participante percorre uma jornada com diagnóstico individual, conteúdos imersivos, mentorias mensais e indicadores que mostram, com clareza, o progresso construído ao longo do processo.
+      </p>
       <div class="hero-btns">
-        <a href="#jornada" class="btn btn-p">Conhecer a jornada <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        <a href="index.html" class="btn btn-s">Voltar para a home</a>
+        <a href="#jornada" class="btn btn-p">
+          Conhecer a jornada
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="index.html" class="btn btn-ghost-dark">Voltar para a home</a>
       </div>
     </div>
-    <div class="hero-stats">
-      <div class="stat-card rv">
-        <div class="stat-num p">6</div>
-        <div class="stat-div"></div>
-        <div class="stat-txt"><strong>meses de jornada estruturada</strong><br>com acompanhamento contínuo e desenvolvimento progressivo</div>
-      </div>
-      <div class="stat-card rv rv1">
-        <div class="stat-num t">7</div>
-        <div class="stat-div"></div>
-        <div class="stat-txt"><strong>indicadores de evolução</strong><br>atualizados ao longo do programa para mostrar o progresso real</div>
-      </div>
-      <div class="stat-card rv rv2">
-        <div class="stat-num g">6</div>
-        <div class="stat-div"></div>
-        <div class="stat-txt"><strong>mentorias individuais</strong><br>com especialista para orientar cada etapa da jornada</div>
-      </div>
-      <div class="stat-card rv rv3">
-        <div class="stat-num p">4</div>
-        <div class="stat-div"></div>
-        <div class="stat-txt"><strong>fases de desenvolvimento</strong><br>que conduzem do diagnóstico inicial à certificação final</div>
-      </div>
-    </div>
-  </div>
-  <div class="hero-scroll"><div class="scroll-line"></div>-</div>
-</section>
 
-<section id="oque">
-  <div class="oque-header">
-    <div>
-      <div class="label rv">Sobre o produto</div>
-      <h2 class="title rv">ECO Líderes: um produto da ECO do BEM para formar líderes mais preparados</h2>
-    </div>
-    <p class="sub rv">O ECO Líderes é uma jornada de desenvolvimento humano corporativo completo. Ele combina ciência comportamental, curadoria de conteúdos, acompanhamento individual e aplicação prática para que o aprendizado realmente chegue à rotina da liderança.</p>
-  </div>
-  <div class="oque-grid">
-    <div class="oque-card rv">
-      <div class="oque-icon">🧬</div>
-      <h4>Diagnóstico inicial</h4>
-      <p>O programa começa com um assessment completo para identificar perfil comportamental, autopercepção e os principais gaps de liderança.</p>
-      <div class="oque-pill" style="background:rgba(91,46,255,.18);color:#A88BFF;border:1px solid rgba(91,46,255,.25);">Base do plano individual</div>
-    </div>
-    <div class="oque-card rv rv1">
-      <div class="oque-icon">🎬</div>
-      <h4>Conteúdos imersivos</h4>
-      <p>Filmes, vídeos, podcasts, TED Talks, livros e exercícios ajudam a transformar o estudo em reflexão e mudança comportamental.</p>
-      <div class="oque-pill" style="background:rgba(0,184,217,.14);color:var(--teal);border:1px solid rgba(0,184,217,.22);">Aprendizagem viva</div>
-    </div>
-    <div class="oque-card rv rv2">
-      <div class="oque-icon">🤝</div>
-      <h4>Mentoria individual</h4>
-      <p>Cada participante conta com mentorias mensais para interpretar resultados, ajustar rotas e aprofundar sua evolução como líder.</p>
-      <div class="oque-pill" style="background:rgba(94,211,140,.12);color:var(--verde);border:1px solid rgba(94,211,140,.2);">Acompanhamento real</div>
-    </div>
-    <div class="oque-card rv rv3">
-      <div class="oque-icon">📊</div>
-      <h4>Progresso acompanhado</h4>
-      <p>Os indicadores do programa ajudam a visualizar o quanto o desenvolvimento está avançando, com clareza para o participante e para a empresa.</p>
-      <div class="oque-pill" style="background:rgba(245,158,11,.12);color:var(--gold);border:1px solid rgba(245,158,11,.2);">Evolução mensurável</div>
-    </div>
-  </div>
-</section>
-
-<section id="jornada">
-  <div class="jornada-header">
-    <div class="label rv">Jornada do programa</div>
-    <h2 class="title rv">Uma trilha estruturada para desenvolver liderança com consistência</h2>
-    <p class="sub rv">Ao longo de 6 meses, o participante percorre fases bem definidas. Isso traz clareza, direção e segurança para o desenvolvimento, do começo ao encerramento do ciclo.</p>
-  </div>
-  <div class="phases-row">
-    <div class="phase rv">
-      <div class="phase-circle">🔍</div>
-      <div class="phase-num">Fase 1 · Início do ciclo</div>
-      <h3>Assessment</h3>
-      <p>Levantamento do perfil do líder, com diagnóstico comportamental, autopercepção e definição do plano individual de desenvolvimento.</p>
-      <div class="phase-tag" style="background:rgba(91,46,255,.18);color:#A88BFF;border:1px solid rgba(91,46,255,.25);">Diagnóstico</div>
-    </div>
-    <div class="phase rv rv1">
-      <div class="phase-circle">📚</div>
-      <div class="phase-num">Fase 2 · Desenvolvimento</div>
-      <h3>Trilha de conteúdos</h3>
-      <p>Estudo das competências priorizadas, avaliações, tarefas práticas e acompanhamento contínuo ao longo das mentorias.</p>
-      <div class="phase-tag" style="background:rgba(0,184,217,.14);color:var(--teal);border:1px solid rgba(0,184,217,.22);">Aprendizagem</div>
-    </div>
-    <div class="phase rv rv2">
-      <div class="phase-circle">🚀</div>
-      <div class="phase-num">Fase 3 · Aplicação</div>
-      <h3>Prática no contexto real</h3>
-      <p>O aprendizado sai do ambiente de estudo e passa a ser testado, aplicado e comprovado na rotina da liderança.</p>
-      <div class="phase-tag" style="background:rgba(94,211,140,.12);color:var(--verde);border:1px solid rgba(94,211,140,.2);">Aplicação prática</div>
-    </div>
-    <div class="phase rv rv3">
-      <div class="phase-circle">🏆</div>
-      <div class="phase-num">Fase 4 · Encerramento</div>
-      <h3>Certificação</h3>
-      <p>Avaliação final da jornada, leitura dos indicadores, feedback do mentor e reconhecimento da evolução conquistada.</p>
-      <div class="phase-tag" style="background:rgba(245,158,11,.12);color:var(--gold);border:1px solid rgba(245,158,11,.2);">Reconhecimento</div>
-    </div>
-  </div>
-  <div class="phase-details">
-    <div class="pd-card rv">
-      <div class="pd-label" style="color:var(--roxo)">Assessment</div>
-      <ul class="pd-list">
-        <li>Teste comportamental</li>
-        <li>Leitura de autopercepção</li>
-        <li>Análise de gaps de liderança</li>
-        <li>Plano Individual de Desenvolvimento</li>
-        <li>Direcionamento inicial da trilha</li>
-      </ul>
-    </div>
-    <div class="pd-card rv rv1">
-      <div class="pd-label" style="color:var(--teal)">Desenvolvimento</div>
-      <ul class="pd-list">
-        <li>Conteúdos variados por competência</li>
-        <li>Avaliações de conhecimento</li>
-        <li>Tarefas práticas entre mentorias</li>
-        <li>Reforço por webinários e eventos</li>
-        <li>Acompanhamento do mentor</li>
-      </ul>
-    </div>
-    <div class="pd-card rv rv2">
-      <div class="pd-label" style="color:var(--verde)">Aplicação</div>
-      <ul class="pd-list">
-        <li>Transferência para a rotina do líder</li>
-        <li>Registro de mudanças percebidas</li>
-        <li>Evidências de resultados alcançados</li>
-        <li>Documentação de casos de sucesso</li>
-        <li>Validação junto ao mentor</li>
-      </ul>
-    </div>
-    <div class="pd-card rv rv3">
-      <div class="pd-label" style="color:var(--gold)">Certificação</div>
-      <ul class="pd-list">
-        <li>Leitura final dos indicadores</li>
-        <li>Feedback de evolução do ciclo</li>
-        <li>Certificado digital</li>
-        <li>Reconhecimento do nível alcançado</li>
-        <li>Possibilidade de novo ciclo de crescimento</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="disc">
-  <div style="max-width:1200px;margin:0 auto 48px;">
-    <div class="label rv">Diagnóstico individual</div>
-    <h2 class="title rv">Teste Comportamental + Autopercepção: o início do desenvolvimento</h2>
-    <p class="sub rv">O ECO Líderes parte do princípio de que o desenvolvimento só faz sentido quando começa pelo entendimento real do líder. Por isso, o assessment não é um detalhe do programa — ele é a base da jornada.</p>
-  </div>
-  <div class="disc-grid">
-    <div>
-      <div class="disc-card rv">
-        <h3>Teste Comportamental</h3>
-        <p>O O teste comportamental ajuda a identificar o estilo predominante do participante e como ele tende a agir, decidir, influenciar e lidar com a rotina da liderança. Um dos testes que usamos é o DISC:</p>
-        <div class="disc-dims">
-          <div class="disc-dim d"><div class="disc-dim-letter">D</div><h5>Dominância</h5><p>Energia para decisão, desafio e foco em resultado.</p></div>
-          <div class="disc-dim i"><div class="disc-dim-letter">I</div><h5>Influência</h5><p>Comunicação, sociabilidade e mobilização de pessoas.</p></div>
-          <div class="disc-dim s"><div class="disc-dim-letter">S</div><h5>Estabilidade</h5><p>Consistência, cooperação e equilíbrio emocional.</p></div>
-          <div class="disc-dim c"><div class="disc-dim-letter">C</div><h5>Conformidade</h5><p>Análise, precisão, cuidado e busca por qualidade.</p></div>
+    <div class="hero-visual">
+      <div class="hero-image-wrap">
+        <!-- Nova imagem: lideres-hero.jpg (ver guia) -->
+        <img src="img/lideres-hero.jpg"
+             alt="Líder em jornada de desenvolvimento, momento de crescimento profissional"
+             class="hero-image"
+             onerror="this.style.display='none'" />
+      </div>
+      <div class="hero-stats-float">
+        <div class="hero-stat">
+          <strong>6</strong>
+          <span>meses de jornada</span>
         </div>
-        <div class="disc-result-box"><p>O resultado do DISC oferece uma leitura clara do perfil do líder e cria uma base mais segura para priorizar competências e orientar o desenvolvimento.</p></div>
-      </div>
-    </div>
-    <div>
-      <div class="ap-card rv rv1">
-        <h3>Autopercepção</h3>
-        <p>Além dos testes comportamentais, o participante avalia a própria percepção sobre suas competências. O cruzamento dessas informações amplia o autoconhecimento e ajuda a construir um plano mais coerente.</p>
-        <div class="ap-steps">
-          <div class="ap-step"><div class="ap-step-icon">📝</div><div><h5>Autoavaliação</h5><p>Leitura individual das próprias competências e desafios.</p></div></div>
-          <div class="ap-step"><div class="ap-step-icon">🔄</div><div><h5>Cruzamento de dados</h5><p>Comparação entre como o líder se vê e o que o perfil comportamental revela.</p></div></div>
-          <div class="ap-step"><div class="ap-step-icon">💡</div><div><h5>Insights de desenvolvimento</h5><p>Identificação de pontos fortes, lacunas e oportunidades de crescimento.</p></div></div>
-          <div class="ap-step"><div class="ap-step-icon">🎯</div><div><h5>Plano individual</h5><p>Definição das competências e da trilha que vão orientar o ciclo.</p></div></div>
+        <div class="hero-stat">
+          <strong>7</strong>
+          <span>indicadores</span>
+        </div>
+        <div class="hero-stat">
+          <strong>6</strong>
+          <span>mentorias individuais</span>
+        </div>
+        <div class="hero-stat">
+          <strong>4</strong>
+          <span>fases estruturadas</span>
         </div>
       </div>
     </div>
   </div>
-</section>
-
-<section id="trilha">
-  <div class="trilha-header">
-    <div>
-      <div class="label rv">Conteúdos da jornada</div>
-      <h2 class="title rv">Aprendizagem em múltiplos formatos</h2>
-    </div>
-    <p class="sub rv">O ECO Líderes trabalha as competências da liderança com uma grande curadoria de diferentes formatos de conteúdo. Você aprende se divertindo. Isso torna a jornada mais dinâmica, mais humana e mais aderente aos estilos de aprendizagem de cada participante.</p>
-  </div>
-  <div class="media-grid">
-    <div class="media-card filme rv"><span class="media-icon">🎬</span><div class="media-name">Filmes</div><div class="media-desc">Narrativas que favorecem reflexão, identificação e mudança de olhar sobre liderança.</div><div class="media-ind" style="background:rgba(91,46,255,.18);color:#A88BFF;border:1px solid rgba(91,46,255,.25);">Conteúdo imersivo</div></div>
-    <div class="media-card video rv rv1"><span class="media-icon">▶️</span><div class="media-name">Vídeos</div><div class="media-desc">Aulas e materiais visuais que apoiam a compreensão direta dos temas trabalhados.</div><div class="media-ind" style="background:rgba(0,184,217,.14);color:var(--teal);border:1px solid rgba(0,184,217,.22);">Aprendizagem guiada</div></div>
-    <div class="media-card podcast rv rv2"><span class="media-icon">🎙️</span><div class="media-name">Podcasts</div><div class="media-desc">Conteúdos em áudio que podem ser consumidos com flexibilidade, sem perder profundidade.</div><div class="media-ind" style="background:rgba(94,211,140,.12);color:var(--verde);border:1px solid rgba(94,211,140,.2);">Rotina prática</div></div>
-    <div class="media-card ted rv rv1"><span class="media-icon">🎤</span><div class="media-name">TED Talks</div><div class="media-desc">Ideias relevantes sobre comportamento, liderança, inovação e influência.</div><div class="media-ind" style="background:rgba(245,158,11,.12);color:var(--gold);border:1px solid rgba(245,158,11,.2);">Reflexão ampliada</div></div>
-    <div class="media-card livro rv rv2"><span class="media-icon">📚</span><div class="media-name">Livros</div><div class="media-desc">Obras selecionadas para aprofundar repertório, consciência e prática gerencial.</div><div class="media-ind" style="background:rgba(91,46,255,.18);color:#A88BFF;border:1px solid rgba(91,46,255,.25);">Base conceitual</div></div>
-    <div class="media-card exercicio rv rv3"><span class="media-icon">✏️</span><div class="media-name">Exercícios</div><div class="media-desc">Atividades que ajudam a consolidar o aprendizado e transformá-lo em ação concreta.</div><div class="media-ind" style="background:rgba(0,184,217,.14);color:var(--teal);border:1px solid rgba(0,184,217,.22);">Aplicação prática</div></div>
-  </div>
-  <div class="comps-box rv">
-    <div class="comps-box-title">Competências trabalhadas ao longo da trilha</div>
-    <div class="comps-box-sub">A jornada pode priorizar diferentes competências de liderança conforme o diagnóstico de cada participante.</div>
-    <div class="comps-wrap">
-      <div class="comp-pill"><div class="comp-dot"></div><span>Comunicação Assertiva</span></div>
-      <div class="comp-pill"><div class="comp-dot" style="background:var(--teal)"></div><span>Inteligência Emocional</span></div>
-      <div class="comp-pill"><div class="comp-dot" style="background:var(--verde)"></div><span>Tomada de Decisão</span></div>
-      <div class="comp-pill"><div class="comp-dot"></div><span>Gestão de Conflitos</span></div>
-      <div class="comp-pill"><div class="comp-dot" style="background:var(--teal)"></div><span>Gestão de Pessoas</span></div>
-      <div class="comp-pill"><div class="comp-dot" style="background:var(--verde)"></div><span>Visão Estratégica</span></div>
-      <div class="comp-pill"><div class="comp-dot"></div><span>Adaptabilidade</span></div>
-      <div class="comp-pill"><div class="comp-dot" style="background:var(--teal)"></div><span>Cultura Organizacional</span></div>
-      <div class="comp-pill"><div class="comp-dot" style="background:var(--verde)"></div><span>Liderança de Alto Impacto</span></div>
-    </div>
-  </div>
-  <div class="how-row">
-    <div class="how-step-item rv"><div class="how-num">1</div><h4>Aprender</h4><p>Entrar em contato com conteúdos que ampliam repertório e consciência.</p></div>
-    <div class="how-step-item rv rv1"><div class="how-num">2</div><h4>Refletir</h4><p>Relacionar os temas estudados aos desafios concretos da própria liderança.</p></div>
-    <div class="how-step-item rv rv2"><div class="how-num">3</div><h4>Aplicar</h4><p>Testar novas atitudes, conversas e formas de atuação no dia a dia.</p></div>
-    <div class="how-step-item rv rv3"><div class="how-num">4</div><h4>Consolidar</h4><p>Registrar resultados, discutir com o mentor e sustentar o aprendizado no tempo.</p></div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>explore</span>
   </div>
 </section>
 
-<section id="indicadores">
-  <div class="ind-header">
-    <div class="label">Indicadores do programa</div>
-    <h2 class="title rv">Evolução acompanhada com mais clareza</h2>
-    <p class="sub rv" style="margin:0 auto">Os indicadores ajudam a acompanhar o percurso do participante e a dar visibilidade para o que está sendo desenvolvido ao longo do ciclo.</p>
-  </div>
-  <div class="ind-grid">
-    <div class="ind-card rv"><div class="ind-badge badge-final" style="background:rgba(91,46,255,.18);color:#A88BFF;border:1px solid rgba(91,46,255,.25);">Participação</div><div class="ind-num">Indicador 1</div><div class="ind-name">Webinars & Eventos</div><div class="ind-range">0 – 100%</div><div class="ind-desc">Acompanha a participação do líder em webinários, eventos e encontros coletivos do programa.</div><div class="ind-formula">Presença e engajamento em atividades coletivas</div></div>
-    <div class="ind-card rv rv1"><div class="ind-badge badge-final" style="background:rgba(0,184,217,.15);color:var(--teal);border:1px solid rgba(0,184,217,.25);">Conhecimento</div><div class="ind-num">Indicador 2</div><div class="ind-name">Avaliações</div><div class="ind-range">0 – 100%</div><div class="ind-desc">Mede a compreensão dos conteúdos e o avanço no domínio dos temas trabalhados na trilha.</div><div class="ind-formula">Resultados das avaliações de conhecimento</div></div>
-    <div class="ind-card rv rv2"><div class="ind-badge badge-final" style="background:rgba(94,211,140,.12);color:var(--verde);border:1px solid rgba(94,211,140,.2);">Trilha</div><div class="ind-num">Indicador 3</div><div class="ind-name">Competências</div><div class="ind-range">0 – 100%</div><div class="ind-desc">Reflete o avanço do participante sobre as competências definidas em sua trilha de desenvolvimento.</div><div class="ind-formula">Progresso na conclusão dos conteúdos da trilha</div></div>
-    <div class="ind-card rv rv3"><div class="ind-badge badge-final" style="background:rgba(245,158,11,.12);color:var(--gold);border:1px solid rgba(245,158,11,.2);">Execução</div><div class="ind-num">Indicador 4</div><div class="ind-name">Tarefas</div><div class="ind-range">0 – 100%</div><div class="ind-desc">Acompanha a execução das tarefas práticas propostas entre uma mentoria e outra.</div><div class="ind-formula">Entregas realizadas no percurso do ciclo</div></div>
-  </div>
-  <div class="ind-row2">
-    <div class="ind-card rv"><div class="ind-num">Indicador 5</div><div class="ind-name">Engajamento</div><div class="ind-range">0 – 100%</div><div class="ind-desc">Consolida a percepção do mentor sobre o envolvimento, a constância e a evolução do líder durante a jornada.</div><div class="ind-formula">Leitura qualitativa convertida em progresso</div></div>
-    <div class="ind-card bonus rv rv1"><div class="ind-badge badge-bonus">Bônus</div><div class="ind-num">Indicador 6</div><div class="ind-name">Aplicabilidade</div><div class="ind-range">Bônus</div><div class="ind-desc">Reconhece a capacidade de aplicar o aprendizado na prática e transformar conhecimento em resultado real.</div><div class="ind-formula">Validação dos casos de sucesso e da aplicação prática</div></div>
-    <div class="ind-card final rv rv2"><div class="ind-badge badge-final">Síntese</div><div class="ind-num">Indicador 7</div><div class="ind-name">Engajamento Final</div><div class="ind-range">0 – 100%</div><div class="ind-desc">Reúne a visão global do desenvolvimento no ciclo e serve como base para o reconhecimento final do participante.</div><div class="ind-formula">Leitura integrada dos principais indicadores do percurso</div></div>
-  </div>
-  <div class="formula-bar rv">
-    <span class="f-item">Participação</span>
-    <span class="f-op">+</span>
-    <span class="f-item">Conhecimento</span>
-    <span class="f-op">+</span>
-    <span class="f-item">Competências</span>
-    <span class="f-op">+</span>
-    <span class="f-item">Tarefas</span>
-    <span class="f-op">+</span>
-    <span class="f-item">Engajamento</span>
-    <span class="f-op">→</span>
-    <span class="f-result">Leitura final do ciclo</span>
-    <div class="f-note">O objetivo não é apenas medir presença, mas acompanhar desenvolvimento, consistência e aplicação prática ao longo da jornada.</div>
-  </div>
-</section>
-
-<section id="mentorias">
-  <div style="max-width:1200px;margin:0 auto 56px;">
-    <div class="label rv">Mentorias individuais</div>
-    <h2 class="title rv">Acompanhamento próximo para sustentar a evolução</h2>
-    <p class="sub rv">As mentorias são um dos diferenciais do ECO Líderes. Elas ajudam o participante a interpretar a jornada, lidar com os desafios do contexto real e transformar aprendizado em ação consistente.</p>
-  </div>
-  <div class="ment-grid">
-    <div class="ment-timeline">
-      <div class="ment-item rv"><div class="ment-dot">M1</div><div class="ment-content"><h4>1ª mentoria — assessment</h4><p>Momento de leitura do diagnóstico, entendimento do perfil e definição do plano individual que orientará todo o ciclo.</p><div class="ment-tags"><div class="ment-tag" style="background:rgba(91,46,255,.18);color:#A88BFF;border:1px solid rgba(91,46,255,.25);">Início da jornada</div></div></div></div>
-      <div class="ment-item rv rv1"><div class="ment-dot">M2–4</div><div class="ment-content"><h4>Mentorias de desenvolvimento</h4><p>Encontros voltados a revisar progresso, discutir conteúdos, ajustar foco e fortalecer a execução das tarefas práticas.</p><div class="ment-tags"><div class="ment-tag" style="background:rgba(0,184,217,.14);color:var(--teal);border:1px solid rgba(0,184,217,.22);">Acompanhamento contínuo</div></div></div></div>
-      <div class="ment-item rv rv2"><div class="ment-dot">M5–6</div><div class="ment-content"><h4>Mentorias de aplicação</h4><p>Fase em que o foco se volta para a aplicação do aprendizado, a análise dos resultados e a consolidação dos casos de sucesso.</p><div class="ment-tags"><div class="ment-tag" style="background:rgba(94,211,140,.12);color:var(--verde);border:1px solid rgba(94,211,140,.2);">Transferência para a prática</div></div></div></div>
-      <div class="ment-item rv rv3"><div class="ment-dot">🏆</div><div class="ment-content"><h4>Encerramento e certificação</h4><p>Momento de fechamento do ciclo, leitura da evolução e reconhecimento do desenvolvimento construído ao longo do programa.</p><div class="ment-tags"><div class="ment-tag" style="background:rgba(245,158,11,.12);color:var(--gold);border:1px solid rgba(245,158,11,.2);">Reconhecimento final</div></div></div></div>
-    </div>
-    <div class="ment-right">
-      <div class="ment-info-card rv"><h4>Como o mentor apoia</h4><p>O mentor ajuda a interpretar resultados, orientar prioridades, desafiar o participante e dar sustentação ao processo de mudança ao longo do ciclo.</p></div>
-      <div class="ment-info-card rv rv1"><h4>O que acontece entre as mentorias</h4><p>Entre um encontro e outro, o líder consome conteúdos, executa tarefas, participa de eventos e aplica o que foi trabalhado na própria rotina de liderança.</p></div>
-      <div class="ment-impact rv rv2"><h4>Impacto direto na jornada</h4><div class="impact-rows"><div class="impact-row"><span>Mais clareza sobre o próprio desenvolvimento</span><span class="impact-ind">Consistência</span></div><div class="impact-row"><span>Ajuste contínuo de rota</span><span class="impact-ind">Direção</span></div><div class="impact-row"><span>Maior conexão entre teoria e prática</span><span class="impact-ind">Aplicação</span></div><div class="impact-row"><span>Feedback individual ao longo do ciclo</span><span class="impact-ind">Evolução</span></div></div></div>
-    </div>
-  </div>
-</section>
-
-<section id="casos">
-  <div style="max-width:1200px;margin:0 auto 56px;">
-    <div class="label rv">Resultados na prática</div>
-    <h2 class="title rv">Casos de sucesso: quando o aprendizado vira impacto</h2>
-    <p class="sub rv">No ECO Líderes, o desenvolvimento não termina no estudo. O participante é estimulado a aplicar o que aprendeu e a registrar os efeitos dessa aplicação em seu contexto real.</p>
-  </div>
-  <div class="casos-grid">
-    <div>
-      <div class="caso-flow">
-        <div class="caso-step rv"><div class="caso-step-icon">📖</div><div><h4>Aprendizado</h4><p>Compreensão do conceito e do comportamento trabalhado na trilha.</p></div></div>
-        <div class="caso-step rv rv1"><div class="caso-step-icon">⚡</div><div><h4>Aplicação</h4><p>Experimentação do novo repertório na liderança e no relacionamento com a equipe.</p></div></div>
-        <div class="caso-step rv rv2"><div class="caso-step-icon">📈</div><div><h4>Resultado</h4><p>Identificação de mudanças percebidas, impactos e ganhos concretos na prática de gestão.</p></div></div>
-        <div class="caso-step rv rv3"><div class="caso-step-icon">✅</div><div><h4>Evidência</h4><p>Registro do que foi feito, do que mudou e do que pode ser considerado evidência do avanço.</p></div></div>
+<!-- ============ O QUE É ============ -->
+<section id="oque" class="section section-lilac">
+  <div class="container">
+    <div class="section-header-split">
+      <div>
+        <div class="label rv">Sobre o produto</div>
+        <h2 class="title rv">Um produto da ECO do B.E.M. para formar <span class="hl-purple">líderes mais preparados.</span></h2>
       </div>
-      <div class="bonus-box rv" style="margin-top:20px;"><div class="bonus-icon">⭐</div><div><h4>Aplicabilidade valorizada</h4><p>A capacidade de levar o aprendizado para a prática é um dos pontos que fortalecem o desenvolvimento no programa e contribuem para o reconhecimento final do participante.</p></div></div>
+      <p class="sub rv">O ECO Líderes é uma jornada de desenvolvimento humano corporativo completa. Ele combina ciência comportamental, curadoria de conteúdos, acompanhamento individual e aplicação prática para que o aprendizado realmente chegue à rotina da liderança.</p>
     </div>
-    <div>
-      <div class="caso-example rv">
-        <h5>Exemplo de leitura</h5>
-        <div class="caso-example-title">Competência: Comunicação Assertiva</div>
-        <div class="caso-rows">
-          <div class="caso-row"><div class="caso-row-label">Aprendizado:</div><div class="caso-row-val">O líder amplia a capacidade de dar feedback, conduzir conversas difíceis e alinhar expectativas com mais clareza.</div></div>
-          <div class="caso-row"><div class="caso-row-label">Aplicação:</div><div class="caso-row-val">Passa a usar reuniões 1:1 e devolutivas mais estruturadas na relação com o time.</div></div>
-          <div class="caso-row"><div class="caso-row-label">Resultado:</div><div class="caso-row-val" style="color:var(--verde);">Maior clareza de alinhamento, redução de ruídos e melhora na qualidade das interações.</div></div>
-          <div class="caso-row"><div class="caso-row-label">Evidência:</div><div class="caso-row-val">Relatos da equipe, acompanhamento do mentor e observação das mudanças no contexto real.</div></div>
+    <div class="oque-grid">
+      <div class="oque-card rv">
+        <div class="oque-icon">🧬</div>
+        <h4>Diagnóstico inicial</h4>
+        <p>O programa começa com um assessment completo para identificar perfil comportamental, autopercepção e os principais gaps de liderança.</p>
+        <div class="tag oque-pill">Base do plano individual</div>
+      </div>
+      <div class="oque-card rv rv1">
+        <div class="oque-icon">🎬</div>
+        <h4>Conteúdos imersivos</h4>
+        <p>Filmes, vídeos, podcasts, TED Talks, livros e exercícios transformam o estudo em reflexão e mudança comportamental.</p>
+        <div class="tag oque-pill">Aprendizagem viva</div>
+      </div>
+      <div class="oque-card rv rv2">
+        <div class="oque-icon">🤝</div>
+        <h4>Mentoria individual</h4>
+        <p>Cada participante conta com mentorias mensais para interpretar resultados, ajustar rotas e aprofundar sua evolução como líder.</p>
+        <div class="tag oque-pill">Acompanhamento real</div>
+      </div>
+      <div class="oque-card rv rv3">
+        <div class="oque-icon">📊</div>
+        <h4>Progresso acompanhado</h4>
+        <p>Os indicadores visualizam o quanto o desenvolvimento avança, com clareza para o participante e para a empresa.</p>
+        <div class="tag oque-pill">Evolução mensurável</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ JORNADA ============ -->
+<section id="jornada" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="label center rv">Jornada do programa</div>
+      <h2 class="title rv">Uma trilha estruturada para desenvolver liderança <span class="hl-teal">com consistência.</span></h2>
+      <p class="sub rv" style="margin:0 auto;">Ao longo de 6 meses, o participante percorre fases bem definidas. Isso traz clareza, direção e segurança para o desenvolvimento, do começo ao encerramento do ciclo.</p>
+    </div>
+    <div class="phases-row">
+      <div class="phase rv">
+        <div class="phase-circle">🔍</div>
+        <div class="phase-num">Fase 1 · Início do ciclo</div>
+        <h3>Assessment</h3>
+        <p>Levantamento do perfil do líder, com diagnóstico comportamental, autopercepção e definição do plano individual.</p>
+        <div class="tag phase-tag">Diagnóstico</div>
+      </div>
+      <div class="phase rv rv1">
+        <div class="phase-circle">📚</div>
+        <div class="phase-num">Fase 2 · Desenvolvimento</div>
+        <h3>Trilha de conteúdos</h3>
+        <p>Estudo das competências priorizadas, avaliações, tarefas práticas e acompanhamento contínuo nas mentorias.</p>
+        <div class="tag phase-tag">Aprendizagem</div>
+      </div>
+      <div class="phase rv rv2">
+        <div class="phase-circle">🚀</div>
+        <div class="phase-num">Fase 3 · Aplicação</div>
+        <h3>Prática no contexto real</h3>
+        <p>O aprendizado sai do ambiente de estudo e passa a ser testado, aplicado e comprovado na rotina da liderança.</p>
+        <div class="tag phase-tag">Aplicação prática</div>
+      </div>
+      <div class="phase rv rv3">
+        <div class="phase-circle">🏆</div>
+        <div class="phase-num">Fase 4 · Encerramento</div>
+        <h3>Certificação</h3>
+        <p>Avaliação final da jornada, leitura dos indicadores, feedback do mentor e reconhecimento da evolução.</p>
+        <div class="tag phase-tag">Reconhecimento</div>
+      </div>
+    </div>
+    <div class="phase-details">
+      <div class="pd-card rv">
+        <div class="pd-label" style="color:var(--purple)">Assessment</div>
+        <ul class="pd-list">
+          <li>Teste comportamental</li>
+          <li>Leitura de autopercepção</li>
+          <li>Análise de gaps de liderança</li>
+          <li>Plano Individual de Desenvolvimento</li>
+          <li>Direcionamento inicial da trilha</li>
+        </ul>
+      </div>
+      <div class="pd-card rv rv1">
+        <div class="pd-label" style="color:var(--teal)">Desenvolvimento</div>
+        <ul class="pd-list">
+          <li>Conteúdos variados por competência</li>
+          <li>Avaliações de conhecimento</li>
+          <li>Tarefas práticas entre mentorias</li>
+          <li>Reforço por webinários e eventos</li>
+          <li>Acompanhamento do mentor</li>
+        </ul>
+      </div>
+      <div class="pd-card rv rv2">
+        <div class="pd-label" style="color:var(--green)">Aplicação</div>
+        <ul class="pd-list">
+          <li>Transferência para a rotina do líder</li>
+          <li>Registro de mudanças percebidas</li>
+          <li>Evidências de resultados alcançados</li>
+          <li>Documentação de casos de sucesso</li>
+          <li>Validação junto ao mentor</li>
+        </ul>
+      </div>
+      <div class="pd-card rv rv3">
+        <div class="pd-label" style="color:var(--gold)">Certificação</div>
+        <ul class="pd-list">
+          <li>Leitura final dos indicadores</li>
+          <li>Feedback de evolução do ciclo</li>
+          <li>Certificado digital</li>
+          <li>Reconhecimento do nível alcançado</li>
+          <li>Possibilidade de novo ciclo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DISC (escuro) ============ -->
+<section id="disc" class="section section-dark">
+  <div class="container">
+    <div class="section-header left" style="max-width:var(--max);margin-left:auto;margin-right:auto;margin-bottom:48px;">
+      <div class="label on-dark rv">Diagnóstico individual</div>
+      <h2 class="title on-dark rv">Teste Comportamental <span class="hl-teal">+</span> Autopercepção: o início do desenvolvimento.</h2>
+      <p class="sub on-dark rv">O ECO Líderes parte do princípio de que o desenvolvimento só faz sentido quando começa pelo entendimento real do líder. Por isso, o assessment não é um detalhe do programa — ele é a base da jornada.</p>
+    </div>
+    <div class="disc-split">
+      <div class="disc-image-wrap rv">
+        <!-- Nova imagem: lideres-diagnostico.jpg (ver guia) -->
+        <img src="img/lideres-diagnostico.jpg"
+             alt="Profissional em momento de autoconhecimento e análise do próprio perfil comportamental"
+             onerror="this.style.display='none'" />
+      </div>
+      <div class="disc-cards">
+        <div class="disc-card rv">
+          <h3>Teste Comportamental</h3>
+          <p>O teste comportamental ajuda a identificar o estilo predominante do participante e como ele tende a agir, decidir, influenciar e lidar com a rotina da liderança. Ele mapeia dimensões essenciais da atuação profissional:</p>
+          <div class="disc-dims">
+            <div class="disc-dim d">
+              <div class="disc-dim-letter">D</div>
+              <h5>Dominância</h5>
+              <p>Energia para decisão, desafio e foco em resultado.</p>
+            </div>
+            <div class="disc-dim i">
+              <div class="disc-dim-letter">I</div>
+              <h5>Influência</h5>
+              <p>Comunicação, sociabilidade e mobilização de pessoas.</p>
+            </div>
+            <div class="disc-dim s">
+              <div class="disc-dim-letter">S</div>
+              <h5>Estabilidade</h5>
+              <p>Consistência, cooperação e equilíbrio emocional.</p>
+            </div>
+            <div class="disc-dim c">
+              <div class="disc-dim-letter">C</div>
+              <h5>Conformidade</h5>
+              <p>Análise, precisão, cuidado e busca por qualidade.</p>
+            </div>
+          </div>
+          <div class="disc-result-box">
+            <p>O resultado do teste oferece uma leitura clara do perfil do líder e cria uma base mais segura para priorizar competências e orientar o desenvolvimento.</p>
+          </div>
+        </div>
+        <div class="ap-card rv rv1">
+          <h3>Autopercepção</h3>
+          <p>Além dos testes comportamentais, o participante avalia a própria percepção sobre suas competências. O cruzamento dessas informações amplia o autoconhecimento e ajuda a construir um plano mais coerente.</p>
+          <div class="ap-steps">
+            <div class="ap-step">
+              <div class="ap-step-icon">📝</div>
+              <div>
+                <h5>Autoavaliação</h5>
+                <p>Leitura individual das próprias competências e desafios.</p>
+              </div>
+            </div>
+            <div class="ap-step">
+              <div class="ap-step-icon">🔄</div>
+              <div>
+                <h5>Cruzamento de dados</h5>
+                <p>Comparação entre como o líder se vê e o que o perfil revela.</p>
+              </div>
+            </div>
+            <div class="ap-step">
+              <div class="ap-step-icon">💡</div>
+              <div>
+                <h5>Insights de desenvolvimento</h5>
+                <p>Identificação de pontos fortes, lacunas e oportunidades.</p>
+              </div>
+            </div>
+            <div class="ap-step">
+              <div class="ap-step-icon">🎯</div>
+              <div>
+                <h5>Plano individual</h5>
+                <p>Definição das competências e da trilha para o ciclo.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="dashboard">
-  <div class="dash-header">
-    <div class="label">Visibilidade do processo</div>
-    <h2 class="title rv">Um dashboard para acompanhar a jornada</h2>
-    <p class="sub rv" style="margin:0 auto">O dashboard ajuda a dar transparência ao percurso do participante, organizando indicadores, progresso e leitura do ciclo de desenvolvimento.</p>
-  </div>
-  <div class="dash-mockup rv">
-    <div class="dash-top">
-      <div class="dash-user"><div class="dash-avatar">JC</div><div class="dash-user-info"><h4>João Costa</h4><p>Ciclo 1 · ECO Líderes</p></div></div>
-      <div class="dash-status">Jornada em andamento</div>
-    </div>
-    <div class="dash-inds">
-      <div class="dash-ind"><div class="dash-ind-num">Ind. 1</div><div class="dash-ind-val">80%</div><div class="dash-ind-name">Eventos</div></div>
-      <div class="dash-ind"><div class="dash-ind-num">Ind. 2</div><div class="dash-ind-val">85%</div><div class="dash-ind-name">Avaliações</div></div>
-      <div class="dash-ind"><div class="dash-ind-num">Ind. 3</div><div class="dash-ind-val">90%</div><div class="dash-ind-name">Competências</div></div>
-      <div class="dash-ind"><div class="dash-ind-num">Ind. 4</div><div class="dash-ind-val">91%</div><div class="dash-ind-name">Tarefas</div></div>
-      <div class="dash-ind"><div class="dash-ind-num">Ind. 5</div><div class="dash-ind-val">90%</div><div class="dash-ind-name">Engajamento</div></div>
-      <div class="dash-ind bonus-ind"><div class="dash-ind-num">Ind. 6</div><div class="dash-ind-val">+10%</div><div class="dash-ind-name">Aplicação</div></div>
-      <div class="dash-ind final-ind"><div class="dash-ind-num">Ind. 7</div><div class="dash-ind-val">87%</div><div class="dash-ind-name">Síntese</div></div>
-    </div>
-    <div class="dash-bar"><div class="dash-bar-label">Exemplo visual de progresso geral do ciclo</div><div class="dash-progress"><div class="dash-progress-fill"></div></div><div class="dash-pct">Leitura positiva de evolução ao longo da jornada</div></div>
-  </div>
-</section>
-
-<section id="niveis">
-  <div class="niveis-grid">
-    <div>
-      <div class="label rv">Reconhecimento</div>
-      <h2 class="title rv">Uma jornada que valoriza a evolução</h2>
-      <p class="sub rv">O reconhecimento final leva em conta a consistência do participante ao longo do ciclo. A lógica não é premiar apenas presença, mas valorizar comprometimento, progresso e aplicação real.</p>
-      <div class="level-bars" style="margin-top:32px;">
-        <div class="lbar rv"><div class="lbar-name">Iniciante</div><div class="lbar-track"><div class="lbar-fill"></div></div><div class="lbar-pct">0–20%</div></div>
-        <div class="lbar rv rv1"><div class="lbar-name">Básico</div><div class="lbar-track"><div class="lbar-fill"></div></div><div class="lbar-pct">21–40%</div></div>
-        <div class="lbar rv rv2"><div class="lbar-name">Intermediário</div><div class="lbar-track"><div class="lbar-fill"></div></div><div class="lbar-pct">41–60%</div></div>
-        <div class="lbar rv rv3"><div class="lbar-name">Avançado</div><div class="lbar-track"><div class="lbar-fill"></div></div><div class="lbar-pct">61–80%</div></div>
-        <div class="lbar rv rv4"><div class="lbar-name" style="color:var(--verde);font-weight:700;">Excelência</div><div class="lbar-track"><div class="lbar-fill"></div></div><div class="lbar-pct" style="color:var(--verde);">81–100%</div></div>
+<!-- ============ TRILHA ============ -->
+<section id="trilha" class="section section-lilac">
+  <div class="container">
+    <div class="trilha-header">
+      <div>
+        <div class="label rv">Conteúdos da jornada</div>
+        <h2 class="title rv">Aprendizagem em <span class="hl-teal">múltiplos formatos.</span></h2>
       </div>
-      <div class="excelencia-box rv"><p>Alcançar níveis mais altos no ECO Líderes significa mostrar maturidade de desenvolvimento, disciplina de percurso e capacidade de transformar aprendizado em prática de liderança.</p></div>
+      <p class="sub rv">O ECO Líderes trabalha as competências da liderança com uma grande curadoria de diferentes formatos de conteúdo. Você aprende se envolvendo. Isso torna a jornada mais dinâmica, mais humana e mais aderente aos estilos de aprendizagem de cada participante.</p>
     </div>
-    <div>
-      <div class="label rv rv1">Benefícios do produto</div>
-      <h2 class="title rv rv1" style="font-size:34px;">O que o líder conquista</h2>
-      <div class="benefits-grid" style="margin-top:24px;">
-        <div class="bfit rv"><div class="bfit-icon">🧠</div><div><h4>Autoconhecimento</h4><p>Leitura mais clara sobre perfil, forças e pontos de desenvolvimento.</p></div></div>
-        <div class="bfit rv rv1"><div class="bfit-icon">🎯</div><div><h4>Direção de crescimento</h4><p>Uma trilha mais coerente com os desafios reais da liderança.</p></div></div>
-        <div class="bfit rv rv2"><div class="bfit-icon">🎬</div><div><h4>Conteúdo relevante</h4><p>Aprendizagem em formatos mais humanos, imersivos e aplicáveis.</p></div></div>
-        <div class="bfit rv rv3"><div class="bfit-icon">🤝</div><div><h4>Acompanhamento especializado</h4><p>Mentorias para sustentar progresso e dar profundidade ao processo.</p></div></div>
-        <div class="bfit rv"><div class="bfit-icon">📊</div><div><h4>Visibilidade da evolução</h4><p>Indicadores e dashboard para acompanhar o percurso com clareza.</p></div></div>
-        <div class="bfit rv rv1"><div class="bfit-icon">🏆</div><div><h4>Reconhecimento</h4><p>Certificação ao final do ciclo e possibilidade de avançar em novos percursos.</p></div></div>
+    <div class="trilha-image rv">
+      <!-- Nova imagem: lideres-trilha.jpg (ver guia) -->
+      <img src="img/lideres-trilha.jpg"
+           alt="Curadoria de formatos de aprendizagem: filmes, livros, podcasts e reflexões"
+           onerror="this.style.display='none'" />
+    </div>
+    <div class="media-grid">
+      <div class="media-card rv">
+        <span class="media-icon">🎬</span>
+        <div class="media-name">Filmes</div>
+        <div class="media-desc">Narrativas que favorecem reflexão, identificação e mudança de olhar sobre liderança.</div>
+        <div class="tag media-ind">Conteúdo imersivo</div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="webinarios">
-  <div class="web-grid">
-    <div>
-      <div class="label rv">Aprendizagem coletiva</div>
-      <h2 class="title rv">Webinários e encontros que ampliam a jornada</h2>
-      <p class="sub rv">Além do percurso individual, o ECO Líderes inclui momentos coletivos para ampliar repertório, promover troca entre participantes e fortalecer temas relevantes para a liderança.</p>
-      <div class="web-cards" style="margin-top:32px;">
-        <div class="web-card rv"><div class="web-card-icon">🖥️</div><div><h4>Webinários ao vivo</h4><p>Temas atuais de liderança, comportamento e gestão com participação dos líderes do programa.</p></div></div>
-        <div class="web-card rv rv1"><div class="web-card-icon">📹</div><div><h4>Conteúdos complementares</h4><p>Materiais que reforçam a jornada e ajudam o participante a aprofundar os temas do ciclo.</p></div></div>
-        <div class="web-card rv rv2"><div class="web-card-icon">🤝</div><div><h4>Troca entre líderes</h4><p>Espaço para compartilhar desafios, experiências e aprendizados dentro de um mesmo ecossistema.</p></div></div>
+      <div class="media-card rv rv1">
+        <span class="media-icon">▶️</span>
+        <div class="media-name">Vídeos</div>
+        <div class="media-desc">Aulas e materiais visuais que apoiam a compreensão direta dos temas trabalhados.</div>
+        <div class="tag media-ind">Aprendizagem guiada</div>
+      </div>
+      <div class="media-card rv rv2">
+        <span class="media-icon">🎙️</span>
+        <div class="media-name">Podcasts</div>
+        <div class="media-desc">Conteúdos em áudio que podem ser consumidos com flexibilidade, sem perder profundidade.</div>
+        <div class="tag media-ind">Rotina prática</div>
+      </div>
+      <div class="media-card rv">
+        <span class="media-icon">🎤</span>
+        <div class="media-name">TED Talks</div>
+        <div class="media-desc">Ideias relevantes sobre comportamento, liderança, inovação e influência.</div>
+        <div class="tag media-ind">Reflexão ampliada</div>
+      </div>
+      <div class="media-card rv rv1">
+        <span class="media-icon">📚</span>
+        <div class="media-name">Livros</div>
+        <div class="media-desc">Obras selecionadas para aprofundar repertório, consciência e prática gerencial.</div>
+        <div class="tag media-ind">Base conceitual</div>
+      </div>
+      <div class="media-card rv rv2">
+        <span class="media-icon">✏️</span>
+        <div class="media-name">Exercícios</div>
+        <div class="media-desc">Atividades que ajudam a consolidar o aprendizado e transformá-lo em ação concreta.</div>
+        <div class="tag media-ind">Aplicação prática</div>
       </div>
     </div>
-    <div>
-      <div class="web-ind-box rv"><h4>Como isso fortalece o programa</h4><p>Os webinários e eventos coletivos criam continuidade, ampliam repertório e reforçam a percepção de pertencimento à jornada. Eles ajudam a manter o líder conectado ao desenvolvimento durante todo o ciclo.</p><div class="web-formula">Mais repertório + mais troca + mais continuidade = jornada mais consistente</div><p style="margin-top:14px;font-size:14px;color:rgba(255,255,255,.72);">Esses momentos complementam o trabalho individual e ajudam a sustentar o engajamento do participante no programa.</p></div>
-      <div class="ment-info-card rv rv1" style="margin-top:16px;"><h4>Conexão com a prática</h4><p>Quando o líder participa, ele amplia visão, ganha referências e encontra mais recursos para aplicar o aprendizado em sua própria realidade.</p></div>
+    <div class="comps-box rv">
+      <div class="comps-box-title">Competências trabalhadas ao longo da trilha</div>
+      <div class="comps-box-sub">A jornada pode priorizar diferentes competências de liderança conforme o diagnóstico de cada participante.</div>
+      <div class="comps-wrap">
+        <div class="comp-pill"><div class="comp-dot"></div><span>Comunicação Assertiva</span></div>
+        <div class="comp-pill"><div class="comp-dot" style="background:var(--teal)"></div><span>Inteligência Emocional</span></div>
+        <div class="comp-pill"><div class="comp-dot" style="background:var(--green)"></div><span>Tomada de Decisão</span></div>
+        <div class="comp-pill"><div class="comp-dot" style="background:var(--gold)"></div><span>Gestão de Conflitos</span></div>
+        <div class="comp-pill"><div class="comp-dot" style="background:var(--blue)"></div><span>Gestão de Pessoas</span></div>
+        <div class="comp-pill"><div class="comp-dot"></div><span>Visão Estratégica</span></div>
+        <div class="comp-pill"><div class="comp-dot" style="background:var(--teal)"></div><span>Adaptabilidade</span></div>
+        <div class="comp-pill"><div class="comp-dot" style="background:var(--green)"></div><span>Cultura Organizacional</span></div>
+        <div class="comp-pill"><div class="comp-dot" style="background:var(--gold)"></div><span>Liderança de Alto Impacto</span></div>
+      </div>
+    </div>
+    <div class="how-row">
+      <div class="how-step-item rv">
+        <div class="how-num">1</div>
+        <h4>Aprender</h4>
+        <p>Entrar em contato com conteúdos que ampliam repertório e consciência.</p>
+      </div>
+      <div class="how-step-item rv rv1">
+        <div class="how-num">2</div>
+        <h4>Refletir</h4>
+        <p>Relacionar os temas estudados aos desafios concretos da própria liderança.</p>
+      </div>
+      <div class="how-step-item rv rv2">
+        <div class="how-num">3</div>
+        <h4>Aplicar</h4>
+        <p>Testar novas atitudes, conversas e formas de atuação no dia a dia.</p>
+      </div>
+      <div class="how-step-item rv rv3">
+        <div class="how-num">4</div>
+        <h4>Consolidar</h4>
+        <p>Registrar resultados, discutir com o mentor e sustentar o aprendizado.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="certs">
-  <div class="certs-header">
-    <div class="label">Continuidade do desenvolvimento</div>
-    <h2 class="title rv">Certificações que podem evoluir em novos ciclos</h2>
-    <p class="sub rv" style="margin:0 auto">O ECO Líderes pode ser vivido como parte de uma jornada contínua. Ao concluir um ciclo, o participante pode avançar para novos focos de desenvolvimento e aprofundar sua liderança ao longo do tempo.</p>
-  </div>
-  <div class="cert-path">
-    <div class="cert-node rv"><div class="cert-badge">1ª</div><div class="cert-label">Certificação</div></div>
-    <div class="cert-arrow">→</div>
-    <div class="cert-node rv rv1"><div class="cert-badge">2ª</div><div class="cert-label">Certificação</div></div>
-    <div class="cert-arrow">→</div>
-    <div class="cert-node rv rv2"><div class="cert-badge">3ª</div><div class="cert-label">Certificação</div></div>
-    <div class="cert-arrow">→</div>
-    <div class="cert-node rv rv3"><div class="cert-badge">4ª</div><div class="cert-label">Certificação</div></div>
-  </div>
-  <div class="cert-info-grid">
-    <div class="cert-info rv"><div class="cert-info-num">1º ciclo</div><h4>Fundação</h4><p>Primeira leitura da liderança, primeiros gaps e início da trilha de desenvolvimento.</p></div>
-    <div class="cert-info rv rv1"><div class="cert-info-num">2º ciclo</div><h4>Consolidação</h4><p>Aprofundamento das competências e amadurecimento da aplicação prática.</p></div>
-    <div class="cert-info rv rv2"><div class="cert-info-num">3º ciclo</div><h4>Ampliação</h4><p>Expansão do repertório e avanço em temas de maior complexidade de liderança.</p></div>
-    <div class="cert-info rv rv3"><div class="cert-info-num">4º ciclo</div><h4>Evolução contínua</h4><p>Desenvolvimento sustentado, com novos focos e crescimento progressivo da liderança.</p></div>
+<!-- ============ INDICADORES (escuro) ============ -->
+<section id="indicadores" class="section section-dark">
+  <div class="container">
+    <div class="section-header">
+      <div class="label on-dark center rv">Indicadores do programa</div>
+      <h2 class="title on-dark rv">Evolução acompanhada com <span class="hl-green">clareza.</span></h2>
+      <p class="sub on-dark rv" style="margin:0 auto;">Os indicadores ajudam a acompanhar o percurso do participante e a dar visibilidade para o que está sendo desenvolvido ao longo do ciclo.</p>
+    </div>
+    <div class="ind-grid">
+      <div class="ind-card rv">
+        <div class="ind-badge badge-final" style="background:rgba(91,46,255,0.2);color:var(--purple-light);border-color:rgba(91,46,255,0.35);">Participação</div>
+        <div class="ind-num">Indicador 1</div>
+        <div class="ind-name">Webinars & Eventos</div>
+        <div class="ind-range">0 – 100%</div>
+        <div class="ind-desc">Acompanha a participação do líder em webinários, eventos e encontros coletivos do programa.</div>
+        <div class="ind-formula">Presença e engajamento em atividades coletivas</div>
+      </div>
+      <div class="ind-card rv rv1">
+        <div class="ind-badge badge-final" style="background:rgba(0,184,217,0.2);color:var(--teal);border-color:rgba(0,184,217,0.35);">Conhecimento</div>
+        <div class="ind-num">Indicador 2</div>
+        <div class="ind-name">Avaliações</div>
+        <div class="ind-range">0 – 100%</div>
+        <div class="ind-desc">Mede a compreensão dos conteúdos e o avanço no domínio dos temas trabalhados na trilha.</div>
+        <div class="ind-formula">Resultados das avaliações de conhecimento</div>
+      </div>
+      <div class="ind-card rv rv2">
+        <div class="ind-badge badge-final" style="background:rgba(94,211,140,0.2);color:var(--green);border-color:rgba(94,211,140,0.35);">Trilha</div>
+        <div class="ind-num">Indicador 3</div>
+        <div class="ind-name">Competências</div>
+        <div class="ind-range">0 – 100%</div>
+        <div class="ind-desc">Reflete o avanço do participante sobre as competências definidas em sua trilha de desenvolvimento.</div>
+        <div class="ind-formula">Progresso na conclusão dos conteúdos da trilha</div>
+      </div>
+      <div class="ind-card rv rv3">
+        <div class="ind-badge badge-final" style="background:rgba(245,158,11,0.2);color:var(--gold);border-color:rgba(245,158,11,0.35);">Execução</div>
+        <div class="ind-num">Indicador 4</div>
+        <div class="ind-name">Tarefas</div>
+        <div class="ind-range">0 – 100%</div>
+        <div class="ind-desc">Acompanha a execução das tarefas práticas propostas entre uma mentoria e outra.</div>
+        <div class="ind-formula">Entregas realizadas no percurso do ciclo</div>
+      </div>
+    </div>
+    <div class="ind-row2">
+      <div class="ind-card rv">
+        <div class="ind-num">Indicador 5</div>
+        <div class="ind-name">Engajamento</div>
+        <div class="ind-range">0 – 100%</div>
+        <div class="ind-desc">Consolida a percepção do mentor sobre envolvimento, constância e evolução do líder durante a jornada.</div>
+        <div class="ind-formula">Leitura qualitativa convertida em progresso</div>
+      </div>
+      <div class="ind-card bonus rv rv1">
+        <div class="ind-badge badge-bonus">Bônus</div>
+        <div class="ind-num">Indicador 6</div>
+        <div class="ind-name">Aplicabilidade</div>
+        <div class="ind-range">Bônus</div>
+        <div class="ind-desc">Reconhece a capacidade de aplicar o aprendizado na prática e transformar conhecimento em resultado real.</div>
+        <div class="ind-formula">Validação dos casos de sucesso e da aplicação prática</div>
+      </div>
+      <div class="ind-card final rv rv2">
+        <div class="ind-badge badge-final">Síntese</div>
+        <div class="ind-num">Indicador 7</div>
+        <div class="ind-name">Engajamento Final</div>
+        <div class="ind-range">0 – 100%</div>
+        <div class="ind-desc">Reúne a visão global do desenvolvimento no ciclo e serve como base para o reconhecimento final.</div>
+        <div class="ind-formula">Leitura integrada dos principais indicadores do percurso</div>
+      </div>
+    </div>
+    <div class="formula-bar rv">
+      <span class="f-item">Participação</span><span class="f-op">+</span>
+      <span class="f-item">Conhecimento</span><span class="f-op">+</span>
+      <span class="f-item">Competências</span><span class="f-op">+</span>
+      <span class="f-item">Tarefas</span><span class="f-op">+</span>
+      <span class="f-item">Engajamento</span><span class="f-op">→</span>
+      <span class="f-result">Leitura final do ciclo</span>
+      <div class="f-note">O objetivo não é medir presença, mas acompanhar desenvolvimento, consistência e aplicação prática ao longo da jornada.</div>
+    </div>
   </div>
 </section>
 
+<!-- ============ MENTORIAS ============ -->
+<section id="mentorias" class="section">
+  <div class="container">
+    <div class="section-header left" style="max-width:var(--max);margin-bottom:48px;">
+      <div class="label rv">Mentorias individuais</div>
+      <h2 class="title rv">Acompanhamento próximo para sustentar <span class="hl-purple">a evolução.</span></h2>
+      <p class="sub rv">As mentorias são um dos diferenciais do ECO Líderes. Elas ajudam o participante a interpretar a jornada, lidar com os desafios do contexto real e transformar aprendizado em ação consistente.</p>
+    </div>
+    <div class="ment-split">
+      <div class="ment-image-wrap rv">
+        <!-- Nova imagem: lideres-mentoria.jpg (ver guia) -->
+        <img src="img/lideres-mentoria.jpg"
+             alt="Sessão de mentoria individual entre mentor e líder em desenvolvimento"
+             onerror="this.style.display='none'" />
+      </div>
+      <div class="ment-timeline">
+        <div class="ment-item rv">
+          <div class="ment-dot">M1</div>
+          <div class="ment-content">
+            <h4>1ª mentoria — assessment</h4>
+            <p>Momento de leitura do diagnóstico, entendimento do perfil e definição do plano individual que orientará todo o ciclo.</p>
+            <div class="ment-tags"><div class="tag ment-tag">Início da jornada</div></div>
+          </div>
+        </div>
+        <div class="ment-item rv rv1">
+          <div class="ment-dot">M2–4</div>
+          <div class="ment-content">
+            <h4>Mentorias de desenvolvimento</h4>
+            <p>Encontros voltados a revisar progresso, discutir conteúdos, ajustar foco e fortalecer a execução das tarefas práticas.</p>
+            <div class="ment-tags"><div class="tag ment-tag">Acompanhamento contínuo</div></div>
+          </div>
+        </div>
+        <div class="ment-item rv rv2">
+          <div class="ment-dot">M5–6</div>
+          <div class="ment-content">
+            <h4>Mentorias de aplicação</h4>
+            <p>Fase em que o foco se volta para a aplicação do aprendizado, a análise dos resultados e a consolidação dos casos de sucesso.</p>
+            <div class="ment-tags"><div class="tag ment-tag">Transferência para a prática</div></div>
+          </div>
+        </div>
+        <div class="ment-item rv rv3">
+          <div class="ment-dot">🏆</div>
+          <div class="ment-content">
+            <h4>Encerramento e certificação</h4>
+            <p>Momento de fechamento do ciclo, leitura da evolução e reconhecimento do desenvolvimento construído ao longo do programa.</p>
+            <div class="ment-tags"><div class="tag ment-tag">Reconhecimento final</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ment-infos">
+      <div class="ment-info-card rv">
+        <h4>Como o mentor apoia</h4>
+        <p>O mentor ajuda a interpretar resultados, orientar prioridades, desafiar o participante e dar sustentação ao processo de mudança ao longo do ciclo.</p>
+      </div>
+      <div class="ment-info-card rv rv1">
+        <h4>O que acontece entre as mentorias</h4>
+        <p>Entre um encontro e outro, o líder consome conteúdos, executa tarefas, participa de eventos e aplica o que foi trabalhado na própria rotina.</p>
+      </div>
+      <div class="ment-impact rv rv2">
+        <h4>Impacto direto na jornada</h4>
+        <div class="impact-rows">
+          <div class="impact-row">
+            <span>Mais clareza sobre o próprio desenvolvimento</span>
+            <span class="impact-ind">Consistência</span>
+          </div>
+          <div class="impact-row">
+            <span>Ajuste contínuo de rota</span>
+            <span class="impact-ind">Direção</span>
+          </div>
+          <div class="impact-row">
+            <span>Maior conexão entre teoria e prática</span>
+            <span class="impact-ind">Aplicação</span>
+          </div>
+          <div class="impact-row">
+            <span>Feedback individual ao longo do ciclo</span>
+            <span class="impact-ind">Evolução</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CASOS ============ -->
+<section id="casos" class="section section-lilac">
+  <div class="container">
+    <div class="section-header left" style="max-width:var(--max);margin-bottom:48px;">
+      <div class="label rv">Resultados na prática</div>
+      <h2 class="title rv">Casos de sucesso: <span class="hl-green">quando o aprendizado vira impacto.</span></h2>
+      <p class="sub rv">No ECO Líderes, o desenvolvimento não termina no estudo. O participante é estimulado a aplicar o que aprendeu e a registrar os efeitos dessa aplicação em seu contexto real.</p>
+    </div>
+    <div class="casos-grid">
+      <div>
+        <div class="caso-flow">
+          <div class="caso-step rv">
+            <div class="caso-step-icon">📖</div>
+            <div>
+              <h4>Aprendizado</h4>
+              <p>Compreensão do conceito e do comportamento trabalhado na trilha.</p>
+            </div>
+          </div>
+          <div class="caso-step rv rv1">
+            <div class="caso-step-icon">⚡</div>
+            <div>
+              <h4>Aplicação</h4>
+              <p>Experimentação do novo repertório na liderança e no relacionamento com a equipe.</p>
+            </div>
+          </div>
+          <div class="caso-step rv rv2">
+            <div class="caso-step-icon">📈</div>
+            <div>
+              <h4>Resultado</h4>
+              <p>Identificação de mudanças percebidas, impactos e ganhos concretos na prática de gestão.</p>
+            </div>
+          </div>
+          <div class="caso-step rv rv3">
+            <div class="caso-step-icon">✅</div>
+            <div>
+              <h4>Evidência</h4>
+              <p>Registro do que foi feito, do que mudou e do que pode ser considerado evidência do avanço.</p>
+            </div>
+          </div>
+        </div>
+        <div class="bonus-box rv">
+          <div class="bonus-icon">⭐</div>
+          <div>
+            <h4>Aplicabilidade valorizada</h4>
+            <p>A capacidade de levar o aprendizado para a prática fortalece o desenvolvimento no programa e contribui para o reconhecimento final do participante.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="caso-example rv">
+          <h5>Exemplo de leitura</h5>
+          <div class="caso-example-title">Competência: Comunicação Assertiva</div>
+          <div class="caso-rows">
+            <div class="caso-row">
+              <div class="caso-row-label">Aprendizado</div>
+              <div class="caso-row-val">O líder amplia a capacidade de dar feedback, conduzir conversas difíceis e alinhar expectativas com mais clareza.</div>
+            </div>
+            <div class="caso-row">
+              <div class="caso-row-label">Aplicação</div>
+              <div class="caso-row-val">Passa a usar reuniões 1:1 e devolutivas mais estruturadas na relação com o time.</div>
+            </div>
+            <div class="caso-row">
+              <div class="caso-row-label">Resultado</div>
+              <div class="caso-row-val ok">Maior clareza de alinhamento, redução de ruídos e melhora na qualidade das interações.</div>
+            </div>
+            <div class="caso-row">
+              <div class="caso-row-label">Evidência</div>
+              <div class="caso-row-val">Relatos da equipe, acompanhamento do mentor e observação das mudanças no contexto real.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DASHBOARD (escuro) ============ -->
+<section id="dashboard" class="section section-dark">
+  <div class="container">
+    <div class="section-header">
+      <div class="label on-dark center rv">Visibilidade do processo</div>
+      <h2 class="title on-dark rv">Um dashboard para acompanhar <span class="hl-teal">a jornada.</span></h2>
+      <p class="sub on-dark rv" style="margin:0 auto;">O dashboard dá transparência ao percurso do participante, organizando indicadores, progresso e leitura do ciclo de desenvolvimento.</p>
+    </div>
+    <div class="dash-mockup rv">
+      <div class="dash-top">
+        <div class="dash-user">
+          <div class="dash-avatar">JC</div>
+          <div class="dash-user-info">
+            <h4>João Costa</h4>
+            <p>Ciclo 1 · ECO Líderes</p>
+          </div>
+        </div>
+        <div class="dash-status">Jornada em andamento</div>
+      </div>
+      <div class="dash-inds">
+        <div class="dash-ind"><div class="dash-ind-num">Ind. 1</div><div class="dash-ind-val">80%</div><div class="dash-ind-name">Eventos</div></div>
+        <div class="dash-ind"><div class="dash-ind-num">Ind. 2</div><div class="dash-ind-val">85%</div><div class="dash-ind-name">Avaliações</div></div>
+        <div class="dash-ind"><div class="dash-ind-num">Ind. 3</div><div class="dash-ind-val">90%</div><div class="dash-ind-name">Competências</div></div>
+        <div class="dash-ind"><div class="dash-ind-num">Ind. 4</div><div class="dash-ind-val">91%</div><div class="dash-ind-name">Tarefas</div></div>
+        <div class="dash-ind"><div class="dash-ind-num">Ind. 5</div><div class="dash-ind-val">90%</div><div class="dash-ind-name">Engajamento</div></div>
+        <div class="dash-ind bonus-ind"><div class="dash-ind-num">Ind. 6</div><div class="dash-ind-val">+10%</div><div class="dash-ind-name">Aplicação</div></div>
+        <div class="dash-ind final-ind"><div class="dash-ind-num">Ind. 7</div><div class="dash-ind-val">87%</div><div class="dash-ind-name">Síntese</div></div>
+      </div>
+      <div class="dash-bar">
+        <div class="dash-bar-label">Exemplo visual de progresso geral do ciclo</div>
+        <div class="dash-progress"><div class="dash-progress-fill"></div></div>
+        <div class="dash-pct">Leitura positiva de evolução ao longo da jornada</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NÍVEIS ============ -->
+<section id="niveis" class="section">
+  <div class="container">
+    <div class="niveis-grid">
+      <div>
+        <div class="label rv">Reconhecimento</div>
+        <h2 class="title rv">Uma jornada que <span class="hl-green">valoriza a evolução.</span></h2>
+        <p class="sub rv">O reconhecimento final leva em conta a consistência do participante ao longo do ciclo. A lógica não é premiar apenas presença, mas valorizar comprometimento, progresso e aplicação real.</p>
+        <div class="level-bars">
+          <div class="lbar rv"><div class="lbar-name">Iniciante</div><div class="lbar-track"><div class="lbar-fill"></div></div><div class="lbar-pct">0–20%</div></div>
+          <div class="lbar rv rv1"><div class="lbar-name">Básico</div><div class="lbar-track"><div class="lbar-fill"></div></div><div class="lbar-pct">21–40%</div></div>
+          <div class="lbar rv rv2"><div class="lbar-name">Intermediário</div><div class="lbar-track"><div class="lbar-fill"></div></div><div class="lbar-pct">41–60%</div></div>
+          <div class="lbar rv rv3"><div class="lbar-name">Avançado</div><div class="lbar-track"><div class="lbar-fill"></div></div><div class="lbar-pct">61–80%</div></div>
+          <div class="lbar rv rv4"><div class="lbar-name" style="font-weight:700;">Excelência</div><div class="lbar-track"><div class="lbar-fill"></div></div><div class="lbar-pct">81–100%</div></div>
+        </div>
+        <div class="excelencia-box rv">
+          <p>Alcançar <strong>níveis mais altos no ECO Líderes</strong> significa mostrar maturidade de desenvolvimento, disciplina de percurso e capacidade de transformar aprendizado em prática de liderança.</p>
+        </div>
+      </div>
+      <div>
+        <div class="label rv rv1">Benefícios do produto</div>
+        <h2 class="title rv rv1" style="font-size:clamp(28px,3.2vw,38px);">O que o líder <span class="hl-teal">conquista.</span></h2>
+        <div class="benefits-grid">
+          <div class="bfit rv">
+            <div class="bfit-icon">🧠</div>
+            <div><h4>Autoconhecimento</h4><p>Leitura mais clara sobre perfil, forças e pontos de desenvolvimento.</p></div>
+          </div>
+          <div class="bfit rv rv1">
+            <div class="bfit-icon">🎯</div>
+            <div><h4>Direção de crescimento</h4><p>Uma trilha mais coerente com os desafios reais da liderança.</p></div>
+          </div>
+          <div class="bfit rv rv2">
+            <div class="bfit-icon">🎬</div>
+            <div><h4>Conteúdo relevante</h4><p>Aprendizagem em formatos mais humanos, imersivos e aplicáveis.</p></div>
+          </div>
+          <div class="bfit rv rv3">
+            <div class="bfit-icon">🤝</div>
+            <div><h4>Acompanhamento</h4><p>Mentorias para sustentar progresso e dar profundidade ao processo.</p></div>
+          </div>
+          <div class="bfit rv">
+            <div class="bfit-icon">📊</div>
+            <div><h4>Visibilidade real</h4><p>Indicadores e dashboard para acompanhar o percurso com clareza.</p></div>
+          </div>
+          <div class="bfit rv rv1">
+            <div class="bfit-icon">🏆</div>
+            <div><h4>Reconhecimento</h4><p>Certificação ao final do ciclo e possibilidade de novos percursos.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WEBINÁRIOS ============ -->
+<section id="webinarios" class="section section-lilac">
+  <div class="container">
+    <div class="web-grid">
+      <div>
+        <div class="label rv">Aprendizagem coletiva</div>
+        <h2 class="title rv">Webinários e encontros que <span class="hl-teal">ampliam a jornada.</span></h2>
+        <p class="sub rv">Além do percurso individual, o ECO Líderes inclui momentos coletivos para ampliar repertório, promover troca entre participantes e fortalecer temas relevantes para a liderança.</p>
+        <div class="web-cards">
+          <div class="web-card rv">
+            <div class="web-card-icon">🖥️</div>
+            <div><h4>Webinários ao vivo</h4><p>Temas atuais de liderança, comportamento e gestão com participação dos líderes do programa.</p></div>
+          </div>
+          <div class="web-card rv rv1">
+            <div class="web-card-icon">📹</div>
+            <div><h4>Conteúdos complementares</h4><p>Materiais que reforçam a jornada e ajudam a aprofundar os temas do ciclo.</p></div>
+          </div>
+          <div class="web-card rv rv2">
+            <div class="web-card-icon">🤝</div>
+            <div><h4>Troca entre líderes</h4><p>Espaço para compartilhar desafios, experiências e aprendizados dentro de um mesmo ecossistema.</p></div>
+          </div>
+        </div>
+        <div class="web-ind-box rv">
+          <h4>Como isso fortalece o programa</h4>
+          <p>Os webinários e eventos coletivos criam continuidade, ampliam repertório e reforçam a percepção de pertencimento à jornada. Eles ajudam a manter o líder conectado ao desenvolvimento durante todo o ciclo.</p>
+          <div class="web-formula">Mais repertório + mais troca + mais continuidade = jornada mais consistente</div>
+        </div>
+      </div>
+      <div>
+        <div class="web-image-wrap rv">
+          <!-- Nova imagem: lideres-webinarios.jpg (ver guia) -->
+          <img src="img/lideres-webinarios.jpg"
+               alt="Profissionais participando de webinário e aprendizagem coletiva"
+               onerror="this.style.display='none'" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CERTS (escuro) ============ -->
+<section id="certs" class="section section-dark">
+  <div class="container">
+    <div class="section-header">
+      <div class="label on-dark center rv">Continuidade do desenvolvimento</div>
+      <h2 class="title on-dark rv">Certificações que podem evoluir <span class="hl-teal">em novos ciclos.</span></h2>
+      <p class="sub on-dark rv" style="margin:0 auto;">O ECO Líderes pode ser vivido como parte de uma jornada contínua. Ao concluir um ciclo, o participante pode avançar para novos focos de desenvolvimento e aprofundar sua liderança ao longo do tempo.</p>
+    </div>
+    <div class="cert-path">
+      <div class="cert-node rv"><div class="cert-badge">1ª</div><div class="cert-label">Certificação</div></div>
+      <div class="cert-arrow">→</div>
+      <div class="cert-node rv rv1"><div class="cert-badge">2ª</div><div class="cert-label">Certificação</div></div>
+      <div class="cert-arrow">→</div>
+      <div class="cert-node rv rv2"><div class="cert-badge">3ª</div><div class="cert-label">Certificação</div></div>
+      <div class="cert-arrow">→</div>
+      <div class="cert-node rv rv3"><div class="cert-badge">4ª</div><div class="cert-label">Certificação</div></div>
+    </div>
+    <div class="cert-info-grid">
+      <div class="cert-info rv">
+        <div class="cert-info-num">1º ciclo</div>
+        <h4>Fundação</h4>
+        <p>Primeira leitura da liderança, primeiros gaps e início da trilha de desenvolvimento.</p>
+      </div>
+      <div class="cert-info rv rv1">
+        <div class="cert-info-num">2º ciclo</div>
+        <h4>Consolidação</h4>
+        <p>Aprofundamento das competências e amadurecimento da aplicação prática.</p>
+      </div>
+      <div class="cert-info rv rv2">
+        <div class="cert-info-num">3º ciclo</div>
+        <h4>Ampliação</h4>
+        <p>Expansão do repertório e avanço em temas de maior complexidade de liderança.</p>
+      </div>
+      <div class="cert-info rv rv3">
+        <div class="cert-info-num">4º ciclo</div>
+        <h4>Evolução contínua</h4>
+        <p>Desenvolvimento sustentado, com novos focos e crescimento progressivo da liderança.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
 <section id="cta">
-  <div class="cta-inner">
-    <div class="label rv">Próximo passo</div>
-    <h2 class="cta-title rv">Quer conhecer melhor o <em>ECO Líderes</em>?</h2>
-    <p class="cta-sub rv">Você pode seguir em frente para falar com a equipe ou voltar para a home da ECO do BEM e navegar pelos demais produtos do ecossistema.</p>
-    <div class="cta-btns rv">
-      <a href="mailto:relacionamento@ckmtalents.net" class="btn btn-p">Falar com a equipe</a>
-      <a href="index.html" class="btn btn-s">Voltar para a home ECO do BEM</a>
+  <div class="container">
+    <div class="cta-panel">
+      <div class="cta-inner">
+        <div class="label on-dark center rv" style="justify-content:center;">Próximo passo</div>
+        <h2 class="cta-title rv">Quer conhecer melhor o <em>ECO Líderes?</em></h2>
+        <p class="cta-sub rv">Você pode falar direto com nossa equipe para entender como o programa pode se encaixar na realidade da sua empresa, ou voltar para a home e navegar pelos demais produtos do ecossistema.</p>
+        <div class="cta-btns rv">
+          <a href="index.html#contato" class="btn btn-teal">Falar com a equipe</a>
+          <a href="index.html" class="btn btn-ghost-dark">Voltar para a home</a>
+        </div>
+        <p class="cta-note rv">Produto da ECO do B.E.M. · Lideranças melhores. Equipes mais fortes.</p>
+      </div>
     </div>
-    <p class="cta-note rv">Produto da ECO do BEM · Desenvolvimento Humano | Transformando líderes, transformando equipes</p>
   </div>
 </section>
 
+<!-- ============ FOOTER ============ -->
 <footer>
-  <div class="footer-logo">
-    <a href="index.html" class="nav-logo" aria-label="Voltar para a home da ECO do BEM">
-      <div class="logo-box">eco</div>
-      <div class="logo-txt">ECO <em>Líderes</em> <span style="color:rgba(255,255,255,.36);font-weight:400;font-size:12px;">· ECO do BEM</span></div>
-    </a>
+  <div class="footer-row">
+    <div class="footer-brand">
+      <img src="img/logo-colorido.png" alt="ECO do B.E.M." class="footer-logo"
+           onerror="this.outerHTML='<span class=&quot;footer-logo-text&quot;>eco <em>do</em> bem</span>';" />
+      <strong style="color:var(--text-muted);font-family:'Inter',sans-serif;font-size:13px;">· ECO Líderes</strong>
+    </div>
+    <div class="footer-right">
+      <span>© 2026 ECO do B.E.M.</span>
+      <a href="mailto:relacionamento@ckmtalents.net">relacionamento@ckmtalents.net</a>
+      <a href="index.html">Voltar para a home</a>
+    </div>
   </div>
-  <span>Produto da plataforma ECO do BEM</span>
-  <a href="mailto:relacionamento@ckmtalents.net">relacionamento@ckmtalents.com.br</a>
-  <a href="index.html">Voltar para a home</a>
 </footer>
 
 <script>
-const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
-const cv=document.getElementById('cv');
-const ctx2d=cv.getContext('2d');
-let W,H,pts=[];
-function resize2(){W=cv.width=innerWidth;H=cv.height=innerHeight;}
-resize2();
-window.addEventListener('resize',resize2);
-const COLS=['rgba(91,46,255,','rgba(0,184,217,','rgba(94,211,140,'];
-const ptCount = isMobile ? 22 : 56;
-for(let i=0;i<ptCount;i++)pts.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,r:Math.random()*1.4+.3,c:COLS[Math.floor(Math.random()*3)],o:Math.random()*.34+.1});
-const connDist = isMobile ? 0 : 105;
-(function draw(){
-  ctx2d.clearRect(0,0,W,H);
-  pts.forEach((p,i)=>{
-    p.x+=p.vx;p.y+=p.vy;
-    if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
-    ctx2d.beginPath();ctx2d.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx2d.fillStyle=p.c+p.o+')';ctx2d.fill();
-    if(connDist){
-      pts.slice(i+1).forEach(p2=>{
-        const dx=p.x-p2.x,dy=p.y-p2.y,d=Math.sqrt(dx*dx+dy*dy);
-        if(d<connDist){ctx2d.beginPath();ctx2d.moveTo(p.x,p.y);ctx2d.lineTo(p2.x,p2.y);ctx2d.strokeStyle=p.c+(0.05*(1-d/connDist))+')';ctx2d.lineWidth=.5;ctx2d.stroke();}
-      });
-    }
-  });
-  requestAnimationFrame(draw);
-})();
+// Scroll do nav
+const navEl = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  navEl.classList.toggle('scrolled', scrollY > 60);
+});
 
-const hamburger=document.getElementById('hamburger');
-const mobileMenu=document.getElementById('mobileMenu');
-if(hamburger && mobileMenu){
-  hamburger.addEventListener('click',()=>{
+// Hamburger mobile
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('open');
     mobileMenu.classList.toggle('open');
     document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
   });
-  document.querySelectorAll('.mobile-link').forEach(link=>{
-    link.addEventListener('click',()=>{
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
       hamburger.classList.remove('open');
       mobileMenu.classList.remove('open');
       document.body.style.overflow = '';
@@ -760,18 +2768,24 @@ if(hamburger && mobileMenu){
   });
 }
 
-const navEl=document.getElementById('nav');
-window.addEventListener('scroll',()=>navEl.classList.toggle('scrolled',scrollY>60));
+// Reveal animations
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('vis');
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
 
-const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');}),{threshold:.08});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
-
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
+// Smooth scroll interno
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
     const href = a.getAttribute('href');
-    if(href === '#') return;
-    const t=document.querySelector(href);
-    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});} 
+    if (href === '#') return;
+    const t = document.querySelector(href);
+    if (t) {
+      e.preventDefault();
+      t.scrollIntoView({ behavior: 'smooth' });
+    }
   });
 });
 </script>

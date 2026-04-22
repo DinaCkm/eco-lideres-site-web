@@ -661,14 +661,15 @@ nav.scrolled{
 /* =========== DISC (escuro) =========== */
 #disc .disc-split{
   display:grid;
-  grid-template-columns:minmax(0, 0.9fr) minmax(0, 1fr);
+  grid-template-columns:minmax(0, 0.85fr) minmax(0, 1fr);
   gap:56px;
   max-width:var(--max);
   margin:0 auto;
-  align-items:center;
+  align-items:start;
 }
 .disc-image-wrap{
-  position:relative;
+  position:sticky;
+  top:100px;
   aspect-ratio: 4 / 5;
   border-radius:var(--radius-lg);
   overflow:hidden;
@@ -968,7 +969,6 @@ nav.scrolled{
   background:rgba(245,158,11,0.06);
 }
 .ind-card.final{
-  grid-column:span 2;
   border-color:rgba(94,211,140,0.3);
   background:linear-gradient(135deg,rgba(94,211,140,0.1),rgba(0,184,217,0.06));
 }
@@ -1093,18 +1093,30 @@ nav.scrolled{
   display:flex;flex-direction:column;
   position:relative;
 }
-.ment-timeline::before{
-  content:'';position:absolute;
-  left:22px;top:24px;bottom:24px;
-  width:2px;
-  background:linear-gradient(to bottom,var(--purple),var(--teal),var(--green),var(--gold));
-}
 .ment-item{
   display:flex;gap:20px;
   padding-bottom:28px;
   position:relative;
 }
 .ment-item:last-child{padding-bottom:0;}
+.ment-item:not(:last-child)::before{
+  content:'';
+  position:absolute;
+  left:22px;
+  top:46px;
+  bottom:0;
+  width:2px;
+  z-index:0;
+}
+.ment-item:nth-child(1):not(:last-child)::before{
+  background:linear-gradient(to bottom,var(--purple),var(--teal));
+}
+.ment-item:nth-child(2):not(:last-child)::before{
+  background:linear-gradient(to bottom,var(--teal),var(--green));
+}
+.ment-item:nth-child(3):not(:last-child)::before{
+  background:linear-gradient(to bottom,var(--green),var(--gold));
+}
 .ment-dot{
   width:46px;height:46px;
   border-radius:50%;
@@ -1294,30 +1306,33 @@ nav.scrolled{
 .caso-row-val.ok{color:var(--green);font-weight:600;}
 
 .bonus-box{
-  margin-top:20px;
-  background:linear-gradient(135deg,rgba(245,158,11,0.1),rgba(94,211,140,0.08));
-  border:1px solid rgba(245,158,11,0.25);
-  border-radius:var(--radius-md);
-  padding:22px 24px;
-  display:flex;align-items:center;gap:16px;
+  max-width:var(--max);
+  margin:40px auto 0;
+  background:linear-gradient(135deg,rgba(245,158,11,0.12),rgba(94,211,140,0.08));
+  border:1px solid rgba(245,158,11,0.28);
+  border-radius:var(--radius-lg);
+  padding:32px 40px;
+  display:flex;align-items:center;gap:24px;
+  box-shadow:var(--shadow-sm);
 }
 .bonus-icon{
-  font-size:30px;flex-shrink:0;
-  width:54px;height:54px;
-  border-radius:14px;
-  background:rgba(245,158,11,0.15);
+  font-size:36px;flex-shrink:0;
+  width:68px;height:68px;
+  border-radius:18px;
+  background:rgba(245,158,11,0.18);
   display:grid;place-items:center;
 }
 .bonus-box h4{
   font-family:'Poppins',sans-serif;
-  font-size:17px;font-weight:800;
+  font-size:20px;font-weight:800;
   color:#B87A06;
-  margin-bottom:4px;
+  margin-bottom:6px;
 }
 .bonus-box p{
-  font-size:14px;
+  font-size:15px;
   color:var(--text-body);
   line-height:1.65;
+  max-width:780px;
 }
 
 /* =========== DASHBOARD (escuro) =========== */
@@ -1555,10 +1570,13 @@ nav.scrolled{
   gap:56px;
   max-width:var(--max);
   margin:0 auto;
-  align-items:center;
+  align-items:start;
 }
 .web-image-wrap{
+  position:sticky;
+  top:100px;
   aspect-ratio: 4 / 5;
+  max-height:640px;
   border-radius:var(--radius-lg);
   overflow:hidden;
   box-shadow:var(--shadow-lg);
@@ -1826,7 +1844,13 @@ footer a:hover{color:var(--teal);}
   .ment-image-wrap{position:relative;top:0;max-width:500px;margin:0 auto;}
   .hero-image-wrap,
   .disc-image-wrap,
-  .web-image-wrap{max-width:500px;margin:0 auto;}
+  .web-image-wrap{
+    position:relative;
+    top:0;
+    max-width:500px;
+    max-height:none;
+    margin:0 auto;
+  }
   .oque-grid,
   .phase-details,
   .cert-info-grid,
@@ -1837,7 +1861,6 @@ footer a:hover{color:var(--teal);}
   .phases-row::before,.how-row::before{display:none;}
   .media-grid{grid-template-columns:repeat(3,1fr);}
   .comps-wrap{grid-template-columns:1fr 1fr;}
-  .ind-card.final{grid-column:span 2;}
   .ind-row2{grid-template-columns:1fr;}
   .dash-inds{grid-template-columns:repeat(4,1fr);}
   .benefits-grid{grid-template-columns:1fr 1fr;}
@@ -1881,7 +1904,6 @@ footer a:hover{color:var(--teal);}
   .comps-wrap,
   .benefits-grid,
   .disc-dims{grid-template-columns:1fr;gap:16px;}
-  .ind-card.final{grid-column:span 1;}
   .dash-mockup{padding:20px;}
   .dash-inds{grid-template-columns:repeat(2,1fr);}
   .formula-bar{padding:16px;gap:8px;}
@@ -2501,13 +2523,6 @@ footer a:hover{color:var(--teal);}
             </div>
           </div>
         </div>
-        <div class="bonus-box rv">
-          <div class="bonus-icon">⭐</div>
-          <div>
-            <h4>Aplicabilidade valorizada</h4>
-            <p>A capacidade de levar o aprendizado para a prática fortalece o desenvolvimento no programa e contribui para o reconhecimento final do participante.</p>
-          </div>
-        </div>
       </div>
       <div>
         <div class="caso-example rv">
@@ -2532,6 +2547,13 @@ footer a:hover{color:var(--teal);}
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="bonus-box rv">
+      <div class="bonus-icon">⭐</div>
+      <div>
+        <h4>Aplicabilidade valorizada</h4>
+        <p>A capacidade de levar o aprendizado para a prática fortalece o desenvolvimento no programa e contribui para o reconhecimento final do participante.</p>
       </div>
     </div>
   </div>

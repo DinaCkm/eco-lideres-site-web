@@ -1167,19 +1167,40 @@
     min-height: 96px;
   }
   .form-submit {
-    margin-top: 12px;
-    width: 100%;
-    padding: 16px;
-    background: linear-gradient(135deg, var(--green), var(--eco-teal));
-    color: var(--white);
-    border: none;
-    border-radius: 14px;
-    font-size: 15px;
-    font-weight: 800;
-    cursor: pointer;
-    transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
-    font-family: 'Inter', sans-serif;
-    box-shadow: var(--shadow-green);
+  margin-top: 12px;
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--green), var(--eco-teal));
+  color: #FFFFFF;
+  border: none;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+  font-family: 'Inter', sans-serif;
+  box-shadow: var(--shadow-green);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px rgba(94, 211, 140, 0.35);
+}
+
+.form-submit:disabled {
+  opacity: 0.85;
+  cursor: not-allowed;
+  color: #FFFFFF;
+}
+
+.form-submit,
+.form-submit:visited,
+.form-submit:active,
+.form-submit:focus {
+  color: #FFFFFF;
+}
   }
   .form-submit:hover {
     transform: translateY(-1px);

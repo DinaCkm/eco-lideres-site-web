@@ -1,936 +1,1612 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Convênio Corporativo | ECO do B.E.M.</title>
-  <meta name="description" content="Cadastre sua empresa no Convênio Corporativo ECO Líderes e ofereça aos seus empregados acesso a uma jornada estruturada de desenvolvimento em liderança." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convênio Corporativo ECO Líderes | Transforme desenvolvimento em benefício</title>
+<meta name="description" content="Torne sua empresa conveniada ECO Líderes e ofereça aos seus empregados acesso a uma certificação estruturada em liderança, com valor real de carreira e fortalecimento da cultura interna.">
+<meta name="keywords" content="convênio corporativo, certificação em liderança, desenvolvimento de líderes, benefício corporativo, ECO Líderes, PDI, RH">
+<meta property="og:title" content="Convênio Corporativo ECO Líderes">
+<meta property="og:description" content="Transforme desenvolvimento em benefício corporativo. Uma parceria estratégica para empresas que querem fortalecer suas lideranças.">
+<meta property="og:type" content="website">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
-  <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+<link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+<script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
 
-  <style>
-    :root{
-      --purple:       #5B2EFF;
-      --purple-deep:  #1A0A5E;
-      --purple-dark:  #3A1D8F;
-      --purple-light: #8C68FF;
-      --teal:         #00B8D9;
-      --teal-soft:    #5DCAA5;
-      --green:        #5ED38C;
-      --blue:         #4A9FFF;
-      --gold:         #F59E0B;
+<style>
+  :root {
+    --eco-purple: #5B2EFF;
+    --eco-purple-2: #7044FF;
+    --eco-purple-deep: #3A1D8F;
+    --eco-purple-near-black: #1A0A5E;
+    --eco-teal: #00B8D9;
+    --eco-teal-soft: #5DCAA5;
+    --lilac-bg: #F5F3FF;
+    --lilac-card: #E8E4FF;
+    --off-white: #FAFAFE;
+    --white: #FFFFFF;
+    --text-ink: #1A0A5E;
+    --text-body: #3A3559;
+    --text-muted: #6B6389;
+    --text-lilac: #C4B8FF;
+    --line: rgba(26, 10, 94, 0.08);
+    --line-strong: rgba(26, 10, 94, 0.14);
+    --gold: #F59E0B;
 
-      --bg-white:     #FFFFFF;
-      --bg-lilac:     #F5F3FF;
-      --bg-lilac-2:   #E8E4FF;
-      --bg-soft:      #FAFAFE;
+    --serif: 'Poppins', sans-serif;
+    --sans: 'Inter', sans-serif;
 
-      --text-dark:    #1A0A5E;
-      --text-body:    #3A3559;
-      --text-muted:   #6B6389;
-      --text-white:   #FFFFFF;
-      --text-lilac:   #C4B8FF;
+    --radius-sm: 8px;
+    --radius: 16px;
+    --radius-lg: 24px;
+    --shadow-soft: 0 1px 2px rgba(26, 10, 94, 0.04), 0 8px 24px rgba(26, 10, 94, 0.06);
+    --shadow-card: 0 2px 4px rgba(26, 10, 94, 0.05), 0 16px 40px rgba(26, 10, 94, 0.08);
+    --shadow-purple: 0 8px 24px rgba(91, 46, 255, 0.22);
+    --shadow-teal: 0 18px 40px rgba(0, 184, 217, 0.22);
+    --shadow-green: 0 18px 40px rgba(94, 211, 140, 0.22);
+  }
 
-      --border-light: #E8E4FF;
-      --border-soft:  #EFECFF;
-      --shadow-sm:    0 4px 16px rgba(26, 10, 94, 0.06);
-      --shadow-md:    0 12px 32px rgba(26, 10, 94, 0.08);
-      --shadow-lg:    0 24px 60px rgba(26, 10, 94, 0.12);
-      --shadow-purple:0 18px 40px rgba(91, 46, 255, 0.22);
-      --shadow-teal:  0 18px 40px rgba(0, 184, 217, 0.22);
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
 
-      --radius-sm:    12px;
-      --radius-md:    20px;
-      --radius-lg:    28px;
-      --radius-xl:    36px;
+  body {
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text-body);
+    background: var(--lilac-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
 
-      --max:          1180px;
-      --gutter:       20px;
-      --section-space: 96px;
-    }
+  .container { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
 
-    *{ box-sizing:border-box; -webkit-text-size-adjust:100%; }
-    html{ scroll-behavior:smooth; overflow-x:hidden; }
-    body{
-      margin:0;
-      font-family:'Inter', sans-serif;
-      color:var(--text-body);
-      background:var(--bg-white);
-      overflow-x:hidden;
-      line-height:1.6;
-      -webkit-font-smoothing:antialiased;
-    }
-    a{ color:inherit; text-decoration:none; }
-    img{ max-width:100%; height:auto; display:block; }
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(245, 243, 255, 0.85);
+    backdrop-filter: saturate(180%) blur(16px);
+    -webkit-backdrop-filter: saturate(180%) blur(16px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    letter-spacing: -0.01em;
+    color: var(--text-ink);
+    text-decoration: none;
+  }
+  .nav-logo img { height: 38px; width: auto; }
+  .nav-links { display: flex; align-items: center; gap: 34px; }
+  .nav-links a {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text-body);
+    text-decoration: none;
+    transition: color .2s ease;
+  }
+  .nav-links a:hover { color: var(--eco-purple); }
+  .nav-cta {
+    padding: 11px 22px;
+    background: linear-gradient(135deg, var(--eco-purple), var(--eco-purple-2));
+    color: var(--white) !important;
+    border-radius: 999px;
+    font-weight: 700 !important;
+    transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+    box-shadow: var(--shadow-purple);
+  }
+  .nav-cta:hover {
+    background: var(--eco-purple-deep);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(91, 46, 255, 0.4);
+  }
+  @media (max-width: 860px) {
+    .nav-links { gap: 16px; }
+    .nav-links a:not(.nav-cta) { display: none; }
+  }
 
-    .container{
-      width:100%;
-      max-width:calc(var(--max) + (var(--gutter) * 2));
-      margin:0 auto;
-      padding-left:var(--gutter);
-      padding-right:var(--gutter);
-    }
-    .section{ padding:var(--section-space) 0; }
+  .hero { position: relative; padding: 96px 0 116px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; top: -220px; right: -180px;
+    width: 640px; height: 640px;
+    background: radial-gradient(circle, rgba(91, 46, 255, 0.12) 0%, transparent 65%);
+    border-radius: 50%; pointer-events: none;
+  }
+  .hero::after {
+    content: ""; position: absolute; bottom: -140px; left: -140px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(0, 184, 217, 0.08) 0%, transparent 70%);
+    border-radius: 50%; pointer-events: none;
+  }
 
-    .site-header{
-      position:sticky;
-      top:0;
-      z-index:50;
-      background:rgba(26, 10, 94, 0.88);
-      backdrop-filter:blur(16px);
-      -webkit-backdrop-filter:blur(16px);
-      border-bottom:1px solid rgba(255,255,255,0.08);
-    }
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-      min-height:76px;
-      padding:12px 0;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width:0;
-    }
-    .brand-logo{
-      height:44px;
-      width:auto;
-      display:block;
-    }
-    .nav-links{
-      display:flex;
-      align-items:center;
-      gap:28px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-    .nav-links a{
-      color:rgba(255,255,255,0.82);
-      font-size:14.5px;
-      font-weight:600;
-      transition:color .18s ease;
-    }
-    .nav-links a:hover{ color:var(--teal); }
-    .nav-cta{
-      background:linear-gradient(135deg, var(--teal), var(--blue));
-      color:#fff !important;
-      padding:10px 20px;
-      border-radius:999px;
-      box-shadow:var(--shadow-teal);
-    }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 72px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
 
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      font-size:12px;
-      font-weight:700;
-      letter-spacing:2.5px;
-      text-transform:uppercase;
-      color:var(--purple);
-      margin-bottom:20px;
-    }
-    .eyebrow::before{
-      content:"";
-      width:28px;
-      height:2px;
-      background:linear-gradient(90deg, var(--purple), var(--teal));
-      display:block;
-      border-radius:2px;
-    }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--eco-purple);
+    margin-bottom: 28px;
+    font-family: 'Inter', sans-serif;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 2px;
+    background: var(--eco-teal);
+  }
 
-    .title{
-      font-family:'Poppins', sans-serif;
-      font-size:clamp(2rem, 4.5vw, 3.8rem);
-      font-weight:800;
-      line-height:1.08;
-      letter-spacing:-0.025em;
-      margin:0 0 20px;
-      color:var(--text-dark);
-    }
-    .title.on-dark{ color:#fff; }
-    .title .hl-purple{ color:var(--purple); }
-    .title .hl-teal{ color:var(--teal); }
+  .hero h1,
+  h2,
+  h3,
+  .hero-card-text,
+  .emp-reinforce,
+  .closing-impact,
+  .faq-question {
+    font-family: 'Poppins', sans-serif;
+  }
 
-    .subtitle{
-      font-size:clamp(1rem, 1.2vw, 1.08rem);
-      line-height:1.75;
-      color:var(--text-muted);
-      max-width:760px;
-      margin:0;
-    }
+  .hero h1 {
+    font-weight: 800;
+    font-size: clamp(38px, 5.2vw, 62px);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    color: var(--text-ink);
+    margin-bottom: 24px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    font-weight: 800;
+    color: var(--eco-purple);
+  }
 
-    .btn-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      margin-top:32px;
-    }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:54px;
-      padding:14px 26px;
-      border-radius:999px;
-      font-weight:700;
-      font-size:15px;
-      text-align:center;
-      border:1px solid transparent;
-      cursor:pointer;
-      transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
-    }
-    .btn:hover{ transform:translateY(-2px); }
-    .btn-primary{
-      background:linear-gradient(135deg, var(--purple), var(--purple-light));
-      color:#fff;
-      box-shadow:var(--shadow-purple);
-    }
-    .btn-secondary{
-      background:#fff;
-      color:var(--purple);
-      border-color:var(--border-light);
-      box-shadow:var(--shadow-sm);
-    }
-    .btn-teal{
-      background:linear-gradient(135deg, var(--teal), var(--blue));
-      color:#fff;
-      box-shadow:var(--shadow-teal);
-    }
+  .hero-sub {
+    font-size: 18.5px;
+    font-weight: 400;
+    line-height: 1.55;
+    color: var(--text-body);
+    max-width: 580px;
+    margin-bottom: 18px;
+  }
+  .hero-support {
+    font-size: 15.5px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 540px;
+    margin-bottom: 40px;
+  }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
 
-    .hero{
-      position:relative;
-      padding:72px 0 90px;
-      background:
-        radial-gradient(circle at 15% 20%, rgba(91, 46, 255, 0.09), transparent 40%),
-        radial-gradient(circle at 90% 85%, rgba(0, 184, 217, 0.10), transparent 40%),
-        linear-gradient(180deg, #ffffff 0%, var(--bg-lilac) 100%);
-      overflow:hidden;
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns:minmax(0, 1.05fr) minmax(0, 1fr);
-      gap:50px;
-      align-items:center;
-    }
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 16px 8px 10px;
-      border-radius:999px;
-      background:#fff;
-      border:1px solid var(--border-light);
-      font-size:13px;
-      font-weight:600;
-      color:var(--text-dark);
-      box-shadow:var(--shadow-sm);
-      margin-bottom:24px;
-    }
-    .pill::before{
-      content:"";
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:var(--green);
-      box-shadow:0 0 0 4px rgba(94, 211, 140, 0.2);
-    }
-    .hero-visual{
-      position:relative;
-      aspect-ratio:4/5;
-      border-radius:var(--radius-lg);
-      overflow:hidden;
-      box-shadow:var(--shadow-lg);
-      background:linear-gradient(135deg, var(--purple-deep), var(--purple));
-    }
-    .hero-visual img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-    .hero-card{
-      position:absolute;
-      left:24px;
-      right:24px;
-      bottom:24px;
-      background:rgba(255,255,255,0.92);
-      backdrop-filter:blur(12px);
-      border-radius:var(--radius-md);
-      padding:18px 20px;
-      box-shadow:var(--shadow-md);
-    }
-    .hero-card small{
-      display:block;
-      font-size:11px;
-      letter-spacing:1.5px;
-      text-transform:uppercase;
-      font-weight:700;
-      color:var(--purple);
-      margin-bottom:6px;
-    }
-    .hero-card strong{
-      display:block;
-      color:var(--text-dark);
-      font-size:16px;
-      line-height:1.45;
-    }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 28px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: all .25s ease;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.005em;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--eco-purple), var(--eco-purple-2));
+    color: var(--white);
+    box-shadow: var(--shadow-purple);
+  }
+  .btn-primary:hover {
+    background: var(--eco-purple-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(91, 46, 255, 0.35);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-ink);
+    border-color: var(--line-strong);
+  }
+  .btn-secondary:hover {
+    background: var(--white);
+    border-color: var(--eco-purple);
+    color: var(--eco-purple);
+  }
+  .btn .arrow {
+    transition: transform .25s ease;
+    font-size: 1.1em;
+  }
+  .btn:hover .arrow { transform: translateX(4px); }
 
-    .split{
-      display:grid;
-      grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);
-      gap:56px;
-      align-items:center;
-    }
-    .visual-card{
-      border-radius:var(--radius-lg);
-      overflow:hidden;
-      box-shadow:var(--shadow-lg);
-      background:linear-gradient(135deg, var(--purple-deep), var(--teal));
-      aspect-ratio:4/5;
-    }
-    .visual-card img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
+  .hero-visual {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    background: linear-gradient(160deg, var(--eco-purple-deep) 0%, var(--eco-purple) 50%, var(--eco-teal) 100%);
+  }
+  .hero-visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 30%, rgba(255, 255, 255, 0.18) 0%, transparent 55%),
+      radial-gradient(ellipse at 70% 70%, rgba(245, 158, 11, 0.12) 0%, transparent 60%);
+  }
+  .hero-visual img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 1;
+  }
 
-    .info-grid{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0,1fr));
-      gap:22px;
-    }
-    .info-card{
-      background:#fff;
-      border:1px solid var(--border-light);
-      border-radius:var(--radius-lg);
-      padding:28px 24px;
-      box-shadow:var(--shadow-sm);
-    }
-    .info-card h3{
-      margin:0 0 10px;
-      font-family:'Poppins', sans-serif;
-      font-size:1.2rem;
-      font-weight:700;
-      color:var(--text-dark);
-    }
-    .info-card p{
-      margin:0;
-      color:var(--text-body);
-      font-size:15px;
-      line-height:1.7;
-    }
+  .hero-card {
+    position: absolute;
+    bottom: 28px;
+    left: 28px;
+    right: 28px;
+    background: rgba(245, 243, 255, 0.97);
+    backdrop-filter: blur(12px);
+    padding: 20px 24px;
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.6);
+    box-shadow: 0 8px 24px rgba(26, 10, 94, 0.18);
+    z-index: 2;
+  }
+  .hero-card-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--eco-purple);
+    margin-bottom: 8px;
+    font-family: 'Inter', sans-serif;
+  }
+  .hero-card-text {
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--text-ink);
+  }
 
-    .section-alt{ background:var(--bg-lilac); }
+  @media (max-width: 900px) {
+    .hero { padding: 64px 0 76px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero-visual { aspect-ratio: 4/3; max-width: 540px; margin: 0 auto; }
+  }
 
-    .list-clean{
-      list-style:none;
-      padding:0;
-      margin:28px 0 0;
-      display:grid;
-      gap:14px;
-    }
-    .list-clean li{
-      background:#fff;
-      border:1px solid var(--border-light);
-      border-radius:var(--radius-md);
-      padding:18px 18px 18px 20px;
-      box-shadow:var(--shadow-sm);
-      position:relative;
-      padding-left:48px;
-      color:var(--text-body);
-      line-height:1.65;
-    }
-    .list-clean li::before{
-      content:"✓";
-      position:absolute;
-      left:18px;
-      top:18px;
-      width:20px;
-      height:20px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      background:rgba(91,46,255,0.12);
-      color:var(--purple);
-      font-weight:800;
-      font-size:12px;
-    }
+  section { padding: 104px 0; position: relative; }
 
-    .diff-columns{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:24px;
-    }
-    .diff-box{
-      border-radius:var(--radius-lg);
-      padding:34px 30px;
-      box-shadow:var(--shadow-sm);
-    }
-    .diff-box.light{
-      background:#fff;
-      border:1px solid var(--border-light);
-    }
-    .diff-box.dark{
-      background:linear-gradient(135deg, var(--purple-deep), var(--purple));
-      color:#fff;
-    }
-    .diff-box h3{
-      margin:0 0 16px;
-      font-family:'Poppins', sans-serif;
-      font-size:1.35rem;
-      font-weight:800;
-    }
-    .diff-box ul{
-      list-style:none;
-      padding:0;
-      margin:0;
-      display:grid;
-      gap:12px;
-    }
-    .diff-box li{
-      line-height:1.6;
-      position:relative;
-      padding-left:22px;
-    }
-    .diff-box li::before{
-      content:"→";
-      position:absolute;
-      left:0;
-      top:0;
-      font-weight:800;
-      color:var(--teal);
-    }
-    .diff-box.light li{ color:var(--text-body); }
-    .diff-box.dark li{ color:rgba(255,255,255,0.9); }
+  h2 {
+    font-weight: 800;
+    font-size: clamp(32px, 3.6vw, 46px);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: var(--text-ink);
+    margin-bottom: 24px;
+  }
+  h2 em {
+    font-style: normal;
+    font-weight: 800;
+    color: var(--eco-purple);
+  }
+  h3 {
+    font-weight: 800;
+    font-size: 21px;
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+    color: var(--text-ink);
+    margin-bottom: 12px;
+  }
+  .lead {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.58;
+    color: var(--text-body);
+    max-width: 720px;
+  }
 
-    .steps{
-      display:grid;
-      grid-template-columns:repeat(5, minmax(0,1fr));
-      gap:18px;
-      margin-top:34px;
-    }
-    .step{
-      text-align:center;
-      background:#fff;
-      border:1px solid var(--border-light);
-      border-radius:var(--radius-lg);
-      padding:24px 18px;
-      box-shadow:var(--shadow-sm);
-    }
-    .step-num{
-      width:54px;
-      height:54px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      margin:0 auto 16px;
-      background:rgba(91,46,255,0.1);
-      color:var(--purple);
-      font-family:'Poppins', sans-serif;
-      font-weight:800;
-      font-size:1.1rem;
-    }
-    .step h4{
-      margin:0 0 8px;
-      font-family:'Poppins', sans-serif;
-      color:var(--text-dark);
-      font-size:1rem;
-      font-weight:700;
-    }
-    .step p{
-      margin:0;
-      font-size:14px;
-      color:var(--text-muted);
-      line-height:1.55;
-    }
+  .section-concept {
+    padding: 112px 0;
+    background: linear-gradient(180deg, var(--lilac-bg) 0%, var(--white) 100%);
+    position: relative;
+  }
+  .concept-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .concept-visual {
+    position: relative;
+    aspect-ratio: 5 / 6;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    background: linear-gradient(160deg, var(--eco-purple-near-black) 0%, var(--eco-purple-deep) 50%, var(--eco-purple) 100%);
+  }
+  .concept-visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 35% 35%, rgba(0, 184, 217, 0.2) 0%, transparent 60%);
+    z-index: 0;
+  }
+  .concept-visual img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 1;
+  }
 
-    .conversion-box{
-      background:linear-gradient(135deg, var(--purple), var(--purple-deep));
-      color:#fff;
-      border-radius:var(--radius-xl);
-      padding:56px 34px;
-      text-align:center;
-      box-shadow:var(--shadow-lg);
-    }
-    .conversion-box h2{
-      color:#fff;
-      margin-bottom:14px;
-    }
-    .conversion-box p{
-      color:rgba(255,255,255,0.85);
-      max-width:760px;
-      margin:0 auto 28px;
-      line-height:1.7;
-    }
+  .concept-text p {
+    font-size: 16.5px;
+    line-height: 1.7;
+    color: var(--text-body);
+    margin-bottom: 20px;
+  }
+  .concept-text strong {
+    color: var(--text-ink);
+    font-weight: 600;
+  }
+  .concept-pillars {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .pillar {
+    padding: 20px 22px;
+    background: var(--white);
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .pillar:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+  }
+  .pillar-num {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--eco-teal);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    font-family: 'Inter', sans-serif;
+  }
+  .pillar-text {
+    font-size: 14.5px;
+    color: var(--text-ink);
+    line-height: 1.5;
+    font-weight: 500;
+  }
 
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(4, minmax(0,1fr));
-      gap:18px;
-    }
-    .stat{
-      background:#fff;
-      border:1px solid var(--border-light);
-      border-radius:var(--radius-lg);
-      padding:28px 20px;
-      text-align:center;
-      box-shadow:var(--shadow-sm);
-    }
-    .stat strong{
-      display:block;
-      font-family:'Poppins', sans-serif;
-      font-size:2rem;
-      color:var(--purple);
-      margin-bottom:6px;
-    }
-    .stat span{
-      display:block;
-      color:var(--text-muted);
-      font-size:13px;
-      line-height:1.5;
-    }
+  @media (max-width: 900px) {
+    .concept-grid { grid-template-columns: 1fr; gap: 44px; }
+    .concept-visual { aspect-ratio: 4/3; max-width: 540px; margin: 0 auto; }
+    .concept-pillars { grid-template-columns: 1fr; }
+  }
 
-    .faq-wrap{
-      max-width:900px;
-      margin:0 auto;
-    }
-    .faq-item{
-      background:#fff;
-      border:1px solid var(--border-light);
-      border-radius:var(--radius-md);
-      margin-bottom:12px;
-      overflow:hidden;
-      box-shadow:var(--shadow-sm);
-    }
-    .faq-question{
-      width:100%;
-      border:none;
-      background:#fff;
-      padding:22px 24px;
-      text-align:left;
-      display:flex;
-      justify-content:space-between;
-      gap:24px;
-      font-family:'Poppins', sans-serif;
-      font-size:1rem;
-      font-weight:700;
-      color:var(--text-dark);
-      cursor:pointer;
-    }
-    .faq-answer{
-      max-height:0;
-      overflow:hidden;
-      transition:max-height .3s ease, padding .3s ease;
-      padding:0 24px;
-    }
-    .faq-item.open .faq-answer{
-      max-height:260px;
-      padding:0 24px 22px;
-    }
-    .faq-answer p{
-      margin:0;
-      color:var(--text-body);
-      line-height:1.7;
-      font-size:15px;
-    }
+  .section-value { background: var(--white); }
+  .value-head { max-width: 820px; margin-bottom: 64px; }
+  .value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .value-card {
+    padding: 36px 30px 32px;
+    background: var(--lilac-bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    position: relative;
+  }
+  .value-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-soft);
+    border-color: rgba(91, 46, 255, 0.3);
+  }
+  .value-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(91, 46, 255, 0.12) 0%, rgba(0, 184, 217, 0.12) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px;
+    color: var(--eco-purple);
+  }
+  .value-icon svg { width: 22px; height: 22px; }
+  .value-card h3 { font-size: 19px; margin-bottom: 10px; }
+  .value-card p { font-size: 14.5px; line-height: 1.6; color: var(--text-body); }
+  .value-card.highlight {
+    background: linear-gradient(150deg, var(--eco-purple-near-black) 0%, var(--eco-purple-deep) 100%);
+    border: none;
+  }
+  .value-card.highlight h3,
+  .value-card.highlight p { color: var(--white); }
+  .value-card.highlight p { color: rgba(255, 255, 255, 0.82); }
+  .value-card.highlight .value-icon {
+    background: rgba(0, 184, 217, 0.18);
+    color: var(--eco-teal);
+  }
 
-    .section-form{
-      background:var(--bg-white);
-      padding:96px 0 120px;
-    }
-    .cta-panel{
-      background:
-        radial-gradient(circle at 85% 15%, rgba(0, 184, 217, 0.28), transparent 45%),
-        radial-gradient(circle at 15% 85%, rgba(94, 211, 140, 0.2), transparent 40%),
-        linear-gradient(135deg, var(--purple) 0%, var(--purple-deep) 100%);
-      border-radius:var(--radius-xl);
-      padding:56px 30px;
-      color:#fff;
-      box-shadow:var(--shadow-lg);
-      overflow:hidden;
-    }
-    .cta-head{
-      text-align:center;
-      max-width:780px;
-      margin:0 auto 34px;
-    }
-    .cta-head h2{
-      color:#fff;
-      margin-bottom:14px;
-    }
-    .cta-head p{
-      margin:0;
-      color:rgba(255,255,255,0.86);
-      line-height:1.75;
-    }
+  @media (max-width: 900px) { .value-grid { grid-template-columns: 1fr; } }
+  @media (min-width: 901px) and (max-width: 1100px) { .value-grid { grid-template-columns: 1fr 1fr; } }
 
-    .form-wrap{
-      max-width:620px;
-      margin:0 auto;
-      background:rgba(255,255,255,0.06);
-      border:1px solid rgba(255,255,255,0.15);
-      border-radius:var(--radius-lg);
-      padding:34px 28px;
-      backdrop-filter:blur(12px);
-    }
-    .form-wrap label{
-      display:block;
-      margin-bottom:8px;
-      font-weight:700;
-      font-size:14px;
-      color:#fff;
-    }
-    .form-wrap input,
-    .form-wrap select,
-    .form-wrap textarea{
-      width:100%;
-      padding:14px 16px;
-      margin-bottom:18px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,0.2);
-      background:rgba(255,255,255,0.08);
-      color:#fff;
-      font-family:'Inter', sans-serif;
-      font-size:15px;
-    }
-    .form-wrap input::placeholder,
-    .form-wrap textarea::placeholder{ color:rgba(255,255,255,0.56); }
-    .form-wrap textarea{ resize:vertical; min-height:120px; }
-    .form-wrap button{
-      width:100%;
-      background:linear-gradient(135deg, var(--green), var(--teal));
-      color:#fff;
-      border:none;
-      padding:16px;
-      border-radius:14px;
-      font-weight:800;
-      font-size:15px;
-      cursor:pointer;
-      box-shadow:var(--shadow-teal);
-    }
-    .form-status{
-      margin-top:12px;
-      color:#fff;
-      font-size:14px;
-      text-align:center;
-    }
-    .divider-or{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      margin:28px 0 18px;
-      color:rgba(255,255,255,0.76);
-      font-size:13px;
-      font-weight:700;
-      letter-spacing:1.5px;
-      text-transform:uppercase;
-    }
-    .divider-or::before,
-    .divider-or::after{
-      content:"";
-      flex:1;
-      height:1px;
-      background:rgba(255,255,255,0.18);
-    }
-    .calendar-wrap{
-      text-align:center;
-    }
-    .calendar-wrap p{
-      margin:0 0 14px;
-      color:rgba(255,255,255,0.88);
-      font-size:14px;
-    }
+  .section-employees {
+    background: linear-gradient(180deg, var(--white) 0%, var(--lilac-bg) 100%);
+  }
+  .emp-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.95fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .emp-visual {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    background: linear-gradient(160deg, var(--eco-teal) 0%, var(--eco-teal-soft) 50%, var(--lilac-card) 100%);
+  }
+  .emp-visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 25% 35%, rgba(255, 255, 255, 0.22) 0%, transparent 55%),
+      radial-gradient(ellipse at 75% 70%, rgba(91, 46, 255, 0.25) 0%, transparent 60%);
+    z-index: 0;
+  }
+  .emp-visual img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 1;
+  }
+  .emp-list {
+    list-style: none;
+    margin-top: 32px;
+  }
+  .emp-list li {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--text-ink);
+    font-weight: 500;
+    position: relative;
+    padding-left: 32px;
+  }
+  .emp-list li:last-child { border-bottom: none; }
+  .emp-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 26px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: rgba(91, 46, 255, 0.12);
+  }
+  .emp-list li::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 30px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--eco-purple);
+  }
+  .emp-reinforce {
+    margin-top: 32px;
+    padding: 24px 28px;
+    background: var(--white);
+    border-left: 3px solid var(--eco-teal);
+    border-radius: 4px 12px 12px 4px;
+    font-size: 17.5px;
+    line-height: 1.5;
+    color: var(--text-ink);
+    box-shadow: var(--shadow-soft);
+    font-weight: 700;
+  }
 
-    .site-footer{
-      padding:32px 0 40px;
-      background:var(--bg-white);
-      border-top:1px solid var(--border-soft);
-      color:var(--text-muted);
-      font-size:14px;
-    }
-    .footer-row{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:18px;
-      flex-wrap:wrap;
-    }
-    .footer-brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-    .footer-logo{
-      height:36px;
-      width:auto;
-      display:block;
-    }
-    .footer-brand strong{
-      font-family:'Poppins', sans-serif;
-      color:var(--text-dark);
-      font-weight:800;
-      font-size:14px;
-    }
+  @media (max-width: 900px) {
+    .emp-grid { grid-template-columns: 1fr; gap: 44px; }
+    .emp-visual { aspect-ratio: 4/3; max-width: 540px; margin: 0 auto; order: -1; }
+  }
 
-    @media (max-width: 980px){
-      .hero-grid,
-      .split,
-      .diff-columns{
-        grid-template-columns:1fr;
-      }
-      .info-grid{
-        grid-template-columns:1fr;
-      }
-      .steps{
-        grid-template-columns:1fr 1fr;
-      }
-      .stats{
-        grid-template-columns:1fr 1fr;
-      }
-      .nav{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-      .nav-links{
-        width:100%;
-        justify-content:flex-start;
-      }
-    }
+  .section-differential {
+    background: var(--white);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .diff-head {
+    text-align: center;
+    max-width: 820px;
+    margin: 0 auto 64px;
+  }
+  .diff-head .eyebrow {
+    justify-content: center;
+    background: var(--lilac-bg);
+    padding: 8px 20px;
+    border-radius: 999px;
+  }
+  .diff-head .eyebrow::before { display: none; }
+  .diff-head .lead { margin: 0 auto; }
 
-    @media (max-width: 640px){
-      :root{ --gutter:16px; --section-space:64px; }
-      .btn-row{ flex-direction:column; }
-      .btn{ width:100%; }
-      .steps,
-      .stats{
-        grid-template-columns:1fr;
-      }
-      .footer-row{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-      .nav-links .nav-cta{
-        display:none;
-      }
+  .diff-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+  }
+  .diff-col { padding: 48px 44px; }
+  .diff-col.company {
+    background: var(--lilac-bg);
+    border-right: 1px solid var(--line);
+  }
+  .diff-col.employee {
+    background: linear-gradient(160deg, var(--eco-purple-near-black) 0%, var(--eco-purple-deep) 100%);
+    color: var(--white);
+  }
+  .diff-col-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    font-family: 'Inter', sans-serif;
+  }
+  .diff-col.company .diff-col-label { color: var(--eco-purple); }
+  .diff-col.employee .diff-col-label { color: var(--eco-teal); }
+  .diff-col h3 {
+    font-size: 28px;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  .diff-col.employee h3 { color: var(--white); }
+  .diff-col ul { list-style: none; }
+  .diff-col li {
+    padding: 14px 0;
+    font-size: 15px;
+    line-height: 1.5;
+    border-bottom: 1px solid rgba(26, 10, 94, 0.08);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .diff-col.employee li {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.88);
+  }
+  .diff-col li::before {
+    content: "→";
+    color: var(--eco-purple);
+    font-weight: 600;
+    flex-shrink: 0;
+    line-height: 1.5;
+  }
+  .diff-col.employee li::before { color: var(--eco-teal); }
+
+  @media (max-width: 820px) {
+    .diff-columns { grid-template-columns: 1fr; }
+    .diff-col.company {
+      border-right: none;
+      border-bottom: 1px solid var(--line);
     }
-  </style>
+    .diff-col { padding: 36px 28px; }
+  }
+
+  .section-how { background: var(--lilac-bg); }
+  .how-head { max-width: 720px; margin-bottom: 72px; }
+  .how-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .how-steps::before {
+    content: "";
+    position: absolute;
+    top: 32px;
+    left: 6%;
+    right: 6%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--eco-purple) 20%, var(--eco-teal) 80%, transparent);
+    opacity: 0.4;
+  }
+  .step {
+    padding: 0 16px;
+    text-align: center;
+    position: relative;
+  }
+  .step-num {
+    width: 64px;
+    height: 64px;
+    background: var(--white);
+    border: 2px solid var(--eco-purple);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--eco-purple);
+    position: relative;
+    z-index: 1;
+    transition: all .3s ease;
+    font-family: 'Poppins', sans-serif;
+  }
+  .step:hover .step-num {
+    background: var(--eco-purple);
+    color: var(--white);
+    transform: scale(1.05);
+  }
+  .step-title {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--text-ink);
+    line-height: 1.3;
+    margin-bottom: 8px;
+    font-family: 'Poppins', sans-serif;
+  }
+  .step-desc {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  @media (max-width: 900px) {
+    .how-steps { grid-template-columns: 1fr 1fr; gap: 40px 20px; }
+    .how-steps::before { display: none; }
+  }
+  @media (max-width: 500px) { .how-steps { grid-template-columns: 1fr; } }
+
+  .section-for {
+    background: linear-gradient(180deg, var(--lilac-bg) 0%, var(--white) 100%);
+  }
+  .for-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .for-list {
+    list-style: none;
+    margin-top: 32px;
+  }
+  .for-list li {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 16.5px;
+    line-height: 1.45;
+    color: var(--text-ink);
+    font-weight: 700;
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 16px;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+  }
+  .for-list li::before {
+    content: "◆";
+    color: var(--eco-teal);
+    font-size: 11px;
+  }
+  .for-list li:first-child { border-top: 1px solid var(--line); }
+
+  .for-visual {
+    position: relative;
+    aspect-ratio: 4/5;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    background: linear-gradient(160deg, var(--eco-purple-deep) 0%, var(--eco-purple) 60%, var(--eco-teal) 100%);
+  }
+  .for-visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 35% 30%, rgba(255,255,255,0.22) 0%, transparent 60%);
+    z-index: 0;
+  }
+  .for-visual img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 1;
+  }
+
+  @media (max-width: 900px) {
+    .for-grid { grid-template-columns: 1fr; gap: 44px; }
+    .for-visual { aspect-ratio: 4/3; max-width: 540px; margin: 0 auto; }
+  }
+
+  .section-conversion { padding: 80px 0; background: var(--white); }
+  .conversion-box {
+    background: linear-gradient(135deg, var(--lilac-bg) 0%, var(--lilac-card) 100%);
+    border-radius: var(--radius-lg);
+    padding: 72px 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+  .conversion-box::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(91, 46, 255, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .conversion-box::after {
+    content: "";
+    position: absolute;
+    bottom: -120px;
+    left: -120px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0, 184, 217, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .conversion-box > * { position: relative; z-index: 1; }
+  .conversion-box h2 {
+    max-width: 760px;
+    margin: 0 auto 20px;
+  }
+  .conversion-box p {
+    font-size: 17px;
+    color: var(--text-body);
+    max-width: 620px;
+    margin: 0 auto 36px;
+    line-height: 1.55;
+  }
+  .conversion-ctas {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 700px) { .conversion-box { padding: 48px 28px; } }
+
+  .section-proof {
+    background: var(--white);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 76px 0;
+  }
+  .proof-head {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .proof-head .eyebrow {
+    justify-content: center;
+    background: var(--lilac-bg);
+    padding: 8px 20px;
+    border-radius: 999px;
+  }
+  .proof-head .eyebrow::before { display: none; }
+  .proof-head h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-body);
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.4;
+  }
+
+  .proof-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .stat {
+    padding: 40px 20px;
+    text-align: center;
+    border-right: 1px solid var(--line);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Poppins', sans-serif;
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--eco-purple);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+  .stat-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.45;
+    font-weight: 500;
+  }
+  @media (max-width: 820px) {
+    .proof-stats { grid-template-columns: 1fr 1fr; }
+    .stat:nth-child(2) { border-right: none; }
+    .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--line); }
+  }
+
+  .section-faq { background: var(--lilac-bg); }
+  .faq-wrapper { max-width: 860px; margin: 0 auto; }
+  .faq-head {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .faq-head .eyebrow {
+    justify-content: center;
+    background: var(--white);
+    padding: 8px 20px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+  }
+  .faq-head .eyebrow::before { display: none; }
+
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    background: var(--white);
+    margin-bottom: 12px;
+    border-radius: var(--radius);
+    padding: 0 28px;
+    transition: box-shadow .25s ease;
+  }
+  .faq-item:hover { box-shadow: var(--shadow-soft); }
+
+  .faq-question {
+    width: 100%;
+    padding: 26px 0;
+    background: transparent;
+    border: none;
+    text-align: left;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text-ink);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    letter-spacing: -0.01em;
+    transition: color .2s ease;
+  }
+  .faq-question:hover { color: var(--eco-purple); }
+
+  .faq-toggle {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1.5px solid var(--line-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: var(--text-ink);
+    font-weight: 300;
+    transition: all .3s ease;
+    font-family: 'Inter', sans-serif;
+  }
+  .faq-item.open .faq-toggle {
+    background: var(--eco-purple);
+    color: var(--white);
+    border-color: var(--eco-purple);
+    transform: rotate(45deg);
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .4s ease, padding .4s ease;
+  }
+  .faq-item.open .faq-answer {
+    max-height: 400px;
+    padding-bottom: 26px;
+  }
+  .faq-answer p {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--text-body);
+    max-width: 760px;
+  }
+
+  .section-closing {
+    background: linear-gradient(160deg, var(--eco-purple-near-black) 0%, var(--eco-purple-deep) 55%, var(--eco-purple) 100%);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .section-closing::before {
+    content: "";
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 620px;
+    height: 620px;
+    background: radial-gradient(circle, rgba(0, 184, 217, 0.18) 0%, transparent 60%);
+    border-radius: 50%;
+  }
+  .section-closing::after {
+    content: "";
+    position: absolute;
+    bottom: -180px;
+    left: -160px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(91, 46, 255, 0.25) 0%, transparent 65%);
+    border-radius: 50%;
+  }
+  .closing-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    gap: 72px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .closing-text .eyebrow { color: var(--eco-teal); }
+  .closing-text .eyebrow::before { background: var(--eco-teal); }
+  .closing-text h2 {
+    color: var(--white);
+    font-size: clamp(34px, 4.2vw, 52px);
+    margin-bottom: 24px;
+  }
+  .closing-text h2 em {
+    color: var(--eco-teal);
+    font-style: normal;
+    font-weight: 800;
+  }
+  .closing-text p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 24px;
+    max-width: 520px;
+  }
+  .closing-impact {
+    font-size: 22px;
+    line-height: 1.35;
+    color: var(--text-lilac);
+    margin-bottom: 40px;
+    padding-left: 20px;
+    border-left: 2px solid var(--eco-teal);
+    max-width: 500px;
+    font-weight: 700;
+  }
+  .closing-ctas {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .closing-ctas .btn-primary {
+    background: linear-gradient(135deg, var(--eco-teal), #4A9FFF);
+    box-shadow: var(--shadow-teal);
+  }
+  .closing-ctas .btn-primary:hover {
+    background: #009BB8;
+    box-shadow: 0 12px 30px rgba(0, 184, 217, 0.4);
+  }
+  .closing-ctas .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border-color: rgba(255,255,255,0.3);
+  }
+  .closing-ctas .btn-secondary:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: var(--white);
+  }
+  .closing-visual {
+    aspect-ratio: 4/5;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: linear-gradient(160deg, var(--eco-purple) 0%, var(--eco-teal) 100%);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    position: relative;
+  }
+  .closing-visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 30%, rgba(255,255,255,0.22) 0%, transparent 60%);
+    z-index: 0;
+  }
+  .closing-visual img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 1;
+  }
+  @media (max-width: 900px) {
+    .closing-grid { grid-template-columns: 1fr; gap: 48px; }
+    .closing-visual { aspect-ratio: 4/3; max-width: 540px; margin: 0 auto; }
+  }
+
+  .section-form {
+    background: var(--lilac-bg);
+    padding: 116px 0;
+  }
+  .form-wrapper {
+    max-width: 980px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 0.85fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .form-head h2 {
+    font-size: clamp(30px, 3.2vw, 40px);
+    margin-bottom: 16px;
+  }
+  .form-head p {
+    font-size: 16px;
+    color: var(--text-body);
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+  .alt-box {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px 26px;
+    margin-top: 36px;
+    border-left: 3px solid var(--eco-teal);
+  }
+  .alt-box h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 19px;
+    color: var(--text-ink);
+    margin-bottom: 10px;
+    font-weight: 800;
+  }
+  .alt-box p {
+    font-size: 14.5px;
+    color: var(--text-body);
+    margin-bottom: 18px;
+    line-height: 1.55;
+  }
+
+  form {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 36px 34px;
+    box-shadow: var(--shadow-soft);
+  }
+  .form-row {
+    display: grid;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+  .form-row-2 { grid-template-columns: 1fr 1fr; }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-group label {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-body);
+    margin-bottom: 8px;
+    font-family: 'Inter', sans-serif;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 13px 14px;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    border: 1.5px solid var(--line-strong);
+    border-radius: 10px;
+    background: var(--lilac-bg);
+    color: var(--text-ink);
+    transition: border-color .2s ease, background .2s ease;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--eco-purple);
+    background: var(--white);
+  }
+  .form-group textarea {
+    resize: vertical;
+    min-height: 96px;
+  }
+  .form-submit {
+    margin-top: 12px;
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--green), var(--eco-teal));
+    color: var(--white);
+    border: none;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+    font-family: 'Inter', sans-serif;
+    box-shadow: var(--shadow-green);
+  }
+  .form-submit:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 30px rgba(94, 211, 140, 0.35);
+  }
+  .form-micro {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 16px;
+    line-height: 1.5;
+  }
+  .form-status {
+    margin-top: 12px;
+    color: var(--eco-purple);
+    font-size: 14px;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .divider-or {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 24px 0 18px;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .divider-or::before,
+  .divider-or::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .calendar-wrap { text-align: center; }
+  .calendar-wrap p {
+    margin: 0 0 14px;
+    color: var(--text-body);
+    font-size: 14px;
+  }
+
+  @media (max-width: 900px) {
+    .form-wrapper { grid-template-columns: 1fr; gap: 40px; }
+    .form-row-2 { grid-template-columns: 1fr; }
+  }
+
+  footer {
+    background: var(--eco-purple-near-black);
+    color: rgba(255,255,255,0.75);
+    padding: 64px 0 32px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .footer-brand img {
+    height: 44px;
+    width: auto;
+    margin-bottom: 20px;
+    opacity: 0.95;
+  }
+  .footer-brand p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15.5px;
+    line-height: 1.5;
+    max-width: 320px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 700;
+  }
+  .footer-col h5 {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 18px;
+    font-family: 'Inter', sans-serif;
+  }
+  .footer-col a,
+  .footer-col span {
+    display: block;
+    font-size: 14.5px;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color .2s ease;
+  }
+  .footer-col a:hover { color: var(--eco-teal); }
+  .footer-bottom {
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+  }
+  @media (max-width: 720px) { .footer-grid { grid-template-columns: 1fr; gap: 36px; } }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .fade-up.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav">
-      <a href="index.html" class="brand" aria-label="Ir para a página inicial — ECO do B.E.M.">
-        <img src="img/logo-branco.png" alt="ECO do B.E.M." class="brand-logo" />
-      </a>
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="#conceito">O convênio</a>
-        <a href="#empresa">Para a empresa</a>
-        <a href="#como-funciona">Como funciona</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contato" class="nav-cta">Conveniar empresa</a>
-      </nav>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="img/logo-colorido.png" alt="ECO do B.E.M.">
+      <span>Convênio Corporativo</span>
+    </a>
+    <div class="nav-links">
+      <a href="#conceito">O convênio</a>
+      <a href="#valor">Para a empresa</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#faq">FAQ</a>
+      <a href="#formulario" class="nav-cta">Conveniar empresa</a>
     </div>
-  </header>
+  </div>
+</nav>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="pill">Convênio Corporativo · ECO Líderes</div>
-          <h1 class="title">
-            Leve o <span class="hl-purple">ECO Líderes</span> para dentro da sua empresa.
-          </h1>
-          <p class="subtitle">
-            Cadastre sua organização como conveniada e ofereça aos seus empregados acesso a uma jornada estruturada de desenvolvimento em liderança, com valor real de carreira, fortalecimento da cultura interna e condições diferenciadas de adesão.
-          </p>
-          <div class="btn-row">
-            <a class="btn btn-primary" href="#contato">Quero conveniar minha empresa</a>
-            <a class="btn btn-secondary" href="#agendamento">Agendar demonstração</a>
-          </div>
-        </div>
-
-        <div class="hero-visual">
-          <img src="img/lideres-hero.jpg" alt="Liderança corporativa em contexto de desenvolvimento" />
-          <div class="hero-card">
-            <small>Posicionamento</small>
-            <strong>Desenvolvimento que deixa de ser só iniciativa do RH e passa a ser benefício concreto para a empresa e para as pessoas.</strong>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="conceito">
-      <div class="container split">
-        <div class="visual-card">
-          <img src="img/confianca-sebrae.jpg" alt="Parceria institucional e fortalecimento organizacional" />
-        </div>
-        <div>
-          <div class="eyebrow">O que é</div>
-          <h2 class="title">O Convênio Corporativo ECO Líderes.</h2>
-          <p class="subtitle">
-            Um modelo de parceria criado para empresas que desejam disponibilizar aos seus empregados acesso a uma certificação estruturada em liderança, sem precisar desenhar internamente toda a operação de desenvolvimento.
-          </p>
-          <div class="list-clean">
-            <li>Parceria institucional entre empresa e ECO do B.E.M.</li>
-            <li>Condições diferenciadas para adesão dos empregados</li>
-            <li>Benefício com valor real de carreira e crescimento profissional</li>
-            <li>Fortalecimento da cultura de desenvolvimento contínuo</li>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="empresa">
-      <div class="container">
-        <div class="eyebrow">Para a empresa</div>
-        <h2 class="title">Por que isso faz sentido para a sua organização.</h2>
-        <p class="subtitle" style="margin-bottom:34px;">
-          O convênio não é um treinamento isolado. É um ativo institucional que fortalece cultura, desenvolvimento interno, percepção de valor e apoio à formação de novas lideranças.
+<header class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <span class="eyebrow">Convênio Corporativo · ECO Líderes</span>
+        <h1>Leve a Certificação <em>ECO Líderes</em> para dentro da sua empresa.</h1>
+        <p class="hero-sub">
+          Cadastre sua organização como conveniada e ofereça aos seus empregados acesso a uma jornada estruturada de desenvolvimento em liderança — com condições diferenciadas e valor real para a carreira.
         </p>
-
-        <div class="info-grid">
-          <article class="info-card">
-            <h3>Valorização dos empregados</h3>
-            <p>Um benefício relevante para a trajetória profissional, com impacto concreto na percepção de cuidado e investimento da empresa em pessoas.</p>
-          </article>
-          <article class="info-card">
-            <h3>Cultura de desenvolvimento</h3>
-            <p>Reforça o compromisso institucional com aprendizagem contínua, evolução e protagonismo profissional.</p>
-          </article>
-          <article class="info-card">
-            <h3>Base de liderança mais forte</h3>
-            <p>Cria uma rota prática para quem já lidera ou está em processo de assumir novas responsabilidades.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt">
-      <div class="container split">
-        <div>
-          <div class="eyebrow">Para os empregados</div>
-          <h2 class="title">O que os empregados conveniados passam a receber.</h2>
-          <div class="list-clean">
-            <li>Acesso à certificação ECO Líderes em condições diferenciadas</li>
-            <li>Jornada estruturada de desenvolvimento em liderança</li>
-            <li>Conteúdos voltados às competências essenciais de gestão</li>
-            <li>Acompanhamento orientado à prática profissional</li>
-            <li>Certificação formal ao final do percurso</li>
-            <li>Fortalecimento de empregabilidade e valor de carreira</li>
-          </div>
-        </div>
-        <div class="visual-card">
-          <img src="img/lideres-mentoria.jpg" alt="Mentoria e desenvolvimento de carreira" />
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="eyebrow">O diferencial</div>
-        <h2 class="title">Mais do que um curso: uma jornada com valor institucional.</h2>
-        <p class="subtitle" style="margin-bottom:34px;">
-          O convênio gera valor simultaneamente para a empresa e para o empregado, transformando desenvolvimento em benefício corporativo.
+        <p class="hero-support">
+          Um benefício corporativo que fortalece a cultura de desenvolvimento, valoriza pessoas e amplia o acesso à formação em liderança.
         </p>
-
-        <div class="diff-columns">
-          <div class="diff-box light">
-            <h3>Para a empresa</h3>
-            <ul>
-              <li>Cultura de desenvolvimento ativada na prática</li>
-              <li>Fortalecimento da formação de lideranças internas</li>
-              <li>Diferencial real na proposta de valor ao empregado</li>
-              <li>Posicionamento institucional mais forte como empregadora</li>
-            </ul>
-          </div>
-          <div class="diff-box dark">
-            <h3>Para o empregado</h3>
-            <ul>
-              <li>Certificação com relevância prática e profissional</li>
-              <li>Desenvolvimento consistente em competências de liderança</li>
-              <li>Maior preparo para crescimento e sucessão</li>
-              <li>Reconhecimento formal de evolução profissional</li>
-            </ul>
+        <div class="hero-ctas">
+          <a href="#formulario" class="btn btn-primary">Quero conveniar minha empresa <span class="arrow">→</span></a>
+          <a href="#agendamento" class="btn btn-secondary">Agendar reunião de apresentação</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="img/hero-principal.jpg" alt="Equipe em ambiente de desenvolvimento humano" onerror="this.src='img/lideres-hero.jpg'">
+        <div class="hero-card">
+          <div class="hero-card-label">— O posicionamento</div>
+          <div class="hero-card-text">
+            Desenvolvimento que deixa de ser projeto do RH e passa a ser benefício da empresa.
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</header>
 
-    <section class="section section-alt" id="como-funciona">
-      <div class="container">
-        <div class="eyebrow">Como funciona</div>
-        <h2 class="title">Cinco passos. Sem burocracia.</h2>
-        <p class="subtitle">
-          Um processo simples para permitir que a empresa avance com clareza, do primeiro contato até a ativação do benefício.
-        </p>
-
-        <div class="steps">
-          <div class="step">
-            <div class="step-num">1</div>
-            <h4>Interesse</h4>
-            <p>A empresa manifesta interesse no convênio.</p>
-          </div>
-          <div class="step">
-            <div class="step-num">2</div>
-            <h4>Apresentação</h4>
-            <p>Nossa equipe apresenta o modelo e esclarece dúvidas.</p>
-          </div>
-          <div class="step">
-            <div class="step-num">3</div>
-            <h4>Formalização</h4>
-            <p>A empresa é cadastrada como conveniada.</p>
-          </div>
-          <div class="step">
-            <div class="step-num">4</div>
-            <h4>Divulgação</h4>
-            <p>O benefício é comunicado aos empregados.</p>
-          </div>
-          <div class="step">
-            <div class="step-num">5</div>
-            <h4>Adesão</h4>
-            <p>Os interessados ingressam na jornada ECO Líderes.</p>
-          </div>
+<section class="section-concept fade-up" id="conceito">
+  <div class="container">
+    <div class="concept-grid">
+      <div class="concept-visual">
+        <img src="img/lideres-mentoria.jpg" alt="Mentoria corporativa e parceria institucional" loading="lazy" onerror="this.src='img/lideres-diagnostico.jpg'">
+      </div>
+      <div class="concept-text">
+        <span class="eyebrow">O que é</span>
+        <h2>O Convênio Corporativo <em>ECO Líderes</em>.</h2>
+        <p>Um modelo de parceria desenvolvido para empresas que desejam oferecer aos seus empregados <strong>acesso facilitado a uma certificação estruturada em liderança</strong>, sem precisar construir uma jornada complexa de desenvolvimento internamente.</p>
+        <p>Ao se tornar conveniada, sua organização disponibiliza uma oportunidade concreta de evolução profissional: o empregado acessa a certificação ECO Líderes em condições diferenciadas, e a empresa fortalece cultura, liderança e empregabilidade — em um único movimento.</p>
+        <div class="concept-pillars">
+          <div class="pillar"><div class="pillar-num">01 · Parceria</div><div class="pillar-text">Relação institucional entre empresa e ECO Líderes</div></div>
+          <div class="pillar"><div class="pillar-num">02 · Benefício</div><div class="pillar-text">Oportunidade real de carreira para os empregados</div></div>
+          <div class="pillar"><div class="pillar-num">03 · Estrutura</div><div class="pillar-text">Jornada pronta, validada e rastreável</div></div>
+          <div class="pillar"><div class="pillar-num">04 · Cultura</div><div class="pillar-text">Reforço concreto do compromisso com pessoas</div></div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section class="section">
-      <div class="container split">
-        <div class="visual-card">
-          <img src="img/lideres-webinarios.jpg" alt="Empresa fortalecendo liderança e cultura" />
-        </div>
-        <div>
-          <div class="eyebrow">Indicado para</div>
-          <h2 class="title">Empresas que desejam mais.</h2>
-          <div class="list-clean">
-            <li>Oferecer benefícios com valor real para a carreira dos empregados</li>
-            <li>Fortalecer a formação de lideranças internas</li>
-            <li>Estimular protagonismo e crescimento profissional</li>
-            <li>Apoiar sucessão e desenvolvimento estruturado</li>
-            <li>Ampliar a atratividade institucional como empregadora</li>
-          </div>
+<section class="section-value fade-up" id="valor">
+  <div class="container">
+    <div class="value-head">
+      <span class="eyebrow">Para a empresa</span>
+      <h2>Por que isso faz sentido para a sua organização.</h2>
+      <p class="lead">O convênio não é uma ferramenta isolada de treinamento. É um ativo de valor institucional que toca cinco áreas ao mesmo tempo — do RH à diretoria.</p>
+    </div>
+    <div class="value-grid">
+      <div class="value-card">
+        <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <h3>Valorização dos empregados</h3>
+        <p>Um benefício com relevância real para a trajetória profissional — não mais um item acessório no pacote de benefícios.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <h3>Cultura de desenvolvimento contínuo</h3>
+        <p>Reforça o hábito institucional de aprender e evoluir, dentro de um processo estruturado que já nasce pronto para operar.</p>
+      </div>
+      <div class="value-card highlight">
+        <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg></div>
+        <h3>Apoio à formação de lideranças</h3>
+        <p>Uma rota concreta para quem precisa assumir posições de gestão — em trilha, mentoria e acompanhamento orientado à realidade da empresa.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h3>Reforço da imagem institucional</h3>
+        <p>Posiciona a empresa como organização que investe em pessoas — um diferencial relevante para atração, retenção e reputação.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+        <h3>Solução pronta, sem construir do zero</h3>
+        <p>Metodologia, conteúdo, mentoria e acompanhamento já estruturados. A empresa adere — não precisa desenhar.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <h3>Desenvolvimento com direção prática</h3>
+        <p>Conteúdo que se aplica ao dia a dia do líder — não treinamento abstrato. O que se aprende vira comportamento observável.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-employees fade-up">
+  <div class="container">
+    <div class="emp-grid">
+      <div>
+        <span class="eyebrow">Para os empregados</span>
+        <h2>O que os empregados conveniados passam a receber.</h2>
+        <p class="lead">O convênio abre acesso ao pacote completo da certificação ECO Líderes — uma experiência estruturada para promover desenvolvimento consistente, aplicação prática e reconhecimento formal.</p>
+        <ul class="emp-list">
+          <li>Acesso à certificação em liderança em condições diferenciadas</li>
+          <li>Jornada estruturada de desenvolvimento, com etapas claras</li>
+          <li>Conteúdos voltados às competências essenciais da liderança</li>
+          <li>Acompanhamento orientado à evolução profissional</li>
+          <li>Fortalecimento da empregabilidade e do valor de carreira</li>
+          <li>Certificação formal ao final do percurso</li>
+        </ul>
+        <div class="emp-reinforce">Uma oportunidade concreta de o profissional investir em si mesmo — com mais apoio, mais direção e mais valor percebido para a sua trajetória.</div>
+      </div>
+      <div class="emp-visual">
+        <img src="img/lideres-mentoria.jpg" alt="Profissional em mentoria e desenvolvimento de carreira" loading="lazy" onerror="this.src='img/lideres-diagnostico.jpg'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-differential fade-up">
+  <div class="container">
+    <div class="diff-head">
+      <span class="eyebrow">O diferencial</span>
+      <h2>Mais do que um curso: uma <em>jornada</em> com valor institucional.</h2>
+      <p class="lead">A ECO Líderes não é uma oferta pontual de treinamento. É a porta de entrada para uma experiência estruturada que gera valor simultaneamente para empresa e empregado.</p>
+    </div>
+    <div class="diff-columns">
+      <div class="diff-col company">
+        <div class="diff-col-label">Para a empresa</div>
+        <h3>Fortalecimento institucional real.</h3>
+        <ul>
+          <li>Cultura de desenvolvimento ativada, não apenas declarada</li>
+          <li>Base interna mais bem preparada para desafios de liderança</li>
+          <li>Pacote de benefícios ampliado sem ônus operacional</li>
+          <li>Imagem de organização que investe em pessoas</li>
+          <li>Aumento de engajamento e percepção de valor</li>
+        </ul>
+      </div>
+      <div class="diff-col employee">
+        <div class="diff-col-label">Para o empregado</div>
+        <h3>Ativo real de carreira.</h3>
+        <ul>
+          <li>Certificação com relevância prática no mercado</li>
+          <li>Desenvolvimento consistente em competências de liderança</li>
+          <li>Jornada aplicada ao contexto profissional real</li>
+          <li>Maior empregabilidade e diferenciação curricular</li>
+          <li>Reconhecimento formal de evolução</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-how fade-up" id="como-funciona">
+  <div class="container">
+    <div class="how-head">
+      <span class="eyebrow">Como funciona</span>
+      <h2>Cinco passos. Sem burocracia.</h2>
+      <p class="lead">Um processo desenhado para reduzir fricção operacional e permitir que a empresa avance com clareza — do primeiro contato à ativação do benefício.</p>
+    </div>
+    <div class="how-steps">
+      <div class="step"><div class="step-num">1</div><div class="step-title">Manifestação de interesse</div><div class="step-desc">A empresa sinaliza a intenção de se tornar conveniada.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-title">Apresentação da proposta</div><div class="step-desc">Nossa equipe alinha o modelo com as necessidades da organização.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-title">Cadastro do convênio</div><div class="step-desc">A empresa é formalizada como conveniada ECO Líderes.</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-title">Divulgação interna</div><div class="step-desc">O benefício é comunicado ao público interno da empresa.</div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-title">Acesso dos empregados</div><div class="step-desc">Empregados interessados aderem e iniciam a jornada.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-for fade-up">
+  <div class="container">
+    <div class="for-grid">
+      <div class="for-visual">
+        <img src="img/lideres-webinarios.jpg" alt="Grupo corporativo em contexto de liderança e cultura organizacional" loading="lazy" onerror="this.src='img/lideres-hero.jpg'">
+      </div>
+      <div>
+        <span class="eyebrow">Indicado para</span>
+        <h2>Empresas que desejam <em>mais</em>.</h2>
+        <p class="lead">Se sua organização já reconhece desenvolvimento humano como prioridade estratégica, o convênio é o próximo passo natural.</p>
+        <ul class="for-list">
+          <li>Oferecer benefícios com valor real para a carreira dos empregados</li>
+          <li>Fortalecer a formação de lideranças internas</li>
+          <li>Estimular protagonismo e desenvolvimento profissional</li>
+          <li>Apoiar sucessão e crescimento de carreira na casa</li>
+          <li>Reforçar a cultura de aprendizagem contínua</li>
+          <li>Ampliar a atratividade institucional como empregadora</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-conversion fade-up">
+  <div class="container">
+    <div class="conversion-box">
+      <span class="eyebrow">Próximo passo</span>
+      <h2>Aderir agora ou conhecer melhor a proposta?</h2>
+      <p>Escolha a melhor forma de iniciar. Nossa equipe está pronta para apresentar o convênio e apoiar sua empresa nessa iniciativa.</p>
+      <div class="conversion-ctas">
+        <a href="#formulario" class="btn btn-primary">Cadastrar empresa conveniada <span class="arrow">→</span></a>
+        <a href="#agendamento" class="btn btn-secondary">Agendar reunião de apresentação</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-proof fade-up">
+  <div class="container">
+    <div class="proof-head">
+      <span class="eyebrow">Credibilidade</span>
+      <h3>Uma base sólida, construída sobre décadas de expertise em psicologia organizacional e desenvolvimento humano.</h3>
+    </div>
+    <div class="proof-stats">
+      <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Anos de expertise em psicologia organizacional</div></div>
+      <div class="stat"><div class="stat-num">300+</div><div class="stat-label">Colaboradores ativos em desenvolvimento</div></div>
+      <div class="stat"><div class="stat-num">1.036+</div><div class="stat-label">Ações de PDI criadas e monitoradas</div></div>
+      <div class="stat"><div class="stat-num">Psicologia</div><div class="stat-label">Como parte viva da jornada, não apoio externo</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-faq fade-up" id="faq">
+  <div class="container">
+    <div class="faq-wrapper">
+      <div class="faq-head">
+        <span class="eyebrow">Perguntas frequentes</span>
+        <h2>O que empresas costumam perguntar.</h2>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">O convênio tem custo para a empresa?<span class="faq-toggle">+</span></button>
+        <div class="faq-answer"><p>O modelo é estruturado para <strong>facilitar o acesso dos empregados à certificação</strong>, podendo ser desenhado sem gerar custo direto de adesão para a empresa. O formato exato — incluindo condições de participação, subsídio parcial ou adesão voluntária dos empregados — é apresentado no alinhamento comercial, de acordo com o perfil e as intenções de cada organização.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">A empresa precisa contratar turmas fechadas?<span class="faq-toggle">+</span></button>
+        <div class="faq-answer"><p>Não. O convênio opera com <strong>adesão individual dos empregados</strong>, sem exigência de turmas fechadas ou volumes mínimos. Isso reduz significativamente a complexidade operacional para o RH e permite que o benefício esteja disponível de forma contínua, sem depender de calendário ou lotes de contratação.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Todos os empregados podem participar?<span class="faq-toggle">+</span></button>
+        <div class="faq-answer"><p>Sim, a regra padrão é que <strong>todos os empregados da organização conveniada</strong> tenham acesso às condições do convênio. No alinhamento comercial, é possível desenhar cortes específicos — por exemplo, focar em lideranças formais ou profissionais em trilha de sucessão — se essa for a intenção estratégica da empresa.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">A ECO Líderes fornece material de divulgação interna?<span class="faq-toggle">+</span></button>
+        <div class="faq-answer"><p>Sim. A empresa conveniada recebe um <strong>kit de comunicação interna</strong> com peças prontas para divulgação do benefício entre os empregados — e-mail, materiais digitais e orientações de comunicação — para que a ativação do convênio seja simples, profissional e alinhada à identidade da ECO Líderes.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">É possível agendar uma reunião de apresentação antes de aderir?<span class="faq-toggle">+</span></button>
+        <div class="faq-answer"><p>Sim. Nossa equipe realiza uma <strong>reunião de apresentação/demonstração</strong>, remota ou presencial, para detalhar a metodologia, o modelo do convênio e esclarecer dúvidas antes de qualquer decisão. Você pode agendar diretamente pelo botão de demonstração desta página.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-closing fade-up">
+  <div class="container">
+    <div class="closing-grid">
+      <div class="closing-text">
+        <span class="eyebrow">Fechamento</span>
+        <h2>Transforme desenvolvimento em <em>benefício corporativo</em>.</h2>
+        <p>Ao se tornar uma empresa conveniada ECO Líderes, sua organização amplia o acesso dos empregados a uma oportunidade concreta de desenvolvimento em liderança — fortalecendo cultura interna, valorizando pessoas e apoiando o crescimento profissional.</p>
+        <div class="closing-impact">Um benefício para os empregados.<br>Um diferencial para a empresa.</div>
+        <div class="closing-ctas">
+          <a href="#formulario" class="btn btn-primary">Quero conveniar minha empresa <span class="arrow">→</span></a>
+          <a href="#agendamento" class="btn btn-secondary">Agendar reunião de apresentação</a>
         </div>
       </div>
-    </section>
+      <div class="closing-visual">
+        <img src="img/produto-lideres.jpg" alt="Parceria corporativa e alinhamento estratégico" loading="lazy" onerror="this.src='img/lideres-hero.jpg'">
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section class="section" id="agendamento">
-      <div class="container">
-        <div class="conversion-box">
-          <h2 class="title on-dark">Quer entender melhor a proposta antes de avançar?</h2>
-          <p>
-            Agende uma reunião de apresentação e demonstração com nossa equipe. Vamos mostrar como funciona o convênio e como ele pode ser implementado na sua empresa.
-          </p>
-          <div class="btn-row" style="justify-content:center;">
-            <a class="btn btn-teal" href="#contato">Quero conveniar minha empresa</a>
-          </div>
+<section class="section-form fade-up" id="formulario">
+  <div class="container">
+    <div class="form-wrapper">
+      <div class="form-head">
+        <span class="eyebrow">Formulário</span>
+        <h2>Cadastre sua empresa como conveniada.</h2>
+        <p>Preencha com as informações da sua organização. Nossa equipe retorna em até 2 dias úteis com a proposta adequada ao perfil da empresa.</p>
+
+        <div class="alt-box" id="agendamento">
+          <h4>Prefere falar antes com a nossa equipe?</h4>
+          <p>Agende uma reunião de apresentação/demonstração e conheça melhor como funciona o Convênio Corporativo ECO Líderes.</p>
 
           <div class="divider-or">ou</div>
 
@@ -944,7 +1620,7 @@
                     calendar.schedulingButton.load({
                       url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ0fRDs-V7bLI09NjF8PDr9GRh08YARlxeahbYFJjo7TCvckM4W4s3UUfsqFZynTzDR-DqGXtW2C?gv=true',
                       color: '#5B2EFF',
-                      label: 'Agendar reunião de apresentação',
+                      label: 'Agende uma demonstração',
                       target,
                     });
                   }
@@ -954,214 +1630,174 @@
           </div>
         </div>
       </div>
-    </section>
 
-    <section class="section section-alt">
-      <div class="container">
-        <div class="eyebrow">Credibilidade</div>
-        <h2 class="title">Uma base sólida para sustentar a proposta.</h2>
-        <p class="subtitle" style="margin-bottom:34px;">
-          O convênio se apoia na mesma estrutura, metodologia e histórico que já sustentam o ecossistema ECO do B.E.M.
-        </p>
+      <form id="convenio-form" action="https://formspree.io/f/mojpbgal" method="POST">
+        <input type="hidden" name="_language" value="pt-BR">
+        <input type="hidden" name="_subject" value="Novo cadastro — Convênio Corporativo ECO Líderes">
 
-        <div class="stats">
-          <div class="stat">
-            <strong>30+</strong>
-            <span>Anos de expertise em psicologia organizacional</span>
-          </div>
-          <div class="stat">
-            <strong>300+</strong>
-            <span>Colaboradores em desenvolvimento ativo</span>
-          </div>
-          <div class="stat">
-            <strong>1036+</strong>
-            <span>Ações de PDI criadas e monitoradas</span>
-          </div>
-          <div class="stat">
-            <strong>ECO</strong>
-            <span>Desenvolvimento humano com método, prática e acompanhamento</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="faq">
-      <div class="container faq-wrap">
-        <div class="eyebrow">Perguntas frequentes</div>
-        <h2 class="title">O que empresas costumam perguntar.</h2>
-
-        <div class="faq-item">
-          <button class="faq-question">O convênio tem custo para a empresa?<span>+</span></button>
-          <div class="faq-answer">
-            <p>O modelo pode ser ajustado de acordo com o perfil da organização. A proposta comercial detalha as condições de funcionamento, adesão e eventuais formatos de participação.</p>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="empresa">Nome da empresa</label>
+            <input type="text" id="empresa" name="empresa" required placeholder="Razão social ou nome fantasia">
           </div>
         </div>
 
-        <div class="faq-item">
-          <button class="faq-question">A empresa precisa fechar turma?<span>+</span></button>
-          <div class="faq-answer">
-            <p>Não necessariamente. O convênio pode funcionar com adesão individual dos empregados, o que reduz a complexidade operacional para o RH.</p>
+        <div class="form-row form-row-2">
+          <div class="form-group">
+            <label for="responsavel">Nome do responsável</label>
+            <input type="text" id="responsavel" name="responsavel" required>
+          </div>
+          <div class="form-group">
+            <label for="cargo">Cargo</label>
+            <input type="text" id="cargo" name="cargo" required placeholder="Ex.: Gerente de RH">
           </div>
         </div>
 
-        <div class="faq-item">
-          <button class="faq-question">É possível solicitar uma reunião de apresentação antes de aderir?<span>+</span></button>
-          <div class="faq-answer">
-            <p>Sim. Inclusive esse é o caminho recomendado. A equipe apresenta a proposta, mostra a lógica do convênio e esclarece todas as dúvidas antes de qualquer decisão.</p>
+        <div class="form-row form-row-2">
+          <div class="form-group">
+            <label for="email">E-mail corporativo</label>
+            <input type="email" id="email" name="email" required placeholder="nome@empresa.com.br">
+          </div>
+          <div class="form-group">
+            <label for="telefone">Telefone / WhatsApp</label>
+            <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999">
           </div>
         </div>
-      </div>
-    </section>
 
-    <section class="section-form" id="contato">
-      <div class="container">
-        <div class="cta-panel">
-          <div class="cta-head">
-            <h2 class="title on-dark">Cadastre sua empresa como conveniada.</h2>
-            <p>Preencha as informações abaixo. Nossa equipe retorna com a proposta adequada ao perfil da sua organização.</p>
+        <div class="form-row form-row-2">
+          <div class="form-group">
+            <label for="empregados">Nº aproximado de empregados</label>
+            <select id="empregados" name="empregados" required>
+              <option value="">Selecione</option>
+              <option>Até 50</option>
+              <option>51 a 200</option>
+              <option>201 a 500</option>
+              <option>501 a 1.000</option>
+              <option>Acima de 1.000</option>
+            </select>
           </div>
-
-          <div class="form-wrap">
-            <form id="contato-form" action="https://formspree.io/f/mojpbgal" method="POST">
-              <input type="hidden" name="_language" value="pt-BR">
-              <input type="hidden" name="_subject" value="Novo contato — Convênio Corporativo ECO Líderes">
-
-              <label for="empresa">Nome da empresa</label>
-              <input id="empresa" type="text" name="empresa" required placeholder="Razão social ou nome fantasia" />
-
-              <label for="responsavel">Nome do responsável</label>
-              <input id="responsavel" type="text" name="responsavel" required placeholder="Seu nome" />
-
-              <label for="cargo">Cargo</label>
-              <input id="cargo" type="text" name="cargo" required placeholder="Ex.: Gerente de RH" />
-
-              <label for="email">E-mail corporativo</label>
-              <input id="email" type="email" name="email" required placeholder="voce@empresa.com" />
-
-              <label for="telefone">Telefone / WhatsApp</label>
-              <input id="telefone" type="text" name="telefone" placeholder="(11) 99999-9999" />
-
-              <label for="colaboradores">Número aproximado de empregados</label>
-              <select id="colaboradores" name="colaboradores" required>
-                <option value="">Selecione</option>
-                <option>Até 50</option>
-                <option>51 a 200</option>
-                <option>201 a 500</option>
-                <option>501 a 1.000</option>
-                <option>Acima de 1.000</option>
-              </select>
-
-              <label for="mensagem">Mensagem</label>
-              <textarea id="mensagem" name="mensagem" required placeholder="Conte um pouco sobre o momento da sua empresa e o interesse no convênio."></textarea>
-
-              <button id="btn-enviar" type="submit">Enviar solicitação</button>
-              <p id="form-status" class="form-status"></p>
-            </form>
-
-            <div class="divider-or">ou</div>
-
-            <div class="calendar-wrap">
-              <p>Prefere falar direto? Agende uma reunião de apresentação:</p>
-              <script>
-                (function() {
-                  var target = document.currentScript;
-                  window.addEventListener('load', function() {
-                    if (typeof calendar !== 'undefined' && calendar.schedulingButton) {
-                      calendar.schedulingButton.load({
-                        url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ0fRDs-V7bLI09NjF8PDr9GRh08YARlxeahbYFJjo7TCvckM4W4s3UUfsqFZynTzDR-DqGXtW2C?gv=true',
-                        color: '#5B2EFF',
-                        label: 'Agendar reunião de apresentação',
-                        target,
-                      });
-                    }
-                  });
-                })();
-              </script>
-            </div>
+          <div class="form-group">
+            <label for="localizacao">Cidade / Estado</label>
+            <input type="text" id="localizacao" name="localizacao" required placeholder="Ex.: São Paulo / SP">
           </div>
         </div>
-      </div>
-    </section>
 
-    <section class="section section-alt">
-      <div class="container split">
-        <div>
-          <div class="eyebrow">Fechamento</div>
-          <h2 class="title">Transforme desenvolvimento em benefício corporativo.</h2>
-          <p class="subtitle">
-            Ao conveniar sua empresa ao ECO Líderes, você amplia o acesso das pessoas a uma oportunidade concreta de crescimento, fortalece cultura interna e reforça o compromisso da organização com desenvolvimento humano real.
-          </p>
-          <div class="btn-row">
-            <a class="btn btn-primary" href="#contato">Quero conveniar minha empresa</a>
-            <a class="btn btn-secondary" href="#agendamento">Agendar demonstração</a>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="interesse">Interesse principal</label>
+            <select id="interesse" name="interesse" required>
+              <option value="">Selecione</option>
+              <option>Quero conveniar minha empresa</option>
+              <option>Quero agendar uma reunião de apresentação</option>
+              <option>Ainda estou avaliando as opções</option>
+            </select>
           </div>
         </div>
-        <div class="visual-card">
-          <img src="img/produto-lideres.jpg" alt="Fechamento da proposta de convênio corporativo" />
-        </div>
-      </div>
-    </section>
-  </main>
 
-  <footer class="site-footer">
-    <div class="container footer-row">
-      <div class="footer-brand">
-        <img src="img/logo-colorido.png" alt="ECO do B.E.M." class="footer-logo" />
-        <strong>© 2026</strong>
-      </div>
-      <span>relacionamento@ckmtalents.net · www.ecodobem.com</span>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="mensagem">Mensagem / observações</label>
+            <textarea id="mensagem" name="mensagem" placeholder="Conte rapidamente sobre o momento da empresa em relação a desenvolvimento de lideranças."></textarea>
+          </div>
+        </div>
+
+        <button id="btn-enviar-convenio" type="submit" class="form-submit">Enviar solicitação</button>
+        <p id="form-status-convenio" class="form-status"></p>
+        <p class="form-micro">Ao enviar, você concorda em ser contatado pela equipe ECO Líderes. Nenhum dado é compartilhado com terceiros.</p>
+      </form>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script>
-    document.querySelectorAll('.faq-question').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const item = btn.parentElement;
-        const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
-        if (!isOpen) item.classList.add('open');
-      });
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="img/logo-branco.png" alt="ECO do B.E.M.">
+        <p>Lideranças melhores.<br>Equipes mais fortes.</p>
+      </div>
+      <div class="footer-col">
+        <h5>ECO do B.E.M.</h5>
+        <a href="#conceito">O convênio</a>
+        <a href="#valor">Para a empresa</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contato</h5>
+        <a href="mailto:relacionamento@ckmtalents.net">relacionamento@ckmtalents.net</a>
+        <a href="https://www.ecodobem.com">www.ecodobem.com</a>
+        <a href="#formulario">Cadastrar empresa</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 ECO do B.E.M. · Todos os direitos reservados</div>
+      <div>ECO Líderes · Certificação de Liderança</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
     });
+  });
 
-    const form = document.getElementById("contato-form");
-    const status = document.getElementById("form-status");
-    const botao = document.getElementById("btn-enviar");
+  const convenioForm = document.getElementById("convenio-form");
+  const convenioStatus = document.getElementById("form-status-convenio");
+  const convenioBotao = document.getElementById("btn-enviar-convenio");
 
-    async function handleSubmit(event) {
-      event.preventDefault();
-      status.textContent = "Enviando sua solicitação...";
-      botao.disabled = true;
-      botao.textContent = "Enviando...";
+  async function handleConvenioSubmit(event) {
+    event.preventDefault();
+    convenioStatus.textContent = "Enviando sua solicitação...";
+    convenioBotao.disabled = true;
+    convenioBotao.textContent = "Enviando...";
 
-      const data = new FormData(form);
+    const data = new FormData(convenioForm);
 
-      try {
-        const response = await fetch(form.action, {
-          method: form.method,
-          body: data,
-          headers: { "Accept": "application/json" }
-        });
+    try {
+      const response = await fetch(convenioForm.action, {
+        method: convenioForm.method,
+        body: data,
+        headers: { "Accept": "application/json" }
+      });
 
-        if (response.ok) {
-          window.location.href = "https://www.ecodobem.com/obrigado.html";
+      if (response.ok) {
+        window.location.href = "https://www.ecodobem.com/obrigado.html";
+      } else {
+        const resultado = await response.json();
+        if (resultado.errors) {
+          convenioStatus.textContent = resultado.errors.map(erro => erro.message).join(", ");
         } else {
-          const resultado = await response.json();
-          if (resultado.errors) {
-            status.textContent = resultado.errors.map(erro => erro.message).join(", ");
-          } else {
-            status.textContent = "Não foi possível enviar agora. Tente novamente em instantes.";
-          }
-          botao.disabled = false;
-          botao.textContent = "Enviar solicitação";
+          convenioStatus.textContent = "Não foi possível enviar agora. Tente novamente em instantes.";
         }
-      } catch (error) {
-        status.textContent = "Não foi possível enviar agora. Verifique sua conexão e tente novamente.";
-        botao.disabled = false;
-        botao.textContent = "Enviar solicitação";
+        convenioBotao.disabled = false;
+        convenioBotao.textContent = "Enviar solicitação";
       }
+    } catch (error) {
+      convenioStatus.textContent = "Não foi possível enviar agora. Verifique sua conexão e tente novamente.";
+      convenioBotao.disabled = false;
+      convenioBotao.textContent = "Enviar solicitação";
     }
+  }
 
-    form.addEventListener("submit", handleSubmit);
-  </script>
+  convenioForm.addEventListener("submit", handleConvenioSubmit);
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(s => io.observe(s));
+</script>
+
 </body>
 </html>

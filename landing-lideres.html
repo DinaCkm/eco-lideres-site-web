@@ -1,44 +1,1467 @@
-Avaliar Evidência e Impacto
-Inovação, Criatividade e Visão Estratégica
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certificação ECO Líderes · Liderança com método e evolução real | ECO do B.E.M.</title>
+<meta name="description" content="Certificação ECO Líderes: jornada de 6 meses com diagnóstico DISC, mentoria individual, trilha prática, indicadores de evolução e certificação final. Comece por R$ 236.">
+<meta property="og:title" content="Certificação ECO Líderes · Liderança com método e evolução real">
+<meta property="og:description" content="Diagnóstico DISC, mentoria com psicóloga organizacional, trilha imersiva, dashboard de evolução e certificação final.">
+<meta property="og:image" content="https://raw.githubusercontent.com/DinaCkm/eco-lideres-site-web/main/img/hero-principal.jpg">
+<meta property="og:type" content="website">
 
-Empregado: Antonia Gelma Pereira da Silva Carvalho
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-Departamento: RME - REGIONAL METROPOLITANA
+<style>
+/* ============================================================
+   ECO DO B.E.M. — LANDING PAGE CERTIFICAÇÃO ECO LÍDERES
+   Versão ajustada: visual mais claro, completa e orientada à venda
+   ============================================================ */
 
-Data envio: 29/04/2026
+:root {
+  --deep: #1A0A5E;
+  --deep-2: #34256F;
+  --purple: #5B2EFF;
+  --purple-2: #7044FF;
+  --teal: #00AFC7;
+  --teal-soft: #5DCAA5;
+  --gold: #F59E0B;
+  --gold-light: #FDE68A;
+  --cream: #FFF8EC;
+  --paper: #FFFFFF;
+  --lilac-bg: #F6F3FF;
+  --lilac-2: #EEE9FF;
+  --mint-bg: #ECFBF7;
+  --ink: #151322;
+  --muted: #5F5A72;
+  --muted-2: #79738C;
+  --line: rgba(26,10,94,0.12);
+  --white: #FFFFFF;
 
-Tipo: relatorio
+  --font: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --container: 1180px;
+  --radius: 22px;
+  --radius-lg: 34px;
+  --shadow-lg: 0 26px 80px -30px rgba(26, 10, 94, 0.32);
+  --shadow-md: 0 18px 50px -28px rgba(26, 10, 94, 0.35);
+}
 
-Carga Horária: 4h
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.58;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+strong { font-weight: 750; }
 
-O que realizou:
+.img-url { display: none; }
 
-Realizei em Palmas 12ª edição nacional do Startup Day, realizado pela 1ª vez na Universidade Federal do Tocantins - UFT em Palmas, organizando a programação, estruturando indicadores e acompanhando resultados para avaliar a efetividade do evento.
-Como aplicou na prática:
+/* ============================================================
+   GLOBAL
+   ============================================================ */
+.container { max-width: var(--container); margin: 0 auto; }
+.section { padding: 108px 28px; position: relative; }
+.section--white { background: var(--paper); }
+.section--lilac { background: var(--lilac-bg); }
+.section--mint { background: var(--mint-bg); }
+.section--deep { background: linear-gradient(180deg, var(--deep) 0%, var(--deep-2) 100%); color: var(--white); }
+.section__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 16px;
+}
+.section--deep .section__eyebrow { color: var(--gold-light); }
+.section__eyebrow::before { content: ''; width: 30px; height: 2px; background: currentColor; border-radius: 99px; }
+.section__title {
+  font-size: clamp(30px, 4.5vw, 52px);
+  font-weight: 850;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  max-width: 850px;
+  margin-bottom: 18px;
+}
+.section__title em { font-style: normal; color: var(--purple); }
+.section--deep .section__title em { color: var(--gold-light); }
+.section__lead {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 710px;
+  margin-bottom: 50px;
+}
+.section--deep .section__lead { color: rgba(255,255,255,0.78); }
+.center { text-align: center; }
+.center .section__eyebrow { justify-content: center; }
+.center .section__eyebrow::before { display: none; }
+.center .section__title, .center .section__lead { margin-left: auto; margin-right: auto; }
 
-Utilizei princípios da metodologia SMART para definição de objetivos do evento, com foco em ampliar participação, engajamento e relevância da programação. Estruturei indicadores como número de inscritos, participantes presentes e taxa de comparecimento.
+.btn-primary, .btn-secondary, .btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 999px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  transition: transform .2s, box-shadow .2s, border-color .2s, background .2s;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold), #FFC94A);
+  color: var(--deep);
+  padding: 14px 24px;
+  box-shadow: 0 16px 34px -18px rgba(245,158,11,0.85);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 42px -20px rgba(245,158,11,0.95); }
+.btn-primary--lg { padding: 18px 30px; font-size: 15px; }
+.btn-secondary {
+  padding: 16px 24px;
+  color: var(--deep);
+  background: var(--white);
+  border: 1px solid rgba(26,10,94,0.14);
+  box-shadow: 0 12px 30px -24px rgba(26,10,94,.5);
+}
+.btn-secondary:hover { transform: translateY(-2px); border-color: rgba(91,46,255,.42); }
+.btn-ghost {
+  color: var(--deep);
+  padding: 12px 18px;
+  background: rgba(91,46,255,.08);
+}
+.btn-ghost:hover { background: rgba(91,46,255,.14); }
+.arrow { transition: transform .2s; }
+.btn-primary:hover .arrow, .btn-secondary:hover .arrow { transform: translateX(3px); }
 
-Durante a execução, acompanhei dados em tempo real, como o volume de check-ins e adesão às atividades, além de observar o engajamento nas palestras e painéis. A estratégia de incentivo, como a entrega de camisetas para os primeiros participantes, foi aplicada para aumentar a presença e pontualidade.
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
 
--Incentivo de engajamento (camisetas nos primeiros check-ins)
--Programação diversificada (palestra + painéis + reconhecimento)
--Monitoramento de e participação
-Resultado prático:
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(26,10,94,0.10);
+}
+.site-header__inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 14px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.site-header__logo { display: inline-flex; align-items: center; gap: 10px; }
+.site-header__logo img { width: 138px; height: auto; }
+.site-header__nav { display: flex; gap: 24px; font-size: 13px; font-weight: 700; color: var(--muted); }
+.site-header__nav a { transition: color .2s; }
+.site-header__nav a:hover { color: var(--purple); }
+.site-header .btn-primary { padding: 12px 20px; font-size: 13px; }
 
-O evento superou as expectativas de participação, com 150 inscritos e 170 participantes presentes, resultando em uma taxa de comparecimento de 113,3%, evidenciando alto nível de engajamento e efetividade das estratégias aplicadas.
+@media (max-width: 920px) {
+  .site-header__nav { display: none; }
+  .site-header__inner { padding: 12px 20px; }
+  .site-header__logo img { width: 122px; }
+}
 
-Impacto observado:
--Superação da meta de público
--Alto engajamento nas atividades
--Fortalecimento do ecossistema empreendedor local
-Impacto informado pelo empregado: 50%
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  padding: 135px 28px 80px;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(112,68,255,0.18), transparent 32%),
+    radial-gradient(circle at 85% 10%, rgba(0,175,199,0.16), transparent 30%),
+    linear-gradient(180deg, #FFF8EC 0%, #FFFFFF 58%, #F6F3FF 100%);
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: auto -20% -24% -20%;
+  height: 280px;
+  background: radial-gradient(ellipse at center, rgba(91,46,255,0.10), transparent 62%);
+  pointer-events: none;
+}
+.hero__inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(430px, .98fr);
+  gap: 58px;
+  align-items: center;
+}
+.hero__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: rgba(0,175,199,0.12);
+  color: #047B8D;
+  border: 1px solid rgba(0,175,199,0.24);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  margin-bottom: 24px;
+}
+.hero__pill .dot { width: 8px; height: 8px; background: var(--teal); border-radius: 50%; box-shadow: 0 0 0 5px rgba(0,175,199,.12); }
+.hero h1 {
+  font-size: clamp(38px, 5.4vw, 68px);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -0.055em;
+  color: var(--deep);
+  margin-bottom: 24px;
+}
+.hero h1 em {
+  font-style: normal;
+  background: linear-gradient(120deg, var(--purple), var(--teal));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero__subtitle {
+  color: var(--muted);
+  font-size: 18px;
+  max-width: 610px;
+  margin-bottom: 30px;
+}
+.hero__subtitle strong { color: var(--deep); }
+.hero__ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 28px; }
+.hero__microcopy { color: var(--muted-2); font-size: 13px; margin-top: -12px; margin-bottom: 26px; }
+.hero__trust {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 620px;
+}
+.trust-pill {
+  background: rgba(255,255,255,0.78);
+  border: 1px solid rgba(26,10,94,0.10);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 12px 34px -28px rgba(26,10,94,0.45);
+}
+.trust-pill strong { display: block; color: var(--deep); font-size: 21px; line-height: 1; margin-bottom: 5px; }
+.trust-pill span { color: var(--muted); font-size: 12.5px; }
+.hero-media {
+  position: relative;
+  min-height: 610px;
+}
+.hero-photo {
+  position: absolute;
+  inset: 0 0 72px 58px;
+  border-radius: 38px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 8px solid rgba(255,255,255,.9);
+  background: var(--lilac-bg);
+}
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+.hero-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(26,10,94,0.02) 20%, rgba(26,10,94,.38) 100%);
+}
+.hero-float {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: min(88%, 420px);
+  padding: 24px;
+  border-radius: 28px;
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(26,10,94,0.12);
+  box-shadow: 0 24px 70px -28px rgba(26,10,94,.48);
+  backdrop-filter: blur(12px);
+}
+.hero-float__label { font-size: 11px; color: var(--purple); font-weight: 850; text-transform: uppercase; letter-spacing: .14em; margin-bottom: 8px; }
+.hero-float h3 { color: var(--deep); font-size: 22px; line-height: 1.16; letter-spacing: -.03em; margin-bottom: 10px; }
+.hero-float p { color: var(--muted); font-size: 13.5px; }
+.hero-mini {
+  position: absolute;
+  right: 0;
+  top: 34px;
+  width: 180px;
+  padding: 16px;
+  border-radius: 22px;
+  background: var(--deep);
+  color: var(--white);
+  box-shadow: 0 22px 55px -28px rgba(26,10,94,.55);
+}
+.hero-mini strong { display: block; font-size: 34px; line-height: 1; color: var(--gold-light); }
+.hero-mini span { font-size: 12px; color: rgba(255,255,255,.76); }
 
-Principal Aprendizado:
+@media (max-width: 1020px) {
+  .hero__inner { grid-template-columns: 1fr; gap: 45px; }
+  .hero-media { min-height: 520px; max-width: 630px; margin: 0 auto; width: 100%; }
+  .hero-photo { left: 22px; }
+}
+@media (max-width: 640px) {
+  .hero { padding: 115px 20px 68px; }
+  .hero__trust { grid-template-columns: 1fr; }
+  .hero-media { min-height: 445px; }
+  .hero-photo { inset: 0 0 90px 0; border-radius: 28px; border-width: 6px; }
+  .hero-float { width: 94%; padding: 18px; }
+  .hero-mini { display: none; }
+}
 
-Aprendi que a aplicação de estratégias simples de mensuração e incentivo, aliadas a uma programação bem estruturada, potencializa significativamente o impacto de eventos educacionais. Também compreendi a importância de acompanhar indicadores para orientar decisões e melhorar continuamente os resultados.
-Arquivos anexados:
+/* ============================================================
+   LOGO STRIP / AUTHORITY
+   ============================================================ */
+.authority {
+  padding: 26px 28px;
+  background: var(--paper);
+  border-top: 1px solid rgba(26,10,94,.08);
+  border-bottom: 1px solid rgba(26,10,94,.08);
+}
+.authority__inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 22px;
+  align-items: center;
+}
+.authority p { color: var(--muted); font-size: 13px; font-weight: 650; }
+.authority__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  background: var(--lilac-bg);
+  border-radius: 18px;
+  border: 1px solid rgba(26,10,94,.08);
+}
+.authority__logo img { width: 150px; }
+.authority__badges { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+.authority__badges span { padding: 8px 12px; background: rgba(0,175,199,.10); color: #047B8D; border-radius: 999px; font-size: 12px; font-weight: 800; }
+@media (max-width: 760px) {
+  .authority__inner { grid-template-columns: 1fr; text-align: center; }
+  .authority__badges { justify-content: center; }
+}
 
-AÇÃO PDI_Inovação, Criatividade e Visão Estratégica_Relatório Startup Day Palmas 2026.pdf
-4842 KB
-Avaliação do Administrador
-A evidência comprova a realização da ação? *
+/* ============================================================
+   PROBLEM / SOLUTION
+   ============================================================ */
+.problem-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 44px;
+  align-items: center;
+}
+.problem-photo { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); border: 10px solid var(--white); }
+.problem-photo img { width: 100%; aspect-ratio: 4/4.2; object-fit: cover; }
+.problem-list { display: grid; gap: 14px; }
+.problem-item {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 14px;
+  padding: 22px;
+  border-radius: 20px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+.problem-item__icon {
+  width: 42px; height: 42px;
+  border-radius: 14px;
+  background: var(--lilac-bg);
+  color: var(--purple);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900;
+}
+.problem-item h3 { font-size: 18px; color: var(--deep); margin-bottom: 4px; }
+.problem-item p { color: var(--muted); font-size: 14.5px; }
+@media (max-width: 900px) { .problem-grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   BENEFITS
+   ============================================================ */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.benefit-card {
+  padding: 28px 24px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: transform .22s, box-shadow .22s;
+}
+.benefit-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+.benefit-card__num { color: var(--gold); font-weight: 900; letter-spacing: .12em; font-size: 12px; margin-bottom: 14px; }
+.benefit-card h3 { color: var(--deep); font-size: 18px; line-height: 1.22; margin-bottom: 8px; }
+.benefit-card p { color: var(--muted); font-size: 14px; }
+@media (max-width: 960px) { .benefits-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .benefits-grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   METHOD
+   ============================================================ */
+.method-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.method-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 330px;
+  border-radius: 30px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.07);
+}
+.method-card img { width: 100%; height: 100%; min-height: 330px; object-fit: cover; opacity: .86; }
+.method-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(26,10,94,.06), rgba(26,10,94,.80)); }
+.method-card__content { position: absolute; left: 0; right: 0; bottom: 0; padding: 28px; z-index: 2; }
+.method-card__tag { display: inline-flex; padding: 6px 10px; background: rgba(245,158,11,.94); color: var(--deep); border-radius: 999px; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 12px; }
+.method-card h3 { font-size: 24px; line-height: 1.12; margin-bottom: 10px; }
+.method-card p { color: rgba(255,255,255,.82); font-size: 14px; }
+.method-points {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.method-point {
+  padding: 22px;
+  border-radius: 22px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+}
+.method-point strong { display: block; color: var(--gold-light); font-size: 22px; margin-bottom: 6px; }
+.method-point span { color: rgba(255,255,255,.76); font-size: 13px; }
+@media (max-width: 860px) { .method-wrap, .method-points { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   INCLUDED
+   ============================================================ */
+.included-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.included-card {
+  padding: 0;
+  overflow: hidden;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+.included-card__img { height: 185px; overflow: hidden; background: var(--lilac-bg); }
+.included-card__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s; }
+.included-card:hover .included-card__img img { transform: scale(1.06); }
+.included-card__body { padding: 25px; }
+.included-card__icon {
+  width: 44px; height: 44px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--white);
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--purple), var(--teal));
+  margin-bottom: 16px;
+}
+.included-card h3 { color: var(--deep); font-size: 18px; line-height: 1.22; margin-bottom: 8px; }
+.included-card p { color: var(--muted); font-size: 14px; }
+@media (max-width: 900px) { .included-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .included-grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   JOURNEY
+   ============================================================ */
+.timeline {
+  display: grid;
+  gap: 14px;
+  counter-reset: step;
+}
+.timeline-step {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: 78px 1fr auto;
+  gap: 22px;
+  align-items: center;
+  padding: 24px;
+  border-radius: 24px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  box-shadow: 0 16px 45px -35px rgba(26,10,94,.4);
+}
+.timeline-step__num {
+  width: 64px; height: 64px;
+  border-radius: 20px;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--deep), var(--purple));
+  color: var(--white);
+  font-size: 22px;
+  font-weight: 900;
+}
+.timeline-step__num::before { content: counter(step, decimal-leading-zero); }
+.timeline-step h3 { color: var(--deep); font-size: 20px; margin-bottom: 4px; }
+.timeline-step p { color: var(--muted); font-size: 14.5px; max-width: 650px; }
+.timeline-step__badge { padding: 8px 12px; border-radius: 999px; background: rgba(0,175,199,.10); color: #047B8D; font-weight: 850; font-size: 12px; white-space: nowrap; }
+@media (max-width: 760px) {
+  .timeline-step { grid-template-columns: 1fr; gap: 14px; }
+  .timeline-step__badge { width: fit-content; }
+}
+
+/* ============================================================
+   TESTIMONIAL VIDEO
+   ============================================================ */
+.video-grid {
+  display: grid;
+  grid-template-columns: 1.03fr .97fr;
+  gap: 40px;
+  align-items: center;
+}
+.video-card {
+  border-radius: 34px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 10px solid var(--white);
+  background: var(--deep);
+}
+.video-frame { position: relative; width: 100%; aspect-ratio: 16/9; background: var(--deep); }
+.video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.quote-box {
+  padding: 34px;
+  border-radius: 30px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-md);
+}
+.quote-box__mark { font-size: 54px; line-height: .8; color: var(--gold); font-weight: 900; }
+.quote-box h3 { color: var(--deep); font-size: 28px; line-height: 1.16; letter-spacing: -.03em; margin-bottom: 14px; }
+.quote-box p { color: var(--muted); margin-bottom: 18px; }
+.quote-box ul { list-style: none; display: grid; gap: 10px; }
+.quote-box li { color: var(--muted); font-size: 14px; display: flex; gap: 10px; align-items: flex-start; }
+.quote-box li::before { content: '✓'; color: var(--teal); font-weight: 900; }
+@media (max-width: 920px) { .video-grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   COMPANIES
+   ============================================================ */
+.companies {
+  display: grid;
+  grid-template-columns: .95fr 1.05fr;
+  gap: 36px;
+  align-items: center;
+}
+.companies-photo { border-radius: 34px; overflow: hidden; box-shadow: var(--shadow-lg); border: 10px solid rgba(255,255,255,.18); }
+.companies-photo img { aspect-ratio: 4/3; object-fit: cover; width: 100%; }
+.company-list { display: grid; gap: 12px; margin-top: 24px; }
+.company-list li { list-style: none; display: flex; gap: 10px; align-items: flex-start; color: rgba(255,255,255,.82); }
+.company-list li::before { content: '•'; color: var(--gold-light); font-size: 24px; line-height: 1; }
+@media (max-width: 860px) { .companies { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   PRICING
+   ============================================================ */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 22px;
+  align-items: stretch;
+}
+.price-card {
+  position: relative;
+  padding: 38px;
+  border-radius: 30px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-md);
+}
+.price-card--featured {
+  border: 2px solid rgba(0,175,199,.55);
+  box-shadow: 0 28px 90px -38px rgba(0,175,199,.65);
+}
+.price-card__badge {
+  position: absolute;
+  top: 24px; right: 24px;
+  background: var(--gold);
+  color: var(--deep);
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.price-card__step { color: var(--purple); font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: .14em; margin-bottom: 12px; }
+.price-card h3 { color: var(--deep); font-size: 26px; line-height: 1.12; margin-bottom: 18px; padding-right: 92px; }
+.price-card__amount { display: flex; align-items: baseline; gap: 5px; margin-bottom: 6px; color: var(--deep); }
+.price-card__amount .currency { font-size: 18px; font-weight: 700; color: var(--muted); }
+.price-card__amount .value { font-size: 58px; line-height: 1; font-weight: 900; letter-spacing: -.04em; }
+.price-card__amount .cents { font-size: 22px; font-weight: 800; color: var(--muted); }
+.price-card__terms { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+.price-card__list { list-style: none; display: grid; gap: 12px; margin: 26px 0 30px; }
+.price-card__list li { display: flex; gap: 10px; align-items: flex-start; color: var(--muted); font-size: 14.5px; }
+.price-card__list li::before {
+  content: '✓';
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: rgba(0,175,199,.14);
+  color: #047B8D;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-weight: 900;
+  font-size: 12px;
+  margin-top: 1px;
+}
+.price-card .btn-primary { width: 100%; }
+.price-card__note { margin-top: 14px; color: var(--muted-2); font-size: 12.5px; text-align: center; }
+.guarantee {
+  margin-top: 22px;
+  padding: 18px 20px;
+  border-radius: 20px;
+  background: rgba(93,202,165,.16);
+  border: 1px solid rgba(93,202,165,.28);
+  color: #286D5C;
+  font-size: 13px;
+}
+@media (max-width: 900px) { .pricing-grid { grid-template-columns: 1fr; } }
+@media (max-width: 540px) { .price-card { padding: 30px 22px; } .price-card h3 { padding-right: 0; } .price-card__badge { position: static; width: fit-content; margin-bottom: 12px; } }
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq-wrap { max-width: 860px; }
+.faq-item { border-top: 1px solid var(--line); }
+.faq-item:last-child { border-bottom: 1px solid var(--line); }
+.faq-item summary {
+  list-style: none;
+  padding: 24px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--deep);
+  font-size: 17px;
+  font-weight: 750;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+';
+  flex-shrink: 0;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--lilac-bg);
+  color: var(--purple);
+  font-size: 22px;
+  font-weight: 400;
+  transition: transform .25s, background .25s;
+}
+.faq-item[open] summary::after { transform: rotate(45deg); background: var(--purple); color: var(--white); }
+.faq-item__body { color: var(--muted); max-width: 750px; padding: 0 0 24px 0; font-size: 15px; }
+.access-info {
+  max-width: 860px;
+  margin: 0 0 24px;
+  padding: 24px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(0,175,199,.11), rgba(91,46,255,.08));
+  border: 1px solid rgba(0,175,199,.22);
+}
+.access-info h4 { display: flex; align-items: center; gap: 10px; color: var(--deep); font-size: 18px; margin-bottom: 10px; }
+.access-info .badge { width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--teal); color: var(--white); font-size: 14px; }
+.access-info p { color: var(--muted); font-size: 14px; }
+
+/* ============================================================
+   FINAL CTA / FOOTER
+   ============================================================ */
+.cta-final {
+  padding: 118px 28px;
+  text-align: center;
+  color: var(--white);
+  background:
+    linear-gradient(180deg, rgba(26,10,94,.70), rgba(26,10,94,.92)),
+    url('https://raw.githubusercontent.com/DinaCkm/eco-lideres-site-web/main/img/closing-parceria.jpg') center/cover no-repeat;
+}
+.cta-final__inner { max-width: 790px; margin: 0 auto; }
+.cta-final h2 { font-size: clamp(34px, 5vw, 60px); line-height: 1.05; letter-spacing: -.045em; margin-bottom: 18px; }
+.cta-final h2 em { color: var(--gold-light); font-style: normal; }
+.cta-final p { color: rgba(255,255,255,.82); font-size: 18px; max-width: 620px; margin: 0 auto 32px; }
+.site-footer { background: var(--deep); color: rgba(255,255,255,.72); padding: 44px 28px; }
+.site-footer__inner { max-width: var(--container); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 22px; flex-wrap: wrap; }
+.site-footer__brand { display: flex; align-items: center; gap: 14px; color: var(--white); font-weight: 800; }
+.site-footer__brand img { width: 130px; }
+.site-footer__links { display: flex; flex-wrap: wrap; gap: 18px; font-size: 13px; }
+.site-footer__links a:hover { color: var(--gold-light); }
+
+/* ============================================================
+   MODAL DE CHECKOUT
+   ============================================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 13, 20, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  overflow-y: auto;
+}
+.modal-overlay.is-open { display: flex; animation: fade-in .25s ease; }
+@keyframes fade-in { from { opacity: 0; } }
+.modal {
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  width: 100%;
+  max-width: 560px;
+  padding: 38px;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+  margin: auto;
+}
+.modal__close {
+  position: absolute;
+  top: 16px; right: 16px;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--lilac-bg);
+  color: var(--deep);
+  font-size: 24px;
+  display: flex; align-items: center; justify-content: center;
+}
+.modal__step { color: var(--purple); font-size: 11px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 10px; }
+.modal h2 { color: var(--deep); font-size: 28px; line-height: 1.18; letter-spacing: -.025em; margin-bottom: 8px; }
+.modal__sub { color: var(--muted); font-size: 14.5px; margin-bottom: 24px; }
+.form-row { margin-bottom: 17px; }
+.form-row label { display: block; font-size: 12px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
+.form-row input, .form-row select {
+  width: 100%;
+  padding: 14px 15px;
+  background: #FAFAFF;
+  border: 1px solid rgba(26,10,94,.14);
+  border-radius: 13px;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 15px;
+}
+.form-row input:focus, .form-row select:focus { outline: none; border-color: var(--teal); background: var(--white); box-shadow: 0 0 0 4px rgba(0,175,199,.10); }
+.form-row__split { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.modal__total { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); margin: 22px 0 16px; padding-top: 18px; }
+.modal__total span { color: var(--muted); }
+.modal__total strong { color: var(--deep); font-size: 24px; }
+.modal__cta { width: 100%; padding: 17px; }
+.modal__safe { margin-top: 13px; text-align: center; color: var(--muted-2); font-size: 12px; }
+.modal__safe::before { content: '🔒 '; }
+.form-error { display: none; color: #C94040; font-size: 12px; margin-top: 6px; }
+.form-row.has-error input, .form-row.has-error select { border-color: #C94040; }
+.form-row.has-error .form-error { display: block; }
+.modal--success { max-width: 590px; }
+.success-icon { width: 64px; height: 64px; background: linear-gradient(135deg, var(--teal), var(--teal-soft)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 22px; }
+.success-icon svg { width: 32px; height: 32px; }
+.access-status, .receipt { border: 1px solid var(--line); border-radius: 18px; padding: 20px; background: #FAFAFF; margin-bottom: 18px; }
+.access-status__label, .receipt__title { color: var(--purple); font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: .14em; margin-bottom: 8px; }
+.access-status__time { color: var(--deep); font-size: 22px; font-weight: 900; margin-bottom: 4px; }
+.access-status__detail, .next-steps { color: var(--muted); font-size: 13.5px; }
+.receipt__row { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; font-size: 13.5px; }
+.receipt__row span:first-child { color: var(--muted); }
+.receipt__row span:last-child { color: var(--deep); font-weight: 750; text-align: right; }
+.receipt__row--total { border-top: 1px solid var(--line); margin-top: 8px; padding-top: 12px; }
+.receipt__row--total span:last-child { color: var(--gold); font-size: 16px; font-weight: 900; }
+@media (max-width: 560px) { .modal { padding: 30px 20px; } .form-row__split { grid-template-columns: 1fr; gap: 0; } }
+
+/* ============================================================
+   ANIMATION
+   ============================================================ */
+.fade-up { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+.fade-up.is-visible { opacity: 1; transform: none; }
+
+@media (max-width: 720px) {
+  .section { padding: 78px 20px; }
+  .section__lead { font-size: 15.5px; margin-bottom: 36px; }
+  .site-footer__inner { align-items: flex-start; flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="/" class="site-header__logo" aria-label="ECO do B.E.M.">
+      <img src="https://raw.githubusercontent.com/DinaCkm/eco-lideres-site-web/main/img/logo-colorido.png" alt="ECO do B.E.M.">
+    </a>
+    <nav class="site-header__nav" aria-label="Navegação principal">
+      <a href="#metodo">Método</a>
+      <a href="#incluso">Incluso</a>
+      <a href="#depoimento">Depoimento</a>
+      <a href="#investimento">Investimento</a>
+      <a href="#faq">Dúvidas</a>
+    </nav>
+    <button class="btn-primary" onclick="openCheckout('inicial')">Começar agora <span class="arrow">→</span></button>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="hero__inner">
+    <div class="hero__content fade-up">
+      <span class="hero__pill"><span class="dot"></span> Certificação ECO Líderes · inscrições abertas</span>
+      <h1>Desenvolva sua liderança com <em>método, mentoria e evolução comprovada</em>.</h1>
+      <p class="hero__subtitle">
+        Uma jornada de 6 meses para líderes, profissionais em desenvolvimento e pessoas em transição que querem sair da teoria e construir uma liderança mais segura, consciente e prática.
+      </p>
+      <div class="hero__ctas">
+        <button class="btn-primary btn-primary--lg" onclick="openCheckout('inicial')">Começar por R$ 236 <span class="arrow">→</span></button>
+        <a href="#depoimento" class="btn-secondary">Ver depoimento da aluna</a>
+      </div>
+      <p class="hero__microcopy">Acesso à plataforma, diagnóstico DISC, primeira mentoria e construção do PDI na etapa inicial.</p>
+      <div class="hero__trust" aria-label="Diferenciais da jornada">
+        <div class="trust-pill"><strong>6 meses</strong><span>de acompanhamento estruturado</span></div>
+        <div class="trust-pill"><strong>6 mentorias</strong><span>com psicóloga organizacional</span></div>
+        <div class="trust-pill"><strong>7 indicadores</strong><span>para acompanhar evolução</span></div>
+      </div>
+    </div>
+
+    <div class="hero-media fade-up">
+      <div class="hero-photo">
+        <img src="https://raw.githubusercontent.com/DinaCkm/eco-lideres-site-web/main/img/lideres-hero.jpg" alt="Liderança em desenvolvimento com método ECO Líderes">
+      </div>
+      <div class="hero-mini"><strong>DISC</strong><span>diagnóstico comportamental para clareza de desenvolvimento</span></div>
+      <div class="hero-float">
+        <div class="hero-float__label">Jornada guiada</div>
+        <h3>Você não recebe só conteúdo. Você recebe direção.</h3>
+        <p>Diagnóstico, trilha, mentoria e indicadores trabalham juntos para transformar aprendizado em comportamento observável.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     AUTHORITY STRIP
+     ============================================================ -->
+<section class="authority" aria-label="Credenciais ECO do B.E.M.">
+  <div class="authority__inner">
+    <p>Um ecossistema de desenvolvimento humano para lideranças e equipes.</p>
+    <div class="authority__logo"><img src="https://raw.githubusercontent.com/DinaCkm/eco-lideres-site-web/main/img/logo-colorido.png" alt="Logo ECO do B.E.M."></div>
+    <div class="authority__badges">
+      <span>Psicologia aplicada</span>
+      <span>Empresas</span>
+      <span>Indicadores reais</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROBLEM / SOLUTION
+     ============================================================ -->
+<section class="section section--white" id="para-quem">
+  <div class="container problem-grid">
+    <div class="problem-photo fade-up">
+      <img src="https://raw.githubusercontent.com/DinaCkm/eco-lideres-site-web/main/img/hero-lideranca.jpg" alt="Profissionais desenvolvendo liderança">
+    </div>
+    <div class="fade-up">
+      <span class="section__eyebrow">Por que existe</span>
+      <h2 class="section__title">Porque liderança não se desenvolve só com aula. Ela precisa de <em>prática, leitura e acompanhamento</em>.</h2>
+      <p class="section__lead">A Certificação ECO Líderes foi criada para quem quer evoluir com clareza, sem depender apenas de motivação momentânea ou cursos soltos que terminam sem mudança concreta.</p>
+      <div class="problem-list">
+        <div class="problem-item">
+          <div class="problem-item__icon">1</div>
+          <div><h3>Clareza sobre o próprio perfil</h3><p>Você começa entendendo seu jeito de agir, decidir, influenciar e se relacionar por meio do diagnóstico DISC.</p></div>
+        </div>
+        <div class="problem-item">
+          <div class="problem-item__icon">2</div>
+          <div><h3>Plano individual, não conteúdo genérico</h3><p>A trilha se conecta ao seu ponto de partida e às competências que fazem sentido para a sua evolução.</p></div>
+        </div>
+        <div class="problem-item">
+          <div class="problem-item__icon">3</div>
+          <div><h3>Acompanhamento para manter constância</h3><p>As mentorias mensais ajudam você a interpretar dados, ajustar rotas e transformar intenção em ação.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     BENEFITS
+     ============================================================ -->
+<section class="section section--lilac">
+  <div class="container">
+    <div class="center fade-up">
+      <span class="section__eyebrow">Para quem é</span>
+      <h2 class="section__title">Uma formação para quem quer crescer com <em>segurança e consistência</em>.</h2>
+      <p class="section__lead">A jornada atende diferentes momentos profissionais, sempre com o mesmo objetivo: transformar potencial em liderança prática.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card fade-up"><div class="benefit-card__num">01</div><h3>Profissionais em desenvolvimento</h3><p>Para quem quer se preparar para novos desafios com método, repertório e acompanhamento.</p></div>
+      <div class="benefit-card fade-up"><div class="benefit-card__num">02</div><h3>Líderes em formação</h3><p>Para quem assumiu ou deseja assumir uma equipe e quer construir uma base sólida desde o início.</p></div>
+      <div class="benefit-card fade-up"><div class="benefit-card__num">03</div><h3>Lideranças atuantes</h3><p>Para quem já lidera, mas quer ampliar consciência, comunicação, gestão de pessoas e presença.</p></div>
+      <div class="benefit-card fade-up"><div class="benefit-card__num">04</div><h3>Pessoas em transição</h3><p>Para quem precisa reorganizar carreira, fortalecer autoconfiança e encontrar direção prática.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     METHOD
+     ============================================================ -->
+<section class="section section--deep" id="metodo">
+  <div class="container">
+    <div class="fade-up">
+      <span class="section__eyebrow">Metodologia</span>
+      <h2 class="section__title">O ECO Líderes combina diagnóstico, conteúdo, mentoria e indicadores em uma única jornada.</h2>
+      <p class="section__lead">A proposta é simples: entender onde você está, construir um plano claro, praticar com orientação e acompanhar sua evolução com dados.</p>
+    </div>
+
+    <div class="method-wrap">
+      <article class="method-card fade-up">
+        <img src="https://raw.githubusercontent.com/DinaCkm/eco-lideres-site-web/main/img/metodologia-disc.jpg" alt="Metodologia DISC aplicada ao desenvolvimento de liderança">
+        <div class="method-card__content">
+          <span class="method-card__tag">Diagnóstico</span>
+          <h3>DISC para entender padrões de comportamento</h3>
+          <p>O diagnóstico apoia a leitura do seu perfil e orienta as prioridades do seu plano de desenvolvimento.</p>
+        </div>
+      </article>
+      <article class="method-card fade-up">
+        <img src="https://raw.githubusercontent.com/DinaCkm/eco-lideres-site-web/main/img/metodologia-dashboard.jpg" alt="Dashboard de evolução da jornada ECO Líderes">
+        <div class="method-card__content">
+          <span class="method-card__tag">Indicadores</span>
+          <h3>Dashboard para acompanhar evolução real</h3>
+          <p>Você acompanha participação, tarefas, conhecimento, competências e engajamento ao longo da jornada.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="method-points">
+      <div class="method-point fade-up"><strong>01</strong><span>Diagnóstico comportamental e autopercepção.</span></div>
+      <div class="method-point fade-up"><strong>02</strong><span>Plano de desenvolvimento com ações práticas.</span></div>
+      <div class="method-point fade-up"><strong>03</strong><span>Mentorias mensais para acompanhar evolução.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     INCLUDED
+     ============================================================ -->
+<section class="section section--white" id="incluso">
+  <div class="container">
+    <div class="center fade-up">
+      <span class="section__eyebrow">O que está incluso</span>
+      <h2 class="section__title">Tudo o que você precisa para evoluir com <em>clareza, prática e acompanhamento</em>.</h2>
+      <p class="section__lead">A jornada foi desenhada para entregar uma experiência completa — da primeira leitura do seu perfil até a certificação final.</p>
+    </div>
+
+    <div class="included-grid">
+      <article class="included-card fade-up">
+        <div class="included-card__img"><img src="https://raw.githubusercontent.com/DinaCkm/eco-lideres-site-web/main/img/lideres-diagnostico.jpg" alt="Diagnóstico de liderança"></div>
+        <div class="included-card__body"><div class="included-card__icon">D</div><h3>Assessment DISC</h3><p>Mapeamento comportamental para compreender seu estilo de liderança, comunicação e tomada de decisão.</p></div>
+      </article>
+      <article class="included-card fade-up">
+        <div class="included-card__img"><img src="https://raw.githubusercontent.com/DinaCkm/eco-lideres-site-web/main/img/lideres-mentoria.jpg" alt="Mentoria individual ECO Líderes"></div>
+        <div class="included-card__body"><div class="included-card__icon">M</div><h3>Mentorias individuais</h3><p>Encontros com psicóloga organizacional para interpretar dados, ajustar rotas e sustentar a prática.</p></div>
+      </article>
+      <article class="included-card fade-up">
+        <div class="included-card__img"><img src="https://raw.githubusercontent.com/DinaCkm/eco-lideres-site-web/main/img/lideres-trilha.jpg" alt="Trilha imersiva de liderança"></div>
+        <div class="included-card__body"><div class="included-card__icon">T</div><h3>Trilha imersiva</h3><p>Filmes, TED Talks, podcasts, livros e atividades para aprender de forma aplicável e conectada à rotina.</p></div>
+      </article>
+      <article class="included-card fade-up">
+        <div class="included-card__img"><img src="https://raw.githubusercontent.com/DinaCkm/eco-lideres-site-web/main/img/metodologia-conteudo.jpg" alt="Conteúdo aplicado para liderança"></div>
+        <div class="included-card__body"><div class="included-card__icon">C</div><h3>Conteúdos práticos</h3><p>Materiais selecionados para ampliar repertório de liderança sem excesso de teoria ou linguagem distante.</p></div>
+      </article>
+      <article class="included-card fade-up">
+        <div class="included-card__img"><img src="https://raw.githubusercontent.com/DinaCkm/eco-lideres-site-web/main/img/lideres-webinarios.jpg" alt="Webinários de desenvolvimento"></div>
+        <div class="included-card__body"><div class="included-card__icon">W</div><h3>Webinários e encontros</h3><p>Momentos de aprofundamento para reforçar temas essenciais da liderança e conectar aprendizado com prática.</p></div>
+      </article>
+      <article class="included-card fade-up">
+        <div class="included-card__img"><img src="https://raw.githubusercontent.com/DinaCkm/eco-lideres-site-web/main/img/produto-lideres.jpg" alt="Certificação ECO Líderes"></div>
+        <div class="included-card__body"><div class="included-card__icon">✓</div><h3>Certificação final</h3><p>Conclusão da jornada com certificado digital e leitura dos principais indicadores de evolução.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     JOURNEY
+     ============================================================ -->
+<section class="section section--lilac" id="jornada">
+  <div class="container">
+    <div class="fade-up">
+      <span class="section__eyebrow">Como funciona</span>
+      <h2 class="section__title">Uma jornada em etapas para você não se perder no caminho.</h2>
+      <p class="section__lead">O processo começa de forma simples e evolui para uma experiência completa de desenvolvimento e certificação.</p>
+    </div>
+    <div class="timeline">
+      <article class="timeline-step fade-up"><div class="timeline-step__num"></div><div><h3>Você inicia pela assinatura de entrada</h3><p>O pagamento de R$ 236 libera a primeira etapa: plataforma, diagnóstico DISC, autopercepção e preparação para a mentoria.</p></div><span class="timeline-step__badge">Comece aqui</span></article>
+      <article class="timeline-step fade-up"><div class="timeline-step__num"></div><div><h3>Recebe acesso à plataforma</h3><p>Em dias úteis, o acesso é liberado em até 2 horas após o pagamento confirmado. Em finais de semana e feriados, no próximo dia útil.</p></div><span class="timeline-step__badge">Até 2h úteis</span></article>
+      <article class="timeline-step fade-up"><div class="timeline-step__num"></div><div><h3>Realiza o diagnóstico e agenda a mentoria</h3><p>Você começa entendendo seu perfil e organiza o primeiro encontro para transformar dados em direção prática.</p></div><span class="timeline-step__badge">DISC + mentoria</span></article>
+      <article class="timeline-step fade-up"><div class="timeline-step__num"></div><div><h3>Constrói seu plano individual</h3><p>Com apoio da leitura do perfil e da mentoria, você organiza as competências prioritárias e as ações de desenvolvimento.</p></div><span class="timeline-step__badge">PDI</span></article>
+      <article class="timeline-step fade-up"><div class="timeline-step__num"></div><div><h3>Segue para a certificação completa</h3><p>Na jornada de 6 meses, você realiza mentorias mensais, trilha imersiva, atividades e acompanhamento dos indicadores.</p></div><span class="timeline-step__badge">6 meses</span></article>
+      <article class="timeline-step fade-up"><div class="timeline-step__num"></div><div><h3>Conclui com certificado e leitura de evolução</h3><p>Ao final, você recebe sua certificação ECO Líderes e visualiza os principais avanços registrados durante o processo.</p></div><span class="timeline-step__badge">Certificação</span></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     VIDEO TESTIMONIAL
+     ============================================================ -->
+<section class="section section--mint" id="depoimento">
+  <div class="container video-grid">
+    <div class="video-card fade-up">
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/kORl2Ar08lI" title="Depoimento de aluna ECO Líderes" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="quote-box fade-up">
+      <div class="quote-box__mark">“</div>
+      <h3>Veja o que muda quando o desenvolvimento tem acompanhamento.</h3>
+      <p>O depoimento da aluna ajuda a mostrar, na prática, a experiência de quem passa por uma jornada orientada, com acolhimento, clareza e aplicação real.</p>
+      <ul>
+        <li>Mais consciência sobre o próprio perfil.</li>
+        <li>Mais clareza para agir no dia a dia.</li>
+        <li>Mais segurança para assumir novos desafios.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COMPANIES
+     ============================================================ -->
+<section class="section section--deep" id="empresas">
+  <div class="container companies">
+    <div class="companies-photo fade-up">
+      <img src="https://raw.githubusercontent.com/DinaCkm/eco-lideres-site-web/main/img/for-empresas.jpg" alt="ECO Líderes para empresas e equipes">
+    </div>
+    <div class="fade-up">
+      <span class="section__eyebrow">Também para empresas</span>
+      <h2 class="section__title">Uma solução para desenvolver lideranças e fortalecer equipes.</h2>
+      <p class="section__lead">Além da jornada individual, o ECO do B.E.M. pode apoiar empresas que desejam desenvolver líderes com método, indicadores e linguagem humana.</p>
+      <ul class="company-list">
+        <li>Programas para lideranças em formação e lideranças em atuação.</li>
+        <li>Trilhas com foco em comunicação, gestão de pessoas, influência e tomada de decisão.</li>
+        <li>Acompanhamento por indicadores para apoiar decisões de desenvolvimento.</li>
+      </ul>
+      <div style="margin-top: 28px;"><a class="btn-primary" href="mailto:relacionamento@ckmtalents.net?subject=Quero%20conhecer%20o%20ECO%20L%C3%ADderes%20para%20empresas">Falar sobre turma para empresa <span class="arrow">→</span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRICING
+     ============================================================ -->
+<section class="section section--white" id="investimento">
+  <div class="container">
+    <div class="center fade-up">
+      <span class="section__eyebrow">Investimento</span>
+      <h2 class="section__title">Comece com a etapa inicial e avance para a certificação completa.</h2>
+      <p class="section__lead">Você pode iniciar com segurança, conhecer a metodologia e seguir para a jornada completa de 6 meses.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <article class="price-card fade-up">
+        <div class="price-card__step">Passo 01 · Entrada</div>
+        <h3>Assinatura inicial ECO Líderes</h3>
+        <div class="price-card__amount"><span class="currency">R$</span><span class="value">236</span><span class="cents">,00</span></div>
+        <p class="price-card__terms">Pagamento único · Pix, cartão ou boleto</p>
+        <ul class="price-card__list">
+          <li>Acesso inicial à plataforma ECO do B.E.M.</li>
+          <li>Diagnóstico DISC e autopercepção.</li>
+          <li>Agendamento da primeira mentoria.</li>
+          <li>Construção do Plano de Desenvolvimento Individual.</li>
+        </ul>
+        <button class="btn-primary" onclick="openCheckout('inicial')">Começar agora <span class="arrow">→</span></button>
+        <p class="price-card__note">Acesso liberado em até 2h úteis após confirmação do pagamento.</p>
+      </article>
+
+      <article class="price-card price-card--featured fade-up">
+        <span class="price-card__badge">Mais completo</span>
+        <div class="price-card__step">Passo 02 · Certificação</div>
+        <h3>Certificação ECO Líderes · 6 meses</h3>
+        <div class="price-card__amount"><span class="currency">R$</span><span class="value">2.400</span><span class="cents">,00</span></div>
+        <p class="price-card__terms">ou 6× de R$ 400,00 sem juros · cartão de crédito</p>
+        <ul class="price-card__list">
+          <li><strong>Tudo da etapa inicial, mais:</strong></li>
+          <li>6 mentorias individuais mensais com psicóloga organizacional.</li>
+          <li>Trilha imersiva completa com conteúdos e atividades.</li>
+          <li>Acompanhamento dos 7 indicadores de evolução.</li>
+          <li>Webinários, registros de evolução e certificado digital final.</li>
+        </ul>
+        <button class="btn-primary" onclick="openCheckout('completa')">Garantir certificação completa <span class="arrow">→</span></button>
+        <p class="price-card__note">Você pode escolher a certificação completa agora ou depois da etapa inicial.</p>
+      </article>
+    </div>
+
+    <div class="guarantee fade-up"><strong>Mais segurança para decidir:</strong> a etapa inicial tem 7 dias de reembolso integral a partir da liberação do acesso, conforme o Código de Defesa do Consumidor.</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="section section--lilac" id="faq">
+  <div class="container">
+    <div class="fade-up">
+      <span class="section__eyebrow">Dúvidas frequentes</span>
+      <h2 class="section__title">Respostas claras antes de você começar.</h2>
+      <p class="section__lead">Confira os principais pontos sobre acesso, pagamento, mentoria, metodologia e certificação.</p>
+    </div>
+
+    <div class="access-info fade-up">
+      <h4><span class="badge">i</span> Quando o acesso é liberado?</h4>
+      <p><strong>De segunda a sexta, das 9h às 18h:</strong> em até <strong>2 horas após o pagamento confirmado</strong>. Em sábados, domingos e feriados, a liberação acontece no próximo dia útil, até as 11h.</p>
+    </div>
+
+    <div class="faq-wrap fade-up">
+      <details class="faq-item">
+        <summary>O que acontece depois que eu pago R$ 236?</summary>
+        <div class="faq-item__body">Você recebe a confirmação da compra e, em seguida, nossa equipe libera seu acesso à plataforma. Depois disso, você inicia o diagnóstico DISC, realiza a autopercepção e agenda a primeira mentoria para construir seu plano de desenvolvimento.</div>
+      </details>
+      <details class="faq-item">
+        <summary>O valor de R$ 236 é descontado dos R$ 2.400?</summary>
+        <div class="faq-item__body">Não. O valor de R$ 236 corresponde à etapa inicial, que inclui acesso, diagnóstico, autopercepção, primeira mentoria e construção do PDI. A certificação completa é a continuidade da jornada por 6 meses.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Como funciona o pagamento da certificação completa?</summary>
+        <div class="faq-item__body">A certificação completa custa R$ 2.400,00 e pode ser paga em até 6 parcelas de R$ 400,00 sem juros no cartão de crédito. Você pode aderir diretamente por esta página ou seguir para essa etapa após a assinatura inicial.</div>
+      </details>
+      <details class="faq-item">
+        <summary>As mentorias são com coaches?</summary>
+        <div class="faq-item__body">Não. As mentorias são conduzidas por psicóloga organizacional integrada à metodologia ECO, com foco em leitura de perfil, desenvolvimento de competências, acompanhamento de evolução e aplicação prática.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Preciso já ser líder para participar?</summary>
+        <div class="faq-item__body">Não. A jornada atende profissionais que já lideram, pessoas que estão se preparando para liderar e profissionais em transição que desejam fortalecer clareza, segurança e repertório de liderança.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Como falo com a equipe antes de comprar?</summary>
+        <div class="faq-item__body">Você pode escrever para <strong>relacionamento@ckmtalents.net</strong> ou chamar no Instagram <strong>@ecodobemoficial</strong>. A equipe responde em horário comercial.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FINAL CTA
+     ============================================================ -->
+<section class="cta-final">
+  <div class="cta-final__inner fade-up">
+    <h2>Sua liderança pode evoluir com <em>direção, prática e acompanhamento</em>.</h2>
+    <p>Comece pela etapa inicial, acesse a plataforma e dê o primeiro passo para uma jornada de desenvolvimento mais consciente e mensurável.</p>
+    <button class="btn-primary btn-primary--lg" onclick="openCheckout('inicial')">Começar minha jornada por R$ 236 <span class="arrow">→</span></button>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand"><img src="https://raw.githubusercontent.com/DinaCkm/eco-lideres-site-web/main/img/logo-branco.png" alt="ECO do B.E.M."><span>Lideranças melhores. Equipes mais fortes.</span></div>
+    <div class="site-footer__links">
+      <a href="https://www.instagram.com/ecodobemoficial" target="_blank" rel="noopener">@ecodobemoficial</a>
+      <a href="mailto:relacionamento@ckmtalents.net">relacionamento@ckmtalents.net</a>
+      <a href="/index.html">Voltar ao site</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     MODAL DE CHECKOUT
+     ============================================================ -->
+<div class="modal-overlay" id="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
+  <div class="modal" id="checkout-form-step">
+    <button class="modal__close" onclick="closeCheckout()" aria-label="Fechar">×</button>
+    <div class="modal__step" id="modal-step-label">Passo 01 · Assinatura inicial</div>
+    <h2 id="checkout-title">Vamos começar sua jornada</h2>
+    <p class="modal__sub">Preencha seus dados. Em seguida, você será direcionado para o pagamento seguro.</p>
+
+    <form id="checkout-form" novalidate>
+      <input type="hidden" name="produto" id="form-produto" value="inicial">
+      <input type="hidden" name="valor" id="form-valor" value="R$ 236,00">
+
+      <div class="form-row">
+        <label for="nome">Nome completo</label>
+        <input type="text" name="nome" id="nome" placeholder="Seu nome completo" required autocomplete="name">
+        <div class="form-error">Por favor, preencha seu nome completo.</div>
+      </div>
+
+      <div class="form-row">
+        <label for="email">E-mail</label>
+        <input type="email" name="email" id="email" placeholder="seu@email.com" required autocomplete="email">
+        <div class="form-error">Por favor, informe um e-mail válido.</div>
+      </div>
+
+      <div class="form-row__split">
+        <div class="form-row">
+          <label for="telefone">WhatsApp</label>
+          <input type="tel" name="telefone" id="telefone" placeholder="(11) 99999-9999" required autocomplete="tel">
+          <div class="form-error">Informe seu WhatsApp.</div>
+        </div>
+        <div class="form-row">
+          <label for="cpf">CPF</label>
+          <input type="text" name="cpf" id="cpf" placeholder="000.000.000-00" required>
+          <div class="form-error">Informe um CPF válido.</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="ocupacao">Sua ocupação atual</label>
+        <select name="ocupacao" id="ocupacao" required>
+          <option value="">Selecione</option>
+          <option value="lideranca">Sou líder ou gestor(a)</option>
+          <option value="transicao">Estou em transição de carreira</option>
+          <option value="profissional">Profissional em desenvolvimento</option>
+          <option value="empreendedor">Empreendedor(a) / autônomo(a)</option>
+          <option value="outro">Outro</option>
+        </select>
+        <div class="form-error">Selecione uma opção.</div>
+      </div>
+
+      <div class="modal__total">
+        <span>Total a pagar</span>
+        <strong id="total-display">R$ 236,00</strong>
+      </div>
+
+      <button type="submit" class="btn-primary modal__cta">Ir para o pagamento seguro <span class="arrow">→</span></button>
+      <p class="modal__safe">Pagamento processado pelo Mercado Pago · Pix, cartão ou boleto</p>
+    </form>
+  </div>
+
+  <div class="modal modal--success" id="checkout-success-step" style="display:none;">
+    <button class="modal__close" onclick="closeCheckout()" aria-label="Fechar">×</button>
+    <div class="success-icon">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <h2>Recebemos seus dados ✓</h2>
+    <p class="modal__sub">Você será direcionado para o pagamento. Após a confirmação, veja o que acontece em seguida:</p>
+
+    <div class="access-status">
+      <div class="access-status__label">Previsão de liberação do acesso</div>
+      <div class="access-status__time" id="access-time">Calculando…</div>
+      <div class="access-status__detail" id="access-detail"></div>
+    </div>
+
+    <div class="receipt">
+      <div class="receipt__title">Resumo do pedido</div>
+      <div class="receipt__row"><span>Produto</span><span id="receipt-product">—</span></div>
+      <div class="receipt__row"><span>Nome</span><span id="receipt-name">—</span></div>
+      <div class="receipt__row"><span>E-mail</span><span id="receipt-email">—</span></div>
+      <div class="receipt__row"><span>Pedido</span><span id="receipt-id">—</span></div>
+      <div class="receipt__row receipt__row--total"><span>Valor</span><span id="receipt-amount">—</span></div>
+    </div>
+
+    <p class="next-steps"><strong>Próximos passos:</strong><br>1. Você verá uma cópia do pedido no seu e-mail.<br>2. Assim que seu acesso estiver pronto, enviaremos um segundo e-mail com login e link da plataforma.<br>3. Em caso de dúvidas, escreva para <strong>relacionamento@ckmtalents.net</strong>.</p>
+
+    <button class="btn-primary modal__cta" id="go-to-payment" style="margin-top: 22px;">Ir para o pagamento agora <span class="arrow">→</span></button>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   CONFIGURAÇÃO — substituir pelos links reais antes de publicar
+   ============================================================ */
+const CONFIG = {
+  paymentLinks: {
+    inicial:  'https://mpago.la/SEU-LINK-DE-236',
+    completa: 'https://mpago.la/SEU-LINK-DE-2400'
+  },
+  formspreeEndpoint: 'https://formspree.io/f/SEU-ID-FORMSPREE',
+  companyEmail: 'relacionamento@ckmtalents.net'
+};
+
+const overlay = document.getElementById('checkout-modal');
+const formStep = document.getElementById('checkout-form-step');
+const successStep = document.getElementById('checkout-success-step');
+
+function openCheckout(produto) {
+  const isCompleta = produto === 'completa';
+  document.getElementById('form-produto').value = produto;
+  document.getElementById('form-valor').value = isCompleta ? 'R$ 2.400,00' : 'R$ 236,00';
+  document.getElementById('total-display').textContent = isCompleta ? 'R$ 2.400,00' : 'R$ 236,00';
+  document.getElementById('modal-step-label').textContent = isCompleta ? 'Passo 02 · Certificação completa' : 'Passo 01 · Assinatura inicial';
+  document.getElementById('checkout-title').textContent = isCompleta ? 'Garanta sua certificação completa' : 'Vamos começar sua jornada';
+
+  formStep.style.display = 'block';
+  successStep.style.display = 'none';
+  document.getElementById('checkout-form').reset();
+  document.querySelectorAll('.form-row').forEach(r => r.classList.remove('has-error'));
+
+  overlay.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCheckout() {
+  overlay.classList.remove('is-open');
+  document.body.style.overflow = '';
+}
+
+overlay.addEventListener('click', (e) => { if (e.target === overlay) closeCheckout(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeCheckout(); });
+
+document.getElementById('telefone').addEventListener('input', (e) => {
+  let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+  if (v.length > 10) v = v.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+  else if (v.length > 6) v = v.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+  else if (v.length > 2) v = v.replace(/(\d{2})(\d{0,5})/, '($1) $2');
+  e.target.value = v;
+});
+
+document.getElementById('cpf').addEventListener('input', (e) => {
+  let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+  v = v.replace(/(\d{3})(\d)/, '$1.$2');
+  v = v.replace(/(\d{3})(\d)/, '$1.$2');
+  v = v.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+  e.target.value = v;
+});
+
+function calcularLiberacaoAcesso() {
+  const agora = new Date();
+  const dia = agora.getDay();
+  const hora = agora.getHours();
+  const isDiaUtil = dia >= 1 && dia <= 5;
+  const isHorarioComercial = hora >= 9 && hora < 16;
+  const NOMES_DIA = ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'];
+
+  let liberacao = new Date(agora);
+  let mensagem = '';
+  let detalhe = '';
+
+  if (isDiaUtil && isHorarioComercial) {
+    liberacao.setHours(liberacao.getHours() + 2);
+    const horaLib = liberacao.getHours().toString().padStart(2, '0');
+    const minLib = liberacao.getMinutes().toString().padStart(2, '0');
+    mensagem = `Hoje, até ${horaLib}h${minLib}`;
+    detalhe = 'Em até 2 horas a partir da confirmação do pagamento.';
+  } else if (isDiaUtil && hora >= 16 && hora < 18) {
+    mensagem = 'Hoje, até as 18h00';
+    detalhe = 'Em até 2 horas a partir da confirmação do pagamento, dentro do horário comercial.';
+  } else {
+    do { liberacao.setDate(liberacao.getDate() + 1); }
+    while (liberacao.getDay() === 0 || liberacao.getDay() === 6);
+    liberacao.setHours(11, 0, 0);
+    const nomeDia = NOMES_DIA[liberacao.getDay()];
+    const dataFmt = liberacao.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
+    mensagem = `${capitalize(nomeDia)} (${dataFmt}), até as 11h00`;
+    detalhe = (dia === 0 || dia === 6) ? 'Como hoje é fim de semana, seu acesso será liberado no próximo dia útil até as 11h.' : 'Como o pagamento foi realizado fora do horário comercial, o acesso será liberado no próximo dia útil até as 11h.';
+  }
+  return { mensagem, detalhe };
+}
+function capitalize(str) { return str.charAt(0).toUpperCase() + str.slice(1); }
+function gerarPedidoId() {
+  const t = Date.now().toString(36).toUpperCase();
+  const r = Math.random().toString(36).slice(2, 6).toUpperCase();
+  return `ECO-${t.slice(-6)}-${r}`;
+}
+
+const form = document.getElementById('checkout-form');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  let valido = true;
+  document.querySelectorAll('.form-row').forEach(r => r.classList.remove('has-error'));
+
+  const campos = {
+    nome: form.nome.value.trim(),
+    email: form.email.value.trim(),
+    telefone: form.telefone.value.trim(),
+    cpf: form.cpf.value.trim(),
+    ocupacao: form.ocupacao.value
+  };
+
+  if (campos.nome.split(' ').length < 2) { form.nome.closest('.form-row').classList.add('has-error'); valido = false; }
+  if (!/\S+@\S+\.\S+/.test(campos.email)) { form.email.closest('.form-row').classList.add('has-error'); valido = false; }
+  if (campos.telefone.replace(/\D/g, '').length < 10) { form.telefone.closest('.form-row').classList.add('has-error'); valido = false; }
+  if (campos.cpf.replace(/\D/g, '').length !== 11) { form.cpf.closest('.form-row').classList.add('has-error'); valido = false; }
+  if (!campos.ocupacao) { form.ocupacao.closest('.form-row').classList.add('has-error'); valido = false; }
+  if (!valido) return;
+
+  const pedidoId = gerarPedidoId();
+  const produto = document.getElementById('form-produto').value;
+  const valor = document.getElementById('form-valor').value;
+  const produtoNome = produto === 'completa' ? 'Certificação ECO Líderes · 6 meses' : 'Assinatura Inicial · ECO Líderes';
+  const { mensagem, detalhe } = calcularLiberacaoAcesso();
+
+  const payload = {
+    pedidoId,
+    produto: produtoNome,
+    valor,
+    nome: campos.nome,
+    email: campos.email,
+    telefone: campos.telefone,
+    cpf: campos.cpf,
+    ocupacao: campos.ocupacao,
+    previsaoLiberacao: mensagem,
+    timestamp: new Date().toLocaleString('pt-BR'),
+    _replyto: campos.email,
+    _subject: `Nova compra ECO · ${produtoNome} · ${pedidoId}`
+  };
+
+  try {
+    if (CONFIG.formspreeEndpoint && !CONFIG.formspreeEndpoint.includes('SEU-ID')) {
+      fetch(CONFIG.formspreeEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      }).catch(err => console.warn('Formspree:', err));
+    } else {
+      console.warn('Formspree ainda não configurado em CONFIG.formspreeEndpoint');
+    }
+  } catch (err) { console.warn('Erro ao notificar:', err); }
+
+  document.getElementById('access-time').textContent = mensagem;
+  document.getElementById('access-detail').textContent = detalhe;
+  document.getElementById('receipt-product').textContent = produtoNome;
+  document.getElementById('receipt-name').textContent = campos.nome;
+  document.getElementById('receipt-email').textContent = campos.email;
+  document.getElementById('receipt-id').textContent = pedidoId;
+  document.getElementById('receipt-amount').textContent = valor;
+
+  const linkPagamento = CONFIG.paymentLinks[produto] || '#';
+  document.getElementById('go-to-payment').onclick = () => { window.open(linkPagamento, '_blank'); };
+
+  formStep.style.display = 'none';
+  successStep.style.display = 'block';
+  successStep.scrollTop = 0;
+});
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

@@ -1463,5 +1463,852 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
 document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
 </script>
+
+<!--
+CHATBOT ECO LÍDERES - ECO DO BEM
+Modelo: pop-up flutuante com conversa guiada por botões, sem campo para digitação.
+
+Como usar:
+1. Cole este bloco antes do fechamento da tag </body> do seu site.
+2. Troque o número do WhatsApp em ECO_CONFIG.whatsappNumber.
+3. Troque o link de compra em ECO_CONFIG.startUrl.
+4. Coloque a URL da imagem pequena do agente em ECO_CONFIG.agentImage.
+   Pode ser uma imagem hospedada no próprio GitHub, por exemplo:
+   ./assets/agente-eco.png
+   ou uma URL completa.
+
+Observação:
+O usuário não digita dentro do chatbot. Para falar com a equipe, o botão abre o WhatsApp com mensagem pronta.
+-->
+
+<div id="eco-chatbot-root"></div>
+
+<style>
+  :root {
+    --eco-purple: #6d3fd6;
+    --eco-purple-dark: #3b247a;
+    --eco-teal: #10b7a4;
+    --eco-teal-dark: #087f78;
+    --eco-bg: #f7f5ff;
+    --eco-card: #ffffff;
+    --eco-soft-purple: #efe9ff;
+    --eco-soft-teal: #e6fbf8;
+    --eco-text: #282437;
+    --eco-muted: #6f6a7c;
+    --eco-border: rgba(83, 61, 147, 0.14);
+    --eco-shadow: 0 22px 70px rgba(45, 32, 97, 0.24);
+    --eco-gradient: linear-gradient(135deg, #6d3fd6 0%, #10b7a4 100%);
+    --eco-gradient-soft: linear-gradient(135deg, rgba(109, 63, 214, 0.14) 0%, rgba(16, 183, 164, 0.14) 100%);
+  }
+
+  #eco-chatbot-root * {
+    box-sizing: border-box;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .eco-chat-button {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 99999;
+    width: 66px;
+    height: 66px;
+    border-radius: 999px;
+    border: none;
+    background: var(--eco-gradient);
+    color: #ffffff;
+    box-shadow: var(--eco-shadow);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 27px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .eco-chat-button:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 26px 78px rgba(45, 32, 97, 0.3);
+  }
+
+  .eco-chat-button::after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    right: 6px;
+    top: 6px;
+    border-radius: 999px;
+    background: #21e0bd;
+    border: 3px solid #ffffff;
+  }
+
+  .eco-chat-window {
+    position: fixed;
+    right: 22px;
+    bottom: 104px;
+    z-index: 99999;
+    width: min(410px, calc(100vw - 28px));
+    max-height: min(720px, calc(100vh - 130px));
+    background: var(--eco-card);
+    border-radius: 28px;
+    box-shadow: var(--eco-shadow);
+    overflow: hidden;
+    display: none;
+    border: 1px solid var(--eco-border);
+  }
+
+  .eco-chat-window.eco-open {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .eco-chat-header {
+    background: var(--eco-gradient);
+    color: #ffffff;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .eco-chat-header::before {
+    content: "";
+    position: absolute;
+    inset: -40px -60px auto auto;
+    width: 160px;
+    height: 160px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  .eco-agent-info {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .eco-agent-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.18);
+    border: 2px solid rgba(255, 255, 255, 0.74);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex: 0 0 auto;
+  }
+
+  .eco-agent-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+
+  .eco-agent-avatar.eco-has-image img {
+    display: block;
+  }
+
+  .eco-agent-avatar.eco-has-image span {
+    display: none;
+  }
+
+  .eco-chat-title {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .eco-chat-title strong {
+    font-size: 15.5px;
+    line-height: 1.2;
+  }
+
+  .eco-chat-title span {
+    font-size: 12px;
+    opacity: 0.9;
+  }
+
+  .eco-close-button {
+    border: none;
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  .eco-chat-body {
+    padding: 17px 15px 12px;
+    overflow-y: auto;
+    background:
+      radial-gradient(circle at top left, rgba(109, 63, 214, 0.12), transparent 30%),
+      radial-gradient(circle at bottom right, rgba(16, 183, 164, 0.14), transparent 32%),
+      var(--eco-bg);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .eco-chat-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+  }
+
+  .eco-mini-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    background: var(--eco-gradient);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 14px;
+    flex: 0 0 auto;
+    box-shadow: 0 6px 18px rgba(45, 32, 97, 0.14);
+  }
+
+  .eco-mini-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+
+  .eco-mini-avatar.eco-has-image img {
+    display: block;
+  }
+
+  .eco-mini-avatar.eco-has-image span {
+    display: none;
+  }
+
+  .eco-message {
+    max-width: calc(100% - 38px);
+    background: #ffffff;
+    color: var(--eco-text);
+    border-radius: 19px 19px 19px 7px;
+    padding: 13px 14px;
+    line-height: 1.48;
+    font-size: 14px;
+    box-shadow: 0 10px 28px rgba(45, 32, 97, 0.08);
+    border: 1px solid rgba(83, 61, 147, 0.09);
+    white-space: pre-line;
+  }
+
+  .eco-user-row {
+    justify-content: flex-end;
+  }
+
+  .eco-user-message {
+    max-width: 86%;
+    background: var(--eco-gradient);
+    color: #ffffff;
+    border-radius: 18px 18px 7px 18px;
+    padding: 10px 12px;
+    font-size: 13px;
+    line-height: 1.35;
+    box-shadow: 0 10px 24px rgba(45, 32, 97, 0.14);
+  }
+
+  .eco-options {
+    display: grid;
+    gap: 8px;
+    margin-top: 3px;
+    padding-left: 38px;
+  }
+
+  .eco-option-button,
+  .eco-action-link {
+    width: 100%;
+    border: 1px solid rgba(109, 63, 214, 0.18);
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--eco-purple-dark);
+    border-radius: 16px;
+    padding: 11px 12px;
+    font-size: 13.5px;
+    line-height: 1.3;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    text-decoration: none;
+    display: block;
+    box-shadow: 0 6px 18px rgba(45, 32, 97, 0.06);
+  }
+
+  .eco-option-button:hover,
+  .eco-action-link:hover {
+    background: var(--eco-gradient-soft);
+    transform: translateY(-1px);
+  }
+
+  .eco-primary {
+    background: var(--eco-gradient);
+    color: #ffffff;
+    border-color: transparent;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  .eco-primary:hover {
+    color: #ffffff;
+    filter: brightness(1.02);
+  }
+
+  .eco-nav-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding-left: 38px;
+    margin-top: 4px;
+  }
+
+  .eco-small-button {
+    border: 1px solid rgba(109, 63, 214, 0.12);
+    background: rgba(255, 255, 255, 0.7);
+    color: var(--eco-muted);
+    font-size: 12px;
+    cursor: pointer;
+    padding: 9px 10px;
+    border-radius: 14px;
+    transition: all 0.18s ease;
+  }
+
+  .eco-small-button:hover {
+    background: #ffffff;
+    color: var(--eco-purple-dark);
+  }
+
+  .eco-typing {
+    padding-left: 38px;
+    display: none;
+  }
+
+  .eco-typing.eco-show {
+    display: block;
+  }
+
+  .eco-typing-bubble {
+    width: fit-content;
+    background: #ffffff;
+    border: 1px solid rgba(83, 61, 147, 0.09);
+    border-radius: 18px;
+    padding: 9px 12px;
+    color: var(--eco-muted);
+    font-size: 12px;
+    box-shadow: 0 10px 24px rgba(45, 32, 97, 0.06);
+  }
+
+  .eco-footer-note {
+    font-size: 11.5px;
+    color: var(--eco-muted);
+    text-align: center;
+    padding: 10px 14px 14px;
+    background: #ffffff;
+    border-top: 1px solid rgba(83, 61, 147, 0.08);
+  }
+
+  @media (max-width: 480px) {
+    .eco-chat-button {
+      right: 16px;
+      bottom: 16px;
+    }
+
+    .eco-chat-window {
+      right: 14px;
+      bottom: 92px;
+      border-radius: 24px;
+      max-height: calc(100vh - 112px);
+    }
+  }
+</style>
+
+<script>
+  const ECO_CONFIG = {
+    whatsappNumber: "5511947557071", // Troque pelo WhatsApp da ECO do BEM. Exemplo: 5511999999999
+    startUrl: "#comece-agora", // Troque pelo link da assinatura inicial ou checkout
+    agentName: "Equipe ECO do BEM",
+    agentSubtitle: "Desenvolvimento humano com acompanhamento",
+    agentImage: "./img/agentebot.png", // Coloque aqui a imagem pequena do agente. Exemplo: "./assets/agente-eco.png"
+    businessHoursText: "Nossa equipe retorna em horário comercial.",
+  };
+
+  const ECO_FLOWS = {
+    inicio: {
+      parent: null,
+      message: "Oi! Você está falando com o agente online da ECO do BEM, estou aqui para tirar suas dúvidas! \n\nComo posso te ajudar?",
+      options: [
+  ["O que é o ECO Líderes?", "eco"],
+  ["Como funciona a jornada?", "jornada"],
+  ["Como são as mentorias?", "mentoria"],
+  ["Qual é o papel dos psicólogos?", "psicologos"],
+  ["Como funciona o assessment comportamental?", "assessment"],
+  ["O programa tem certificação?", "certificacao"],
+  ["Quais são os valores e formas de pagamento?", "valor"],
+  ["Como saber se o ECO Líderes é para mim?", "paraMim"],
+  ["Quero falar com a equipe", "equipe"]
+]
+    },
+
+    eco: {
+      parent: "inicio",
+      message: "Claro. O ECO Líderes é uma jornada de desenvolvimento para quem quer liderar melhor, crescer profissionalmente ou preparar líderes dentro da empresa.\n\nNa prática, você entende melhor seu jeito de liderar, recebe orientação individual, segue uma trilha de aprendizagem e acompanha sua evolução ao longo do tempo.\n\nA diferença é que você não fica sozinho assistindo conteúdos. Você tem caminho, acompanhamento e clareza sobre o que precisa desenvolver.",
+      options: [
+        ["Por que o ECO Líderes foi criado?", "ecoCriado"],
+        ["O que está incluso?", "ecoIncluso"],
+        ["Qual é o diferencial da ECO do BEM?", "ecoDiferencial"],
+        ["Quero começar agora", "comecar"]
+      ]
+    },
+    ecoCriado: {
+      parent: "eco",
+      message: "Ele foi criado porque muitos processos de desenvolvimento começam bem, mas depois ficam parados.\n\nÀs vezes a pessoa faz um curso, recebe um plano, entende que precisa mudar, mas não tem acompanhamento para transformar isso em prática.\n\nO ECO Líderes nasceu para ajudar você a sair da intenção e ir para a ação, com orientação, passos claros e acompanhamento durante a jornada."
+    },
+    ecoIncluso: {
+      parent: "eco",
+      message: "Na jornada ECO Líderes, você encontra:\n\n• assessment comportamental;\n• leitura do seu perfil;\n• plano individual de desenvolvimento;\n• trilha de aprendizagem;\n• mentorias individuais;\n• acompanhamento com profissionais especializados;\n• atividades práticas;\n• acompanhamento da sua evolução;\n• certificação digital ao final da jornada.\n\nTudo foi pensado para ajudar você a entender seu momento, desenvolver novas habilidades e aplicar isso na vida real."
+    },
+    ecoDiferencial: {
+      parent: "eco",
+      message: "A ECO do BEM une cuidado humano e tecnologia.\n\nVocê tem uma plataforma para organizar sua jornada, mas também tem pessoas acompanhando seu desenvolvimento.\n\nAlém disso, a metodologia carrega mais de 30 anos de experiência em desenvolvimento humano, comportamento e liderança. Esse conhecimento aparece nas trilhas, nas mentorias e na forma como cada plano é construído."
+    },
+
+    jornada: {
+      parent: "inicio",
+      message: "A jornada ECO Líderes dura 6 meses e acontece em etapas.\n\nPrimeiro, você entende seu ponto de partida. Depois, desenvolve habilidades importantes para liderar melhor. Em seguida, aplica isso no dia a dia. No final, sua evolução é analisada e você recebe a certificação.\n\nÉ um caminho com começo, meio e fim, mas com acompanhamento durante o processo.",
+      options: [
+        ["Entender meu perfil", "jornadaPerfil"],
+        ["Desenvolver novas habilidades", "jornadaHabilidades"],
+        ["Aplicar no dia a dia", "jornadaPratica"],
+        ["Receber a certificação", "jornadaCertificacao"]
+      ]
+    },
+    jornadaPerfil: {
+      parent: "jornada",
+      message: "Essa é a primeira etapa da jornada.\n\nVocê realiza um assessment comportamental e responde perguntas que ajudam a entender melhor seu jeito de agir, se comunicar, decidir e lidar com desafios.\n\nNão é para rotular você. É para enxergar seu ponto de partida com mais clareza e construir um desenvolvimento que faça sentido."
+    },
+    jornadaHabilidades: {
+      parent: "jornada",
+      message: "Depois de entender seu perfil, você começa a desenvolver habilidades importantes para liderança.\n\nA trilha pode trabalhar comunicação, feedback, inteligência emocional, tomada de decisão, gestão de conflitos, delegação, confiança, organização e visão de futuro.\n\nA ideia é aprender de um jeito prático, conectado com situações reais."
+    },
+    jornadaPratica: {
+      parent: "jornada",
+      message: "Essa é uma das partes mais importantes.\n\nNão basta aprender. Você precisa conseguir aplicar.\n\nPor isso, a jornada inclui atividades práticas, registros de evolução e acompanhamento. Aos poucos, você observa suas atitudes, testa novos comportamentos e percebe o que está mudando na rotina."
+    },
+    jornadaCertificacao: {
+      parent: "jornada",
+      message: "Ao final da jornada, sua evolução é analisada com base no caminho que você percorreu.\n\nSão considerados sua participação, suas atividades, seus avanços, suas evidências práticas e o acompanhamento feito ao longo dos meses.\n\nDepois disso, você recebe a certificação digital ECO Líderes."
+    },
+
+    mentoria: {
+      parent: "inicio",
+      message: "As mentorias são conversas individuais para ajudar você a transformar a jornada em prática.\n\nÉ nesse momento que você olha para seu perfil, seus desafios, suas dúvidas e seus próximos passos com apoio especializado.\n\nA mentoria não é uma aula pronta. É um espaço de orientação para organizar caminhos possíveis a partir da sua realidade.",
+      options: [
+        ["Como é uma mentoria?", "mentoriaComo"],
+        ["O que posso falar na mentoria?", "mentoriaFalar"],
+        ["Quem conduz as mentorias?", "mentoriaQuem"],
+        ["Quantas mentorias existem?", "mentoriaQuantas"],
+        ["A mentoria é terapia?", "mentoriaTerapia"],
+        ["Por que a mentoria faz diferença?", "mentoriaDiferenca"]
+      ]
+    },
+    mentoriaComo: {
+      parent: "mentoria",
+      message: "A mentoria é uma conversa individual, feita para ajudar você a se desenvolver com mais clareza.\n\nDurante o encontro, a mentora pode te ajudar a entender seu assessment, organizar prioridades, pensar em atitudes práticas e refletir sobre situações reais do trabalho.\n\nÉ um momento para sair do “eu sei que preciso melhorar” e chegar no “agora eu sei por onde começar”."
+    },
+    mentoriaFalar: {
+      parent: "mentoria",
+      message: "Você pode falar sobre situações reais da sua rotina.\n\nPor exemplo:\n• dificuldade para dar feedback;\n• insegurança para liderar;\n• conflitos com pessoas da equipe;\n• dificuldade para delegar;\n• pressão por resultados;\n• comunicação com gestores;\n• tomada de decisão;\n• organização da rotina;\n• desejo de crescer na carreira.\n\nA mentoria ajuda você a olhar para esses desafios com mais clareza e transformar isso em ações possíveis."
+    },
+    mentoriaQuem: {
+      parent: "mentoria",
+      message: "As mentorias são conduzidas por profissionais preparados para apoiar o desenvolvimento de liderança.\n\nA ECO do BEM tem uma base forte em psicologia, comportamento humano e desenvolvimento profissional, com mais de 30 anos de experiência ajudando pessoas a crescerem com mais consciência e direção.\n\nIsso faz diferença porque liderar não é só aprender técnicas. Liderar envolve pessoas, emoções, comunicação, confiança, decisões e responsabilidade."
+    },
+    mentoriaQuantas: {
+      parent: "mentoria",
+      message: "Na jornada completa de 6 meses, você conta com mentorias individuais ao longo do processo.\n\nEsses encontros ajudam você a acompanhar sua evolução, revisar desafios, ajustar o plano e seguir com mais segurança.\n\nA ideia não é ter apenas uma conversa isolada. É ter acompanhamento durante a jornada."
+    },
+    mentoriaTerapia: {
+      parent: "mentoria",
+      message: "Não. A mentoria não é terapia.\n\nEla é uma conversa voltada para seu desenvolvimento profissional: como você lidera, se comunica, toma decisões, lida com pessoas e enfrenta desafios no trabalho.\n\nA presença de psicólogos na metodologia traz mais cuidado e profundidade, mas o foco da jornada é liderança e desenvolvimento profissional."
+    },
+    mentoriaDiferenca: {
+      parent: "mentoria",
+      message: "Porque muita gente sabe o que precisa melhorar, mas não sabe como começar.\n\nA mentoria ajuda você a organizar esse caminho. Ela transforma informações em decisões, dúvidas em próximos passos e aprendizado em atitude.\n\nÉ isso que faz o desenvolvimento sair do papel."
+    },
+
+    psicologos: {
+      parent: "inicio",
+      message: "Os psicólogos têm um papel importante na metodologia da ECO do BEM.\n\nEles ajudam a trazer um olhar mais humano para o desenvolvimento, porque liderança não acontece só em planilhas, metas ou reuniões. Liderança acontece nas relações.\n\nUm líder precisa conversar, ouvir, decidir, lidar com conflitos, orientar pessoas, dar feedback e sustentar momentos difíceis. A psicologia ajuda a olhar para tudo isso com mais cuidado.",
+      options: [
+        ["Por que existem psicólogos na jornada?", "psicoPorque"],
+        ["O que eles fazem?", "psicoFazem"],
+        ["Isso significa que vou fazer terapia?", "psicoTerapia"],
+        ["Como isso ajuda na liderança?", "psicoAjuda"]
+      ]
+    },
+    psicoPorque: {
+      parent: "psicologos",
+      message: "Porque liderar é lidar com pessoas.\n\nE pessoas têm emoções, inseguranças, histórias, formas diferentes de pensar e maneiras diferentes de se comunicar.\n\nA presença de psicólogos ajuda a jornada a não ficar superficial. O desenvolvimento olha para o comportamento, para as relações e para os desafios reais que aparecem quando alguém lidera ou quer liderar."
+    },
+    psicoFazem: {
+      parent: "psicologos",
+      message: "Dentro da jornada, os psicólogos ajudam a construir um desenvolvimento mais cuidadoso.\n\nEles apoiam a leitura do comportamento, ajudam a organizar reflexões, contribuem para a construção dos planos e fortalecem a forma como a pessoa entende seus desafios de liderança.\n\nO foco é sempre o desenvolvimento profissional."
+    },
+    psicoTerapia: {
+      parent: "psicologos",
+      message: "Não. A jornada ECO Líderes não é terapia e não substitui atendimento psicológico clínico.\n\nO papel da psicologia aqui é apoiar o desenvolvimento profissional, ajudando você a entender melhor comportamentos, comunicação, relações e desafios de liderança."
+    },
+    psicoAjuda: {
+      parent: "psicologos",
+      message: "Ajuda porque muitos desafios de liderança não são apenas técnicos.\n\nÀs vezes, a dificuldade está em conduzir uma conversa difícil, lidar com conflitos, confiar mais na equipe, delegar, ouvir melhor ou tomar decisões sob pressão.\n\nA psicologia ajuda a olhar para esses pontos com mais profundidade e transformar isso em mudança prática."
+    },
+
+    assessment: {
+      parent: "inicio",
+      message: "O assessment comportamental é uma ferramenta que ajuda você a se conhecer melhor.\n\nEle mostra tendências do seu jeito de agir, se comunicar, decidir e lidar com desafios.\n\nNão é uma prova. Não existe resultado certo ou errado. O objetivo é entender seu ponto de partida para construir um desenvolvimento que faça sentido para você.",
+      options: [
+        ["Para que serve o assessment?", "assessmentServe"],
+        ["Como ele ajuda no desenvolvimento?", "assessmentAjuda"],
+        ["O resultado define quem eu sou?", "assessmentDefine"],
+        ["O que acontece depois do assessment?", "assessmentDepois"]
+      ]
+    },
+    assessmentServe: {
+      parent: "assessment",
+      message: "Ele serve para dar mais clareza.\n\nMuitas vezes, a pessoa sente que precisa melhorar, mas não sabe exatamente onde começar.\n\nO assessment ajuda a identificar padrões de comportamento, pontos fortes e caminhos de desenvolvimento. Com isso, a jornada fica mais direcionada e menos genérica."
+    },
+    assessmentAjuda: {
+      parent: "assessment",
+      message: "Ele ajuda porque o plano não começa no achismo.\n\nA partir do assessment, fica mais fácil entender quais habilidades precisam de mais atenção, quais forças você já pode usar melhor e quais situações podem exigir novas atitudes.\n\nAssim, seu desenvolvimento fica mais personalizado."
+    },
+    assessmentDefine: {
+      parent: "assessment",
+      message: "Não.\n\nO assessment não coloca você em uma caixa. Ele não define seu valor, sua capacidade ou seu futuro.\n\nEle apenas mostra tendências de comportamento. A partir disso, você consegue se conhecer melhor e escolher com mais consciência o que quer desenvolver."
+    },
+    assessmentDepois: {
+      parent: "assessment",
+      message: "Depois do assessment, as informações ajudam a orientar seu plano de desenvolvimento.\n\nVocê entende melhor seu perfil, conversa sobre isso na mentoria e começa a seguir uma trilha mais conectada com o seu momento.\n\nA ideia é transformar autoconhecimento em ação."
+    },
+
+    certificacao: {
+      parent: "inicio",
+      message: "A certificação é o fechamento da jornada ECO Líderes.\n\nEla mostra que você passou por um processo completo de desenvolvimento: assessment, trilha, mentorias, atividades práticas, acompanhamento e avaliação final.\n\nNão é apenas um certificado por assistir conteúdo. É uma certificação ligada a uma jornada vivida.",
+      options: [
+        ["O que preciso fazer para receber a certificação?", "certPreciso"],
+        ["O que é avaliado?", "certAvaliado"],
+        ["O certificado é digital?", "certDigital"],
+        ["A certificação serve para minha carreira?", "certCarreira"],
+        ["Existe um novo ciclo depois?", "certCiclo"]
+      ]
+    },
+    certPreciso: {
+      parent: "certificacao",
+      message: "Para receber a certificação, você precisa passar pela jornada completa.\n\nIsso inclui participar das etapas, realizar as atividades propostas, acompanhar sua evolução e concluir o processo final.\n\nA certificação representa o caminho que você percorreu, não apenas uma presença."
+    },
+    certAvaliado: {
+      parent: "certificacao",
+      message: "Ao final, a equipe olha para o conjunto da sua jornada.\n\nSão considerados pontos como participação, atividades realizadas, evolução ao longo do processo, aplicação prática e acompanhamento feito nas mentorias.\n\nA ideia é reconhecer o desenvolvimento construído durante os 6 meses."
+    },
+    certDigital: {
+      parent: "certificacao",
+      message: "Sim. Ao concluir a jornada, você recebe um certificado digital.\n\nEle registra sua participação e conclusão na Certificação ECO Líderes."
+    },
+    certCarreira: {
+      parent: "certificacao",
+      message: "Sim, ela pode fortalecer sua trajetória profissional.\n\nA certificação mostra que você investiu no seu desenvolvimento como líder e passou por uma jornada estruturada de crescimento.\n\nMais do que o certificado em si, o principal valor está no que você desenvolve durante o processo: mais clareza, mais preparo e mais consciência sobre sua forma de liderar."
+    },
+    certCiclo: {
+      parent: "certificacao",
+      message: "Sim, pode existir.\n\nDepois da certificação, você pode seguir desenvolvendo novas habilidades ou aprofundar pontos específicos da sua liderança.\n\nDesenvolvimento não termina em um certificado. A certificação marca uma etapa importante da sua evolução."
+    },
+
+    valor: {
+      parent: "inicio",
+      message: "A jornada começa com a assinatura inicial de R$ 236,00.\n\nEssa primeira etapa libera o início da sua experiência no ECO Líderes: acesso à plataforma, assessment comportamental, primeira mentoria e construção do seu plano individual.\n\nDepois, você pode seguir para a certificação completa de 6 meses, no valor de R$ 2.400,00, com possibilidade de parcelamento em até 6x de R$ 400,00.",
+      options: [
+        ["O que está incluso nos R$ 236?", "valorInicial"],
+        ["O que está incluso na certificação completa?", "valorCompleta"],
+        ["Como funciona o parcelamento?", "valorParcelamento"],
+        ["Quando recebo acesso?", "valorAcesso"],
+        ["Quero começar agora", "comecar"]
+      ]
+    },
+    valorInicial: {
+      parent: "valor",
+      message: "A assinatura inicial de R$ 236,00 é o primeiro passo da jornada.\n\nEla inclui o acesso inicial à plataforma, o assessment comportamental, a primeira mentoria e a construção do seu plano individual de desenvolvimento.\n\nÉ uma forma de começar com clareza, conhecer a metodologia e entender seu ponto de partida."
+    },
+    valorCompleta: {
+      parent: "valor",
+      message: "A certificação completa inclui a jornada de 6 meses.\n\nVocê passa pelo assessment, segue uma trilha de aprendizagem, participa das mentorias, realiza atividades práticas, acompanha sua evolução e recebe a certificação digital ao final.\n\nÉ a experiência completa do ECO Líderes."
+    },
+    valorParcelamento: {
+      parent: "valor",
+      message: "A certificação completa tem investimento de R$ 2.400,00 e pode ser parcelada em até 6x de R$ 400,00.\n\nA assinatura inicial de R$ 236,00 é separada e corresponde ao início da jornada."
+    },
+    valorAcesso: {
+      parent: "valor",
+      message: "Depois da confirmação do pagamento, seu acesso é liberado em até 2 horas úteis, de segunda a sexta, em horário comercial.\n\nSe o pagamento for feito fora do horário comercial, em finais de semana ou feriados, o acesso é liberado no próximo dia útil."
+    },
+
+    paraMim: {
+      parent: "inicio",
+      message: "O ECO Líderes pode ser para você se quer crescer como líder, se preparar para liderar ou desenvolver melhor pessoas dentro da sua empresa.\n\nEle também pode ajudar se você sente que precisa de mais clareza sobre seu perfil, sua comunicação, sua tomada de decisão ou sua forma de lidar com desafios no trabalho.",
+      options: [
+        ["Já lidero pessoas", "situacaoLidero"],
+        ["Quero me preparar para liderar", "situacaoPreparar"],
+        ["Fui promovido(a) recentemente", "situacaoPromovido"],
+        ["Trabalho com RH ou gestão de pessoas", "situacaoRH"],
+        ["Sou dono(a) de empresa", "situacaoDono"],
+        ["Ainda não sei se é para mim", "situacaoDuvida"]
+      ]
+    },
+    situacaoLidero: {
+      parent: "paraMim",
+      message: "Então o ECO Líderes pode te ajudar a liderar com mais clareza e consistência.\n\nA jornada trabalha temas que aparecem todos os dias na vida de quem lidera: comunicação, feedback, conflitos, confiança, decisões, delegação e desenvolvimento da equipe."
+    },
+    situacaoPreparar: {
+      parent: "paraMim",
+      message: "Você não precisa esperar assumir um cargo para começar a desenvolver liderança.\n\nA jornada pode te ajudar a se conhecer melhor, fortalecer habilidades importantes e chegar mais preparado(a) para novos desafios."
+    },
+    situacaoPromovido: {
+      parent: "paraMim",
+      message: "Esse é um momento em que muita gente sente insegurança.\n\nAssumir uma liderança muda a forma como você se comunica, decide, organiza prioridades e se relaciona com as pessoas.\n\nO ECO Líderes ajuda você a passar por essa transição com mais apoio e direção."
+    },
+    situacaoRH: {
+      parent: "paraMim",
+      message: "Então o ECO Líderes pode ajudar sua empresa a fazer os planos de desenvolvimento funcionarem melhor.\n\nA jornada oferece trilhas, mentorias, acompanhamento e indicadores para que o desenvolvimento dos líderes seja mais claro, organizado e acompanhado.\n\nSe quiser, você pode falar com a equipe ECO pelo WhatsApp e contar um pouco sobre sua empresa."
+    },
+    situacaoDono: {
+      parent: "paraMim",
+      message: "O ECO Líderes pode ajudar sua empresa a desenvolver gestores e pessoas-chave.\n\nQuando a liderança evolui, a equipe sente: a comunicação melhora, os conflitos são melhor conduzidos, as decisões ficam mais claras e o desenvolvimento deixa de depender apenas da boa vontade de cada pessoa.\n\nSe quiser, a equipe ECO pode te explicar como levar a jornada para sua empresa."
+    },
+    situacaoDuvida: {
+      parent: "paraMim",
+      message: "Tudo bem. Essa dúvida é normal.\n\nSe você quer crescer profissionalmente, entender melhor seu perfil, desenvolver liderança ou ajudar líderes da sua empresa a evoluírem, vale conversar com a equipe ECO.\n\nVocê pode chamar a equipe pelo WhatsApp e contar sua principal dúvida com calma."
+    },
+
+    equipe: {
+      parent: "inicio",
+      message: "Claro. Para a equipe ECO te ajudar melhor, você pode abrir o WhatsApp com uma mensagem pronta.\n\nLá você consegue enviar seu nome, dizer se busca a jornada para você ou para uma empresa e contar sua principal dúvida.\n\n" + ECO_CONFIG.businessHoursText,
+      action: "whatsapp"
+    },
+    comecar: {
+      parent: "inicio",
+      message: "Perfeito. Você pode começar pela assinatura inicial de R$ 236,00.\n\nEsse primeiro passo libera o acesso inicial à plataforma, o assessment comportamental, a primeira mentoria e a construção do seu plano individual.\n\nQuando quiser, é só clicar no botão abaixo.",
+      action: "start"
+    },
+
+    faq: {
+      parent: "inicio",
+      message: "Separei algumas dúvidas comuns. Qual delas parece mais com a sua?",
+      options: [
+        ["É um curso gravado?", "faqCurso"],
+        ["Preciso ter experiência como líder?", "faqExperiencia"],
+        ["O que vou desenvolver?", "faqDesenvolver"],
+        ["Tenho medo de não conseguir acompanhar", "faqMedo"],
+        ["Está caro", "faqCaro"],
+        ["Preciso pensar", "faqPensar"],
+        ["A certificação é reconhecida?", "faqReconhecida"],
+        ["A mentoria é individual?", "faqIndividual"],
+        ["Vocês atendem empresas?", "faqEmpresas"]
+      ]
+    },
+    faqCurso: {
+      parent: "faq",
+      message: "Não é apenas um curso gravado.\n\nO ECO Líderes tem conteúdos, mas também tem assessment comportamental, plano individual, mentorias, acompanhamento e certificação.\n\nA ideia é que você não apenas aprenda, mas consiga aplicar o que aprendeu na prática."
+    },
+    faqExperiencia: {
+      parent: "faq",
+      message: "Não.\n\nA jornada pode ajudar tanto quem já lidera quanto quem quer se preparar para liderar.\n\nSe você quer crescer profissionalmente, entender melhor seu perfil e desenvolver habilidades importantes para lidar com pessoas, o ECO Líderes pode fazer sentido para você."
+    },
+    faqDesenvolver: {
+      parent: "faq",
+      message: "Você pode desenvolver habilidades como:\n\n• comunicação mais clara;\n• segurança para dar feedback;\n• inteligência emocional;\n• tomada de decisão;\n• gestão de conflitos;\n• delegação;\n• organização;\n• visão estratégica;\n• confiança para liderar;\n• capacidade de desenvolver pessoas.\n\nTudo isso é trabalhado de forma prática, com acompanhamento."
+    },
+    faqMedo: {
+      parent: "faq",
+      message: "Essa dúvida é muito comum.\n\nA jornada foi pensada para acontecer com acompanhamento. Você não precisa fazer tudo sozinho(a).\n\nAs mentorias, a trilha e o plano individual ajudam você a seguir passo a passo, com mais clareza e organização."
+    },
+    faqCaro: {
+      parent: "faq",
+      message: "Entendo sua dúvida.\n\nO ECO Líderes não é apenas um curso. É uma jornada com assessment comportamental, mentoria, plano individual, acompanhamento, atividades práticas e certificação.\n\nVocê também pode começar pela assinatura inicial de R$ 236,00 para conhecer a metodologia, iniciar seu assessment e participar da primeira mentoria antes de seguir para a certificação completa."
+    },
+    faqPensar: {
+      parent: "faq",
+      message: "Claro. É uma decisão importante.\n\nSe ajudar, você pode começar pela assinatura inicial de R$ 236,00. Assim, você conhece a metodologia, inicia seu assessment comportamental e participa da primeira mentoria antes de decidir pelos próximos passos.\n\nTambém pode falar com a equipe ECO pelo WhatsApp para tirar suas dúvidas com calma."
+    },
+    faqReconhecida: {
+      parent: "faq",
+      message: "A certificação ECO Líderes registra que você concluiu uma jornada estruturada de desenvolvimento de liderança.\n\nEla mostra que você passou por assessment, trilha, mentorias, atividades práticas, acompanhamento e avaliação final.\n\nMais do que um certificado, ela representa o processo de evolução que você construiu ao longo da jornada."
+    },
+    faqIndividual: {
+      parent: "faq",
+      message: "Sim. As mentorias são individuais.\n\nIsso permite que a conversa seja mais conectada com o seu momento, seus desafios e seus objetivos de desenvolvimento."
+    },
+    faqEmpresas: {
+      parent: "faq",
+      message: "Sim.\n\nA ECO do BEM também ajuda empresas que querem desenvolver suas lideranças e fazer os planos de desenvolvimento funcionarem de verdade.\n\nSe você é do RH, gestão de pessoas, diretoria ou é dono(a) de empresa, fale com a equipe ECO pelo WhatsApp para conhecer as possibilidades."
+    }
+  };
+
+  let ecoCurrentFlow = "inicio";
+  let ecoHistory = [];
+
+  function ecoWhatsAppLink() {
+    const text = encodeURIComponent(
+      "Olá, equipe ECO do BEM! Vim pelo site e quero saber mais sobre o ECO Líderes.\n\nMeu nome é:\nBusco a jornada para mim ou para uma empresa:\nMinha principal dúvida é:"
+    );
+    return `https://wa.me/${ECO_CONFIG.whatsappNumber}?text=${text}`;
+  }
+
+  function ecoAvatarMarkup(className) {
+    const hasImage = ECO_CONFIG.agentImage && ECO_CONFIG.agentImage.trim() !== "";
+    return `
+      <div class="${className} ${hasImage ? "eco-has-image" : ""}">
+        <img src="${ECO_CONFIG.agentImage}" alt="Agente ECO do BEM" onerror="this.parentElement.classList.remove('eco-has-image')">
+        <span>EC</span>
+      </div>
+    `;
+  }
+
+  function ecoRender() {
+    const root = document.getElementById("eco-chatbot-root");
+    root.innerHTML = `
+      <button class="eco-chat-button" id="ecoChatButton" aria-label="Abrir chat ECO do BEM">💬</button>
+      <section class="eco-chat-window" id="ecoChatWindow" aria-live="polite">
+        <header class="eco-chat-header">
+          <div class="eco-agent-info">
+            ${ecoAvatarMarkup("eco-agent-avatar")}
+            <div class="eco-chat-title">
+              <strong>${ECO_CONFIG.agentName}</strong>
+              <span>${ECO_CONFIG.agentSubtitle}</span>
+            </div>
+          </div>
+          <button class="eco-close-button" id="ecoCloseButton" aria-label="Fechar chat">×</button>
+        </header>
+        <main class="eco-chat-body" id="ecoChatBody"></main>
+        <footer class="eco-footer-note">Conversa guiada por botões, para você escolher o caminho com calma.</footer>
+      </section>
+    `;
+
+    document.getElementById("ecoChatButton").addEventListener("click", ecoToggleChat);
+    document.getElementById("ecoCloseButton").addEventListener("click", ecoToggleChat);
+    ecoShowFlow("inicio", null, false);
+  }
+
+  function ecoToggleChat() {
+    const chat = document.getElementById("ecoChatWindow");
+    chat.classList.toggle("eco-open");
+  }
+
+  function ecoShowFlow(flowId, userChoice = null, addToHistory = true) {
+    const flow = ECO_FLOWS[flowId] || ECO_FLOWS.inicio;
+    const body = document.getElementById("ecoChatBody");
+
+    if (addToHistory && flowId !== ecoCurrentFlow) {
+      ecoHistory.push(ecoCurrentFlow);
+    }
+
+    ecoCurrentFlow = flowId;
+
+    let html = "";
+
+    if (userChoice) {
+      html += `
+        <div class="eco-chat-row eco-user-row">
+          <div class="eco-user-message">${userChoice}</div>
+        </div>
+      `;
+    }
+
+    html += `
+      <div class="eco-typing eco-show" id="ecoTyping">
+        <div class="eco-typing-bubble">Digitando...</div>
+      </div>
+      <div id="ecoAnswer" style="display:none;">
+        <div class="eco-chat-row">
+          ${ecoAvatarMarkup("eco-mini-avatar")}
+          <div class="eco-message">${flow.message}</div>
+        </div>
+    `;
+
+    if (flow.action === "whatsapp") {
+      html += `<div class="eco-options"><a class="eco-action-link eco-primary" href="${ecoWhatsAppLink()}" target="_blank" rel="noopener">Abrir WhatsApp</a></div>`;
+    }
+
+    if (flow.action === "start") {
+      html += `<div class="eco-options"><a class="eco-action-link eco-primary" href="${ECO_CONFIG.startUrl}">Começar minha jornada</a></div>`;
+    }
+
+    if (flow.options && flow.options.length) {
+      html += `<div class="eco-options">`;
+      flow.options.forEach(([label, target]) => {
+        html += `<button class="eco-option-button" data-flow="${target}" data-label="${label}">${label}</button>`;
+      });
+      html += `</div>`;
+    }
+
+    html += `
+        <div class="eco-nav-row">
+          <button class="eco-small-button" data-back="true">Voltar</button>
+          <button class="eco-small-button" data-flow="inicio" data-label="Voltar ao início">Menu inicial</button>
+        </div>
+      </div>
+    `;
+
+    body.innerHTML = html;
+    body.scrollTop = body.scrollHeight;
+
+    setTimeout(() => {
+      const typing = document.getElementById("ecoTyping");
+      const answer = document.getElementById("ecoAnswer");
+      if (typing) typing.style.display = "none";
+      if (answer) answer.style.display = "block";
+      body.scrollTop = body.scrollHeight;
+      ecoAttachEvents();
+    }, 420);
+  }
+
+  function ecoAttachEvents() {
+    const body = document.getElementById("ecoChatBody");
+
+    body.querySelectorAll("[data-flow]").forEach(button => {
+      button.addEventListener("click", () => {
+        const target = button.dataset.flow;
+        const label = button.dataset.label || button.textContent.trim();
+        ecoShowFlow(target, label, true);
+      });
+    });
+
+    body.querySelectorAll("[data-back]").forEach(button => {
+      button.addEventListener("click", () => {
+        const previous = ecoHistory.length ? ecoHistory.pop() : (ECO_FLOWS[ecoCurrentFlow].parent || "inicio");
+        ecoShowFlow(previous, "Voltar", false);
+      });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", ecoRender);
+</script>
+
+   
 </body>
 </html>

@@ -120,14 +120,50 @@ if (!cad.nome) {
   document.getElementById('orderTotal').textContent = brl(cad.valor || 0);
 }
 
-document.getElementById('btnApprove').addEventListener('click', () => {
+/* URL do backend Railway — atualize aqui se mudar */
+const API_URL = 'https://eco-backend-production-6229.up.railway.app';
+
+const btnApprove = document.getElementById('btnApprove');
+const btnReject = document.getElementById('btnReject');
+
+btnApprove.addEventListener('click', async () => {
+  /* Marca o pedido como aprovado */
   cad.status_pagamento = 'approved';
   cad.id_pagamento_simulado = 'SIM-' + Date.now();
   sessionStorage.setItem('eco_cadastro', JSON.stringify(cad));
-  window.location.href = 'obrigado.html';
+
+  /* Trava o botão e mostra "Processando..." enquanto chama o backend */
+  btnApprove.disabled = true;
+  btnReject.disabled = true;
+  const originalText = btnApprove.innerHTML;
+  btnApprove.innerHTML = '⏳ Processando pagamento...';
+
+  try {
+    /* Chama o backend para disparar os 2 e-mails do Momento 2 */
+    const resp = await fetch(API_URL + '/api/pagamento-aprovado', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(cad)
+    });
+
+    if (!resp.ok) {
+      const err = await resp.json().catch(() => ({}));
+      throw new Error(err.error || 'Falha no servidor');
+    }
+
+    /* Sucesso: vai para a página de obrigado */
+    window.location.href = 'obrigado.html';
+
+  } catch (err) {
+    /* Em caso de erro, avisa o cliente mas ainda permite seguir
+       (os dados ficaram salvos e os e-mails podem ser disparados manualmente) */
+    console.error('Erro ao notificar o backend:', err);
+    alert('Pagamento confirmado, mas houve um problema ao enviar o e-mail de confirmação. Não se preocupe — nossa equipe foi notificada e entrará em contato.\n\nClique em OK para continuar.');
+    window.location.href = 'obrigado.html';
+  }
 });
 
-document.getElementById('btnReject').addEventListener('click', () => {
+btnReject.addEventListener('click', () => {
   cad.status_pagamento = 'rejected';
   sessionStorage.setItem('eco_cadastro', JSON.stringify(cad));
   window.location.href = 'pagamento-recusado.html';

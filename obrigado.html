@@ -372,10 +372,48 @@ document.getElementById('confirmJornada').textContent = cad.produto_label || '�
 document.getElementById('confirmValor').textContent = brl(cad.valor || 0);
 document.getElementById('confirmProtocolo').textContent = cad.id_pagamento_simulado || '—';
 
-/* Autosave de perguntas complementares (placeholder — em produção, POST para o backend) */
+/* URL do backend Railway */
+const API_URL = 'https://eco-backend-production-6229.up.railway.app';
+
+/* Autosave de perguntas complementares + envio para backend quando completo */
 let saveTimeout;
 const saveStatus = document.getElementById('saveStatus');
 const inputs = document.querySelectorAll('#extraForm input, #extraForm textarea, #extraForm select');
+
+async function enviarQuestionarioBackend() {
+  /* Só envia se ainda não foi enviado e se os campos obrigatórios estão preenchidos */
+  if (cad.questionario_enviado) return;
+
+  const momento = document.getElementById('momento').value.trim();
+  const desafio = document.getElementById('desafio').value.trim();
+
+  if (!momento || desafio.length < 10) return; // ainda não está completo
+
+  /* Marca otimisticamente para evitar envio duplo (race condition) */
+  cad.questionario_enviado = true;
+  sessionStorage.setItem('eco_cadastro', JSON.stringify(cad));
+
+  try {
+    const resp = await fetch(API_URL + '/api/questionario-extra', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(cad)
+    });
+    if (!resp.ok) throw new Error('Backend respondeu erro');
+
+    /* Confirmação visual ao usuário */
+    saveStatus.style.display = 'inline-flex';
+    saveStatus.className = 'save-status saved';
+    saveStatus.innerHTML = '✓ Respostas enviadas para a equipe';
+    setTimeout(() => { saveStatus.style.display = 'none'; }, 3500);
+  } catch (err) {
+    console.error('Erro ao enviar questionário:', err);
+    /* Em caso de erro, desmarca o flag para tentar de novo na próxima edição */
+    cad.questionario_enviado = false;
+    sessionStorage.setItem('eco_cadastro', JSON.stringify(cad));
+  }
+}
+
 inputs.forEach(input => {
   input.addEventListener('input', () => {
     clearTimeout(saveTimeout);
@@ -394,7 +432,10 @@ inputs.forEach(input => {
       saveStatus.className = 'save-status saved';
       saveStatus.innerHTML = '✓ Respostas salvas';
       setTimeout(() => { saveStatus.style.display = 'none'; }, 2000);
-    }, 800);
+
+      /* Tenta enviar para o backend se completo */
+      enviarQuestionarioBackend();
+    }, 1500); /* delay um pouco maior para não enviar a cada tecla */
   });
 });
 

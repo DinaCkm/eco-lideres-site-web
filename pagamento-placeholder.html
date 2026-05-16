@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pagamento (placeholder) | ECO do B.E.M.</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --purple:#5B2EFF; --purple-deep:#1A0A5E; --teal:#00B8D9;
+  --green:#5ED38C; --gold:#F59E0B; --bg-lilac:#F5F3FF;
+  --text-body:#3A3559; --text-muted:#6B6389; --border-light:#E8E4FF;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0; font-family:'Inter',sans-serif; background:var(--bg-lilac); color:var(--text-body); min-height:100vh}
+.wrap{max-width:720px; margin:0 auto; padding:48px 24px}
+.site-header{background:var(--purple-deep); padding:18px 0; text-align:center}
+.brand-logo{height:36px}
+.steps{display:flex; justify-content:center; align-items:center; gap:10px; margin:32px 0 40px; flex-wrap:wrap}
+.step{display:flex; align-items:center; gap:8px; font-family:'Poppins',sans-serif; font-size:12px; font-weight:600; color:var(--text-muted)}
+.step-num{width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#fff; border:2px solid var(--border-light); font-weight:700; font-size:12px}
+.step.done .step-num{background:var(--green); color:#fff; border-color:var(--green)}
+.step.active .step-num{background:var(--purple); color:#fff; border-color:var(--purple)}
+.step.active{color:var(--purple-deep)}
+.step-line{width:24px; height:2px; background:var(--border-light)}
+.step.done + .step-line{background:var(--green)}
+
+.placeholder-banner{
+  background:#FFF4E5; border:1px dashed var(--gold); border-radius:12px;
+  padding:16px 20px; margin-bottom:24px; font-size:13px; color:#7A4A00;
+}
+.placeholder-banner strong{font-family:'Poppins',sans-serif; display:block; margin-bottom:4px; color:#7A4A00}
+
+.card{background:#fff; border-radius:24px; padding:40px; box-shadow:0 24px 60px rgba(26,10,94,.14)}
+h1{font-family:'Poppins',sans-serif; font-weight:800; font-size:28px; color:var(--purple-deep); margin:0 0 8px}
+.subtitle{color:var(--text-muted); font-size:15px; margin:0 0 28px}
+
+.order{background:var(--bg-lilac); border-radius:16px; padding:20px; margin-bottom:24px}
+.order-label{font-family:'Poppins',sans-serif; font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:var(--text-muted); margin-bottom:6px}
+.order-product{font-family:'Poppins',sans-serif; font-weight:700; font-size:16px; color:var(--purple-deep); margin:0 0 4px}
+.order-customer{font-size:14px; color:var(--text-body); margin:0 0 14px}
+.order-total{display:flex; justify-content:space-between; align-items:center; padding-top:14px; border-top:1px solid var(--border-light)}
+.order-total-label{font-family:'Poppins',sans-serif; font-weight:600; font-size:14px}
+.order-total-value{font-family:'Poppins',sans-serif; font-weight:800; font-size:24px; color:var(--purple)}
+
+.methods{display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:28px}
+@media(max-width:560px){.methods{grid-template-columns:1fr}}
+.method{background:#FAFAFE; border:1.5px solid var(--border-light); border-radius:12px; padding:14px; text-align:center; font-size:13px; color:var(--text-muted)}
+.method-name{font-family:'Poppins',sans-serif; font-weight:700; color:var(--purple-deep); margin-bottom:2px}
+
+.action-row{display:flex; gap:12px; flex-wrap:wrap}
+.btn{flex:1; min-width:200px; padding:14px 20px; border-radius:12px; font-family:'Poppins',sans-serif; font-weight:700; font-size:15px; cursor:pointer; border:none; text-align:center; display:inline-flex; align-items:center; justify-content:center; gap:8px; transition:transform .15s, box-shadow .2s}
+.btn-approve{background:var(--green); color:#0E5A2C; box-shadow:0 8px 24px rgba(94,211,140,.3)}
+.btn-approve:hover{transform:translateY(-2px)}
+.btn-reject{background:#fff; color:#9B2C2C; border:2px solid #FBD5D5}
+.btn-reject:hover{background:#FFF5F5}
+.note{margin-top:24px; font-size:12px; color:var(--text-muted); text-align:center; line-height:1.6}
+</style>
+</head>
+<body>
+
+<header class="site-header"><img src="img/logo-branco.png" alt="ECO do B.E.M." class="brand-logo" onerror="this.style.display='none'"></header>
+
+<div class="wrap">
+
+  <div class="steps">
+    <div class="step done"><span class="step-num">✓</span> Cadastro</div>
+    <div class="step-line"></div>
+    <div class="step active"><span class="step-num">2</span> Pagamento</div>
+    <div class="step-line"></div>
+    <div class="step"><span class="step-num">3</span> Confirmação</div>
+  </div>
+
+  <div class="placeholder-banner">
+    <strong>🚧 Placeholder — Mercado Pago não conectado ainda</strong>
+    Esta tela simula a página do Mercado Pago. Quando a conta MP for criada e as credenciais forem configuradas no Railway, esta tela é substituída pelo Checkout Pro real do Mercado Pago. Use os botões abaixo para testar o fluxo: <strong>Aprovar</strong> simula um pagamento bem-sucedido, <strong>Recusar</strong> simula falha.
+  </div>
+
+  <div class="card">
+    <h1>Finalizar pagamento</h1>
+    <p class="subtitle">Confirme seu pedido e escolha como pagar.</p>
+
+    <div class="order">
+      <div class="order-label">RESUMO DO PEDIDO</div>
+      <p class="order-product" id="orderProduct">—</p>
+      <p class="order-customer" id="orderCustomer">—</p>
+      <div class="order-total">
+        <span class="order-total-label">Total</span>
+        <span class="order-total-value" id="orderTotal">—</span>
+      </div>
+    </div>
+
+    <div class="methods">
+      <div class="method"><div class="method-name">Pix</div><div>Aprovação imediata</div></div>
+      <div class="method"><div class="method-name">Cartão</div><div>Até 12x</div></div>
+      <div class="method"><div class="method-name">Boleto</div><div>1–2 dias úteis</div></div>
+    </div>
+
+    <div class="action-row">
+      <button type="button" class="btn btn-approve" id="btnApprove">✓ Simular pagamento APROVADO</button>
+      <button type="button" class="btn btn-reject" id="btnReject">✗ Simular pagamento RECUSADO</button>
+    </div>
+
+    <p class="note">
+      🔒 No ambiente real, os dados de cartão são digitados <strong>dentro do Mercado Pago</strong>, não no nosso site. A ECO não armazena nenhum dado financeiro.
+    </p>
+  </div>
+</div>
+
+<script>
+function brl(v){ return v.toLocaleString('pt-BR', {style:'currency', currency:'BRL'}); }
+
+const cad = JSON.parse(sessionStorage.getItem('eco_cadastro') || '{}');
+if (!cad.nome) {
+  document.querySelector('.card').innerHTML = '<h1>Sessão expirada</h1><p>Por favor, refaça o cadastro.</p><a href="formulario.html" style="display:inline-block;margin-top:16px;padding:12px 24px;background:#5B2EFF;color:#fff;border-radius:10px;text-decoration:none;font-family:Poppins;font-weight:700">Voltar ao cadastro</a>';
+} else {
+  document.getElementById('orderProduct').textContent = cad.produto_label || '—';
+  document.getElementById('orderCustomer').textContent = `${cad.nome} · ${cad.email}`;
+  document.getElementById('orderTotal').textContent = brl(cad.valor || 0);
+}
+
+document.getElementById('btnApprove').addEventListener('click', () => {
+  cad.status_pagamento = 'approved';
+  cad.id_pagamento_simulado = 'SIM-' + Date.now();
+  sessionStorage.setItem('eco_cadastro', JSON.stringify(cad));
+  window.location.href = 'obrigado.html';
+});
+
+document.getElementById('btnReject').addEventListener('click', () => {
+  cad.status_pagamento = 'rejected';
+  sessionStorage.setItem('eco_cadastro', JSON.stringify(cad));
+  window.location.href = 'pagamento-recusado.html';
+});
+</script>
+</body>
+</html>

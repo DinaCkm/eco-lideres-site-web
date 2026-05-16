@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cadastro — Jornada Individual | ECO do B.E.M.</title>
+<meta name="description" content="Cadastro para iniciar uma jornada individual de Carreira, Desenvolvimento Profissional ou Empregabilidade.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --purple: #5B2EFF;
+  --purple-deep: #1A0A5E;
+  --purple-light: #8C68FF;
+  --teal: #00B8D9;
+  --green: #5ED38C;
+  --gold: #F59E0B;
+  --bg-lilac: #F5F3FF;
+  --text-dark: #1A0A5E;
+  --text-body: #3A3559;
+  --text-muted: #6B6389;
+  --border-light: #E8E4FF;
+  --shadow-md: 0 12px 40px rgba(26,10,94,.10);
+  --shadow-lg: 0 24px 60px rgba(26,10,94,.14);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; font-family:'Inter',sans-serif;
+  color:var(--text-body); background:var(--bg-lilac);
+  line-height:1.6; -webkit-font-smoothing:antialiased; min-height:100vh;
+}
+a{color:inherit; text-decoration:none}
+button{font-family:inherit; cursor:pointer; border:none; background:none}
+
+/* HEADER */
+.site-header{background:var(--purple-deep); padding:18px 0}
+.header-inner{
+  max-width:1180px; margin:0 auto; padding:0 24px;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+}
+.brand-logo{height:36px; width:auto}
+.header-back{
+  color:rgba(255,255,255,.75); font-size:14px; font-weight:500;
+  display:inline-flex; align-items:center; gap:6px; transition:color .2s;
+}
+.header-back:hover{color:#fff}
+
+/* STEPS */
+.main-wrap{max-width:920px; margin:0 auto; padding:48px 24px 80px}
+.steps{
+  display:flex; justify-content:center; align-items:center; gap:10px;
+  margin-bottom:40px; flex-wrap:wrap;
+}
+.step{
+  display:flex; align-items:center; gap:8px;
+  font-family:'Poppins',sans-serif; font-size:12px; font-weight:600;
+  color:var(--text-muted);
+}
+.step-num{
+  display:flex; align-items:center; justify-content:center;
+  width:28px; height:28px; border-radius:50%;
+  background:#fff; color:var(--text-muted); border:2px solid var(--border-light);
+  font-weight:700; font-size:12px;
+}
+.step.active .step-num{background:var(--purple); color:#fff; border-color:var(--purple)}
+.step.active{color:var(--purple-deep)}
+.step-line{width:24px; height:2px; background:var(--border-light)}
+
+/* INTRO */
+.intro{text-align:center; margin-bottom:40px}
+.eyebrow{
+  display:inline-block; font-family:'Poppins',sans-serif;
+  font-size:11px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase;
+  color:var(--purple); background:rgba(91,46,255,.08);
+  padding:6px 14px; border-radius:99px; margin-bottom:14px;
+}
+.intro h1{
+  font-family:'Poppins',sans-serif; font-weight:800; font-size:36px;
+  color:var(--purple-deep); margin:0 0 12px; line-height:1.15; letter-spacing:-.5px;
+}
+.intro p{
+  font-size:16px; color:var(--text-body); margin:0 auto; max-width:600px;
+}
+
+/* CARD CHOSEN PRODUCT (resumo) */
+.product-summary{
+  background:#fff; border-radius:20px; padding:24px;
+  box-shadow:var(--shadow-md); margin-bottom:24px;
+  display:flex; align-items:center; gap:20px; flex-wrap:wrap;
+  border-left:5px solid var(--purple);
+}
+.product-summary-icon{
+  width:54px; height:54px; flex-shrink:0;
+  border-radius:14px; background:rgba(91,46,255,.1);
+  display:flex; align-items:center; justify-content:center;
+  font-size:24px;
+}
+.product-summary-body{flex:1; min-width:200px}
+.product-summary-label{
+  font-family:'Poppins',sans-serif; font-size:11px; font-weight:700;
+  letter-spacing:1.2px; text-transform:uppercase;
+  color:var(--text-muted); margin-bottom:4px;
+}
+.product-summary-title{
+  font-family:'Poppins',sans-serif; font-weight:700; font-size:18px;
+  color:var(--purple-deep); margin:0 0 4px;
+}
+.product-summary-meta{font-size:14px; color:var(--text-body); margin:0}
+.product-summary-price{
+  font-family:'Poppins',sans-serif; font-weight:800; font-size:22px;
+  color:var(--purple); white-space:nowrap;
+}
+
+/* FORM CARD */
+.form-card{
+  background:#fff; border-radius:24px; padding:40px;
+  box-shadow:var(--shadow-lg);
+}
+.form-section{margin-bottom:32px}
+.form-section:last-of-type{margin-bottom:0}
+.section-title{
+  font-family:'Poppins',sans-serif; font-weight:700; font-size:18px;
+  color:var(--purple-deep); margin:0 0 6px;
+}
+.section-desc{font-size:14px; color:var(--text-muted); margin:0 0 20px}
+
+.form-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+.form-grid-full{grid-column:1 / -1}
+@media(max-width:640px){.form-grid{grid-template-columns:1fr}}
+
+.field label{
+  display:block; font-family:'Poppins',sans-serif; font-weight:600;
+  font-size:13px; color:var(--purple-deep); margin-bottom:6px;
+}
+.field label .req{color:#E53E3E; margin-left:2px}
+.field input, .field select, .field textarea{
+  width:100%; padding:12px 14px; font-family:'Inter',sans-serif; font-size:15px;
+  color:var(--text-dark); background:#FAFAFE;
+  border:1.5px solid var(--border-light); border-radius:10px;
+  transition:border-color .2s, background .2s; outline:none;
+}
+.field input:focus, .field select:focus, .field textarea:focus{
+  border-color:var(--purple); background:#fff;
+}
+.field textarea{resize:vertical; min-height:110px; font-family:'Inter',sans-serif}
+.field-hint{font-size:12px; color:var(--text-muted); margin-top:4px}
+
+/* RADIO CARDS */
+.radio-grid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px}
+@media(max-width:640px){.radio-grid{grid-template-columns:1fr}}
+.radio-card{
+  display:block; cursor:pointer; padding:16px;
+  background:#FAFAFE; border:1.5px solid var(--border-light);
+  border-radius:14px; transition:all .2s; position:relative;
+}
+.radio-card input{position:absolute; opacity:0; pointer-events:none}
+.radio-card-title{
+  font-family:'Poppins',sans-serif; font-weight:700; font-size:14px;
+  color:var(--purple-deep); margin-bottom:4px;
+}
+.radio-card-desc{font-size:12px; color:var(--text-muted); margin:0}
+.radio-card:hover{border-color:var(--purple-light); background:#fff}
+.radio-card.selected{
+  border-color:var(--purple); background:#fff;
+  box-shadow:0 0 0 4px rgba(91,46,255,.08);
+}
+.radio-card.selected .radio-card-title{color:var(--purple)}
+
+/* TERMS CHECKBOX */
+.terms-box{
+  display:flex; gap:12px; align-items:flex-start;
+  background:var(--bg-lilac); padding:16px; border-radius:12px;
+  margin-top:8px;
+}
+.terms-box input[type="checkbox"]{
+  margin-top:3px; width:18px; height:18px; flex-shrink:0;
+  accent-color:var(--purple);
+}
+.terms-box label{font-size:13px; color:var(--text-body); line-height:1.55; cursor:pointer}
+.terms-box a{color:var(--purple); font-weight:600; text-decoration:underline}
+
+/* SUBMIT */
+.submit-wrap{margin-top:36px; display:flex; flex-direction:column; gap:14px; align-items:center}
+.btn-submit{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  background:var(--purple); color:#fff; font-family:'Poppins',sans-serif;
+  font-weight:700; font-size:16px; padding:16px 36px; border-radius:12px;
+  transition:transform .15s, box-shadow .2s; box-shadow:0 8px 24px rgba(91,46,255,.3);
+  width:100%; max-width:380px;
+}
+.btn-submit:hover{transform:translateY(-2px); box-shadow:0 12px 32px rgba(91,46,255,.4)}
+.btn-submit:disabled{opacity:.5; cursor:not-allowed; transform:none}
+.submit-note{
+  font-size:13px; color:var(--text-muted); text-align:center; max-width:480px; line-height:1.5;
+}
+.submit-note strong{color:var(--purple-deep)}
+
+/* SECURITY BADGE */
+.security-row{
+  display:flex; justify-content:center; gap:14px; margin-top:24px; flex-wrap:wrap;
+}
+.sec-chip{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:12px; color:var(--text-muted); font-weight:500;
+}
+
+/* FOOTER */
+.simple-footer{
+  background:#fff; border-top:1px solid var(--border-light);
+  padding:24px 0; text-align:center; font-size:13px; color:var(--text-muted);
+}
+.simple-footer a{color:var(--purple-deep); font-weight:500}
+.simple-footer a + a{margin-left:18px}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html"><img src="img/logo-branco.png" alt="ECO do B.E.M." class="brand-logo" onerror="this.style.display='none'"></a>
+    <a href="para-voce.html" class="header-back">← Voltar</a>
+  </div>
+</header>
+
+<main class="main-wrap">
+
+  <!-- STEPS -->
+  <div class="steps">
+    <div class="step active"><span class="step-num">1</span> Cadastro</div>
+    <div class="step-line"></div>
+    <div class="step"><span class="step-num">2</span> Pagamento</div>
+    <div class="step-line"></div>
+    <div class="step"><span class="step-num">3</span> Confirmação</div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <span class="eyebrow">JORNADA INDIVIDUAL · PESSOA FÍSICA</span>
+    <h1>Vamos começar pelo seu cadastro</h1>
+    <p>Dados rápidos para a gente saber quem você é e o que você busca. Depois é só seguir para o pagamento seguro.</p>
+  </div>
+
+  <!-- PRODUCT SUMMARY (preenchido via querystring) -->
+  <div class="product-summary" id="productSummary">
+    <div class="product-summary-icon" id="prodIcon">✨</div>
+    <div class="product-summary-body">
+      <div class="product-summary-label">Você selecionou</div>
+      <h3 class="product-summary-title" id="prodTitle">ECO do B.E.M. — Jornada Individual</h3>
+      <p class="product-summary-meta" id="prodMeta">Versão a escolher abaixo</p>
+    </div>
+    <div class="product-summary-price" id="prodPrice">—</div>
+  </div>
+
+  <!-- FORM -->
+  <form id="cadastroForm" class="form-card" novalidate>
+
+    <!-- SEÇÃO 1: DADOS PESSOAIS -->
+    <div class="form-section">
+      <h2 class="section-title">Seus dados</h2>
+      <p class="section-desc">Como falar com você.</p>
+
+      <div class="form-grid">
+        <div class="field form-grid-full">
+          <label for="nome">Nome completo <span class="req">*</span></label>
+          <input type="text" id="nome" name="nome" required autocomplete="name">
+        </div>
+
+        <div class="field">
+          <label for="email">E-mail <span class="req">*</span></label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+
+        <div class="field">
+          <label for="whatsapp">WhatsApp <span class="req">*</span></label>
+          <input type="tel" id="whatsapp" name="whatsapp" required placeholder="(11) 99999-9999" autocomplete="tel">
+        </div>
+
+        <div class="field">
+          <label for="profissao">Profissão atual <span class="req">*</span></label>
+          <input type="text" id="profissao" name="profissao" required placeholder="Ex.: Analista de marketing">
+        </div>
+
+        <div class="field">
+          <label for="empresa">Empresa atual (opcional)</label>
+          <input type="text" id="empresa" name="empresa" placeholder="Onde você trabalha hoje">
+        </div>
+      </div>
+    </div>
+
+    <!-- SEÇÃO 2: JORNADA E VERSÃO -->
+    <div class="form-section">
+      <h2 class="section-title">Sua jornada</h2>
+      <p class="section-desc">Confirme qual jornada e versão você quer iniciar.</p>
+
+      <div class="field" style="margin-bottom:18px">
+        <label for="jornada">Jornada escolhida <span class="req">*</span></label>
+        <select id="jornada" name="jornada" required>
+          <option value="">Escolha uma jornada</option>
+          <option value="carreira">ECO Carreira</option>
+          <option value="desenvolvimento">ECO Desenvolvimento Profissional</option>
+          <option value="empregabilidade">ECO Empregabilidade</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Versão <span class="req">*</span></label>
+        <div class="radio-grid" id="versionGrid">
+          <label class="radio-card" data-version="basico">
+            <input type="radio" name="versao" value="basico" required>
+            <div class="radio-card-title">Básico</div>
+            <p class="radio-card-desc">90 dias · 5 mentorias</p>
+          </label>
+          <label class="radio-card" data-version="estendido">
+            <input type="radio" name="versao" value="estendido">
+            <div class="radio-card-title">Estendido</div>
+            <p class="radio-card-desc">120 dias · 7 mentorias</p>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEÇÃO 3: OBJETIVO -->
+    <div class="form-section">
+      <h2 class="section-title">O que você busca</h2>
+      <p class="section-desc">Em poucas frases, conte o que motivou você a procurar essa jornada. Isso ajuda os psicólogos a personalizarem desde a primeira mentoria.</p>
+
+      <div class="field">
+        <label for="objetivo">Seu objetivo principal <span class="req">*</span></label>
+        <textarea id="objetivo" name="objetivo" required placeholder="Ex.: Estou em transição de carreira e quero entender melhor para onde ir, com base no meu perfil comportamental."></textarea>
+        <p class="field-hint">Mínimo 30 caracteres.</p>
+      </div>
+    </div>
+
+    <!-- TERMOS -->
+    <div class="form-section">
+      <div class="terms-box">
+        <input type="checkbox" id="aceito" name="aceito" required>
+        <label for="aceito">
+          Li e concordo com os <a href="termos.html" target="_blank">Termos de Uso</a> e a <a href="privacidade.html" target="_blank">Política de Privacidade</a>. Autorizo o tratamento dos meus dados nos termos da LGPD.
+        </label>
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="submit-wrap">
+      <button type="submit" class="btn-submit" id="btnSubmit">
+        Ir para pagamento seguro →
+      </button>
+      <p class="submit-note">
+        Você será direcionado para o ambiente do <strong>Mercado Pago</strong> para finalizar sua compra com segurança. <strong>A ECO não armazena dados do seu cartão.</strong>
+      </p>
+      <div class="security-row">
+        <span class="sec-chip">🔒 Pagamento processado pelo Mercado Pago</span>
+        <span class="sec-chip">🛡️ Conformidade LGPD</span>
+      </div>
+    </div>
+  </form>
+</main>
+
+<footer class="simple-footer">
+  <div>© 2026 ECO do B.E.M. · CKM Talents</div>
+  <div style="margin-top:8px">
+    <a href="termos.html">Termos de Uso</a>
+    <a href="privacidade.html">Política de Privacidade</a>
+    <a href="mailto:relacionamento@ckmtalents.net">relacionamento@ckmtalents.net</a>
+  </div>
+</footer>
+
+<script>
+/* ===========================================================
+   CONFIGURAÇÃO DE PRODUTOS — atualize valores aqui se mudar.
+   =========================================================== */
+const PRODUCTS = {
+  carreira: {
+    icon: "🧭",
+    title: "ECO Carreira",
+    basico: { label:"Básico · 90 dias · 5 mentorias", price: 2197 },
+    estendido: { label:"Estendido · 120 dias · 7 mentorias", price: 2997 }
+  },
+  desenvolvimento: {
+    icon: "📈",
+    title: "ECO Desenvolvimento Profissional",
+    basico: { label:"Básico · 90 dias · 5 mentorias", price: 2197 },
+    estendido: { label:"Estendido · 120 dias · 7 mentorias", price: 2997 }
+  },
+  empregabilidade: {
+    icon: "🎯",
+    title: "ECO Empregabilidade",
+    basico: { label:"Básico · 90 dias · 5 mentorias", price: 2047 },
+    estendido: { label:"Estendido · 120 dias · 7 mentorias", price: 2897 }
+  }
+};
+
+/* ===========================================================
+   LÊ querystring (?jornada=carreira&versao=estendido) vinda
+   de para-voce.html — preenche e bloqueia se vier travado.
+   =========================================================== */
+const params = new URLSearchParams(window.location.search);
+const initJornada = params.get('jornada') || params.get('produto');
+const initVersao = params.get('versao');
+
+if (initJornada && PRODUCTS[initJornada]) document.getElementById('jornada').value = initJornada;
+if (initVersao && ['basico','estendido'].includes(initVersao)) {
+  const radio = document.querySelector(`input[name="versao"][value="${initVersao}"]`);
+  if (radio) radio.checked = true;
+}
+
+/* ===========================================================
+   ATUALIZAÇÃO DO RESUMO
+   =========================================================== */
+function brl(v){ return v.toLocaleString('pt-BR', {style:'currency', currency:'BRL'}); }
+
+function updateSummary(){
+  const j = document.getElementById('jornada').value;
+  const v = document.querySelector('input[name="versao"]:checked');
+  const p = PRODUCTS[j];
+
+  const icon = document.getElementById('prodIcon');
+  const title = document.getElementById('prodTitle');
+  const meta = document.getElementById('prodMeta');
+  const price = document.getElementById('prodPrice');
+
+  if (!p) {
+    icon.textContent = '✨';
+    title.textContent = 'ECO do B.E.M. — Jornada Individual';
+    meta.textContent = 'Escolha sua jornada e versão abaixo';
+    price.textContent = '—';
+    return;
+  }
+  icon.textContent = p.icon;
+  title.textContent = p.title;
+  if (v) {
+    const ver = p[v.value];
+    meta.textContent = ver.label;
+    price.textContent = brl(ver.price);
+  } else {
+    meta.textContent = 'Escolha a versão Básico ou Estendido';
+    price.textContent = `a partir de ${brl(p.basico.price)}`;
+  }
+}
+
+/* Radio card visual + change listeners */
+document.querySelectorAll('.radio-card').forEach(card => {
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.radio-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+  });
+});
+
+document.querySelectorAll('input[name="versao"]').forEach(r => {
+  r.addEventListener('change', updateSummary);
+});
+document.getElementById('jornada').addEventListener('change', updateSummary);
+
+/* Marca o card selecionado se já veio via URL */
+window.addEventListener('DOMContentLoaded', () => {
+  const checked = document.querySelector('input[name="versao"]:checked');
+  if (checked) checked.closest('.radio-card').classList.add('selected');
+  updateSummary();
+});
+
+/* ===========================================================
+   ENVIO DO FORMULÁRIO
+   Por enquanto: salva no sessionStorage e redireciona para
+   uma página intermediária (placeholder do Mercado Pago).
+   Quando o backend estiver pronto, o submit vai mandar via
+   fetch() para POST /api/criar-pagamento e receber o link do MP.
+   =========================================================== */
+document.getElementById('cadastroForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const objetivo = document.getElementById('objetivo').value.trim();
+  if (objetivo.length < 30) {
+    alert('Por favor, descreva seu objetivo com pelo menos 30 caracteres.');
+    document.getElementById('objetivo').focus();
+    return;
+  }
+
+  const versaoSel = document.querySelector('input[name="versao"]:checked');
+  if (!versaoSel) {
+    alert('Escolha a versão Básico ou Estendido.');
+    return;
+  }
+
+  const data = {
+    nome: document.getElementById('nome').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    whatsapp: document.getElementById('whatsapp').value.trim(),
+    profissao: document.getElementById('profissao').value.trim(),
+    empresa: document.getElementById('empresa').value.trim(),
+    jornada: document.getElementById('jornada').value,
+    versao: versaoSel.value,
+    objetivo,
+    timestamp: new Date().toISOString()
+  };
+
+  /* Adiciona produto + preço derivado */
+  const prod = PRODUCTS[data.jornada];
+  data.produto_label = `${prod.title} — ${prod[data.versao].label}`;
+  data.valor = prod[data.versao].price;
+
+  /* Salva temporariamente no sessionStorage para a próxima página */
+  sessionStorage.setItem('eco_cadastro', JSON.stringify(data));
+
+  /* PLACEHOLDER — quando o backend do Mercado Pago estiver pronto,
+     trocar este redirect por chamada à API e usar a init_point do MP. */
+  window.location.href = 'pagamento-placeholder.html';
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2736 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Para Você — Carreira, Desenvolvimento e Empregabilidade | ECO do B.E.M.</title>
+<meta name="description" content="Jornadas individuais para profissionais que querem mais clareza de carreira, desenvolvimento estruturado ou empregabilidade com método. Mentorias com psicóloga, assessment e plano de continuidade.">
+<meta property="og:title" content="Para Você — ECO do B.E.M.">
+<meta property="og:description" content="3 jornadas individuais com mentoria, assessment e plano estruturado. Carreira, Desenvolvimento Profissional e Empregabilidade.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --purple:       #5B2EFF;
+  --purple-deep:  #1A0A5E;
+  --purple-dark:  #3A1D8F;
+  --purple-light: #8C68FF;
+  --teal:         #00B8D9;
+  --teal-soft:    #5DCAA5;
+  --green:        #5ED38C;
+  --blue:         #4A9FFF;
+  --gold:         #F59E0B;
+  --bg-white:     #FFFFFF;
+  --bg-lilac:     #F5F3FF;
+  --bg-lilac-2:   #E8E4FF;
+  --bg-soft:      #FAFAFE;
+  --text-dark:    #1A0A5E;
+  --text-body:    #3A3559;
+  --text-muted:   #6B6389;
+  --text-white:   #FFFFFF;
+  --text-lilac:   #C4B8FF;
+  --border-light: #E8E4FF;
+  --border-soft:  #EFECFF;
+  --shadow-sm:    0 4px 16px rgba(26, 10, 94, 0.06);
+  --shadow-md:    0 12px 32px rgba(26, 10, 94, 0.08);
+  --shadow-lg:    0 24px 60px rgba(26, 10, 94, 0.12);
+  --shadow-purple:0 18px 40px rgba(91, 46, 255, 0.22);
+  --shadow-teal:  0 18px 40px rgba(0, 184, 217, 0.22);
+  --shadow-green: 0 18px 40px rgba(94, 211, 140, 0.22);
+  --shadow-gold:  0 18px 40px rgba(245, 158, 11, 0.22);
+  --radius-sm:    12px;
+  --radius-md:    20px;
+  --radius-lg:    28px;
+  --radius-xl:    36px;
+  --max:          1180px;
+  --gutter:       24px;
+  --section-space: 110px;
+}
+*,*::before,*::after{ box-sizing:border-box; -webkit-text-size-adjust:100%; }
+html{ scroll-behavior:smooth; overflow-x:hidden; }
+body{
+  margin:0;
+  font-family:'Inter', sans-serif;
+  color:var(--text-body);
+  background:var(--bg-white);
+  overflow-x:hidden;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+a{ color:inherit; text-decoration:none; }
+img{ max-width:100%; height:auto; display:block; }
+button{ font-family:inherit; cursor:pointer; border:none; background:none; }
+
+.container{
+  width:100%;
+  max-width:calc(var(--max) + (var(--gutter) * 2));
+  margin:0 auto;
+  padding-left:var(--gutter);
+  padding-right:var(--gutter);
+}
+.section{ padding:var(--section-space) 0; position:relative; }
+
+/* =========== HEADER =========== */
+.site-header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(26, 10, 94, 0.88);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:20px; min-height:76px; padding:12px 0;
+}
+.brand{ display:flex; align-items:center; gap:12px; min-width:0; }
+.brand-logo{ height:44px; width:auto; display:block; transition:transform .25s ease; }
+.brand:hover .brand-logo{ transform:scale(1.02); }
+.brand-logo-text{
+  font-family:'Poppins', sans-serif; font-weight:800; font-size:22px;
+  color:#fff; letter-spacing:-0.02em; line-height:1;
+}
+.brand-logo-text em{ font-style:normal; font-weight:400; opacity:0.7; font-size:14px; margin:0 2px; }
+.nav-links{ display:flex; align-items:center; gap:26px; flex-wrap:wrap; justify-content:flex-end; }
+.nav-links a{
+  color:rgba(255,255,255,0.82);
+  font-size:14.5px; font-weight:600;
+  transition:color .18s ease;
+}
+.nav-links a:hover{ color:var(--teal); }
+.nav-links a.active{ color:var(--teal); }
+.nav-cta{
+  background:linear-gradient(135deg, var(--teal), var(--blue));
+  color:#fff !important;
+  padding:10px 20px; border-radius:999px;
+  box-shadow:var(--shadow-teal);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.nav-cta:hover{
+  transform:translateY(-1px); color:#fff !important;
+  box-shadow:0 22px 48px rgba(0, 184, 217, 0.32);
+}
+
+/* =========== COMPONENTES =========== */
+.eyebrow{
+  display:inline-flex; align-items:center; gap:10px;
+  font-size:12px; font-weight:700;
+  letter-spacing:2.5px; text-transform:uppercase;
+  color:var(--purple); margin-bottom:20px;
+}
+.eyebrow::before{
+  content:""; width:28px; height:2px;
+  background:linear-gradient(90deg, var(--purple), var(--teal));
+  display:block; flex:0 0 auto; border-radius:2px;
+}
+.eyebrow.teal{ color:var(--teal); }
+.eyebrow.teal::before{ background:linear-gradient(90deg, var(--teal), var(--green)); }
+.eyebrow.gold{ color:#B87A06; }
+.eyebrow.gold::before{ background:linear-gradient(90deg, var(--gold), var(--purple)); }
+.eyebrow.light{ color:var(--teal); }
+.eyebrow.light::before{ background:linear-gradient(90deg, var(--teal), var(--green)); }
+.eyebrow.center{ justify-content:center; }
+.eyebrow.center::before{ display:none; }
+
+.title{
+  font-family:'Poppins', sans-serif;
+  font-size:clamp(2rem, 4.5vw, 3.6rem);
+  font-weight:800; line-height:1.08;
+  letter-spacing:-0.025em;
+  margin:0 0 20px; color:var(--text-dark);
+}
+.title.on-dark{ color:var(--text-white); }
+.title .hl-purple{ color:var(--purple); }
+.title .hl-teal{ color:var(--teal); }
+.title .hl-green{ color:var(--green); }
+.title .hl-gold{ color:var(--gold); }
+.title .hl-gradient{
+  background:linear-gradient(90deg, var(--purple), var(--teal));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+
+.subtitle{
+  font-size:clamp(1rem, 1.2vw, 1.1rem);
+  line-height:1.72; color:var(--text-muted);
+  max-width:720px; margin:0;
+}
+.subtitle.on-dark{ color:var(--text-lilac); }
+.subtitle.center{ margin:0 auto; }
+
+.section-header{
+  text-align:center; margin-bottom:56px;
+  max-width:820px; margin-left:auto; margin-right:auto;
+}
+.section-header .eyebrow{ justify-content:center; }
+.section-header .eyebrow::before{ display:none; }
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:8px;
+  min-height:54px; padding:14px 26px;
+  border-radius:999px; font-weight:700; font-size:15px;
+  text-align:center; cursor:pointer;
+  transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+  border:1px solid transparent;
+  font-family:'Inter', sans-serif;
+}
+.btn:hover{ transform:translateY(-2px); }
+.btn-primary{
+  background:linear-gradient(135deg, var(--purple), var(--purple-light));
+  color:#fff; box-shadow:var(--shadow-purple);
+}
+.btn-primary:hover{ box-shadow:0 22px 48px rgba(91, 46, 255, 0.32); color:#fff; }
+.btn-secondary{
+  background:#fff; color:var(--purple);
+  border-color:var(--border-light); box-shadow:var(--shadow-sm);
+}
+.btn-secondary:hover{ border-color:var(--purple); color:var(--purple); }
+.btn-teal{
+  background:linear-gradient(135deg, var(--teal), var(--blue));
+  color:#fff; box-shadow:var(--shadow-teal);
+}
+.btn-teal:hover{ color:#fff; }
+.btn-green{
+  background:linear-gradient(135deg, var(--green), var(--teal-soft));
+  color:#fff; box-shadow:var(--shadow-green);
+}
+.btn-green:hover{ color:#fff; }
+.btn-gold{
+  background:linear-gradient(135deg, var(--gold), #FFC94A);
+  color:var(--purple-deep); box-shadow:var(--shadow-gold);
+}
+.btn-gold:hover{ color:var(--purple-deep); }
+.btn-ghost-dark{
+  background:transparent; color:#fff;
+  border:1.5px solid rgba(255,255,255,0.25);
+}
+.btn-ghost-dark:hover{ background:rgba(255,255,255,0.08); color:#fff; border-color:var(--teal); }
+.arrow{ display:inline-block; transition:transform .2s; }
+.btn:hover .arrow{ transform:translateX(4px); }
+
+/* =========== HERO =========== */
+.hero{
+  position:relative;
+  padding:80px 0 100px;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(91, 46, 255, 0.10), transparent 40%),
+    radial-gradient(circle at 90% 85%, rgba(0, 184, 217, 0.12), transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.05), transparent 50%),
+    linear-gradient(180deg, #ffffff 0%, var(--bg-lilac) 100%);
+  overflow:hidden;
+}
+.hero::before{
+  content:""; position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(91,46,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(91,46,255,0.04) 1px, transparent 1px);
+  background-size:60px 60px;
+  opacity:0.55; pointer-events:none;
+  mask-image:radial-gradient(circle at 50% 50%, #000 30%, transparent 75%);
+  -webkit-mask-image:radial-gradient(circle at 50% 50%, #000 30%, transparent 75%);
+}
+.hero-grid{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0, 1.05fr) minmax(0, 1fr);
+  gap:60px; align-items:center;
+}
+.hero-content{ position:relative; z-index:2; }
+.pill{
+  display:inline-flex; align-items:center;
+  gap:8px; padding:8px 16px 8px 10px;
+  border-radius:999px; background:#fff;
+  border:1px solid var(--border-light);
+  font-size:13px; font-weight:600;
+  color:var(--text-dark); box-shadow:var(--shadow-sm);
+  margin-bottom:24px;
+}
+.pill::before{
+  content:""; width:8px; height:8px; border-radius:50%;
+  background:var(--green); box-shadow:0 0 0 4px rgba(94, 211, 140, 0.2);
+}
+.hero-desc{
+  font-size:17px; line-height:1.72; color:var(--text-body);
+  max-width:560px; margin:0 0 16px;
+}
+.hero-sub-info{
+  font-size:14.5px; color:var(--text-muted);
+  max-width:520px; margin-bottom:32px;
+}
+.btn-row{ display:flex; flex-wrap:wrap; gap:14px; margin-top:8px; }
+.hero-meta{
+  margin-top:30px; display:flex; gap:24px; flex-wrap:wrap;
+  padding-top:24px; border-top:1px solid var(--border-light);
+}
+.hero-meta-item{
+  display:flex; flex-direction:column; gap:2px;
+}
+.hero-meta-item strong{
+  font-family:'Poppins', sans-serif; font-weight:800;
+  font-size:22px; color:var(--text-dark); line-height:1;
+}
+.hero-meta-item span{ font-size:12px; color:var(--text-muted); }
+
+/* Hero visual */
+.hero-visual{
+  position:relative;
+  aspect-ratio: 4 / 5;
+  border-radius:var(--radius-lg);
+}
+.hero-image-wrap{
+  position:relative; width:100%; height:100%;
+  border-radius:var(--radius-lg); overflow:hidden;
+  background:linear-gradient(135deg, var(--purple-deep), var(--purple));
+  box-shadow:var(--shadow-lg);
+}
+.hero-image{ width:100%; height:100%; object-fit:cover; display:block; }
+.hero-image-fallback{
+  width:100%; height:100%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(0,184,217,0.35), transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(245,158,11,0.25), transparent 50%),
+    linear-gradient(135deg, var(--purple-deep), var(--purple));
+}
+.hero-card-float{
+  position:absolute; background:#fff;
+  border-radius:var(--radius-md);
+  padding:16px 18px; box-shadow:var(--shadow-lg);
+  display:flex; align-items:center; gap:12px;
+  min-width:200px;
+}
+.hero-card-float .dot{
+  width:44px; height:44px; border-radius:14px;
+  display:grid; place-items:center;
+  font-size:20px; flex:0 0 auto;
+}
+.hero-card-float strong{
+  display:block; font-family:'Poppins', sans-serif;
+  font-size:16px; color:var(--text-dark); line-height:1.1;
+}
+.hero-card-float span{
+  display:block; font-size:12px;
+  color:var(--text-muted); margin-top:2px;
+}
+.float-tl{ top:24px; left:-30px; }
+.float-br{ bottom:32px; right:-28px; }
+.float-tl .dot{ background:rgba(94, 211, 140, 0.15); color:var(--green); }
+.float-br .dot{ background:rgba(245, 158, 11, 0.15); color:var(--gold); }
+
+/* =========== ESCOLHA / 3 CARDS =========== */
+.section-choose{ background:var(--bg-white); padding-bottom:60px; }
+.choose-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:24px;
+}
+.choose-card{
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  display:flex; flex-direction:column;
+  transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  box-shadow:var(--shadow-sm);
+  position:relative;
+}
+.choose-card::before{
+  content:""; position:absolute;
+  top:0; left:0; right:0; height:5px;
+  background:var(--purple);
+}
+.choose-card.teal::before{ background:var(--teal); }
+.choose-card.gold::before{ background:var(--gold); }
+.choose-card:hover{
+  transform:translateY(-8px);
+  box-shadow:var(--shadow-lg);
+  border-color:rgba(91,46,255,0.18);
+}
+.choose-card.teal:hover{ border-color:rgba(0,184,217,0.22); }
+.choose-card.gold:hover{ border-color:rgba(245,158,11,0.22); }
+.choose-image{
+  width:100%; aspect-ratio: 16 / 10;
+  background:linear-gradient(135deg, var(--purple-deep), var(--purple));
+  position:relative; overflow:hidden;
+}
+.choose-image.teal{ background:linear-gradient(135deg, var(--teal), var(--teal-soft)); }
+.choose-image.gold{ background:linear-gradient(135deg, var(--gold), #FFC94A); }
+.choose-image img{ width:100%; height:100%; object-fit:cover; }
+.choose-image-fallback{
+  width:100%; height:100%;
+  display:grid; place-items:center;
+  font-size:64px;
+  color:rgba(255,255,255,0.85);
+}
+.choose-content{
+  padding:30px 28px 32px;
+  display:flex; flex-direction:column; flex:1;
+}
+.choose-badge{
+  display:inline-flex; align-items:center;
+  gap:6px; width:max-content;
+  padding:6px 14px; border-radius:999px;
+  font-size:11px; font-weight:800;
+  letter-spacing:1.3px; text-transform:uppercase;
+  margin-bottom:14px;
+  background:rgba(91, 46, 255, 0.10); color:var(--purple);
+}
+.choose-card.teal .choose-badge{ background:rgba(0, 184, 217, 0.10); color:#0A82A0; }
+.choose-card.gold .choose-badge{ background:rgba(245, 158, 11, 0.14); color:#B87A06; }
+.choose-card h3{
+  margin:0 0 12px;
+  font-family:'Poppins', sans-serif;
+  font-size:1.5rem; font-weight:800;
+  color:var(--text-dark); line-height:1.2;
+}
+.choose-tagline{
+  font-size:14.5px; color:var(--purple); font-weight:700;
+  margin:0 0 14px;
+}
+.choose-card.teal .choose-tagline{ color:#0A82A0; }
+.choose-card.gold .choose-tagline{ color:#B87A06; }
+.choose-card p.desc{
+  margin:0 0 20px;
+  color:var(--text-muted);
+  font-size:14.5px; line-height:1.7;
+}
+.choose-list{ list-style:none; padding:0; margin:0 0 22px; display:grid; gap:8px; font-size:14px; }
+.choose-list li{
+  display:flex; align-items:flex-start; gap:9px;
+  color:var(--text-body);
+}
+.choose-list li::before{
+  content:"✓"; color:var(--purple); font-weight:800;
+  flex:0 0 auto; line-height:1.4;
+}
+.choose-card.teal .choose-list li::before{ color:var(--teal); }
+.choose-card.gold .choose-list li::before{ color:var(--gold); }
+.choose-price-row{
+  margin-top:auto;
+  padding-top:18px;
+  border-top:1px solid var(--border-soft);
+  display:flex; align-items:baseline; justify-content:space-between;
+  gap:12px; margin-bottom:18px;
+}
+.choose-price{
+  font-family:'Poppins', sans-serif;
+  font-weight:800; font-size:13px;
+  color:var(--text-muted);
+}
+.choose-price strong{
+  color:var(--text-dark); font-size:18px;
+  display:block;
+}
+.choose-btn{
+  display:flex; flex-direction:column; gap:8px;
+}
+
+/* =========== PROCESSO COMUM =========== */
+.section-process{ background:var(--bg-lilac); }
+.process-grid{
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0, 1fr));
+  gap:0;
+  position:relative;
+  max-width:var(--max);
+  margin:0 auto;
+}
+.process-grid::before{
+  content:""; position:absolute;
+  top:36px; left:12.5%; right:12.5%;
+  height:2px;
+  background:linear-gradient(to right, var(--purple), var(--teal), var(--green), var(--gold));
+  opacity:0.4; z-index:0;
+}
+.process-step{
+  position:relative; z-index:1;
+  display:flex; flex-direction:column;
+  align-items:center; text-align:center;
+  padding:0 16px;
+}
+.process-num{
+  width:72px; height:72px;
+  border-radius:50%;
+  background:#fff;
+  border:2px solid var(--purple);
+  display:grid; place-items:center;
+  font-family:'Poppins', sans-serif;
+  font-weight:800; font-size:22px;
+  color:var(--purple);
+  margin-bottom:20px;
+  transition:transform .25s ease, box-shadow .25s ease;
+  box-shadow:0 0 0 6px var(--bg-lilac);
+}
+.process-step:nth-child(2) .process-num{ border-color:var(--teal); color:var(--teal); }
+.process-step:nth-child(3) .process-num{ border-color:var(--green); color:#2D9C5A; }
+.process-step:nth-child(4) .process-num{ border-color:var(--gold); color:#B87A06; }
+.process-step:hover .process-num{
+  transform:scale(1.08);
+  box-shadow:var(--shadow-md), 0 0 0 6px var(--bg-lilac);
+}
+.process-step h4{
+  margin:0 0 8px;
+  font-family:'Poppins', sans-serif;
+  font-size:17px; font-weight:700; color:var(--text-dark);
+}
+.process-step p{
+  margin:0; font-size:14px; color:var(--text-muted);
+  line-height:1.6;
+}
+
+/* =========== SEÇÃO POR PRODUTO =========== */
+.product-section{ padding:var(--section-space) 0; position:relative; }
+.product-section.bg-white{ background:var(--bg-white); }
+.product-section.bg-lilac{ background:var(--bg-lilac); }
+
+.product-anchor{
+  position:relative; top:-90px;
+  display:block; height:0;
+  visibility:hidden;
+}
+
+.product-intro{
+  display:grid;
+  grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);
+  gap:60px; align-items:center;
+  margin-bottom:80px;
+}
+.product-intro.reverse{ grid-template-columns:minmax(0, 1fr) minmax(0, 1fr); }
+.product-intro.reverse .product-intro-img{ order:-1; }
+@media (min-width:981px){
+  .product-intro.reverse > div:not(.product-intro-img){ order:2; }
+}
+
+.product-intro-img{
+  width:100%; aspect-ratio: 4 / 5;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  box-shadow:var(--shadow-lg);
+  background:linear-gradient(135deg, var(--purple-deep), var(--purple));
+  position:relative;
+}
+.product-intro-img.teal{ background:linear-gradient(135deg, var(--teal), var(--teal-soft)); }
+.product-intro-img.gold{ background:linear-gradient(135deg, var(--gold), #FFC94A); }
+.product-intro-img img{ width:100%; height:100%; object-fit:cover; }
+.product-intro-img-fb{
+  width:100%; height:100%;
+  display:grid; place-items:center;
+  font-size:96px; color:rgba(255,255,255,0.7);
+}
+
+.product-tag{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:7px 16px; border-radius:999px;
+  font-size:11px; font-weight:800;
+  letter-spacing:2px; text-transform:uppercase;
+  margin-bottom:18px;
+}
+.product-tag.purple{ background:rgba(91, 46, 255, 0.10); color:var(--purple); }
+.product-tag.teal{ background:rgba(0, 184, 217, 0.10); color:#0A82A0; }
+.product-tag.gold{ background:rgba(245, 158, 11, 0.14); color:#B87A06; }
+
+.product-title{
+  font-family:'Poppins', sans-serif;
+  font-size:clamp(1.8rem, 3.4vw, 2.8rem);
+  font-weight:800; line-height:1.1;
+  letter-spacing:-0.02em;
+  margin:0 0 18px;
+  color:var(--text-dark);
+}
+.product-lead{
+  font-size:17px; line-height:1.72;
+  color:var(--text-body);
+  margin:0 0 20px;
+}
+.product-text{
+  font-size:15px; line-height:1.7;
+  color:var(--text-muted);
+  margin:0 0 20px;
+}
+.product-objective{
+  background:#fff;
+  border-radius:var(--radius-md);
+  padding:24px 28px;
+  margin-top:24px;
+  border-left:4px solid var(--purple);
+  box-shadow:var(--shadow-sm);
+}
+.product-section.bg-white .product-objective{ background:var(--bg-lilac); }
+.product-objective.teal{ border-left-color:var(--teal); }
+.product-objective.gold{ border-left-color:var(--gold); }
+.product-objective h4{
+  font-family:'Poppins', sans-serif;
+  font-size:14px; font-weight:700; color:var(--purple);
+  margin:0 0 8px; text-transform:uppercase; letter-spacing:1.5px;
+}
+.product-objective.teal h4{ color:#0A82A0; }
+.product-objective.gold h4{ color:#B87A06; }
+.product-objective p{
+  font-size:15px; color:var(--text-body);
+  line-height:1.7; margin:0;
+}
+
+/* Para quem é */
+.product-block{ margin-bottom:80px; }
+.product-block-header{
+  display:flex; justify-content:space-between;
+  align-items:flex-end; gap:40px; flex-wrap:wrap;
+  margin-bottom:40px;
+}
+.product-block-header h3{
+  font-family:'Poppins', sans-serif;
+  font-size:clamp(1.5rem, 2.6vw, 2rem);
+  font-weight:800; color:var(--text-dark);
+  margin:0; letter-spacing:-0.015em;
+  line-height:1.15;
+}
+.product-block-header p{
+  max-width:480px; color:var(--text-muted);
+  font-size:15px; line-height:1.7; margin:0;
+}
+
+.who-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:18px;
+}
+.who-card{
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius:var(--radius-md);
+  padding:24px 22px;
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.product-section.bg-white .who-card{ background:var(--bg-lilac); }
+.who-card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-md);
+}
+.who-card .ico{
+  width:44px; height:44px;
+  border-radius:13px;
+  display:grid; place-items:center;
+  font-size:20px; margin-bottom:14px;
+  background:rgba(91, 46, 255, 0.10);
+  color:var(--purple);
+}
+.who-card.teal .ico{ background:rgba(0, 184, 217, 0.10); color:#0A82A0; }
+.who-card.gold .ico{ background:rgba(245, 158, 11, 0.14); color:#B87A06; }
+.who-card h5{
+  font-family:'Poppins', sans-serif;
+  font-size:15px; font-weight:700; color:var(--text-dark);
+  margin:0 0 6px;
+}
+.who-card p{
+  font-size:13.5px; color:var(--text-muted);
+  line-height:1.6; margin:0;
+}
+
+/* Competências */
+.comp-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:16px;
+}
+.comp-card{
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius:var(--radius-md);
+  padding:24px 22px;
+  display:flex; align-items:center; gap:14px;
+  transition:transform .2s ease, border-color .2s ease;
+}
+.product-section.bg-white .comp-card{ background:var(--bg-lilac); }
+.comp-card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(91,46,255,0.2);
+}
+.comp-dot{
+  width:38px; height:38px; border-radius:50%;
+  display:grid; place-items:center;
+  background:linear-gradient(135deg, var(--purple), var(--purple-light));
+  color:#fff; font-weight:800; font-size:14px;
+  flex:0 0 auto;
+}
+.comp-card.teal .comp-dot{ background:linear-gradient(135deg, var(--teal), var(--blue)); }
+.comp-card.gold .comp-dot{ background:linear-gradient(135deg, var(--gold), #FFC94A); color:var(--purple-deep); }
+.comp-card h5{
+  font-family:'Poppins', sans-serif;
+  font-size:14.5px; font-weight:700; color:var(--text-dark);
+  margin:0 0 4px;
+}
+.comp-card p{ font-size:13px; color:var(--text-muted); line-height:1.55; margin:0; }
+
+/* Trilhas */
+.trails-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:16px;
+}
+.trail-card{
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius:var(--radius-md);
+  padding:26px 24px;
+  position:relative;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.product-section.bg-white .trail-card{ background:var(--bg-lilac); }
+.trail-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-sm); }
+.trail-num{
+  font-family:'Poppins', sans-serif;
+  font-size:11px; font-weight:800;
+  letter-spacing:2px; text-transform:uppercase;
+  color:var(--purple); margin-bottom:8px;
+}
+.trail-card.teal .trail-num{ color:#0A82A0; }
+.trail-card.gold .trail-num{ color:#B87A06; }
+.trail-card h5{
+  font-family:'Poppins', sans-serif;
+  font-size:17px; font-weight:700; color:var(--text-dark);
+  margin:0 0 8px;
+}
+.trail-card p{
+  font-size:14px; color:var(--text-muted);
+  line-height:1.65; margin:0;
+}
+
+/* Versões / formatos */
+.versions-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:24px;
+}
+.version-card{
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius:var(--radius-lg);
+  padding:36px 32px;
+  position:relative;
+  display:flex; flex-direction:column;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.product-section.bg-white .version-card{ background:var(--bg-lilac); }
+.version-card.featured{
+  border:2px solid rgba(91,46,255,0.3);
+  box-shadow:0 18px 60px -20px rgba(91,46,255,0.28);
+}
+.version-card.featured.teal{
+  border-color:rgba(0,184,217,0.35);
+  box-shadow:0 18px 60px -20px rgba(0,184,217,0.28);
+}
+.version-card.featured.gold{
+  border-color:rgba(245,158,11,0.35);
+  box-shadow:0 18px 60px -20px rgba(245,158,11,0.28);
+}
+.version-card:hover{ transform:translateY(-4px); }
+.version-badge{
+  position:absolute; top:18px; right:18px;
+  padding:5px 12px; border-radius:999px;
+  font-size:10px; font-weight:800;
+  letter-spacing:1.5px; text-transform:uppercase;
+  background:var(--gold); color:var(--purple-deep);
+}
+.version-step{
+  font-size:11px; font-weight:800;
+  letter-spacing:2px; text-transform:uppercase;
+  color:var(--purple); margin-bottom:10px;
+}
+.version-card.teal .version-step{ color:#0A82A0; }
+.version-card.gold .version-step{ color:#B87A06; }
+.version-card h4{
+  font-family:'Poppins', sans-serif;
+  font-size:22px; font-weight:800; color:var(--text-dark);
+  margin:0 0 8px; padding-right:80px;
+}
+.version-card .duration{
+  font-size:14px; color:var(--text-muted);
+  margin-bottom:18px;
+}
+.version-card .price{
+  display:flex; align-items:baseline; gap:4px;
+  color:var(--text-dark); margin-bottom:6px;
+}
+.version-card .price .cur{ font-size:18px; font-weight:700; color:var(--text-muted); }
+.version-card .price .val{
+  font-family:'Poppins', sans-serif;
+  font-size:46px; font-weight:900;
+  letter-spacing:-0.03em; line-height:1;
+}
+.version-card .price-note{
+  font-size:12.5px; color:var(--text-muted);
+  margin-bottom:22px;
+}
+.version-card .desc{
+  font-size:14.5px; color:var(--text-body);
+  line-height:1.65; margin:0 0 18px;
+}
+.version-features{
+  list-style:none; padding:0; margin:0 0 26px;
+  display:grid; gap:9px;
+}
+.version-features li{
+  display:flex; gap:9px; align-items:flex-start;
+  font-size:13.5px; color:var(--text-body);
+}
+.version-features li::before{
+  content:"✓"; flex:0 0 auto;
+  width:18px; height:18px; border-radius:50%;
+  background:rgba(91,46,255,0.12); color:var(--purple);
+  display:inline-grid; place-items:center;
+  font-weight:800; font-size:10px; margin-top:1px;
+}
+.version-card.teal .version-features li::before{ background:rgba(0,184,217,0.12); color:#0A82A0; }
+.version-card.gold .version-features li::before{ background:rgba(245,158,11,0.16); color:#B87A06; }
+.version-card .version-btn{
+  margin-top:auto; width:100%; justify-content:center;
+}
+
+/* Webinars / tarefas — 2 colunas */
+.contents-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:20px;
+}
+.contents-card{
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius:var(--radius-md);
+  padding:28px 26px;
+}
+.product-section.bg-white .contents-card{ background:var(--bg-lilac); }
+.contents-card h5{
+  font-family:'Poppins', sans-serif;
+  font-size:11px; font-weight:800;
+  letter-spacing:2px; text-transform:uppercase;
+  color:var(--purple); margin:0 0 8px;
+}
+.contents-card.teal h5{ color:#0A82A0; }
+.contents-card.gold h5{ color:#B87A06; }
+.contents-card h4{
+  font-family:'Poppins', sans-serif;
+  font-size:18px; font-weight:700;
+  color:var(--text-dark); margin:0 0 18px;
+}
+.contents-list{
+  list-style:none; padding:0; margin:0;
+  display:grid; gap:9px;
+  counter-reset:cnum;
+}
+.contents-list li{
+  display:flex; gap:12px; align-items:flex-start;
+  font-size:14px; color:var(--text-body);
+  line-height:1.55;
+  counter-increment:cnum;
+}
+.contents-list li::before{
+  content:counter(cnum, decimal-leading-zero);
+  flex:0 0 auto; width:26px;
+  font-family:'Poppins', sans-serif;
+  font-weight:800; font-size:11px;
+  color:var(--purple); letter-spacing:0.5px;
+  margin-top:2px;
+}
+.contents-card.teal .contents-list li::before{ color:#0A82A0; }
+.contents-card.gold .contents-list li::before{ color:#B87A06; }
+
+/* Apoio mentora — timeline */
+.mentor-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:18px;
+}
+.mentor-card{
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius:var(--radius-md);
+  padding:24px 22px;
+  position:relative;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.product-section.bg-white .mentor-card{ background:var(--bg-lilac); }
+.mentor-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-sm); }
+.mentor-ico{
+  width:42px; height:42px;
+  border-radius:12px;
+  background:linear-gradient(135deg, var(--purple), var(--purple-light));
+  color:#fff; display:grid; place-items:center;
+  font-weight:800; font-size:16px;
+  margin-bottom:14px;
+}
+.mentor-card.teal .mentor-ico{ background:linear-gradient(135deg, var(--teal), var(--blue)); }
+.mentor-card.gold .mentor-ico{ background:linear-gradient(135deg, var(--gold), #FFC94A); color:var(--purple-deep); }
+.mentor-card h5{
+  font-family:'Poppins', sans-serif;
+  font-size:15px; font-weight:700; color:var(--text-dark);
+  margin:0 0 6px;
+}
+.mentor-card p{ font-size:13.5px; color:var(--text-muted); line-height:1.65; margin:0; }
+
+/* Resultado */
+.result-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:16px;
+}
+.result-card{
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius:var(--radius-md);
+  padding:22px;
+  position:relative; overflow:hidden;
+}
+.product-section.bg-white .result-card{ background:var(--bg-lilac); }
+.result-card::before{
+  content:""; position:absolute;
+  top:0; left:0; right:0; height:3px;
+  background:var(--purple);
+}
+.result-card.teal::before{ background:var(--teal); }
+.result-card.gold::before{ background:var(--gold); }
+.result-card.green::before{ background:var(--green); }
+.result-card .ico{
+  font-size:24px; margin-bottom:12px;
+}
+.result-card h5{
+  font-family:'Poppins', sans-serif;
+  font-size:15px; font-weight:700;
+  color:var(--text-dark); margin:0 0 6px;
+}
+.result-card p{ font-size:13.5px; color:var(--text-muted); line-height:1.6; margin:0; }
+
+/* Disclaimer */
+.disclaimer{
+  background:rgba(91, 46, 255, 0.05);
+  border:1px solid rgba(91, 46, 255, 0.15);
+  border-radius:var(--radius-md);
+  padding:20px 24px;
+  margin-top:32px;
+  font-size:13.5px; color:var(--text-body);
+  line-height:1.65;
+}
+.disclaimer.teal{
+  background:rgba(0, 184, 217, 0.05);
+  border-color:rgba(0, 184, 217, 0.18);
+}
+.disclaimer.gold{
+  background:rgba(245, 158, 11, 0.06);
+  border-color:rgba(245, 158, 11, 0.2);
+}
+.disclaimer strong{ color:var(--text-dark); }
+
+/* CTA por produto */
+.product-cta{
+  margin-top:48px;
+  background:linear-gradient(135deg, var(--purple) 0%, var(--purple-deep) 100%);
+  border-radius:var(--radius-xl);
+  padding:48px 40px;
+  color:#fff;
+  text-align:center;
+  position:relative; overflow:hidden;
+  box-shadow:var(--shadow-purple);
+}
+.product-cta.teal{
+  background:linear-gradient(135deg, var(--teal) 0%, var(--purple-deep) 100%);
+  box-shadow:var(--shadow-teal);
+}
+.product-cta.gold{
+  background:linear-gradient(135deg, var(--gold) 0%, var(--purple) 100%);
+  box-shadow:var(--shadow-gold);
+}
+.product-cta::before{
+  content:""; position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size:50px 50px;
+  opacity:0.55; pointer-events:none;
+}
+.product-cta-inner{ position:relative; z-index:2; max-width:680px; margin:0 auto; }
+.product-cta h3{
+  font-family:'Poppins', sans-serif;
+  font-size:clamp(1.6rem, 2.6vw, 2.3rem);
+  font-weight:800; line-height:1.15;
+  margin:0 0 14px; color:#fff;
+}
+.product-cta p{
+  font-size:15.5px; color:rgba(255,255,255,0.85);
+  line-height:1.65; margin:0 0 26px;
+}
+.product-cta-btns{
+  display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
+}
+
+/* =========== COMPARATIVO =========== */
+.section-compare{
+  background:
+    radial-gradient(circle at 10% 20%, rgba(91, 46, 255, 0.32), transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(0, 184, 217, 0.22), transparent 40%),
+    linear-gradient(160deg, var(--purple-deep) 0%, #0D062A 100%);
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+.section-compare::before{
+  content:""; position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size:80px 80px;
+  opacity:0.5; pointer-events:none;
+}
+.section-compare .container{ position:relative; z-index:2; }
+
+.compare-table-wrap{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  backdrop-filter:blur(10px);
+}
+.compare-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:14px;
+}
+.compare-table th, .compare-table td{
+  padding:18px 20px;
+  text-align:center;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.compare-table th{
+  background:rgba(255,255,255,0.04);
+  font-family:'Poppins', sans-serif;
+  font-weight:700; font-size:13px;
+  color:#fff;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+.compare-table th:first-child, .compare-table td:first-child{
+  text-align:left;
+  color:rgba(255,255,255,0.9);
+  font-weight:600;
+}
+.compare-table td{ color:rgba(255,255,255,0.78); }
+.compare-table tr:last-child td{ border-bottom:none; }
+.compare-table tr:hover td{ background:rgba(255,255,255,0.03); }
+.compare-prod{
+  display:flex; flex-direction:column; gap:4px;
+  align-items:center; text-align:center;
+}
+.compare-prod strong{
+  font-family:'Poppins', sans-serif;
+  font-size:15px; color:#fff;
+}
+.compare-prod span{
+  font-size:11px;
+  color:rgba(255,255,255,0.55);
+  letter-spacing:0.5px;
+}
+.compare-prod.purple strong{ color:var(--purple-light); }
+.compare-prod.teal strong{ color:var(--teal); }
+.compare-prod.gold strong{ color:var(--gold); }
+.compare-check{ color:var(--green); font-weight:800; font-size:16px; }
+.compare-cell-strong{ color:#fff; font-weight:700; }
+
+/* =========== FAQ =========== */
+.section-faq{ background:var(--bg-white); }
+.faq-list{ max-width:840px; margin:0 auto; }
+.faq-item{
+  border-bottom:1px solid var(--border-light);
+}
+.faq-item:first-child{ border-top:1px solid var(--border-light); }
+.faq-item summary{
+  list-style:none;
+  cursor:pointer;
+  padding:22px 0;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:14px;
+  font-family:'Poppins', sans-serif;
+  font-size:17px; font-weight:700;
+  color:var(--text-dark);
+  transition:color .2s ease;
+}
+.faq-item summary::-webkit-details-marker{ display:none; }
+.faq-item summary:hover{ color:var(--purple); }
+.faq-item summary::after{
+  content:"+"; flex:0 0 auto;
+  width:34px; height:34px; border-radius:50%;
+  background:var(--bg-lilac); color:var(--purple);
+  font-size:22px; font-weight:300;
+  display:grid; place-items:center;
+  transition:transform .25s ease, background .25s ease, color .25s ease;
+}
+.faq-item[open] summary::after{
+  transform:rotate(45deg);
+  background:var(--purple); color:#fff;
+}
+.faq-body{
+  font-size:14.5px; color:var(--text-muted);
+  line-height:1.7;
+  padding:0 0 22px;
+  max-width:720px;
+}
+
+/* =========== CTA FINAL =========== */
+.section-cta-final{
+  background:var(--bg-white);
+  padding:var(--section-space) 0 140px;
+}
+.cta-panel{
+  background:
+    radial-gradient(circle at 85% 15%, rgba(0, 184, 217, 0.28), transparent 45%),
+    radial-gradient(circle at 15% 85%, rgba(94, 211, 140, 0.2), transparent 40%),
+    linear-gradient(135deg, var(--purple) 0%, var(--purple-deep) 100%);
+  border-radius:var(--radius-xl);
+  padding:70px 40px;
+  color:#fff;
+  text-align:center;
+  position:relative; overflow:hidden;
+  box-shadow:var(--shadow-lg);
+}
+.cta-panel::before{
+  content:""; position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size:60px 60px;
+  opacity:0.55; pointer-events:none;
+}
+.cta-inner{ position:relative; z-index:2; max-width:760px; margin:0 auto; }
+.cta-panel h2{
+  font-family:'Poppins', sans-serif;
+  font-weight:800;
+  font-size:clamp(2rem, 3.6vw, 3rem);
+  line-height:1.12;
+  letter-spacing:-0.02em;
+  margin:0 0 18px;
+  color:#fff;
+}
+.cta-panel h2 em{ font-style:italic; color:var(--teal); }
+.cta-panel p{
+  font-size:17px; color:rgba(255,255,255,0.85);
+  line-height:1.7; margin:0 0 36px;
+}
+.cta-btns{
+  display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
+}
+.cta-note{
+  margin-top:22px;
+  font-size:13px;
+  color:rgba(255,255,255,0.55);
+}
+
+/* =========== FOOTER =========== */
+.site-footer{
+  background:var(--bg-white);
+  border-top:1px solid var(--border-soft);
+  padding:40px 0;
+  color:var(--text-muted);
+  font-size:14px;
+}
+.footer-row{
+  display:flex; justify-content:space-between;
+  align-items:center; gap:18px; flex-wrap:wrap;
+}
+.footer-brand{ display:flex; align-items:center; gap:12px; }
+.footer-logo{ height:36px; width:auto; display:block; }
+.footer-logo-text{
+  font-family:'Poppins', sans-serif;
+  font-weight:800; font-size:18px;
+  color:var(--text-dark); letter-spacing:-0.02em;
+}
+.footer-logo-text em{
+  font-style:normal; font-weight:400;
+  opacity:0.6; font-size:12px; margin:0 2px;
+}
+.footer-right{ display:flex; gap:24px; flex-wrap:wrap; align-items:center; }
+.footer-right a{ color:var(--purple); transition:color .2s; }
+.footer-right a:hover{ color:var(--teal); }
+
+/* =========== ANIMATIONS =========== */
+.rv{ opacity:0; transform:translateY(24px); transition:opacity .75s ease, transform .75s ease; }
+.rv.vis{ opacity:1; transform:translateY(0); }
+.rv1{ transition-delay:.08s; }
+.rv2{ transition-delay:.16s; }
+.rv3{ transition-delay:.24s; }
+.rv4{ transition-delay:.32s; }
+
+/* =========== RESPONSIVE =========== */
+@media (max-width: 980px){
+  :root{ --section-space:80px; }
+  .hero-grid,
+  .product-intro{ grid-template-columns:1fr; gap:48px; }
+  .product-intro.reverse .product-intro-img{ order:initial; }
+  .choose-grid,
+  .comp-grid,
+  .contents-grid,
+  .versions-grid,
+  .trails-grid{
+    grid-template-columns:1fr 1fr;
+  }
+  .nav{ flex-direction:column; align-items:flex-start; }
+  .nav-links{ width:100%; justify-content:flex-start; }
+  .process-grid{
+    grid-template-columns:1fr 1fr;
+    gap:36px 16px;
+  }
+  .process-grid::before{ display:none; }
+  .hero-visual{ max-width:460px; margin:0 auto; }
+  .float-tl{ left:-10px; }
+  .float-br{ right:-10px; }
+  .compare-table-wrap{ overflow-x:auto; }
+  .compare-table{ min-width:640px; }
+}
+
+@media (max-width: 640px){
+  :root{ --gutter:16px; --section-space:64px; }
+  .hero{ padding:48px 0 64px; }
+  .choose-grid,
+  .comp-grid,
+  .contents-grid,
+  .versions-grid,
+  .trails-grid,
+  .process-grid{
+    grid-template-columns:1fr;
+  }
+  .product-block-header{ flex-direction:column; align-items:flex-start; }
+  .btn-row, .cta-btns, .product-cta-btns{ flex-direction:column; }
+  .btn{ width:100%; }
+  .footer-row{ flex-direction:column; align-items:flex-start; }
+  .footer-right{ flex-direction:column; align-items:flex-start; gap:10px; }
+  .hero-card-float{ display:none; }
+  .nav-links{ gap:14px; font-size:13px; }
+  .nav-links a:not(.nav-cta){ font-size:12.5px; }
+  .nav-links .nav-cta{ display:none; }
+  .brand-logo{ height:38px; }
+  .footer-logo{ height:30px; }
+  .product-cta, .cta-panel{ padding:40px 24px; }
+  .version-card{ padding:28px 22px; }
+  .version-card h4{ padding-right:0; }
+  .version-badge{ position:static; display:inline-block; margin-bottom:12px; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *{ animation:none !important; transition:none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand" aria-label="ECO do B.E.M.">
+      <img src="img/logo-branco.png" alt="ECO do B.E.M." class="brand-logo"
+           onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;>eco <em>do</em> bem</span>';" />
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="eco-lideres.html">ECO Líderes</a>
+      <a href="para-voce.html" class="active">Para Você</a>
+      <a href="convenio-corporativo.html">Convênio Corporativo</a>
+      <a href="#agendar" class="nav-cta">Agendar conversa</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="pill">3 jornadas individuais · ECO do B.E.M.</div>
+        <h1 class="title">
+          Desenvolvimento que cabe na sua <span class="hl-gradient">trajetória profissional.</span>
+        </h1>
+        <p class="hero-desc">
+          Três jornadas individuais para quem quer evoluir com método: clareza de carreira, fortalecimento de competências ou empregabilidade ativa. Cada uma com mentoria individual, assessment, trilha e plano de continuidade.
+        </p>
+        <p class="hero-sub-info">
+          Para profissionais que querem sair do achismo e organizar a vida profissional com apoio técnico, sem promessas vazias.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#carreira">
+            Conhecer as jornadas <span class="arrow">→</span>
+          </a>
+          <a class="btn btn-secondary" href="#agendar">Agendar uma conversa</a>
+        </div>
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <strong>90–120</strong>
+            <span>dias por jornada</span>
+          </div>
+          <div class="hero-meta-item">
+            <strong>5–7</strong>
+            <span>mentorias individuais</span>
+          </div>
+          <div class="hero-meta-item">
+            <strong>3</strong>
+            <span>jornadas para escolher</span>
+          </div>
+          <div class="hero-meta-item">
+            <strong>1</strong>
+            <span>plano de continuidade</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-image-wrap">
+          <img src="img/para-voce-hero.jpg"
+               alt="Profissional em momento de planejamento e desenvolvimento de carreira"
+               class="hero-image"
+               onerror="this.outerHTML='<div class=&quot;hero-image-fallback&quot;></div>'" />
+        </div>
+        <div class="hero-card-float float-tl">
+          <div class="dot">🎯</div>
+          <div>
+            <strong>Direção</strong>
+            <span>para seus próximos passos</span>
+          </div>
+        </div>
+        <div class="hero-card-float float-br">
+          <div class="dot">📈</div>
+          <div>
+            <strong>Plano real</strong>
+            <span>com aplicação prática</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ESCOLHA / 3 CARDS ============ -->
+  <section class="section section-choose">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow center">Escolha a sua jornada</div>
+        <h2 class="title">3 caminhos. 1 método. <span class="hl-purple">Sua decisão.</span></h2>
+        <p class="subtitle center">Cada jornada atende um momento profissional específico. Veja qual conversa mais com você agora — e comece daí.</p>
+      </div>
+      <div class="choose-grid">
+        <!-- CARD 1 — CARREIRA -->
+        <article class="choose-card rv">
+          <div class="choose-image">
+            <img src="img/eco-carreira.jpg" alt="ECO do B.E.M. Carreira"
+                 onerror="this.outerHTML='<div class=&quot;choose-image-fallback&quot;>🎯</div>'" />
+          </div>
+          <div class="choose-content">
+            <div class="choose-badge">Carreira</div>
+            <h3>ECO do B.E.M. Carreira</h3>
+            <p class="choose-tagline">Para quem quer clareza de trajetória</p>
+            <p class="desc">Planejamento estratégico para quem está em transição, dúvida, estagnação ou rebuscando direção profissional.</p>
+            <ul class="choose-list">
+              <li>Leitura da trajetória profissional</li>
+              <li>Análise de escolhas e cenários</li>
+              <li>Plano de continuidade de carreira</li>
+            </ul>
+            <div class="choose-price-row">
+              <div class="choose-price">
+                a partir de
+                <strong>R$ 2.197</strong>
+              </div>
+              <div style="font-size:11px;color:var(--text-muted);text-align:right;">90 dias<br>ou 120 dias</div>
+            </div>
+            <div class="choose-btn">
+              <a href="#carreira" class="btn btn-primary">Ver detalhes <span class="arrow">→</span></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 2 — DESENVOLVIMENTO -->
+        <article class="choose-card teal rv rv1">
+          <div class="choose-image teal">
+            <img src="img/eco-desenvolvimento.jpg" alt="ECO do B.E.M. Desenvolvimento Profissional"
+                 onerror="this.outerHTML='<div class=&quot;choose-image-fallback&quot;>📈</div>'" />
+          </div>
+          <div class="choose-content">
+            <div class="choose-badge">Desenvolvimento</div>
+            <h3>ECO do B.E.M. Desenvolvimento Profissional</h3>
+            <p class="choose-tagline">Para quem quer crescer com método</p>
+            <p class="desc">Fortalecimento de competências, ampliação de repertório e crescimento estruturado dentro da posição atual ou rumo a novos desafios.</p>
+            <ul class="choose-list">
+              <li>Assessment + competências prioritárias</li>
+              <li>Trilha personalizada de evolução</li>
+              <li>Aplicação prática no cotidiano</li>
+            </ul>
+            <div class="choose-price-row">
+              <div class="choose-price">
+                a partir de
+                <strong>R$ 2.197</strong>
+              </div>
+              <div style="font-size:11px;color:var(--text-muted);text-align:right;">90 dias<br>ou 120 dias</div>
+            </div>
+            <div class="choose-btn">
+              <a href="#desenvolvimento" class="btn btn-teal">Ver detalhes <span class="arrow">→</span></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 3 — EMPREGABILIDADE -->
+        <article class="choose-card gold rv rv2">
+          <div class="choose-image gold">
+            <img src="img/eco-empregabilidade.jpg" alt="ECO do B.E.M. Empregabilidade"
+                 onerror="this.outerHTML='<div class=&quot;choose-image-fallback&quot;>💼</div>'" />
+          </div>
+          <div class="choose-content">
+            <div class="choose-badge">Empregabilidade</div>
+            <h3>ECO do B.E.M. Empregabilidade</h3>
+            <p class="choose-tagline">Para quem busca recolocação ativa</p>
+            <p class="desc">Posicionamento de mercado, revisão de currículo e LinkedIn, preparação para entrevistas e estratégia de busca de oportunidades.</p>
+            <ul class="choose-list">
+              <li>Currículo, LinkedIn e presença digital</li>
+              <li>Preparação para entrevistas</li>
+              <li>Estratégia de busca de vagas</li>
+            </ul>
+            <div class="choose-price-row">
+              <div class="choose-price">
+                a partir de
+                <strong>R$ 2.047</strong>
+              </div>
+              <div style="font-size:11px;color:var(--text-muted);text-align:right;">90 dias<br>ou 120 dias</div>
+            </div>
+            <div class="choose-btn">
+              <a href="#empregabilidade" class="btn btn-gold">Ver detalhes <span class="arrow">→</span></a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESSO COMUM ============ -->
+  <section class="section section-process">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow center">Como funciona</div>
+        <h2 class="title">Da decisão ao plano: <span class="hl-teal">4 passos simples</span></h2>
+        <p class="subtitle center">Independente da jornada escolhida, o caminho começa com uma conversa e termina com um plano que você consegue aplicar.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-step rv">
+          <div class="process-num">01</div>
+          <h4>Conversa inicial</h4>
+          <p>Você agenda uma conversa para entendermos seu momento e indicarmos a jornada mais adequada.</p>
+        </div>
+        <div class="process-step rv rv1">
+          <div class="process-num">02</div>
+          <h4>Assessment e leitura</h4>
+          <p>Realiza o assessment e a leitura do seu perfil, base para todo o desenvolvimento da jornada.</p>
+        </div>
+        <div class="process-step rv rv2">
+          <div class="process-num">03</div>
+          <h4>Mentorias e trilha</h4>
+          <p>Vive a trilha com mentorias individuais, webinares e tarefas práticas aplicadas à sua realidade.</p>
+        </div>
+        <div class="process-step rv rv3">
+          <div class="process-num">04</div>
+          <h4>Plano de continuidade</h4>
+          <p>Sai com um plano estruturado para manter o desenvolvimento depois do encerramento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================== -->
+  <!-- ============ CARREIRA =============== -->
+  <!-- ===================================== -->
+  <section class="product-section bg-white">
+    <span id="carreira" class="product-anchor"></span>
+    <div class="container">
+
+      <div class="product-intro">
+        <div class="rv">
+          <div class="product-tag purple">Jornada 01 · Carreira</div>
+          <h2 class="product-title">ECO do B.E.M. <span style="color:var(--purple);">Carreira</span></h2>
+          <p class="product-lead">
+            Uma jornada voltada à reflexão, orientação e desenvolvimento de pessoas que desejam compreender melhor sua trajetória, rever escolhas e organizar próximos passos com mais clareza.
+          </p>
+          <p class="product-text">
+            Foi criada para apoiar profissionais em transição, dúvida, estagnação ou em busca de reposicionamento, oferecendo autoconhecimento, direcionamento e planejamento estruturado.
+          </p>
+          <div class="product-objective">
+            <h4>Objetivo da jornada</h4>
+            <p>Apoiar a construção de uma visão clara sobre trajetória, potencialidades e possibilidades de carreira, favorecendo decisões mais conscientes e sustentáveis — sem promessas de resultados imediatos.</p>
+          </div>
+        </div>
+        <div class="product-intro-img rv rv1">
+          <img src="img/carreira-intro.jpg"
+               alt="Profissional reorganizando seus próximos passos de carreira"
+               onerror="this.outerHTML='<div class=&quot;product-intro-img-fb&quot;>🎯</div>'" />
+        </div>
+      </div>
+
+      <!-- Para quem -->
+      <div class="product-block">
+        <div class="product-block-header">
+          <h3 class="rv">Para quem é esta jornada</h3>
+          <p class="rv rv1">Pensada para pessoas que vivem momentos de questionamento, transição ou busca por clareza profissional.</p>
+        </div>
+        <div class="who-grid">
+          <div class="who-card rv">
+            <div class="ico">🔄</div>
+            <h5>Em transição de carreira</h5>
+            <p>Profissionais mudando de área, setor ou função e que precisam de orientação para navegar o processo.</p>
+          </div>
+          <div class="who-card rv rv1">
+            <div class="ico">⏸️</div>
+            <h5>Estagnados profissionalmente</h5>
+            <p>Pessoas que sentem que pararam no tempo e desejam compreender o que está impedindo o avanço.</p>
+          </div>
+          <div class="who-card rv rv2">
+            <div class="ico">🔍</div>
+            <h5>Revisando escolhas</h5>
+            <p>Quem deseja olhar a trajetória com novos olhos e reavaliar o que realmente importa para o futuro.</p>
+          </div>
+          <div class="who-card rv rv3">
+            <div class="ico">🧭</div>
+            <h5>Buscando clareza para decidir</h5>
+            <p>Profissionais que precisam tomar decisões importantes com mais consciência e embasamento.</p>
+          </div>
+          <div class="who-card rv">
+            <div class="ico">📋</div>
+            <h5>Construindo próximos passos</h5>
+            <p>Pessoas que querem estruturar um plano coerente com seus valores, potenciais e objetivos.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Competências -->
+      <div class="product-block">
+        <div class="product-block-header">
+          <h3 class="rv">O que você vai desenvolver</h3>
+          <p class="rv rv1">Seis competências fundamentais para uma carreira mais consciente e direcionada.</p>
+        </div>
+        <div class="comp-grid">
+          <div class="comp-card rv">
+            <div class="comp-dot">1</div>
+            <div>
+              <h5>Autoconhecimento de carreira</h5>
+              <p>Leitura aprofundada da própria trajetória</p>
+            </div>
+          </div>
+          <div class="comp-card rv rv1">
+            <div class="comp-dot">2</div>
+            <div>
+              <h5>Clareza de trajetória</h5>
+              <p>Compreensão de padrões e marcos</p>
+            </div>
+          </div>
+          <div class="comp-card rv rv2">
+            <div class="comp-dot">3</div>
+            <div>
+              <h5>Tomada de decisão</h5>
+              <p>Critérios para escolhas com consciência</p>
+            </div>
+          </div>
+          <div class="comp-card rv">
+            <div class="comp-dot">4</div>
+            <div>
+              <h5>Visão de futuro</h5>
+              <p>Direcionamento profissional estruturado</p>
+            </div>
+          </div>
+          <div class="comp-card rv rv1">
+            <div class="comp-dot">5</div>
+            <div>
+              <h5>Priorização de objetivos</h5>
+              <p>Organização do que realmente importa</p>
+            </div>
+          </div>
+          <div class="comp-card rv rv2">
+            <div class="comp-dot">6</div>
+            <div>
+              <h5>Planejamento de continuidade</h5>
+              <p>Sustentação da carreira no tempo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trilhas -->
+      <div class="product-block">
+        <div class="product-block-header">
+          <h3 class="rv">Trilhas da jornada</h3>
+          <p class="rv rv1">Quatro trilhas progressivas que conduzem do autoconhecimento ao planejamento concreto.</p>
+        </div>
+        <div class="trails-grid">
+          <div class="trail-card rv">
+            <div class="trail-num">Trilha 01</div>
+            <h5>Identidade profissional e trajetória</h5>
+            <p>Leitura da história profissional, reconhecimento de padrões e construção da identidade de carreira.</p>
+          </div>
+          <div class="trail-card rv rv1">
+            <div class="trail-num">Trilha 02</div>
+            <h5>Escolhas, transições e possibilidades</h5>
+            <p>Análise das escolhas feitas, das transições vividas e das possibilidades reais de carreira disponíveis.</p>
+          </div>
+          <div class="trail-card rv rv2">
+            <div class="trail-num">Trilha 03</div>
+            <h5>Direcionamento e plano de ação</h5>
+            <p>Construção de um direcionamento claro e de um plano de ação coerente com as descobertas da jornada.</p>
+          </div>
+          <div class="trail-card rv rv3">
+            <div class="trail-num">Trilha 04</div>
+            <h5>Continuidade e sustentação</h5>
+            <p>Consolidação do plano de próximos passos e estruturação da continuidade profissional com consistência.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Versões -->
+      <div class="product-block">
+        <div class="product-block-header">
+          <h3 class="rv">Escolha a versão que faz sentido para você</h3>
+          <p class="rv rv1">Duas estruturas complementares e progressivas, pensadas para diferentes momentos.</p>
+        </div>
+        <div class="versions-grid">
+          <article class="version-card rv">
+            <div class="version-step">Versão Básica</div>
+            <h4>Carreira · 90 dias</h4>
+            <p class="duration">Para quem deseja clareza e organização objetiva</p>
+            <div class="price">
+              <span class="cur">R$</span>
+              <span class="val">2.197</span>
+            </div>
+            <p class="price-note">Parcelado no cartão · ou à vista no Pix com 15% de desconto</p>
+            <p class="desc">Jornada objetiva para compreender seu momento, revisar trajetória e organizar próximos passos com clareza.</p>
+            <ul class="version-features">
+              <li>5 sessões individuais de mentoria</li>
+              <li>Assessment de perfil e competências</li>
+              <li>Leitura da trajetória profissional</li>
+              <li>Identificação de forças e potencialidades</li>
+              <li>Construção de direcionamento profissional</li>
+              <li>6 webinares temáticos</li>
+              <li>5 tarefas práticas</li>
+              <li>Plano final de continuidade</li>
+            </ul>
+            <a href="formulario.html?produto=carreira&amp;versao=basico" class="btn btn-primary version-btn">Quero contratar <span class="arrow">→</span></a>
+          </article>
+
+          <article class="version-card featured rv rv1">
+            <span class="version-badge">Mais profundidade</span>
+            <div class="version-step">Versão Estendida</div>
+            <h4>Carreira · 120 dias</h4>
+            <p class="duration">Para quem precisa de mais tempo e profundidade</p>
+            <div class="price">
+              <span class="cur">R$</span>
+              <span class="val">2.997</span>
+            </div>
+            <p class="price-note">Parcelado no cartão · ou à vista no Pix com 15% de desconto</p>
+            <p class="desc">Jornada aprofundada para amadurecer decisões, analisar cenários e construir um plano de carreira mais robusto.</p>
+            <ul class="version-features">
+              <li>7 sessões individuais de mentoria</li>
+              <li>Assessment e leitura aprofundada</li>
+              <li>Análise de possibilidades e cenários</li>
+              <li>Construção de direcionamento e prioridades</li>
+              <li>Acompanhamento ampliado</li>
+              <li>10 webinares temáticos</li>
+              <li>8 tarefas práticas</li>
+              <li>Plano de continuidade ampliado</li>
+            </ul>
+            <a href="formulario.html?produto=carreira&amp;versao=estendido" class="btn btn-primary version-btn">Quero contratar <span class="arrow">→</span></a>
+          </article>
+        </div>
+      </div>
+
+      <!-- Webinares e tarefas -->
+      <div class="product-block">
+        <div class="product-block-header">
+          <h3 class="rv">Webinares e tarefas práticas</h3>
+          <p class="rv rv1">Conteúdo e atividades estruturadas para aprofundar a reflexão e transformar aprendizado em ação concreta.</p>
+        </div>
+        <div class="contents-grid">
+          <div class="contents-card rv">
+            <h5>Webinares</h5>
+            <h4>Básico · 6 webinares</h4>
+            <ul class="contents-list">
+              <li>Carreira, identidade e trajetória profissional</li>
+              <li>Como reconhecer padrões da sua história</li>
+              <li>Transição, estagnação e redirecionamento</li>
+              <li>Potenciais, limitações e escolhas</li>
+              <li>Construção de próximos passos</li>
+              <li>Plano de continuidade de carreira</li>
+            </ul>
+          </div>
+          <div class="contents-card rv rv1">
+            <h5>Webinares</h5>
+            <h4>Estendido · 10 webinares</h4>
+            <ul class="contents-list">
+              <li>Carreira e construção de identidade profissional</li>
+              <li>Linha do tempo e leitura da trajetória</li>
+              <li>Competências, talentos e padrões de atuação</li>
+              <li>Insatisfação, transição e reposicionamento</li>
+              <li>Possibilidades de carreira e cenários reais</li>
+              <li>Critérios para tomada de decisão</li>
+              <li>Como sair da paralisia profissional</li>
+              <li>Planejamento de próximos passos</li>
+              <li>Sustentação emocional e disciplina</li>
+              <li>Continuidade e evolução profissional</li>
+            </ul>
+          </div>
+        </div>
+        <div class="contents-grid" style="margin-top:18px;">
+          <div class="contents-card rv">
+            <h5>Tarefas práticas</h5>
+            <h4>Básico · 5 tarefas</h4>
+            <ul class="contents-list">
+              <li>Assessment e linha do tempo profissional</li>
+              <li>Reflexão estruturada sobre trajetória</li>
+              <li>Mapeamento de interesses e competências</li>
+              <li>Definição de cenários e prioridades</li>
+              <li>Plano de ação de carreira</li>
+            </ul>
+          </div>
+          <div class="contents-card rv rv1">
+            <h5>Tarefas práticas</h5>
+            <h4>Estendido · 8 tarefas</h4>
+            <ul class="contents-list">
+              <li>Assessment e trajetória profissional</li>
+              <li>Análise de marcos e escolhas</li>
+              <li>Mapeamento de competências e interesses</li>
+              <li>Identificação de cenários possíveis</li>
+              <li>Exercício de priorização</li>
+              <li>Estruturação do direcionamento</li>
+              <li>Teste de aplicação do plano</li>
+              <li>Consolidação do plano de continuidade</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Apoio mentora -->
+      <div class="product-block">
+        <div class="product-block-header">
+          <h3 class="rv">Apoio da mentora ao longo da jornada</h3>
+          <p class="rv rv1">A mentora acompanha com foco em clareza de trajetória, leitura de cenários e apoio à tomada de decisão, oferecendo suporte técnico e humano em cada etapa.</p>
+        </div>
+        <div class="mentor-grid">
+          <div class="mentor-card rv">
+            <div class="mentor-ico">1</div>
+            <h5>Leitura de perfil e trajetória</h5>
+            <p>Análise aprofundada do histórico profissional para identificar padrões, forças e oportunidades.</p>
+          </div>
+          <div class="mentor-card rv rv1">
+            <div class="mentor-ico">2</div>
+            <h5>Compreensão do momento atual</h5>
+            <p>Apoio para entender com clareza onde está e o que está influenciando seu momento profissional.</p>
+          </div>
+          <div class="mentor-card rv rv2">
+            <div class="mentor-ico">3</div>
+            <h5>Organização de possibilidades</h5>
+            <p>Estruturação de cenários reais e possibilidades alinhadas ao perfil e aos objetivos.</p>
+          </div>
+          <div class="mentor-card rv">
+            <div class="mentor-ico">4</div>
+            <h5>Suporte para decisões</h5>
+            <p>Orientação técnica para decisões profissionais com mais segurança e embasamento.</p>
+          </div>
+          <div class="mentor-card rv rv1">
+            <div class="mentor-ico">5</div>
+            <h5>Revisão de rota</h5>
+            <p>Acompanhamento contínuo com possibilidade de ajuste de direção conforme o processo evolui.</p>
+          </div>
+          <div class="mentor-card rv rv2">
+            <div class="mentor-ico">6</div>
+            <h5>Consolidação do plano</h5>
+            <p>Construção do plano de próximos passos de forma estruturada e aplicável à sua realidade.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resultado -->
+      <div class="product-block">
+        <div class="product-block-header">
+          <h3 class="rv">Resultado esperado ao final</h3>
+          <p class="rv rv1">Ao concluir a jornada, você terá uma visão mais clara e estruturada sobre carreira e próximos passos.</p>
+        </div>
+        <div class="result-grid">
+          <div class="result-card rv">
+            <div class="ico">🎯</div>
+            <h5>Clareza sobre a trajetória</h5>
+            <p>Maior clareza sobre sua história profissional, padrões e significados.</p>
+          </div>
+          <div class="result-card teal rv rv1">
+            <div class="ico">🧩</div>
+            <h5>Compreensão das escolhas</h5>
+            <p>Melhor compreensão das escolhas feitas e das que ainda estão por vir.</p>
+          </div>
+          <div class="result-card green rv rv2">
+            <div class="ico">📋</div>
+            <h5>Visão organizada</h5>
+            <p>Visão mais estruturada sobre os próximos passos da carreira.</p>
+          </div>
+          <div class="result-card gold rv rv3">
+            <div class="ico">🔐</div>
+            <h5>Segurança para decidir</h5>
+            <p>Mais segurança e embasamento para tomar decisões importantes.</p>
+          </div>
+          <div class="result-card rv">
+            <div class="ico">📈</div>
+            <h5>Plano de ação</h5>
+            <p>Plano estruturado, coerente e aplicável à sua realidade e objetivos.</p>
+          </div>
+        </div>
+        <div class="disclaimer">
+          <strong>Importante:</strong> o ECO do B.E.M. Carreira não tem como finalidade prometer mudança imediata, promoção ou recolocação. Seu objetivo é oferecer clareza, orientação e desenvolvimento para decisões profissionais mais conscientes.
+        </div>
+      </div>
+
+      <!-- CTA produto -->
+      <div class="product-cta rv">
+        <div class="product-cta-inner">
+          <h3>Vamos construir seus próximos passos com mais clareza?</h3>
+          <p>Se você deseja compreender melhor sua trajetória, rever escolhas e estruturar decisões profissionais com apoio técnico, agende uma conversa para entender seu momento e verificar como podemos apoiar você.</p>
+          <div class="product-cta-btns">
+            <a class="btn btn-gold" href="https://calendar.app.google/wvVhwfATgbTpAr126" target="_blank" rel="noopener">
+              Agendar uma conversa <span class="arrow">→</span>
+            </a>
+            <a class="btn btn-ghost-dark" href="#desenvolvimento">Ver outras jornadas</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================================================== -->
+  <!-- ============ DESENVOLVIMENTO PROFISSIONAL ========== -->
+  <!-- ==================================================== -->
+  <section class="product-section bg-lilac">
+    <span id="desenvolvimento" class="product-anchor"></span>
+    <div class="container">
+
+      <div class="product-intro reverse">
+        <div class="rv">
+          <div class="product-tag teal">Jornada 02 · Desenvolvimento</div>
+          <h2 class="product-title">ECO do B.E.M. <span style="color:var(--teal);">Desenvolvimento Profissional</span></h2>
+          <p class="product-lead">
+            Uma jornada voltada à avaliação, orientação e desenvolvimento de profissionais que desejam fortalecer competências, ampliar repertório e estruturar crescimento com mais consistência.
+          </p>
+          <p class="product-text">
+            Foi criada para quem deseja investir em sua evolução com base em assessment, trilha personalizada e acompanhamento técnico ao longo da jornada.
+          </p>
+          <div class="product-objective teal">
+            <h4>Objetivo da jornada</h4>
+            <p>Promover o desenvolvimento profissional por meio da identificação de competências prioritárias, do desenho de uma trilha personalizada e do acompanhamento de evolução ao longo da jornada.</p>
+          </div>
+        </div>
+        <div class="product-intro-img teal rv rv1">
+          <img src="img/desenvolvimento-intro.jpg"
+               alt="Profissional desenvolvendo competências com método e acompanhamento"
+               onerror="this.outerHTML='<div class=&quot;product-intro-img-fb&quot;>📈</div>'" />
+        </div>
+      </div>
+
+      <!-- Para quem -->
+      <div class="product-block">
+        <div class="product-block-header">
+          <h3 class="rv">Para quem é esta jornada</h3>
+          <p class="rv rv1">Pensada para pessoas que buscam crescimento real, estruturado e consistente na carreira.</p>
+        </div>
+        <div class="who-grid">
+          <div class="who-card teal rv">
+            <div class="ico">⬆️</div>
+            <h5>Crescer na posição atual</h5>
+            <p>Quer evoluir no papel que já ocupa, com mais segurança e resultado.</p>
+          </div>
+          <div class="who-card teal rv rv1">
+            <div class="ico">💪</div>
+            <h5>Fortalecer competências</h5>
+            <p>Deseja desenvolver competências profissionais e comportamentais de forma intencional.</p>
+          </div>
+          <div class="who-card teal rv rv2">
+            <div class="ico">📚</div>
+            <h5>Ampliar repertório</h5>
+            <p>Busca mais consistência e repertório para atuar com qualidade no dia a dia.</p>
+          </div>
+          <div class="who-card teal rv rv3">
+            <div class="ico">🚀</div>
+            <h5>Novos desafios</h5>
+            <p>Quer se preparar para assumir novas responsabilidades e oportunidades.</p>
+          </div>
+          <div class="who-card teal rv">
+            <div class="ico">🧭</div>
+            <h5>Plano estruturado</h5>
+            <p>Precisa de um plano de desenvolvimento claro, personalizado e acompanhado.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Competências -->
+      <div class="product-block">
+        <div class="product-block-header">
+          <h3 class="rv">Competências desenvolvidas</h3>
+          <p class="rv rv1">Seis competências que estruturam o crescimento profissional de forma integrada e consistente.</p>
+        </div>
+        <div class="comp-grid">
+          <div class="comp-card teal rv">
+            <div class="comp-dot">1</div>
+            <div>
+              <h5>Autoconhecimento profissional</h5>
+              <p>Compreender perfil, forças e pontos de desenvolvimento</p>
+            </div>
+          </div>
+          <div class="comp-card teal rv rv1">
+            <div class="comp-dot">2</div>
+            <div>
+              <h5>Comunicação profissional</h5>
+              <p>Clareza, postura e influência na comunicação</p>
+            </div>
+          </div>
+          <div class="comp-card teal rv rv2">
+            <div class="comp-dot">3</div>
+            <div>
+              <h5>Organização e disciplina</h5>
+              <p>Estruturar o desenvolvimento com método</p>
+            </div>
+          </div>
+          <div class="comp-card teal rv">
+            <div class="comp-dot">4</div>
+            <div>
+              <h5>Inteligência relacional</h5>
+              <p>Fortalecer vínculos e navegar ambientes profissionais</p>
+            </div>
+          </div>
+          <div class="comp-card teal rv rv1">
+            <div class="comp-dot">5</div>
+            <div>
+              <h5>Protagonismo e responsabilidade</h5>
+              <p>Assumir a própria trajetória com iniciativa</p>
+            </div>
+          </div>
+          <div class="comp-card teal rv rv2">
+            <div class="comp-dot">6</div>
+            <div>
+              <h5>Evolução contínua</h5>
+              <p>Cultivar o hábito de aprender, revisar e avançar</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trilhas -->
+      <div class="product-block">
+        <div class="product-block-header">
+          <h3 class="rv">Trilhas da jornada</h3>
+          <p class="rv rv1">Quatro trilhas sequenciais que conduzem do autoconhecimento à evolução sustentada.</p>
+        </div>
+        <div class="trails-grid">
+          <div class="trail-card teal rv">
+            <div class="trail-num">Trilha 01</div>
+            <h5>Perfil e competências prioritárias</h5>
+            <p>Diagnóstico do perfil profissional e identificação das competências que mais impactam o desenvolvimento.</p>
+          </div>
+          <div class="trail-card teal rv rv1">
+            <div class="trail-num">Trilha 02</div>
+            <h5>Comunicação e posicionamento</h5>
+            <p>Desenvolvimento da comunicação, postura e presença no ambiente de trabalho.</p>
+          </div>
+          <div class="trail-card teal rv rv2">
+            <div class="trail-num">Trilha 03</div>
+            <h5>Desenvolvimento aplicado</h5>
+            <p>Aplicação prática das competências no dia a dia profissional com tarefas e reflexões.</p>
+          </div>
+          <div class="trail-card teal rv rv3">
+            <div class="trail-num">Trilha 04</div>
+            <h5>Evolução e continuidade</h5>
+            <p>Consolidação dos avanços e construção do plano de crescimento profissional contínuo.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Versões -->
+      <div class="product-block">
+        <div class="product-block-header">
+          <h3 class="rv">Escolha a versão que faz sentido para você</h3>
+          <p class="rv rv1">Duas estruturas para diferentes ritmos de desenvolvimento profissional.</p>
+        </div>
+        <div class="versions-grid">
+          <article class="version-card teal rv">
+            <div class="version-step">Versão Básica</div>
+            <h4>Desenvolvimento · 90 dias</h4>
+            <p class="duration">Para quem deseja identificar competências e organizar uma trilha</p>
+            <div class="price">
+              <span class="cur">R$</span>
+              <span class="val">2.197</span>
+            </div>
+            <p class="price-note">Parcelado no cartão · ou à vista no Pix com 15% de desconto</p>
+            <p class="desc">Jornada objetiva para identificar competências prioritárias, organizar trilha e aplicar crescimento no cotidiano.</p>
+            <ul class="version-features">
+              <li>5 sessões individuais de mentoria</li>
+              <li>Assessment de perfil e competências</li>
+              <li>Devolutiva técnica</li>
+              <li>Identificação de competências prioritárias</li>
+              <li>Trilha estruturada de desenvolvimento</li>
+              <li>6 webinares</li>
+              <li>5 tarefas práticas</li>
+              <li>Plano final de continuidade</li>
+            </ul>
+            <a href="formulario.html?produto=desenvolvimento&amp;versao=basico" class="btn btn-teal version-btn">Quero contratar <span class="arrow">→</span></a>
+          </article>
+
+          <article class="version-card teal featured rv rv1">
+            <span class="version-badge">Mais profundidade</span>
+            <div class="version-step">Versão Estendida</div>
+            <h4>Desenvolvimento · 120 dias</h4>
+            <p class="duration">Para quem precisa de mais acompanhamento e profundidade</p>
+            <div class="price">
+              <span class="cur">R$</span>
+              <span class="val">2.997</span>
+            </div>
+            <p class="price-note">Parcelado no cartão · ou à vista no Pix com 15% de desconto</p>
+            <p class="desc">Jornada aprofundada para fortalecer competências com mais acompanhamento, aprofundamento e revisão prática.</p>
+            <ul class="version-features">
+              <li>7 sessões individuais de mentoria</li>
+              <li>Assessment e devolutiva aprofundada</li>
+              <li>Definição de competências prioritárias</li>
+              <li>Trilha personalizada</li>
+              <li>Acompanhamento ampliado</li>
+              <li>10 webinares</li>
+              <li>8 tarefas práticas</li>
+              <li>Plano final de continuidade ampliado</li>
+            </ul>
+            <a href="formulario.html?produto=desenvolvimento&amp;versao=estendido" class="btn btn-teal version-btn">Quero contratar <span class="arrow">→</span></a>
+          </article>
+        </div>
+      </div>
+
+      <!-- Webinares -->
+      <div class="product-block">
+        <div class="product-block-header">
+          <h3 class="rv">Webinares e tarefas práticas</h3>
+          <p class="rv rv1">Conteúdo aplicado para aprofundar temas centrais do desenvolvimento profissional.</p>
+        </div>
+        <div class="contents-grid">
+          <div class="contents-card teal rv">
+            <h5>Webinares</h5>
+            <h4>Básico · 6 webinares</h4>
+            <ul class="contents-list">
+              <li>Desenvolvimento profissional com método</li>
+              <li>Autoconhecimento e competências-chave</li>
+              <li>Comunicação e postura profissional</li>
+              <li>Protagonismo e responsabilidade no trabalho</li>
+              <li>Aplicação prática do desenvolvimento</li>
+              <li>Continuidade e crescimento profissional</li>
+            </ul>
+          </div>
+          <div class="contents-card teal rv rv1">
+            <h5>Webinares</h5>
+            <h4>Estendido · 10 webinares</h4>
+            <ul class="contents-list">
+              <li>Desenvolvimento profissional e constância</li>
+              <li>Perfil, forças e fragilidades</li>
+              <li>Competências comportamentais relevantes</li>
+              <li>Comunicação profissional e influência</li>
+              <li>Autogestão e disciplina</li>
+              <li>Relacionamento e inteligência profissional</li>
+              <li>Protagonismo no trabalho</li>
+              <li>Aplicação prática e evidências de evolução</li>
+              <li>Reajuste de rota e fortalecimento</li>
+              <li>Continuidade e crescimento sustentado</li>
+            </ul>
+          </div>
+        </div>
+        <div class="contents-grid" style="margin-top:18px;">
+          <div class="contents-card teal rv">
+            <h5>Tarefas práticas</h5>
+            <h4>Básico · 5 tarefas</h4>
+            <ul class="contents-list">
+              <li>Assessment e leitura inicial</li>
+              <li>Definição de competências prioritárias</li>
+              <li>Aplicação prática de uma competência</li>
+              <li>Revisão de avanços e dificuldades</li>
+              <li>Plano final de continuidade</li>
+            </ul>
+          </div>
+          <div class="contents-card teal rv rv1">
+            <h5>Tarefas práticas</h5>
+            <h4>Estendido · 8 tarefas</h4>
+            <ul class="contents-list">
+              <li>Assessment inicial</li>
+              <li>Leitura técnica do perfil</li>
+              <li>Escolha das competências prioritárias</li>
+              <li>Aplicação prática 1</li>
+              <li>Aplicação prática 2</li>
+              <li>Autoavaliação de evolução</li>
+              <li>Revisão da trilha</li>
+              <li>Plano de continuidade final</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Apoio mentora -->
+      <div class="product-block">
+        <div class="product-block-header">
+          <h3 class="rv">Apoio da mentora ao longo da jornada</h3>
+          <p class="rv rv1">A mentora acompanha com foco em desenvolvimento aplicado, garantindo clareza, direção e suporte técnico em cada etapa.</p>
+        </div>
+        <div class="mentor-grid">
+          <div class="mentor-card teal rv">
+            <div class="mentor-ico">1</div>
+            <h5>Devolutiva técnica do assessment</h5>
+            <p>Análise aprofundada do perfil com orientações claras sobre pontos de atenção e potencial.</p>
+          </div>
+          <div class="mentor-card teal rv rv1">
+            <div class="mentor-ico">2</div>
+            <h5>Competências prioritárias</h5>
+            <p>Definição das competências que mais impactam o desenvolvimento e serão trabalhadas.</p>
+          </div>
+          <div class="mentor-card teal rv rv2">
+            <div class="mentor-ico">3</div>
+            <h5>Trilha individual</h5>
+            <p>Desenho de uma trilha personalizada com base no perfil, nas metas e nas competências.</p>
+          </div>
+          <div class="mentor-card teal rv">
+            <div class="mentor-ico">4</div>
+            <h5>Acompanhamento e ajustes</h5>
+            <p>Monitoramento dos avanços e dificuldades com ajustes para garantir evolução real.</p>
+          </div>
+          <div class="mentor-card teal rv rv1">
+            <div class="mentor-ico">5</div>
+            <h5>Plano de crescimento</h5>
+            <p>Ao final, você recebe um plano estruturado de continuidade para seguir evoluindo com método.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resultado -->
+      <div class="product-block">
+        <div class="product-block-header">
+          <h3 class="rv">Resultado esperado ao final</h3>
+          <p class="rv rv1">Uma base sólida para continuar crescendo com método, clareza e consistência.</p>
+        </div>
+        <div class="result-grid">
+          <div class="result-card teal rv">
+            <div class="ico">🧠</div>
+            <h5>Maior consciência</h5>
+            <p>Sobre o próprio perfil profissional, forças e pontos de desenvolvimento.</p>
+          </div>
+          <div class="result-card rv rv1">
+            <div class="ico">🎯</div>
+            <h5>Competências identificadas</h5>
+            <p>Competências prioritárias claramente mapeadas e trabalhadas.</p>
+          </div>
+          <div class="result-card green rv rv2">
+            <div class="ico">📊</div>
+            <h5>Evolução consistente</h5>
+            <p>Progresso real e mensurável ao longo dos meses de desenvolvimento.</p>
+          </div>
+          <div class="result-card gold rv rv3">
+            <div class="ico">📚</div>
+            <h5>Mais repertório</h5>
+            <p>Ampliação do repertório para atuar com mais qualidade e segurança.</p>
+          </div>
+          <div class="result-card teal rv">
+            <div class="ico">🗺️</div>
+            <h5>Plano estruturado</h5>
+            <p>Plano concreto de crescimento e continuidade após a jornada.</p>
+          </div>
+        </div>
+        <div class="disclaimer teal">
+          <strong>Importante:</strong> o ECO do B.E.M. Desenvolvimento Profissional não substitui formação técnica específica nem garante promoção ou ascensão imediata. Seu objetivo é orientar e desenvolver para fortalecer competências e ampliar consistência profissional.
+        </div>
+      </div>
+
+      <!-- CTA produto -->
+      <div class="product-cta teal rv">
+        <div class="product-cta-inner">
+          <h3>Vamos estruturar seu crescimento profissional com mais clareza?</h3>
+          <p>Se você deseja fortalecer competências, ampliar repertório e construir uma trilha concreta de evolução profissional, agende uma conversa.</p>
+          <div class="product-cta-btns">
+            <a class="btn btn-gold" href="https://calendar.app.google/wvVhwfATgbTpAr126" target="_blank" rel="noopener">
+              Agendar uma conversa <span class="arrow">→</span>
+            </a>
+            <a class="btn btn-ghost-dark" href="#empregabilidade">Ver outras jornadas</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- ============ EMPREGABILIDADE =============== -->
+  <!-- ============================================== -->
+  <section class="product-section bg-white">
+    <span id="empregabilidade" class="product-anchor"></span>
+    <div class="container">
+
+      <div class="product-intro">
+        <div class="rv">
+          <div class="product-tag gold">Jornada 03 · Empregabilidade</div>
+          <h2 class="product-title">ECO do B.E.M. <span style="color:var(--gold);">Empregabilidade</span></h2>
+          <p class="product-lead">
+            Uma jornada de desenvolvimento voltada a pessoas que desejam fortalecer empregabilidade, organizar a apresentação ao mercado e ampliar possibilidades de inserção ou reinserção profissional.
+          </p>
+          <p class="product-text">
+            Foi criada para apoiar profissionais que buscam mais clareza sobre o próprio perfil, melhor posicionamento no mercado e preparo para processos seletivos — sem prometer vaga, mas oferecendo orientação real.
+          </p>
+          <div class="product-objective gold">
+            <h4>Objetivo da jornada</h4>
+            <p>Apoiar a construção de uma estratégia de empregabilidade com mais clareza, segurança e autonomia, por meio de assessment, orientação prática e acompanhamento estruturado.</p>
+          </div>
+        </div>
+        <div class="product-intro-img gold rv rv1">
+          <img src="img/empregabilidade-intro.jpg"
+               alt="Profissional preparado para o mercado, com currículo e LinkedIn organizados"
+               onerror="this.outerHTML='<div class=&quot;product-intro-img-fb&quot;>💼</div>'" />
+        </div>
+      </div>
+
+      <!-- Para quem -->
+      <div class="product-block">
+        <div class="product-block-header">
+          <h3 class="rv">Para quem é esta jornada</h3>
+          <p class="rv rv1">Pensada para pessoas que estão em busca ativa de oportunidades ou querem se preparar melhor para o mercado.</p>
+        </div>
+        <div class="who-grid">
+          <div class="who-card gold rv">
+            <div class="ico">🔍</div>
+            <h5>Busca de emprego</h5>
+            <p>Estão em busca de emprego ou recolocação profissional no mercado.</p>
+          </div>
+          <div class="who-card gold rv rv1">
+            <div class="ico">📄</div>
+            <h5>Currículo e LinkedIn</h5>
+            <p>Desejam revisar currículo e LinkedIn para se apresentar melhor ao mercado.</p>
+          </div>
+          <div class="who-card gold rv rv2">
+            <div class="ico">🎤</div>
+            <h5>Entrevistas</h5>
+            <p>Querem se preparar melhor para entrevistas e processos seletivos.</p>
+          </div>
+          <div class="who-card gold rv rv3">
+            <div class="ico">🧠</div>
+            <h5>Perfil profissional</h5>
+            <p>Precisam compreender seu perfil profissional com mais clareza.</p>
+          </div>
+          <div class="who-card gold rv">
+            <div class="ico">🎯</div>
+            <h5>Posicionamento</h5>
+            <p>Buscam orientação mais estruturada para se posicionar no mercado.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Competências -->
+      <div class="product-block">
+        <div class="product-block-header">
+          <h3 class="rv">Competências desenvolvidas</h3>
+          <p class="rv rv1">Seis competências essenciais para ampliar empregabilidade e se posicionar com clareza e segurança no mercado.</p>
+        </div>
+        <div class="comp-grid">
+          <div class="comp-card gold rv">
+            <div class="comp-dot">1</div>
+            <div>
+              <h5>Autoconhecimento profissional</h5>
+              <p>Compreensão do próprio perfil, forças e áreas de desenvolvimento</p>
+            </div>
+          </div>
+          <div class="comp-card gold rv rv1">
+            <div class="comp-dot">2</div>
+            <div>
+              <h5>Posicionamento e imagem</h5>
+              <p>Presença coerente e alinhada ao mercado</p>
+            </div>
+          </div>
+          <div class="comp-card gold rv rv2">
+            <div class="comp-dot">3</div>
+            <div>
+              <h5>Comunicação para o mercado</h5>
+              <p>Narrativa clara e objetiva para diferentes contextos</p>
+            </div>
+          </div>
+          <div class="comp-card gold rv">
+            <div class="comp-dot">4</div>
+            <div>
+              <h5>Organização da busca</h5>
+              <p>Estratégia estruturada para identificar e acessar vagas</p>
+            </div>
+          </div>
+          <div class="comp-card gold rv rv1">
+            <div class="comp-dot">5</div>
+            <div>
+              <h5>Preparação para entrevistas</h5>
+              <p>Postura, narrativa e segurança nos processos seletivos</p>
+            </div>
+          </div>
+          <div class="comp-card gold rv rv2">
+            <div class="comp-dot">6</div>
+            <div>
+              <h5>Planejamento de continuidade</h5>
+              <p>Plano pessoal para manter o desenvolvimento</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trilhas -->
+      <div class="product-block">
+        <div class="product-block-header">
+          <h3 class="rv">Trilhas da jornada</h3>
+          <p class="rv rv1">Quatro trilhas temáticas que conduzem do autoconhecimento à preparação completa para o mercado.</p>
+        </div>
+        <div class="trails-grid">
+          <div class="trail-card gold rv">
+            <div class="trail-num">Trilha 01</div>
+            <h5>Perfil profissional e empregabilidade</h5>
+            <p>Ponto de partida para compreender o próprio perfil e o que o mercado valoriza.</p>
+          </div>
+          <div class="trail-card gold rv rv1">
+            <div class="trail-num">Trilha 02</div>
+            <h5>Currículo, LinkedIn e presença digital</h5>
+            <p>Revisão e construção de uma apresentação profissional coerente e atrativa.</p>
+          </div>
+          <div class="trail-card gold rv rv2">
+            <div class="trail-num">Trilha 03</div>
+            <h5>Mercado e estratégia de busca</h5>
+            <p>Leitura do mercado e organização da busca de vagas com mais inteligência.</p>
+          </div>
+          <div class="trail-card gold rv rv3">
+            <div class="trail-num">Trilha 04</div>
+            <h5>Entrevistas, comunicação e continuidade</h5>
+            <p>Preparação para processos seletivos e construção do plano de continuidade.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Versões -->
+      <div class="product-block">
+        <div class="product-block-header">
+          <h3 class="rv">Escolha a versão que faz sentido para você</h3>
+          <p class="rv rv1">Duas estruturas para diferentes necessidades de acompanhamento e profundidade.</p>
+        </div>
+        <div class="versions-grid">
+          <article class="version-card gold rv">
+            <div class="version-step">Versão Básica</div>
+            <h4>Empregabilidade · 90 dias</h4>
+            <p class="duration">Para quem deseja organizar a empregabilidade com clareza</p>
+            <div class="price">
+              <span class="cur">R$</span>
+              <span class="val">2.047</span>
+            </div>
+            <p class="price-note">Parcelado no cartão · ou à vista no Pix com 15% de desconto</p>
+            <p class="desc">Jornada objetiva, concentrada nos elementos centrais de apresentação profissional e preparação para processos seletivos.</p>
+            <ul class="version-features">
+              <li>5 sessões individuais de mentoria</li>
+              <li>Assessment de perfil e competências</li>
+              <li>Revisão curricular e análise de LinkedIn</li>
+              <li>Preparação para entrevistas</li>
+              <li>6 webinares temáticos</li>
+              <li>5 tarefas práticas</li>
+              <li>Plano de continuidade</li>
+            </ul>
+            <a href="formulario.html?produto=empregabilidade&amp;versao=basico" class="btn btn-gold version-btn">Quero contratar <span class="arrow">→</span></a>
+          </article>
+
+          <article class="version-card gold featured rv rv1">
+            <span class="version-badge">Mais profundidade</span>
+            <div class="version-step">Versão Estendida</div>
+            <h4>Empregabilidade · 120 dias</h4>
+            <p class="duration">Para quem precisa de mais tempo e estratégia ampliada</p>
+            <div class="price">
+              <span class="cur">R$</span>
+              <span class="val">2.897</span>
+            </div>
+            <p class="price-note">Parcelado no cartão · ou à vista no Pix com 15% de desconto</p>
+            <p class="desc">Jornada aprofundada para amadurecer a estratégia profissional e revisar a evolução ao longo do processo.</p>
+            <ul class="version-features">
+              <li>7 sessões individuais de mentoria</li>
+              <li>Assessment aprofundado</li>
+              <li>Revisão curricular completa</li>
+              <li>LinkedIn e presença digital ampliados</li>
+              <li>Simulação de entrevista com feedback</li>
+              <li>10 webinares temáticos</li>
+              <li>8 tarefas práticas</li>
+              <li>Plano de continuidade estruturado</li>
+            </ul>
+            <a href="formulario.html?produto=empregabilidade&amp;versao=estendido" class="btn btn-gold version-btn">Quero contratar <span class="arrow">→</span></a>
+          </article>
+        </div>
+      </div>
+
+      <!-- Webinares -->
+      <div class="product-block">
+        <div class="product-block-header">
+          <h3 class="rv">Webinares e tarefas práticas</h3>
+          <p class="rv rv1">Encontros temáticos e atividades aplicadas para consolidar o aprendizado e avançar concretamente.</p>
+        </div>
+        <div class="contents-grid">
+          <div class="contents-card gold rv">
+            <h5>Webinares</h5>
+            <h4>Básico · 6 webinares</h4>
+            <ul class="contents-list">
+              <li>Empregabilidade e leitura do mercado atual</li>
+              <li>Como identificar seu diferencial profissional</li>
+              <li>Currículo com foco em clareza e resultado</li>
+              <li>LinkedIn e presença profissional coerente</li>
+              <li>Entrevistas: postura, narrativa e segurança</li>
+              <li>Continuidade da busca e organização da rotina</li>
+            </ul>
+          </div>
+          <div class="contents-card gold rv rv1">
+            <h5>Webinares</h5>
+            <h4>Estendido · 10 webinares</h4>
+            <ul class="contents-list">
+              <li>Empregabilidade e cenário do mercado</li>
+              <li>Perfil profissional e competências valorizadas</li>
+              <li>Currículo orientado a resultados</li>
+              <li>LinkedIn, visibilidade e networking</li>
+              <li>Marca pessoal e coerência de posicionamento</li>
+              <li>Estratégia de busca de vagas</li>
+              <li>Entrevistas: erros mais comuns</li>
+              <li>Comunicação profissional e narrativa</li>
+              <li>Plano de ação e disciplina de execução</li>
+              <li>Continuidade e autonomia profissional</li>
+            </ul>
+          </div>
+        </div>
+        <div class="contents-grid" style="margin-top:18px;">
+          <div class="contents-card gold rv">
+            <h5>Tarefas práticas</h5>
+            <h4>Básico · 5 tarefas</h4>
+            <ul class="contents-list">
+              <li>Assessment e trajetória profissional</li>
+              <li>Revisão e atualização do currículo</li>
+              <li>Atualização do LinkedIn e apresentação</li>
+              <li>Simulação de resposta para entrevista</li>
+              <li>Plano pessoal de busca e continuidade</li>
+            </ul>
+          </div>
+          <div class="contents-card gold rv rv1">
+            <h5>Tarefas práticas</h5>
+            <h4>Estendido · 8 tarefas</h4>
+            <ul class="contents-list">
+              <li>Assessment e mapeamento de perfil</li>
+              <li>Revisão e reescrita do currículo</li>
+              <li>Reescrita do resumo profissional</li>
+              <li>Ajuste completo do LinkedIn</li>
+              <li>Pesquisa estruturada de oportunidades</li>
+              <li>Simulação de entrevista com análise</li>
+              <li>Ajuste de narrativa pessoal com feedback</li>
+              <li>Plano final de continuidade</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Apoio mentora -->
+      <div class="product-block">
+        <div class="product-block-header">
+          <h3 class="rv">Apoio da mentora ao longo da jornada</h3>
+          <p class="rv rv1">A mentora acompanha com foco em clareza, posicionamento e aplicação prática.</p>
+        </div>
+        <div class="mentor-grid">
+          <div class="mentor-card gold rv">
+            <div class="mentor-ico">1</div>
+            <h5>Leitura do perfil e do momento</h5>
+            <p>Análise cuidadosa do contexto atual para orientação personalizada.</p>
+          </div>
+          <div class="mentor-card gold rv rv1">
+            <div class="mentor-ico">2</div>
+            <h5>Devolutiva sobre forças</h5>
+            <p>Feedback honesto e construtivo para ampliar o autoconhecimento profissional.</p>
+          </div>
+          <div class="mentor-card gold rv rv2">
+            <div class="mentor-ico">3</div>
+            <h5>Currículo e LinkedIn</h5>
+            <p>Direcionamento prático para melhorar a apresentação em todos os canais.</p>
+          </div>
+          <div class="mentor-card gold rv">
+            <div class="mentor-ico">4</div>
+            <h5>Preparação para entrevistas</h5>
+            <p>Suporte técnico para desenvolver postura, narrativa e segurança.</p>
+          </div>
+          <div class="mentor-card gold rv rv1">
+            <div class="mentor-ico">5</div>
+            <h5>Revisão da evolução</h5>
+            <p>Acompanhamento contínuo do progresso e ajustes de rota.</p>
+          </div>
+          <div class="mentor-card gold rv rv2">
+            <div class="mentor-ico">6</div>
+            <h5>Plano de continuidade</h5>
+            <p>Plano pessoal para manter o desenvolvimento após o encerramento.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resultado -->
+      <div class="product-block">
+        <div class="product-block-header">
+          <h3 class="rv">Resultado esperado ao final</h3>
+          <p class="rv rv1">Recursos concretos para se apresentar ao mercado com mais clareza, segurança e autonomia.</p>
+        </div>
+        <div class="result-grid">
+          <div class="result-card gold rv">
+            <div class="ico">🎯</div>
+            <h5>Clareza de perfil</h5>
+            <p>Compreensão aprofundada do próprio perfil, forças e diferenciais.</p>
+          </div>
+          <div class="result-card rv rv1">
+            <div class="ico">📄</div>
+            <h5>Currículo alinhado</h5>
+            <p>Currículo revisado e orientado ao mercado com foco em resultado.</p>
+          </div>
+          <div class="result-card teal rv rv2">
+            <div class="ico">🔗</div>
+            <h5>Presença coerente</h5>
+            <p>LinkedIn e apresentação digital alinhados ao posicionamento desejado.</p>
+          </div>
+          <div class="result-card green rv rv3">
+            <div class="ico">🗺️</div>
+            <h5>Visão de mercado</h5>
+            <p>Melhor compreensão das possibilidades e caminhos de atuação.</p>
+          </div>
+          <div class="result-card gold rv">
+            <div class="ico">🎤</div>
+            <h5>Segurança em entrevistas</h5>
+            <p>Mais preparo, postura e narrativa para processos seletivos.</p>
+          </div>
+          <div class="result-card rv rv1">
+            <div class="ico">📋</div>
+            <h5>Plano de continuidade</h5>
+            <p>Plano pessoal estruturado para manter o desenvolvimento.</p>
+          </div>
+        </div>
+        <div class="disclaimer gold">
+          <strong>Importante:</strong> o ECO do B.E.M. Empregabilidade não garante vaga, emprego ou contratação. Seu objetivo é preparar, orientar e desenvolver para ampliar leitura de mercado e possibilidades profissionais.
+        </div>
+      </div>
+
+      <!-- CTA produto -->
+      <div class="product-cta gold rv">
+        <div class="product-cta-inner">
+          <h3>Vamos conversar sobre a jornada mais adequada para você?</h3>
+          <p>Se você deseja compreender melhor seu perfil, se posicionar com mais clareza no mercado e organizar sua trajetória profissional com apoio técnico, agende uma conversa.</p>
+          <div class="product-cta-btns">
+            <a class="btn btn-primary" href="https://calendar.app.google/wvVhwfATgbTpAr126" target="_blank" rel="noopener" style="background:linear-gradient(135deg, #fff, #fff);color:var(--purple-deep);">
+              Agendar uma conversa <span class="arrow">→</span>
+            </a>
+            <a class="btn btn-ghost-dark" href="#carreira">Ver outras jornadas</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ COMPARATIVO ============ -->
+  <section class="section section-compare">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow light center">Comparativo rápido</div>
+        <h2 class="title on-dark">As três jornadas <span class="hl-teal">lado a lado</span></h2>
+        <p class="subtitle on-dark center">Para te ajudar a decidir qual faz mais sentido para o seu momento atual.</p>
+      </div>
+      <div class="compare-table-wrap rv">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>
+                <div class="compare-prod purple">
+                  <strong>Carreira</strong>
+                  <span>Clareza e direção</span>
+                </div>
+              </th>
+              <th>
+                <div class="compare-prod teal">
+                  <strong>Desenvolvimento</strong>
+                  <span>Competências e crescimento</span>
+                </div>
+              </th>
+              <th>
+                <div class="compare-prod gold">
+                  <strong>Empregabilidade</strong>
+                  <span>Posicionamento de mercado</span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Foco principal</td>
+              <td>Trajetória e direção</td>
+              <td>Competências e repertório</td>
+              <td>Recolocação e posicionamento</td>
+            </tr>
+            <tr>
+              <td>Duração — Básico</td>
+              <td class="compare-cell-strong">90 dias</td>
+              <td class="compare-cell-strong">90 dias</td>
+              <td class="compare-cell-strong">90 dias</td>
+            </tr>
+            <tr>
+              <td>Duração — Estendido</td>
+              <td class="compare-cell-strong">120 dias</td>
+              <td class="compare-cell-strong">120 dias</td>
+              <td class="compare-cell-strong">120 dias</td>
+            </tr>
+            <tr>
+              <td>Mentorias individuais</td>
+              <td>5 ou 7</td>
+              <td>5 ou 7</td>
+              <td>5 ou 7</td>
+            </tr>
+            <tr>
+              <td>Assessment de perfil</td>
+              <td class="compare-check">✓</td>
+              <td class="compare-check">✓</td>
+              <td class="compare-check">✓</td>
+            </tr>
+            <tr>
+              <td>Trilha personalizada</td>
+              <td class="compare-check">✓</td>
+              <td class="compare-check">✓</td>
+              <td class="compare-check">✓</td>
+            </tr>
+            <tr>
+              <td>Revisão de currículo/LinkedIn</td>
+              <td>—</td>
+              <td>—</td>
+              <td class="compare-check">✓</td>
+            </tr>
+            <tr>
+              <td>Simulação de entrevista</td>
+              <td>—</td>
+              <td>—</td>
+              <td class="compare-check">✓ (estendido)</td>
+            </tr>
+            <tr>
+              <td>Plano de continuidade</td>
+              <td class="compare-check">✓</td>
+              <td class="compare-check">✓</td>
+              <td class="compare-check">✓</td>
+            </tr>
+            <tr>
+              <td>Investimento — Básico</td>
+              <td class="compare-cell-strong">R$ 2.197</td>
+              <td class="compare-cell-strong">R$ 2.197</td>
+              <td class="compare-cell-strong">R$ 2.047</td>
+            </tr>
+            <tr>
+              <td>Investimento — Estendido</td>
+              <td class="compare-cell-strong">R$ 2.997</td>
+              <td class="compare-cell-strong">R$ 2.997</td>
+              <td class="compare-cell-strong">R$ 2.897</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section section-faq">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow center">Dúvidas frequentes</div>
+        <h2 class="title">Antes de agendar, talvez você queira saber…</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Como sei qual das três jornadas é para mim?</summary>
+          <div class="faq-body">A escolha depende do seu momento. Se a dúvida é sobre <strong>direção e trajetória</strong> (sentir-se perdido ou sem clareza), a Carreira é o caminho. Se você está em busca de <strong>fortalecer competências</strong> dentro do seu papel atual ou se preparar para crescer, é o Desenvolvimento Profissional. Se está em busca ativa de recolocação ou quer se preparar melhor para o mercado, é a Empregabilidade. Na conversa inicial, ajudamos você a confirmar a escolha.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Qual é a diferença entre Básico (90 dias) e Estendido (120 dias)?</summary>
+          <div class="faq-body">O Básico tem 5 mentorias, 6 webinares e 5 tarefas — é objetivo, ideal para quem quer clareza e estrutura rápida. O Estendido tem 7 mentorias, 10 webinares e 8 tarefas — é mais aprofundado, para quem precisa de mais tempo de maturação, análise de cenários e revisão prática da evolução.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Como funciona a conversa inicial?</summary>
+          <div class="faq-body">É um encontro online sem custo para entendermos seu momento profissional, ouvirmos seus objetivos e indicarmos a jornada (e a versão) que faz mais sentido. Não há compromisso: você decide se quer seguir depois da conversa. Agende pelo botão "Agendar uma conversa" — escolha a melhor data e horário direto no calendário.</div>
+        </details>
+        <details class="faq-item">
+          <summary>As mentorias são individuais? Quem conduz?</summary>
+          <div class="faq-body">Sim, todas as mentorias são <strong>individuais e online</strong>. A metodologia é conduzida por Dina Makiyama, que responde tecnicamente pela qualidade e consistência de todo o processo da ECO do B.E.M.</div>
+        </details>
+        <details class="faq-item">
+          <summary>É um curso gravado?</summary>
+          <div class="faq-body">Não. Cada jornada combina mentorias individuais ao vivo, webinares temáticos, assessment, trilha personalizada e tarefas práticas aplicadas à sua realidade. O foco é desenvolvimento real, não apenas consumo de conteúdo.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Posso parcelar?</summary>
+          <div class="faq-body">Sim. Os valores podem ser parcelados no cartão de crédito. À vista no Pix, há <strong>15% de desconto</strong> em todas as versões.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Vocês prometem promoção, recolocação ou aumento de salário?</summary>
+          <div class="faq-body">Não. Nenhuma das jornadas promete resultado de mercado (vaga, promoção, aumento). O que oferecemos é <strong>clareza, orientação, desenvolvimento estruturado e plano aplicável</strong>. O resultado depende também da execução, do contexto profissional e do mercado.</div>
+        </details>
+        <details class="faq-item">
+          <summary>E se eu quiser falar com alguém antes?</summary>
+          <div class="faq-body">Você pode escrever para <strong>relacionamento@ckmtalents.net</strong> ou agendar diretamente a conversa inicial. A conversa não tem compromisso — é só para você entender melhor e decidir com calma.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section class="section-cta-final">
+    <span id="agendar" style="position:relative;top:-90px;display:block;height:0;visibility:hidden;"></span>
+    <div class="container">
+      <div class="cta-panel">
+        <div class="cta-inner">
+          <div class="eyebrow light center" style="justify-content:center;">Próximo passo</div>
+          <h2>A sua jornada começa com <em>uma conversa</em>.</h2>
+          <p>Sem compromisso, sem promessa vazia. Apenas um espaço para você contar seu momento e entendermos juntos qual jornada faz sentido. Você decide o que vem depois.</p>
+          <div class="cta-btns">
+            <a class="btn btn-gold" href="https://calendar.app.google/wvVhwfATgbTpAr126" target="_blank" rel="noopener">
+              Agendar uma conversa <span class="arrow">→</span>
+            </a>
+            <a class="btn btn-ghost-dark" href="mailto:relacionamento@ckmtalents.net">Escrever um e-mail</a>
+          </div>
+          <p class="cta-note">Conversa online · sem custo · sem compromisso · você decide o próximo passo</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container footer-row">
+    <div class="footer-brand">
+      <img src="img/logo-colorido.png" alt="ECO do B.E.M." class="footer-logo"
+           onerror="this.outerHTML='<span class=&quot;footer-logo-text&quot;>eco <em>do</em> bem</span>';" />
+      <strong style="color:var(--text-muted);font-family:'Inter',sans-serif;font-size:13px;">· Para Você</strong>
+    </div>
+    <div class="footer-right">
+      <span>© 2026 ECO do B.E.M.</span>
+      <a href="mailto:relacionamento@ckmtalents.net">relacionamento@ckmtalents.net</a>
+      <a href="index.html">Voltar para a home</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Reveal animations
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('vis');
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+// Smooth scroll para âncoras
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href === '#') return;
+    const t = document.querySelector(href);
+    if (t) {
+      e.preventDefault();
+      t.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+</script>
+</body>
+</html>

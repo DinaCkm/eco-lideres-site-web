@@ -174,13 +174,36 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
   display:flex; gap:12px; align-items:flex-start;
   background:var(--bg-lilac); padding:16px; border-radius:12px;
   margin-top:8px;
+  border:2px solid transparent;
+  transition:border-color .2s ease, background .2s ease;
+}
+.terms-box.has-error{
+  border-color:#E53E3E;
+  background:#FFF5F5;
+  animation:shake .4s ease;
+}
+@keyframes shake{
+  0%,100%{ transform:translateX(0); }
+  25%{ transform:translateX(-6px); }
+  75%{ transform:translateX(6px); }
 }
 .terms-box input[type="checkbox"]{
   margin-top:3px; width:18px; height:18px; flex-shrink:0;
   accent-color:var(--purple);
+  cursor:pointer;
 }
 .terms-box label{font-size:13px; color:var(--text-body); line-height:1.55; cursor:pointer}
+.terms-box label .req-mark{color:#E53E3E; font-weight:700}
 .terms-box a{color:var(--purple); font-weight:600; text-decoration:underline}
+.terms-error{
+  display:none;
+  margin-top:8px;
+  padding:10px 14px;
+  background:#FED7D7; color:#9B2C2C;
+  border-radius:8px;
+  font-size:13px; font-weight:600;
+}
+.terms-error.is-visible{ display:flex; align-items:center; gap:8px; }
 
 /* SUBMIT */
 .submit-wrap{margin-top:36px; display:flex; flex-direction:column; gap:14px; align-items:center}
@@ -337,11 +360,14 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
 
     <!-- TERMOS -->
     <div class="form-section">
-      <div class="terms-box">
+      <div class="terms-box" id="termsBox">
         <input type="checkbox" id="aceito" name="aceito" required>
         <label for="aceito">
-          Li e concordo com os <a href="termos.html" target="_blank">Termos de Uso</a> e a <a href="privacidade.html" target="_blank">Política de Privacidade</a>. Autorizo o tratamento dos meus dados nos termos da LGPD.
+          <span class="req-mark">*</span> Li e concordo com os <a href="termos.html" target="_blank">Termos de Uso</a> e a <a href="privacidade.html" target="_blank">Política de Privacidade</a>. Autorizo o tratamento dos meus dados nos termos da LGPD. <strong>(obrigatório para prosseguir)</strong>
         </label>
+      </div>
+      <div class="terms-error" id="termsError">
+        ⚠️ Você precisa aceitar os Termos de Uso e a Política de Privacidade para prosseguir com a compra.
       </div>
     </div>
 
@@ -470,9 +496,28 @@ window.addEventListener('DOMContentLoaded', () => {
    Quando o backend estiver pronto, o submit vai mandar via
    fetch() para POST /api/criar-pagamento e receber o link do MP.
    =========================================================== */
+/* ===========================================================
+   Validação reativa do aceite de termos:
+   - Se o usuário tentar enviar sem aceitar → mostra erro e bloqueia
+   - Quando aceitar depois do erro → some o aviso suavemente
+   =========================================================== */
+const aceito = document.getElementById('aceito');
+const termsBox = document.getElementById('termsBox');
+const termsError = document.getElementById('termsError');
+const btnSubmit = document.getElementById('btnSubmit');
+
+function clearTermsError() {
+  termsBox.classList.remove('has-error');
+  termsError.classList.remove('is-visible');
+}
+aceito.addEventListener('change', () => {
+  if (aceito.checked) clearTermsError();
+});
+
 document.getElementById('cadastroForm').addEventListener('submit', (e) => {
   e.preventDefault();
 
+  /* === Validação 1: objetivo === */
   const objetivo = document.getElementById('objetivo').value.trim();
   if (objetivo.length < 30) {
     alert('Por favor, descreva seu objetivo com pelo menos 30 caracteres.');
@@ -480,12 +525,25 @@ document.getElementById('cadastroForm').addEventListener('submit', (e) => {
     return;
   }
 
+  /* === Validação 2: versão escolhida === */
   const versaoSel = document.querySelector('input[name="versao"]:checked');
   if (!versaoSel) {
     alert('Escolha a versão Básico ou Estendido.');
     return;
   }
 
+  /* === Validação 3: aceite dos termos (BLOQUEIO RÍGIDO) === */
+  if (!aceito.checked) {
+    termsBox.classList.add('has-error');
+    termsError.classList.add('is-visible');
+    /* Rola até o checkbox para a pessoa ver o erro */
+    termsBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    /* Foca no checkbox para acessibilidade */
+    setTimeout(() => aceito.focus(), 300);
+    return;
+  }
+
+  /* === Tudo OK, monta os dados === */
   const data = {
     nome: document.getElementById('nome').value.trim(),
     email: document.getElementById('email').value.trim(),
@@ -495,6 +553,8 @@ document.getElementById('cadastroForm').addEventListener('submit', (e) => {
     jornada: document.getElementById('jornada').value,
     versao: versaoSel.value,
     objetivo,
+    aceite_termos: true,
+    aceite_termos_em: new Date().toISOString(),
     timestamp: new Date().toISOString()
   };
 

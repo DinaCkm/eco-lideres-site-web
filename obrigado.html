@@ -11,7 +11,7 @@
 <style>
 :root{
   --purple:#5B2EFF; --purple-deep:#1A0A5E; --purple-light:#8C68FF;
-  --teal:#00B8D9; --green:#5ED38C; --gold:#F59E0B;
+  --teal:#00B8D9; --green:#5ED38C; --gold:#F59E0B; --pink:#FF4D8F;
   --bg-lilac:#F5F3FF; --text-dark:#1A0A5E; --text-body:#3A3559;
   --text-muted:#6B6389; --border-light:#E8E4FF;
   --shadow-md:0 12px 40px rgba(26,10,94,.10);
@@ -20,14 +20,12 @@
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0; font-family:'Inter',sans-serif; color:var(--text-body); background:var(--bg-lilac); line-height:1.6; -webkit-font-smoothing:antialiased; min-height:100vh}
 a{color:inherit; text-decoration:none}
-button{font-family:inherit; cursor:pointer; border:none; background:none}
 
-/* HEADER */
 .site-header{background:var(--purple-deep); padding:18px 0; text-align:center}
 .brand-logo{height:36px}
 
-/* STEPS */
-.wrap{max-width:920px; margin:0 auto; padding:40px 24px 80px}
+.wrap{max-width:880px; margin:0 auto; padding:40px 24px 80px}
+
 .steps{display:flex; justify-content:center; align-items:center; gap:10px; margin-bottom:40px; flex-wrap:wrap}
 .step{display:flex; align-items:center; gap:8px; font-family:'Poppins',sans-serif; font-size:12px; font-weight:600; color:var(--text-muted)}
 .step-num{width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#fff; border:2px solid var(--border-light); font-weight:700; font-size:12px}
@@ -37,26 +35,24 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
 .step.done + .step-line{background:var(--green)}
 .step-line{width:24px; height:2px; background:var(--border-light)}
 
-/* HERO SUCCESS */
 .success-hero{
   background:linear-gradient(135deg, var(--purple) 0%, var(--purple-deep) 100%);
-  border-radius:28px; padding:48px 40px; text-align:center; color:#fff;
+  border-radius:28px; padding:56px 40px; text-align:center; color:#fff;
   position:relative; overflow:hidden; margin-bottom:40px;
   box-shadow:var(--shadow-lg);
 }
-.success-hero::before{
-  content:''; position:absolute; top:-40px; right:-40px; width:180px; height:180px;
-  background:radial-gradient(circle, rgba(0,184,217,.3) 0%, transparent 70%); border-radius:50%;
-}
-.success-hero::after{
-  content:''; position:absolute; bottom:-60px; left:-60px; width:220px; height:220px;
-  background:radial-gradient(circle, rgba(245,158,11,.2) 0%, transparent 70%); border-radius:50%;
-}
+.success-hero::before{content:''; position:absolute; top:-40px; right:-40px; width:240px; height:240px; background:radial-gradient(circle, rgba(0,184,217,.3) 0%, transparent 70%); border-radius:50%}
+.success-hero::after{content:''; position:absolute; bottom:-60px; left:-60px; width:280px; height:280px; background:radial-gradient(circle, rgba(245,158,11,.2) 0%, transparent 70%); border-radius:50%}
 .success-content{position:relative; z-index:1}
 .success-icon{
-  width:80px; height:80px; margin:0 auto 20px; border-radius:50%;
+  width:88px; height:88px; margin:0 auto 22px; border-radius:50%;
   background:var(--green); display:flex; align-items:center; justify-content:center;
-  font-size:42px; box-shadow:0 0 0 12px rgba(94,211,140,.2);
+  font-size:44px; box-shadow:0 0 0 14px rgba(94,211,140,.2);
+  animation:pop .6s ease backwards .2s;
+}
+@keyframes pop{
+  from{transform:scale(0); opacity:0}
+  to{transform:scale(1); opacity:1}
 }
 .success-eyebrow{
   display:inline-block; font-family:'Poppins',sans-serif; font-size:11px; font-weight:700;
@@ -64,13 +60,12 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
   background:rgba(255,255,255,.15); padding:6px 14px; border-radius:99px; margin-bottom:14px;
 }
 .success-hero h1{
-  font-family:'Poppins',sans-serif; font-weight:800; font-size:42px; margin:0 0 12px;
-  line-height:1.1; letter-spacing:-.5px;
+  font-family:'Poppins',sans-serif; font-weight:900; font-size:clamp(28px,4.5vw,44px); margin:0 0 12px;
+  line-height:1.05; letter-spacing:-1px;
 }
 .success-hero p{font-size:17px; opacity:.92; margin:0 auto; max-width:560px}
 .success-name{color:var(--gold)}
 
-/* CONFIRMATION DETAILS */
 .confirm-box{
   background:#fff; border-radius:20px; padding:24px 28px; box-shadow:var(--shadow-md);
   margin-bottom:40px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px;
@@ -83,107 +78,105 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
 }
 .confirm-item-value{font-family:'Poppins',sans-serif; font-weight:700; font-size:15px; color:var(--purple-deep); margin:0}
 
-/* SECTION CARD */
-.section-card{background:#fff; border-radius:24px; padding:40px; box-shadow:var(--shadow-lg); margin-bottom:32px}
-.section-eyebrow{
-  display:inline-block; font-family:'Poppins',sans-serif; font-size:11px; font-weight:700;
-  letter-spacing:1.4px; text-transform:uppercase; color:var(--purple);
-  background:rgba(91,46,255,.08); padding:6px 14px; border-radius:99px; margin-bottom:14px;
-}
-.section-title{font-family:'Poppins',sans-serif; font-weight:800; font-size:28px; color:var(--purple-deep); margin:0 0 8px; line-height:1.2; letter-spacing:-.3px}
-.section-desc{font-size:15px; color:var(--text-body); margin:0 0 24px}
-
-/* VIDEO PLACEHOLDER */
-.video-box{
-  position:relative; width:100%; aspect-ratio:16/9; border-radius:18px; overflow:hidden;
+/* PRIMARY CTA - PLATAFORMA */
+.platform-cta{
   background:linear-gradient(135deg, var(--purple) 0%, var(--purple-deep) 100%);
-  display:flex; align-items:center; justify-content:center; flex-direction:column; color:#fff;
+  border-radius:28px; padding:56px 40px; color:#fff;
+  position:relative; overflow:hidden;
+  box-shadow:var(--shadow-lg); margin-bottom:32px;
+  text-align:center;
 }
-.video-box::before{
-  content:''; position:absolute; inset:0;
-  background-image:
-    radial-gradient(circle at 20% 30%, rgba(0,184,217,.25) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(245,158,11,.2) 0%, transparent 50%);
+.platform-cta::before{content:''; position:absolute; top:-100px; right:-100px; width:340px; height:340px; background:radial-gradient(circle, rgba(245,158,11,.2) 0%, transparent 60%); border-radius:50%}
+.platform-cta-content{position:relative; z-index:1}
+.platform-cta .eyebrow-step{
+  display:inline-block; font-family:'Poppins',sans-serif; font-size:11px; font-weight:700;
+  letter-spacing:1.4px; text-transform:uppercase; color:var(--gold);
+  background:rgba(245,158,11,.18); padding:6px 14px; border-radius:99px; margin-bottom:18px;
 }
-.play-btn{
-  position:relative; width:80px; height:80px; border-radius:50%;
-  background:rgba(255,255,255,.95); display:flex; align-items:center; justify-content:center;
-  margin-bottom:18px; box-shadow:0 0 0 12px rgba(255,255,255,.15);
-  transition:transform .2s;
+.platform-cta h2{
+  font-family:'Poppins',sans-serif; font-weight:900; font-size:clamp(26px,3.6vw,36px);
+  margin:0 0 16px; letter-spacing:-0.6px; line-height:1.15;
 }
-.play-btn:hover{transform:scale(1.05)}
-.play-btn::before{
-  content:''; width:0; height:0; margin-left:6px;
-  border-top:14px solid transparent; border-bottom:14px solid transparent;
-  border-left:22px solid var(--purple-deep);
+.platform-cta p{
+  font-size:16px; opacity:.92; margin:0 auto 32px; max-width:560px; line-height:1.6;
 }
-.video-label{position:relative; font-family:'Poppins',sans-serif; font-size:13px; font-weight:600; letter-spacing:1px; opacity:.85; text-transform:uppercase}
-.video-title{position:relative; font-family:'Poppins',sans-serif; font-size:20px; font-weight:700; margin-top:6px}
-
-.video-placeholder-note{
-  margin-top:14px; padding:12px 16px; background:#FFF4E5;
-  border:1px dashed var(--gold); border-radius:10px;
-  font-size:12px; color:#7A4A00; text-align:center;
-}
-
-/* FORM ADICIONAL */
-.field{margin-bottom:18px}
-.field label{display:block; font-family:'Poppins',sans-serif; font-weight:600; font-size:13px; color:var(--purple-deep); margin-bottom:6px}
-.field textarea, .field select, .field input{
-  width:100%; padding:12px 14px; font-family:'Inter',sans-serif; font-size:15px;
-  color:var(--text-dark); background:#FAFAFE; border:1.5px solid var(--border-light);
-  border-radius:10px; transition:border-color .2s, background .2s; outline:none;
-}
-.field textarea{resize:vertical; min-height:90px}
-.field textarea:focus, .field select:focus, .field input:focus{border-color:var(--purple); background:#fff}
-.field-hint{font-size:12px; color:var(--text-muted); margin-top:4px}
-
-.save-status{
-  display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600;
-  padding:8px 14px; border-radius:99px; margin-top:8px;
-}
-.save-status.saving{background:rgba(91,46,255,.1); color:var(--purple)}
-.save-status.saved{background:rgba(94,211,140,.15); color:#0E5A2C}
-
-/* SCHEDULE CTA */
-.schedule-card{
-  background:linear-gradient(135deg, #00B8D9 0%, #008FA8 100%);
-  border-radius:24px; padding:48px 40px; text-align:center; color:#fff;
-  box-shadow:var(--shadow-lg); position:relative; overflow:hidden;
-}
-.schedule-card::before{
-  content:''; position:absolute; top:-50px; right:-50px; width:200px; height:200px;
-  background:radial-gradient(circle, rgba(245,158,11,.2) 0%, transparent 70%); border-radius:50%;
-}
-.schedule-content{position:relative; z-index:1}
-.schedule-card h2{font-family:'Poppins',sans-serif; font-weight:800; font-size:32px; margin:0 0 12px; letter-spacing:-.3px}
-.schedule-card p{font-size:16px; margin:0 auto 28px; max-width:540px; opacity:.95}
-.btn-schedule{
-  display:inline-flex; align-items:center; justify-content:center; gap:10px;
-  background:var(--gold); color:var(--purple-deep);
+.btn-platform{
+  display:inline-flex; align-items:center; gap:12px;
+  background:linear-gradient(135deg, var(--gold), #FFC94A);
+  color:var(--purple-deep);
   font-family:'Poppins',sans-serif; font-weight:800; font-size:16px;
   padding:18px 36px; border-radius:14px;
+  box-shadow:0 12px 32px rgba(245,158,11,.4);
   transition:transform .15s, box-shadow .2s;
-  box-shadow:0 8px 24px rgba(245,158,11,.4);
+  text-decoration:none;
 }
-.btn-schedule:hover{transform:translateY(-2px); box-shadow:0 12px 32px rgba(245,158,11,.5)}
+.btn-platform:hover{transform:translateY(-3px); box-shadow:0 18px 42px rgba(245,158,11,.55)}
 
-/* NEXT STEPS */
-.next-steps{
-  background:#fff; border-radius:20px; padding:28px; margin-top:28px;
-  box-shadow:var(--shadow-md);
+/* INSTRUÇÕES PASSO A PASSO */
+.steps-card{
+  background:#fff; border-radius:24px; padding:48px 40px;
+  box-shadow:var(--shadow-md); margin-bottom:32px;
 }
-.next-steps h3{font-family:'Poppins',sans-serif; font-weight:700; font-size:18px; color:var(--purple-deep); margin:0 0 16px}
-.next-list{list-style:none; padding:0; margin:0; display:grid; gap:14px}
-.next-list li{display:flex; gap:14px; align-items:flex-start}
-.next-num{
-  flex-shrink:0; width:28px; height:28px; border-radius:50%; background:var(--bg-lilac);
-  color:var(--purple); font-family:'Poppins',sans-serif; font-weight:700; font-size:13px;
+.steps-card-header{text-align:center; margin-bottom:36px}
+.steps-card-eyebrow{
+  display:inline-block; font-family:'Poppins',sans-serif; font-size:11px; font-weight:800;
+  letter-spacing:1.6px; text-transform:uppercase; color:var(--purple);
+  background:rgba(91,46,255,.1); padding:6px 14px; border-radius:99px; margin-bottom:14px;
+}
+.steps-card-title{
+  font-family:'Poppins',sans-serif; font-weight:800; font-size:24px;
+  color:var(--purple-deep); margin:0 0 8px; line-height:1.2;
+}
+.steps-card-sub{font-size:14px; color:var(--text-muted); margin:0}
+
+.steps-list{
+  display:flex; flex-direction:column; gap:20px;
+}
+.step-row{
+  display:flex; gap:20px; align-items:flex-start;
+  padding:20px;
+  background:var(--bg-lilac);
+  border-radius:16px;
+  border-left:4px solid var(--purple);
+  transition:transform .2s, box-shadow .2s;
+}
+.step-row:hover{transform:translateX(4px); box-shadow:var(--shadow-md)}
+.step-row-num{
+  flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  width:48px; height:48px; border-radius:50%;
+  background:var(--purple); color:#fff;
+  font-family:'Poppins',sans-serif; font-weight:900; font-size:18px;
+  box-shadow:0 6px 16px rgba(91,46,255,.3);
+}
+.step-row-body{flex:1}
+.step-row-title{
+  font-family:'Poppins',sans-serif; font-weight:700; font-size:17px;
+  color:var(--purple-deep); margin:0 0 4px;
+}
+.step-row-desc{font-size:14.5px; color:var(--text-body); margin:0; line-height:1.55}
+.step-row-desc strong{color:var(--purple-deep); font-weight:600}
+.step-row-desc a{color:var(--purple); font-weight:600; text-decoration:underline}
+
+/* HELP CARD */
+.help-card{
+  background:#fff; border-radius:18px; padding:28px;
+  box-shadow:var(--shadow-md);
+  display:flex; gap:18px; align-items:flex-start;
+}
+.help-icon{
+  flex-shrink:0; width:48px; height:48px; border-radius:14px;
+  background:linear-gradient(135deg, var(--teal), #5DCAA5);
+  color:#fff; font-size:24px;
   display:flex; align-items:center; justify-content:center;
 }
-.next-text{font-size:14px; color:var(--text-body); line-height:1.55}
+.help-card h3{
+  font-family:'Poppins',sans-serif; font-weight:700; font-size:18px;
+  color:var(--purple-deep); margin:0 0 6px;
+}
+.help-card p{font-size:14.5px; color:var(--text-body); margin:0; line-height:1.55}
+.help-card a{color:var(--purple); font-weight:600}
 
-/* FOOTER */
 .simple-footer{background:#fff; border-top:1px solid var(--border-light); padding:24px 0; text-align:center; font-size:13px; color:var(--text-muted)}
 .simple-footer a{color:var(--purple-deep); font-weight:500}
 .simple-footer a + a{margin-left:18px}
@@ -191,20 +184,18 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="site-header">
   <a href="index.html"><img src="img/logo-branco.png" alt="ECO do B.E.M." class="brand-logo" onerror="this.style.display='none'"></a>
 </header>
 
 <div class="wrap">
 
-  <!-- STEPS -->
   <div class="steps">
     <div class="step done"><span class="step-num">✓</span> Cadastro</div>
     <div class="step-line"></div>
     <div class="step done"><span class="step-num">✓</span> Pagamento</div>
     <div class="step-line"></div>
-    <div class="step active"><span class="step-num">3</span> Confirmação</div>
+    <div class="step active"><span class="step-num">3</span> Acesso à plataforma</div>
   </div>
 
   <!-- HERO SUCCESS -->
@@ -213,7 +204,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
       <div class="success-icon">✓</div>
       <span class="success-eyebrow">PAGAMENTO CONFIRMADO</span>
       <h1>Bem-vindo(a) à ECO, <span class="success-name" id="customerName">!</span></h1>
-      <p>Sua jornada está oficialmente começando. O time já foi notificado e está preparando seu material inicial.</p>
+      <p>Sua jornada está oficialmente começando. <strong>Próximo passo:</strong> crie sua conta na plataforma para começar.</p>
     </div>
   </div>
 
@@ -233,112 +224,83 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
     </div>
   </div>
 
-  <!-- VÍDEO DE BOAS-VINDAS -->
-  <div class="section-card">
-    <span class="section-eyebrow">PASSO 1 DE 3</span>
-    <h2 class="section-title">Uma palavra do nosso time</h2>
-    <p class="section-desc">Antes de qualquer coisa, queremos te dar boas-vindas pessoalmente.</p>
-
-    <div class="video-box">
-      <div class="play-btn"></div>
-      <div class="video-label">Vídeo de boas-vindas</div>
-      <div class="video-title">2 min · Time ECO do B.E.M.</div>
-    </div>
-    <div class="video-placeholder-note">
-      🎬 <strong>Placeholder:</strong> aqui vai ficar o vídeo de boas-vindas gravado pelo time. Quando o vídeo estiver pronto, substituir este bloco por um embed do YouTube ou Vimeo.
-    </div>
-  </div>
-
-  <!-- PERGUNTAS COMPLEMENTARES -->
-  <div class="section-card">
-    <span class="section-eyebrow">PASSO 2 DE 3</span>
-    <h2 class="section-title">Conta um pouco mais sobre você</h2>
-    <p class="section-desc">Essas respostas vão direto para o psicólogo que vai te acompanhar. Quanto mais detalhe, mais personalizada será sua primeira mentoria.</p>
-
-    <form id="extraForm">
-      <div class="field">
-        <label for="momento">Como você descreveria o momento de carreira em que está agora? <span style="color:#E53E3E">*</span></label>
-        <select id="momento" name="momento" required>
-          <option value="">Escolha uma opção</option>
-          <option value="transicao">Em transição — quero mudar de área ou carreira</option>
-          <option value="recolocacao">Em recolocação — buscando nova oportunidade</option>
-          <option value="evolucao">Em evolução — quero crescer no que já faço</option>
-          <option value="primeira-lideranca">Iniciando primeira posição de liderança</option>
-          <option value="lideranca-experiente">Já sou líder, quero aprimorar</option>
-          <option value="duvida">Estou em dúvida sobre o próximo passo</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label for="desafio">Qual o maior desafio que você quer endereçar nessa jornada? <span style="color:#E53E3E">*</span></label>
-        <textarea id="desafio" name="desafio" required placeholder="Ex.: Quero entender se devo seguir como especialista ou ir para gestão. Hoje me sinto travado(a) e não tenho clareza."></textarea>
-      </div>
-
-      <div class="field">
-        <label for="experiencia">Quantos anos de experiência você tem na sua área atual?</label>
-        <select id="experiencia" name="experiencia">
-          <option value="">Escolha uma opção</option>
-          <option value="0-2">0 a 2 anos</option>
-          <option value="3-5">3 a 5 anos</option>
-          <option value="6-10">6 a 10 anos</option>
-          <option value="11-15">11 a 15 anos</option>
-          <option value="16+">Mais de 15 anos</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label for="disponibilidade">Quantas horas por semana você consegue dedicar à jornada?</label>
-        <select id="disponibilidade" name="disponibilidade">
-          <option value="">Escolha uma opção</option>
-          <option value="1-2">1 a 2 horas</option>
-          <option value="3-4">3 a 4 horas</option>
-          <option value="5-6">5 a 6 horas</option>
-          <option value="7+">7 horas ou mais</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label for="expectativa">O que precisa acontecer para você considerar essa jornada um sucesso?</label>
-        <textarea id="expectativa" name="expectativa" placeholder="Ex.: Sair daqui com um plano claro do meu próximo passo profissional e saber exatamente o que estudar."></textarea>
-      </div>
-
-      <span class="save-status saving" id="saveStatus" style="display:none">⏳ Salvando…</span>
-    </form>
-  </div>
-
-  <!-- AGENDAMENTO -->
-  <div class="schedule-card">
-    <div class="schedule-content">
-      <span class="success-eyebrow" style="background:rgba(255,255,255,.2)">PASSO 3 DE 3</span>
-      <h2>Agende sua primeira mentoria</h2>
-      <p>Escolha um horário que funciona para você. Essa primeira conversa é com um(a) psicólogo(a) organizacional e dura cerca de 50 minutos — é o ponto de partida da sua jornada.</p>
-      <a href="https://calendar.app.google/wvVhwfATgbTpAr126" target="_blank" rel="noopener" class="btn-schedule" id="btnSchedule">
-        📅 Abrir agenda e escolher horário →
+  <!-- PLATFORM CTA — primeiro passo destacado -->
+  <div class="platform-cta">
+    <div class="platform-cta-content">
+      <span class="eyebrow-step">PROGRAMA DE DESENVOLVIMENTO</span>
+      <h2>Bem-vindo(a) ao Ecossistema do B.E.M.</h2>
+      <p>Ambiente para acelerar seu desenvolvimento, fortalecer competências e apoiar a evolução profissional.<br><strong style="color:var(--gold)">6 pilares. 1 jornada. Resultados reais.</strong></p>
+      <a href="https://ecolider.ecodobem.com/registro" target="_blank" rel="noopener" class="btn-platform">
+        Começar minha jornada agora →
       </a>
+      <p style="margin-top:18px; font-size:13px; opacity:.75; margin-bottom:0">
+        Já tem conta? <a href="https://ecolider.ecodobem.com/login" target="_blank" rel="noopener" style="color:var(--gold); font-weight:600; text-decoration:underline">Fazer login</a>
+      </p>
     </div>
   </div>
 
-  <!-- NEXT STEPS -->
-  <div class="next-steps">
-    <h3>O que acontece depois</h3>
-    <ul class="next-list">
-      <li>
-        <span class="next-num">1</span>
-        <span class="next-text">Você recebe um <strong>e-mail de confirmação</strong> em até 5 minutos com todos os detalhes da compra e o link de agendamento.</span>
-      </li>
-      <li>
-        <span class="next-num">2</span>
-        <span class="next-text">Em até <strong>24 horas úteis</strong>, o time entra em contato pelo WhatsApp para confirmar tudo e enviar o link de acesso à plataforma.</span>
-      </li>
-      <li>
-        <span class="next-num">3</span>
-        <span class="next-text">Na <strong>primeira mentoria</strong>, você faz o assessment DISC e começa a construir, junto com o psicólogo, seu plano de jornada.</span>
-      </li>
-      <li>
-        <span class="next-num">4</span>
-        <span class="next-text">Qualquer dúvida, fale com a gente em <a href="mailto:relacionamento@ckmtalents.net" style="color:var(--purple); font-weight:600">relacionamento@ckmtalents.net</a></span>
-      </li>
-    </ul>
+  <!-- PASSO A PASSO -->
+  <div class="steps-card">
+    <div class="steps-card-header">
+      <span class="steps-card-eyebrow">Como começar</span>
+      <h2 class="steps-card-title">Em menos de 5 minutos você está dentro</h2>
+      <p class="steps-card-sub">Siga os passos abaixo na ordem.</p>
+    </div>
+
+    <div class="steps-list">
+      <div class="step-row">
+        <div class="step-row-num">1</div>
+        <div class="step-row-body">
+          <h3 class="step-row-title">Crie sua conta na plataforma</h3>
+          <p class="step-row-desc">
+            Clique no botão acima ou acesse <a href="https://ecolider.ecodobem.com/registro" target="_blank" rel="noopener">ecolider.ecodobem.com/registro</a> e preencha o formulário <strong>"Crie sua conta"</strong> com seus dados.
+          </p>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="step-row-num">2</div>
+        <div class="step-row-body">
+          <h3 class="step-row-title">Use os mesmos dados do pagamento</h3>
+          <p class="step-row-desc">
+            No formulário, informe:<br>
+            • <strong>Nome completo</strong><br>
+            • <strong>E-mail</strong> — use o mesmo do cadastro aqui (<strong id="emailUsed">o e-mail do pagamento</strong>)<br>
+            • <strong>CPF</strong> — será sua senha de acesso. Anote!<br>
+            • <strong>Empresa</strong> (opcional)
+          </p>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="step-row-num">3</div>
+        <div class="step-row-body">
+          <h3 class="step-row-title">Acesse a plataforma</h3>
+          <p class="step-row-desc">
+            Após criar a conta, você entra direto no <strong>Ambiente do Ecossistema do B.E.M.</strong>. É lá que sua jornada acontece — assessment DISC, trilha, mentorias e acompanhamento de evolução.
+          </p>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="step-row-num">4</div>
+        <div class="step-row-body">
+          <h3 class="step-row-title">Confira seu e-mail</h3>
+          <p class="step-row-desc">
+            Em até 5 minutos você recebe um <strong>e-mail de boas-vindas</strong> com tudo registrado. Se não encontrar, dá uma olhada no spam — às vezes ele dá uma escapada.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HELP -->
+  <div class="help-card">
+    <div class="help-icon">💬</div>
+    <div>
+      <h3>Travou em algum passo?</h3>
+      <p>Sem estresse — escreve pra gente em <a href="mailto:relacionamento@ckmtalents.net">relacionamento@ckmtalents.net</a>. Respondemos em até 24 horas úteis e te ajudamos a destravar.</p>
+    </div>
   </div>
 
 </div>
@@ -355,95 +317,73 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
 <script>
 function brl(v){ return v.toLocaleString('pt-BR', {style:'currency', currency:'BRL'}); }
 
-const cad = JSON.parse(sessionStorage.getItem('eco_cadastro') || '{}');
-
-/* Se não há cadastro ou pagamento não aprovado, redireciona */
-if (!cad.nome) {
-  window.location.href = 'formulario.html';
-} else if (cad.status_pagamento !== 'approved') {
-  /* Em produção (com webhook do MP), essa verificação é feita no backend */
-  window.location.href = 'pagamento-recusado.html';
-}
-
-/* Preenche dados */
-const firstName = (cad.nome || '').split(' ')[0];
-document.getElementById('customerName').textContent = firstName + '!';
-document.getElementById('confirmJornada').textContent = cad.produto_label || '—';
-document.getElementById('confirmValor').textContent = brl(cad.valor || 0);
-document.getElementById('confirmProtocolo').textContent = cad.id_pagamento_simulado || '—';
-
-/* URL do backend Railway */
 const API_URL = 'https://eco-backend-production-6229.up.railway.app';
 
-/* Autosave de perguntas complementares + envio para backend quando completo */
-let saveTimeout;
-const saveStatus = document.getElementById('saveStatus');
-const inputs = document.querySelectorAll('#extraForm input, #extraForm textarea, #extraForm select');
+const urlParams = new URLSearchParams(window.location.search);
+const refFromUrl = urlParams.get('ref') || urlParams.get('external_reference');
 
-async function enviarQuestionarioBackend() {
-  /* Só envia se ainda não foi enviado e se os campos obrigatórios estão preenchidos */
-  if (cad.questionario_enviado) return;
+let cad = JSON.parse(sessionStorage.getItem('eco_cadastro') || '{}');
 
-  const momento = document.getElementById('momento').value.trim();
-  const desafio = document.getElementById('desafio').value.trim();
-
-  if (!momento || desafio.length < 10) return; // ainda não está completo
-
-  /* Marca otimisticamente para evitar envio duplo (race condition) */
-  cad.questionario_enviado = true;
-  sessionStorage.setItem('eco_cadastro', JSON.stringify(cad));
-
+async function carregarDoBackend(ref) {
   try {
-    const resp = await fetch(API_URL + '/api/questionario-extra', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(cad)
-    });
-    if (!resp.ok) throw new Error('Backend respondeu erro');
-
-    /* Confirmação visual ao usuário */
-    saveStatus.style.display = 'inline-flex';
-    saveStatus.className = 'save-status saved';
-    saveStatus.innerHTML = '✓ Respostas enviadas para a equipe';
-    setTimeout(() => { saveStatus.style.display = 'none'; }, 3500);
-  } catch (err) {
-    console.error('Erro ao enviar questionário:', err);
-    /* Em caso de erro, desmarca o flag para tentar de novo na próxima edição */
-    cad.questionario_enviado = false;
-    sessionStorage.setItem('eco_cadastro', JSON.stringify(cad));
+    const resp = await fetch(API_URL + '/api/status/' + encodeURIComponent(ref));
+    if (!resp.ok) return null;
+    const pedido = await resp.json();
+    if (pedido.status !== 'approved') return null;
+    return {
+      nome: pedido.nome,
+      email: pedido.email,
+      whatsapp: pedido.whatsapp,
+      profissao: pedido.profissao,
+      empresa: pedido.empresa,
+      jornada: pedido.jornada,
+      versao: pedido.versao,
+      objetivo: pedido.objetivo,
+      produto_label: pedido.produto_label,
+      valor: pedido.valor,
+      external_reference: pedido.external_reference,
+      id_pagamento_simulado: pedido.payment_id,
+      status_pagamento: pedido.status
+    };
+  } catch(err) {
+    console.error('Erro ao buscar do backend:', err);
+    return null;
   }
 }
 
-inputs.forEach(input => {
-  input.addEventListener('input', () => {
-    clearTimeout(saveTimeout);
-    saveStatus.style.display = 'inline-flex';
-    saveStatus.className = 'save-status saving';
-    saveStatus.innerHTML = '⏳ Salvando…';
-    saveTimeout = setTimeout(() => {
-      cad.respostas_complementares = {
-        momento: document.getElementById('momento').value,
-        desafio: document.getElementById('desafio').value,
-        experiencia: document.getElementById('experiencia').value,
-        disponibilidade: document.getElementById('disponibilidade').value,
-        expectativa: document.getElementById('expectativa').value
-      };
+async function inicializar() {
+  if (cad.nome && cad.status_pagamento === 'approved') return preencherTela();
+
+  if (refFromUrl) {
+    const dadosBackend = await carregarDoBackend(refFromUrl);
+    if (dadosBackend) {
+      cad = dadosBackend;
       sessionStorage.setItem('eco_cadastro', JSON.stringify(cad));
-      saveStatus.className = 'save-status saved';
-      saveStatus.innerHTML = '✓ Respostas salvas';
-      setTimeout(() => { saveStatus.style.display = 'none'; }, 2000);
+      return preencherTela();
+    }
+  }
 
-      /* Tenta enviar para o backend se completo */
-      enviarQuestionarioBackend();
-    }, 1500); /* delay um pouco maior para não enviar a cada tecla */
-  });
-});
+  if (!cad.nome) {
+    window.location.href = 'para-voce.html';
+    return;
+  }
+  if (cad.status_pagamento !== 'approved') {
+    window.location.href = 'pagamento-recusado.html';
+    return;
+  }
+  preencherTela();
+}
 
-/* Marca o clique no agendamento para registrar no log do cadastro */
-document.getElementById('btnSchedule').addEventListener('click', () => {
-  cad.agendamento_clicado_em = new Date().toISOString();
-  sessionStorage.setItem('eco_cadastro', JSON.stringify(cad));
-});
+function preencherTela() {
+  const firstName = (cad.nome || '').split(' ')[0];
+  document.getElementById('customerName').textContent = firstName + '!';
+  document.getElementById('confirmJornada').textContent = cad.produto_label || '—';
+  document.getElementById('confirmValor').textContent = brl(cad.valor || 0);
+  document.getElementById('confirmProtocolo').textContent = cad.external_reference || cad.id_pagamento_simulado || '—';
+  if (cad.email) document.getElementById('emailUsed').textContent = cad.email;
+}
+
+inicializar();
 </script>
 </body>
 </html>

@@ -626,6 +626,167 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
   font-size:13px; color:rgba(255,255,255,.7);
   line-height:1.4;
 }
+/* =========== VITRINE DE SUCESSO =========== */
+.vitrine{
+  background:
+    radial-gradient(ellipse at top right, rgba(245,158,11,.18) 0%, transparent 55%),
+    radial-gradient(ellipse at bottom left, rgba(0,184,217,.15) 0%, transparent 55%),
+    linear-gradient(180deg, var(--bg-night) 0%, var(--purple-deep) 100%);
+  padding:100px 0;
+  position:relative;
+  overflow:hidden;
+  color:#fff;
+}
+.vitrine-header{
+  text-align:center;
+  max-width:760px;
+  margin:0 auto 56px;
+  position:relative;
+  z-index:2;
+}
+.vitrine-eyebrow{
+  display:inline-block;
+  font-family:'Poppins',sans-serif; font-size:11px; font-weight:800;
+  letter-spacing:1.8px; text-transform:uppercase;
+  color:var(--gold);
+  background:rgba(245,158,11,.15);
+  padding:8px 18px; border-radius:99px;
+  margin-bottom:18px;
+  border:1px solid rgba(245,158,11,.3);
+}
+.vitrine-title{
+  font-family:'Poppins',sans-serif; font-weight:900;
+  font-size:clamp(30px, 4.6vw, 48px);
+  color:#fff;
+  letter-spacing:-1.2px; line-height:1.05;
+  margin:0 0 18px;
+}
+.vitrine-title .hl{
+  background:linear-gradient(135deg, var(--gold) 0%, #FFE066 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.vitrine-sub{
+  font-size:17px;
+  color:rgba(255,255,255,.85);
+  margin:0;
+  line-height:1.6;
+  max-width:640px;
+  margin-left:auto; margin-right:auto;
+}
+.vitrine-sub strong{color:var(--gold); font-weight:700}
+
+.vitrine-frame-wrap{
+  max-width:1100px;
+  margin:0 auto;
+  position:relative;
+  z-index:2;
+}
+.vitrine-frame{
+  background:#fff;
+  border-radius:20px;
+  padding:8px;
+  box-shadow:
+    0 40px 100px rgba(0,0,0,.5),
+    0 0 0 1px rgba(255,255,255,.1);
+  position:relative;
+  transform:translateY(0);
+  transition:transform .4s ease;
+}
+.vitrine-frame::before{
+  content:'';
+  position:absolute;
+  inset:-2px;
+  background:linear-gradient(135deg, var(--gold), var(--purple), var(--teal));
+  border-radius:22px;
+  z-index:-1;
+  opacity:.5;
+  filter:blur(20px);
+}
+.vitrine-frame:hover{transform:translateY(-8px)}
+.vitrine-frame img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:14px;
+}
+.vitrine-frame-fb{
+  width:100%;
+  aspect-ratio:16/9;
+  border-radius:14px;
+  background:linear-gradient(135deg, var(--purple-deep), var(--purple));
+  display:flex; align-items:center; justify-content:center;
+  flex-direction:column; gap:12px;
+  color:rgba(255,255,255,.5);
+  font-family:'Poppins',sans-serif; font-weight:700; font-size:14px;
+}
+
+.vitrine-badges{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:32px;
+  position:relative;
+  z-index:2;
+}
+.vitrine-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  padding:10px 18px;
+  border-radius:99px;
+  font-family:'Poppins',sans-serif;
+  font-size:13px;
+  font-weight:600;
+  color:#fff;
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.vitrine-badge::before{
+  content:'';
+  width:8px; height:8px; border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 10px var(--green);
+}
+
+.vitrine-cta-row{
+  display:flex; justify-content:center;
+  margin-top:48px;
+  position:relative; z-index:2;
+}
+.vitrine-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:linear-gradient(135deg, var(--gold) 0%, #FFC94A 100%);
+  color:var(--purple-deep);
+  font-family:'Poppins',sans-serif;
+  font-weight:800;
+  font-size:15px;
+  padding:17px 32px;
+  border-radius:14px;
+  text-decoration:none;
+  box-shadow:0 12px 32px rgba(245,158,11,.4);
+  transition:transform .2s, box-shadow .2s;
+  position:relative;
+  overflow:hidden;
+}
+.vitrine-cta:hover{
+  transform:translateY(-3px);
+  box-shadow:0 22px 50px rgba(245,158,11,.55);
+}
+.vitrine-cta::before{
+  content:''; position:absolute; top:0; left:-100%;
+  width:100%; height:100%;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.4), transparent);
+  transition:left .6s ease;
+}
+.vitrine-cta:hover::before{left:100%}
+
 /* =========== PRODUCT SECTION =========== */
 .product-section{display:none}
 .product-section.is-visible{display:block}
@@ -1956,6 +2117,38 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
       <div class="proof-bar-item">
         <div class="proof-bar-num">7 dias</div>
         <div class="proof-bar-label">garantia incondicional CDC</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================== -->
+<!-- VITRINE DE SUCESSO — cases reais                           -->
+<!-- ========================================================== -->
+<section class="vitrine">
+  <div class="container">
+    <div class="vitrine-header">
+      <span class="vitrine-eyebrow">★ Cases reais de quem passou pela jornada</span>
+      <h2 class="vitrine-title">Não é promessa. <span class="hl">É histórico.</span></h2>
+      <p class="vitrine-sub">
+        Esta é a <strong>vitrine real</strong> dos profissionais e parceiros que confiaram no nosso método e colheram resultado. Cada peça aqui representa <strong>uma pessoa que evoluiu</strong> — e que hoje toma decisões com mais clareza, comportamento e estratégia.
+      </p>
+    </div>
+
+    <div class="vitrine-frame-wrap">
+      <div class="vitrine-frame">
+        <img src="img/vitrine-sucesso.jpg" alt="Vitrine de cases de sucesso da comunidade ECO do B.E.M."
+             onerror="imgFallback(this, '<div class=&quot;vitrine-frame-fb&quot;><span style=&quot;font-size:42px&quot;>★</span><span>Vitrine de cases — em breve carregando</span></div>')" />
+      </div>
+
+      <div class="vitrine-badges">
+        <span class="vitrine-badge">Cases documentados</span>
+        <span class="vitrine-badge">Resultados mensuráveis</span>
+        <span class="vitrine-badge">Histórico desde 2019</span>
+      </div>
+
+      <div class="vitrine-cta-row">
+        <a href="#quiz" class="vitrine-cta">Quero fazer parte dessa vitrine <span style="font-size:18px">→</span></a>
       </div>
     </div>
   </div>

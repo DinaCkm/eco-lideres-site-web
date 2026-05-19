@@ -349,7 +349,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
     <!-- SEÇÃO 3: OBJETIVO -->
     <div class="form-section">
       <h2 class="section-title">O que você busca</h2>
-      <p class="section-desc">Em poucas frases, conte o que motivou você a procurar essa jornada. Isso ajuda os psicólogos a personalizarem desde a primeira mentoria.</p>
+      <p class="section-desc">Escreva o que você quer atingir com esta jornada. Esse será o nosso compromisso com você.</p>
 
       <div class="field">
         <label for="objetivo">Seu objetivo principal <span class="req">*</span></label>
@@ -514,7 +514,7 @@ aceito.addEventListener('change', () => {
   if (aceito.checked) clearTermsError();
 });
 
-document.getElementById('cadastroForm').addEventListener('submit', (e) => {
+document.getElementById('cadastroForm').addEventListener('submit', async (e) => {
   e.preventDefault();
 
   /* === Validação 1: objetivo === */
@@ -563,12 +563,40 @@ document.getElementById('cadastroForm').addEventListener('submit', (e) => {
   data.produto_label = `${prod.title} — ${prod[data.versao].label}`;
   data.valor = prod[data.versao].price;
 
-  /* Salva temporariamente no sessionStorage para a próxima página */
-  sessionStorage.setItem('eco_cadastro', JSON.stringify(data));
+  /* === Envia para o backend e redireciona ao Mercado Pago === */
+  const API_URL = 'https://eco-backend-production-6229.up.railway.app';
 
-  /* PLACEHOLDER — quando o backend do Mercado Pago estiver pronto,
-     trocar este redirect por chamada à API e usar a init_point do MP. */
-  window.location.href = 'pagamento-placeholder.html';
+  /* Trava o botão e mostra estado de carregamento */
+  btnSubmit.disabled = true;
+  const originalText = btnSubmit.innerHTML;
+  btnSubmit.innerHTML = '⏳ Preparando pagamento seguro...';
+
+  try {
+    const resp = await fetch(API_URL + '/api/criar-pagamento', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    const result = await resp.json();
+
+    if (!resp.ok || !result.ok || !result.init_point) {
+      throw new Error(result.error || result.detail || 'Não foi possível iniciar o pagamento.');
+    }
+
+    /* Salva referência localmente para a página de retorno */
+    data.external_reference = result.external_reference;
+    sessionStorage.setItem('eco_cadastro', JSON.stringify(data));
+
+    /* Redireciona para o Mercado Pago */
+    window.location.href = result.init_point;
+
+  } catch (err) {
+    console.error('Erro ao criar pagamento:', err);
+    btnSubmit.disabled = false;
+    btnSubmit.innerHTML = originalText;
+    alert('Não conseguimos iniciar o pagamento agora.\n\nMotivo: ' + (err.message || 'erro de conexão') + '\n\nTente novamente em alguns segundos ou entre em contato em relacionamento@ckmtalents.net');
+  }
 });
 </script>
 

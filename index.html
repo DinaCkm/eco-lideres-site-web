@@ -18,978 +18,525 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     :root{
-      --purple:       #5B2EFF;
-      --purple-deep:  #1A0A5E;
-      --purple-dark:  #3A1D8F;
-      --purple-light: #8C68FF;
-      --teal:         #00B8D9;
-      --teal-soft:    #5DCAA5;
-      --green:        #5ED38C;
-      --blue:         #4A9FFF;
-      --gold:         #F59E0B;
-      --bg-white:     #FFFFFF;
-      --bg-lilac:     #F5F3FF;
-      --bg-lilac-2:   #E8E4FF;
-      --bg-soft:      #FAFAFE;
-      --text-dark:    #1A0A5E;
-      --text-body:    #3A3559;
-      --text-muted:   #6B6389;
-      --text-white:   #FFFFFF;
-      --text-lilac:   #C4B8FF;
-      --border-light: #E8E4FF;
-      --border-soft:  #EFECFF;
-      --shadow-sm:    0 4px 16px rgba(26, 10, 94, 0.06);
-      --shadow-md:    0 12px 32px rgba(26, 10, 94, 0.08);
-      --shadow-lg:    0 24px 60px rgba(26, 10, 94, 0.12);
-      --shadow-purple:0 18px 40px rgba(91, 46, 255, 0.22);
-      --shadow-teal:  0 18px 40px rgba(0, 184, 217, 0.22);
-      --shadow-green: 0 18px 40px rgba(94, 211, 140, 0.22);
-      --radius-sm:    12px;
-      --radius-md:    20px;
-      --radius-lg:    28px;
-      --radius-xl:    36px;
-      --max:          1180px;
-      --gutter:       20px;
-      --section-space: 110px;
+      --purple:#5B2EFF; --purple-deep:#1A0A5E; --purple-dark:#3A1D8F; --purple-light:#8C68FF;
+      --teal:#00B8D9; --teal-soft:#5DCAA5; --green:#5ED38C; --blue:#4A9FFF; --gold:#F59E0B;
+      --bg-white:#FFFFFF; --bg-lilac:#F5F3FF; --bg-lilac-2:#E8E4FF; --bg-soft:#FAFAFE;
+      --text-dark:#1A0A5E; --text-body:#3A3559; --text-muted:#6B6389; --text-white:#FFFFFF; --text-lilac:#C4B8FF;
+      --border-light:#E8E4FF; --border-soft:#EFECFF;
+      --shadow-sm:0 4px 16px rgba(26,10,94,.06);
+      --shadow-md:0 12px 32px rgba(26,10,94,.08);
+      --shadow-lg:0 24px 60px rgba(26,10,94,.12);
+      --shadow-purple:0 18px 40px rgba(91,46,255,.22);
+      --shadow-teal:0 18px 40px rgba(0,184,217,.22);
+      --shadow-green:0 18px 40px rgba(94,211,140,.22);
+      --radius-sm:12px; --radius-md:20px; --radius-lg:28px; --radius-xl:36px;
+      --max:1180px; --gutter:20px; --section-space:110px;
     }
+    *{box-sizing:border-box;-webkit-text-size-adjust:100%}
+    html{scroll-behavior:smooth;overflow-x:hidden}
+    body{margin:0;font-family:'Inter',sans-serif;color:var(--text-body);background:var(--bg-white);overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;height:auto;display:block}
+    .container{width:100%;max-width:calc(var(--max) + (var(--gutter)*2));margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
+    .section{padding:var(--section-space) 0}
 
-    *{ box-sizing:border-box; -webkit-text-size-adjust:100%; }
-    html{ scroll-behavior:smooth; overflow-x:hidden; }
-    body{
-      margin:0;
-      font-family:'Inter', sans-serif;
-      color:var(--text-body);
-      background:var(--bg-white);
-      overflow-x:hidden;
-      line-height:1.6;
-      -webkit-font-smoothing:antialiased;
+    /* ========== MENU UNIFICADO ECO ========== */
+    .eco-nav{
+      position:sticky; top:0; z-index:100;
+      background:rgba(26,10,94,.92);
+      backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(255,255,255,.08);
     }
-    a{ color:inherit; text-decoration:none; }
-    img{ max-width:100%; height:auto; display:block; }
+    .eco-nav-inner{
+      max-width:1280px; margin:0 auto;
+      padding:14px 24px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:24px; min-height:72px;
+    }
+    .eco-brand{ display:flex; align-items:center; gap:10px; text-decoration:none; flex-shrink:0; }
+    .eco-brand img{ height:42px; width:auto; display:block; transition:transform .25s; }
+    .eco-brand:hover img{ transform:scale(1.03); }
+    .eco-brand-fb{
+      font-family:'Poppins',sans-serif; font-weight:800; font-size:20px;
+      color:#fff; letter-spacing:-.02em; line-height:1;
+    }
+    .eco-brand-fb em{ font-style:normal; font-weight:400; opacity:.7; font-size:13px; margin:0 2px; }
 
-    .container{
-      width:100%;
-      max-width:calc(var(--max) + (var(--gutter) * 2));
-      margin:0 auto;
-      padding-left:var(--gutter);
-      padding-right:var(--gutter);
-    }
-    .section{ padding:var(--section-space) 0; }
-
-    /* =========== HEADER — NAV PADRONIZADO =========== */
-    .site-header{
-      position:sticky;
-      top:0;
-      z-index:200;
-      background:rgba(26, 10, 94, 0.92);
-      backdrop-filter:blur(18px);
-      -webkit-backdrop-filter:blur(18px);
-      border-bottom:1px solid rgba(255,255,255,0.08);
-    }
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      min-height:72px;
-      padding:10px 0;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      min-width:0; flex-shrink:0;
-      text-decoration:none;
-    }
-    .brand-logo{
-      height:42px; width:auto; display:block;
-      transition:transform .25s ease;
-    }
-    .brand:hover .brand-logo{ transform:scale(1.03); }
-    .brand-logo-text{
-      font-family:'Poppins',sans-serif;
-      font-weight:800; font-size:20px;
-      color:#fff; letter-spacing:-0.02em; line-height:1;
-    }
-    .brand-logo-text em{
-      font-style:normal; font-weight:400;
-      opacity:0.65; font-size:13px; margin:0 2px;
-    }
-    .footer-logo-text{
-      font-family:'Poppins',sans-serif;
-      font-weight:800; font-size:18px;
-      color:var(--text-dark); letter-spacing:-0.02em;
-    }
-    .footer-logo-text em{
-      font-style:normal; font-weight:400;
-      opacity:0.6; font-size:12px; margin:0 2px;
-    }
-
-    /* Nav links */
-    .nav-links{
-      display:flex; align-items:center;
-      gap:2px; flex-wrap:nowrap;
-    }
-    .nav-links > a, .nav-drop-btn{
-      color:rgba(255,255,255,0.82);
-      font-size:13px; font-weight:600;
-      padding:7px 10px; border-radius:8px;
+    .eco-nav-links{ display:flex; align-items:center; gap:6px; flex-wrap:nowrap; }
+    .eco-nav-item{ position:relative; }
+    .eco-nav-link{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:10px 14px;
+      color:rgba(255,255,255,.88);
+      font-size:14px; font-weight:600;
+      border-radius:10px;
       transition:color .18s, background .18s;
       white-space:nowrap;
-      background:none; border:none; cursor:pointer;
-      font-family:'Inter',sans-serif;
-      display:flex; align-items:center; gap:5px;
+      cursor:pointer; background:none; border:none; font-family:inherit;
     }
-    .nav-links > a:hover, .nav-drop-btn:hover{
-      color:#fff;
-      background:rgba(255,255,255,0.08);
+    .eco-nav-link:hover, .eco-nav-link.active{ color:#fff; background:rgba(255,255,255,.06); }
+    .eco-nav-link .caret{
+      width:10px; height:10px; transition:transform .25s;
+      opacity:.7;
     }
+    .eco-nav-item:hover .eco-nav-link .caret,
+    .eco-nav-item.open .eco-nav-link .caret{ transform:rotate(180deg); }
 
-    /* Dropdown */
-    .nav-dropdown{ position:relative; }
-    .nav-drop-btn svg{
-      width:11px; height:11px;
-      transition:transform .2s;
-      opacity:0.6; flex-shrink:0;
-    }
-    .nav-dropdown.open .nav-drop-btn svg{ transform:rotate(180deg); }
-    .nav-drop-menu{
-      position:absolute; top:calc(100% + 10px); left:50%;
-      transform:translateX(-50%);
-      min-width:230px;
-      background:rgba(16, 6, 56, 0.98);
-      border:1px solid rgba(255,255,255,0.12);
+    /* Highlight do produto destaque */
+    .eco-nav-link.featured{ color:var(--teal); font-weight:700; }
+    .eco-nav-link.featured:hover{ color:#fff; background:rgba(0,184,217,.14); }
+
+    /* Dropdown menu */
+    .eco-dropdown{
+      position:absolute; top:calc(100% + 8px); left:0;
+      min-width:280px;
+      background:#fff;
       border-radius:16px;
-      padding:8px;
-      box-shadow:0 24px 56px rgba(0,0,0,0.4);
-      backdrop-filter:blur(24px);
-      display:none;
-      z-index:300;
+      box-shadow:0 24px 60px rgba(0,0,0,.25), 0 2px 8px rgba(0,0,0,.12);
+      padding:10px;
+      opacity:0; visibility:hidden; transform:translateY(-8px);
+      transition:opacity .22s, visibility .22s, transform .22s;
+      z-index:200;
     }
-    .nav-dropdown.open .nav-drop-menu{ display:block; }
-    .nav-drop-menu a{
-      display:flex; align-items:center; gap:10px;
-      padding:10px 12px; border-radius:10px;
-      color:rgba(255,255,255,0.82);
-      font-size:13px; font-weight:600;
-      transition:background .15s, color .15s;
-      white-space:nowrap;
+    .eco-nav-item:hover .eco-dropdown,
+    .eco-nav-item.open .eco-dropdown{
+      opacity:1; visibility:visible; transform:translateY(0);
     }
-    .nav-drop-menu a:hover{
-      background:rgba(255,255,255,0.09);
-      color:#fff;
+    .eco-dropdown::before{
+      content:''; position:absolute; top:-6px; left:24px;
+      width:12px; height:12px; background:#fff;
+      transform:rotate(45deg);
     }
-    .drop-icon{
-      width:28px; height:28px; border-radius:8px;
-      display:grid; place-items:center;
-      font-size:14px; flex-shrink:0;
-    }
-    .drop-sep{
-      height:1px; background:rgba(255,255,255,0.08);
-      margin:6px 4px;
-    }
-    .drop-label{
+    .eco-dd-section{
+      padding:6px 8px 4px;
+      font-family:'Poppins',sans-serif;
       font-size:10px; font-weight:700;
-      letter-spacing:1.8px; text-transform:uppercase;
-      color:rgba(255,255,255,0.3);
-      padding:4px 12px 6px;
-      display:block;
+      letter-spacing:1.4px; text-transform:uppercase;
+      color:var(--text-muted);
     }
-    .drop-badge{
-      margin-left:auto;
-      font-size:9px; font-weight:800;
-      padding:2px 8px; border-radius:999px;
-      letter-spacing:.5px; text-transform:uppercase;
-      flex-shrink:0;
+    .eco-dd-link{
+      display:flex; align-items:flex-start; gap:12px;
+      padding:12px 14px;
+      border-radius:10px;
+      color:var(--text-dark);
+      transition:background .15s, transform .15s;
+      position:relative;
     }
-    .badge-star{ background:rgba(0,184,217,0.2); color:#00B8D9; }
-    .badge-em-breve{ background:rgba(245,158,11,0.18); color:#F59E0B; }
-
-    .drop-highlight{
-      background:linear-gradient(135deg,rgba(91,46,255,0.22),rgba(0,184,217,0.12));
-      border:1px solid rgba(91,46,255,0.22);
-      color:#fff !important;
+    .eco-dd-link:hover{ background:var(--bg-lilac); transform:translateX(2px); }
+    .eco-dd-icon{
+      flex-shrink:0; width:36px; height:36px; border-radius:10px;
+      background:linear-gradient(135deg, var(--purple), var(--purple-light));
+      display:grid; place-items:center;
+      color:#fff; font-size:16px;
+    }
+    .eco-dd-link[data-color="teal"] .eco-dd-icon{ background:linear-gradient(135deg, var(--teal), var(--blue)); }
+    .eco-dd-link[data-color="green"] .eco-dd-icon{ background:linear-gradient(135deg, var(--green), var(--teal-soft)); }
+    .eco-dd-link[data-color="gold"] .eco-dd-icon{ background:linear-gradient(135deg, var(--gold), #FFC94A); }
+    .eco-dd-link[data-color="pink"] .eco-dd-icon{ background:linear-gradient(135deg, #FF4D8F, var(--purple-light)); }
+    .eco-dd-body{ flex:1; min-width:0; }
+    .eco-dd-title{
+      font-family:'Poppins',sans-serif;
+      font-weight:700; font-size:14px;
+      color:var(--text-dark); line-height:1.2;
+      display:flex; align-items:center; gap:8px;
       margin-bottom:2px;
     }
-    .drop-highlight:hover{
-      background:linear-gradient(135deg,rgba(91,46,255,0.35),rgba(0,184,217,0.2)) !important;
-    }
-
-    /* Nav CTA */
-    .nav-cta{
-      background:linear-gradient(135deg,var(--teal),var(--blue)) !important;
-      color:#fff !important;
-      padding:9px 18px !important;
-      border-radius:999px !important;
-      font-weight:700 !important;
-      font-size:13px !important;
-      box-shadow:var(--shadow-teal);
-      margin-left:8px;
-      transition:transform .2s, box-shadow .2s !important;
-      flex-shrink:0;
-      white-space:nowrap;
-    }
-    .nav-cta:hover{
-      transform:translateY(-1px) !important;
-      box-shadow:0 16px 36px rgba(0,184,217,0.38) !important;
-      background:linear-gradient(135deg,var(--teal),var(--blue)) !important;
-    }
-
-    /* Hamburger */
-    .nav-hamburger{
-      display:none;
-      flex-direction:column; gap:5px;
-      cursor:pointer; background:none; border:none;
-      padding:6px; z-index:300; flex-shrink:0;
-    }
-    .nav-hamburger span{
-      display:block; width:22px; height:2px;
-      background:#fff; border-radius:2px;
-      transition:all .3s;
-    }
-    .nav-hamburger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
-    .nav-hamburger.open span:nth-child(2){ opacity:0; transform:scaleX(0); }
-    .nav-hamburger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
-
-    /* Mobile menu overlay */
-    .nav-mobile{
-      display:none;
-      position:fixed; inset:0;
-      background:rgba(16,6,56,0.98);
-      backdrop-filter:blur(20px);
-      z-index:250;
-      flex-direction:column;
-      align-items:flex-start;
-      padding:86px 28px 40px;
-      gap:0;
-      overflow-y:auto;
-    }
-    .nav-mobile.open{ display:flex; }
-    .nav-mobile-section-title{
-      font-family:'Inter',sans-serif;
-      font-size:10px; font-weight:700;
-      letter-spacing:2px; text-transform:uppercase;
-      color:rgba(255,255,255,0.3);
-      padding:18px 0 6px; width:100%;
-    }
-    .nav-mobile-sub{ width:100%; }
-    .nav-mobile-sub a, .nav-mobile > a{
-      display:flex; align-items:center; gap:10px;
-      font-family:'Poppins',sans-serif;
-      font-size:16px; font-weight:700;
-      color:rgba(255,255,255,0.85);
-      padding:11px 0; width:100%;
-      border-bottom:1px solid rgba(255,255,255,0.06);
-      transition:color .2s;
-      text-decoration:none;
-    }
-    .nav-mobile > a{ font-size:17px; }
-    .nav-mobile-sub a:hover, .nav-mobile > a:hover{ color:var(--teal); }
-    .nav-mobile .nav-cta-mobile{
-      margin-top:24px;
-      background:linear-gradient(135deg,var(--teal),var(--blue));
-      color:#fff; border-radius:999px;
-      text-align:center; font-size:15px;
-      font-weight:700; padding:14px 28px;
-      border-bottom:none; width:100%;
-      display:block; cursor:pointer;
-      text-decoration:none;
-    }
-
-    /* =========== COMPONENTES COMUNS =========== */
-    .eyebrow{
-      display:inline-flex; align-items:center; gap:10px;
-      font-size:12px; font-weight:700;
-      letter-spacing:2.5px; text-transform:uppercase;
-      color:var(--purple); margin-bottom:20px;
-    }
-    .eyebrow::before{
-      content:""; width:28px; height:2px;
-      background:linear-gradient(90deg, var(--purple), var(--teal));
-      display:block; flex:0 0 auto; border-radius:2px;
-    }
-    .eyebrow.light{ color:var(--teal); }
-    .eyebrow.light::before{ background:linear-gradient(90deg, var(--teal), var(--green)); }
-
-    .title{
-      font-family:'Poppins', sans-serif;
-      font-size:clamp(2rem, 4.5vw, 3.8rem);
-      font-weight:800; line-height:1.08;
-      letter-spacing:-0.025em;
-      margin:0 0 20px; color:var(--text-dark);
-    }
-    .title.on-dark{ color:var(--text-white); }
-    .title .hl-purple{ color:var(--purple); }
-    .title .hl-teal  { color:var(--teal); }
-    .title .hl-green { color:var(--green); }
-    .title .hl-gradient{
-      background:linear-gradient(90deg, var(--purple), var(--teal));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
-
-    .subtitle{
-      font-size:clamp(1rem, 1.2vw, 1.1rem);
-      line-height:1.7; color:var(--text-muted);
-      max-width:760px; margin:0;
-    }
-    .subtitle.on-dark{ color:var(--text-lilac); }
-
-    .btn-row{
-      display:flex; flex-wrap:wrap; gap:14px; margin-top:36px;
-    }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      min-height:54px; padding:14px 26px;
-      border-radius:999px; font-weight:700; font-size:15px;
-      text-align:center; cursor:pointer;
-      transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
-      border:1px solid transparent;
-      font-family:'Inter', sans-serif;
-    }
-    .btn:hover{ transform:translateY(-2px); }
-    .btn-primary{
-      background:linear-gradient(135deg, var(--purple), var(--purple-light));
-      color:#fff;
-      box-shadow:var(--shadow-purple);
-    }
-    .btn-primary:hover{ box-shadow:0 22px 48px rgba(91, 46, 255, 0.32); }
-    .btn-secondary{
-      background:#fff; color:var(--purple);
-      border-color:var(--border-light);
-      box-shadow:var(--shadow-sm);
-    }
-    .btn-secondary:hover{ border-color:var(--purple); color:var(--purple); }
-    .btn-teal{
-      background:linear-gradient(135deg, var(--teal), var(--blue));
-      color:#fff; box-shadow:var(--shadow-teal);
-    }
-    .btn-green{
-      background:linear-gradient(135deg, var(--green), var(--teal-soft));
-      color:#fff; box-shadow:var(--shadow-green);
-    }
-
-    /* =========== HERO =========== */
-    .hero{
-      position:relative;
-      padding:80px 0 100px;
-      background:
-        radial-gradient(circle at 15% 20%, rgba(91, 46, 255, 0.09), transparent 40%),
-        radial-gradient(circle at 90% 85%, rgba(0, 184, 217, 0.10), transparent 40%),
-        linear-gradient(180deg, #ffffff 0%, var(--bg-lilac) 100%);
-      overflow:hidden;
-    }
-    .hero::before{
-      content:""; position:absolute; inset:0;
-      background-image:
-        linear-gradient(rgba(91,46,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(91,46,255,0.04) 1px, transparent 1px);
-      background-size:60px 60px;
-      opacity:0.6; pointer-events:none;
-      mask-image:radial-gradient(circle at 50% 50%, #000 30%, transparent 75%);
-      -webkit-mask-image:radial-gradient(circle at 50% 50%, #000 30%, transparent 75%);
-    }
-    .hero-grid{
-      position:relative;
-      display:grid;
-      grid-template-columns:minmax(0, 1.05fr) minmax(0, 1fr);
-      gap:50px; align-items:center;
-    }
-    .hero-content{ position:relative; z-index:2; }
-    .pill{
-      display:inline-flex; align-items:center;
-      gap:8px; padding:8px 16px 8px 10px;
-      border-radius:999px;
-      background:#fff;
-      border:1px solid var(--border-light);
-      font-size:13px; font-weight:600;
-      color:var(--text-dark);
-      box-shadow:var(--shadow-sm);
-      margin-bottom:24px;
-    }
-    .pill::before{
-      content:""; width:8px; height:8px; border-radius:50%;
-      background:var(--green);
-      box-shadow:0 0 0 4px rgba(94, 211, 140, 0.2);
-    }
-    .hero-visual{
-      position:relative;
-      aspect-ratio: 4 / 5;
-      border-radius:var(--radius-lg);
-    }
-    .hero-image-wrap{
-      position:relative; width:100%; height:100%;
-      border-radius:var(--radius-lg); overflow:hidden;
-      background:linear-gradient(135deg, var(--purple-deep), var(--purple));
-      box-shadow:var(--shadow-lg);
-    }
-    .hero-image{
-      width:100%; height:100%; object-fit:cover;
-      display:block;
-    }
-    .hero-card-float{
-      position:absolute; background:#fff;
-      border-radius:var(--radius-md);
-      padding:16px 18px;
-      box-shadow:var(--shadow-lg);
-      display:flex; align-items:center; gap:12px;
-      min-width:200px;
-    }
-    .hero-card-float .dot{
-      width:44px; height:44px; border-radius:14px;
-      display:grid; place-items:center;
-      font-size:20px; flex:0 0 auto;
-    }
-    .hero-card-float strong{
-      display:block;
-      font-family:'Poppins', sans-serif;
-      font-size:16px; color:var(--text-dark); line-height:1.1;
-    }
-    .hero-card-float span{
-      display:block; font-size:12px;
-      color:var(--text-muted); margin-top:2px;
-    }
-    .float-tl{ top:24px; left:-30px; }
-    .float-br{ bottom:32px; right:-28px; }
-    .float-tl .dot{ background:rgba(94, 211, 140, 0.15); color:var(--green); }
-    .float-br .dot{ background:rgba(0, 184, 217, 0.15); color:var(--teal); }
-
-    /* =========== NÚMEROS =========== */
-    .numbers-band{
-      padding:60px 0;
-      background:var(--bg-white);
-    }
-    .numbers-grid{
-      display:grid;
-      grid-template-columns:repeat(4, minmax(0, 1fr));
-      gap:20px;
-    }
-    .number-card{
-      background:#fff;
-      border:1px solid var(--border-light);
-      border-radius:var(--radius-md);
-      padding:28px 24px;
-      position:relative; overflow:hidden;
-      transition:transform .25s ease, box-shadow .25s ease;
-    }
-    .number-card::before{
-      content:""; position:absolute;
-      top:0; left:0; right:0; height:4px;
-      background:var(--purple);
-    }
-    .number-card.teal::before  { background:var(--teal); }
-    .number-card.green::before { background:var(--green); }
-    .number-card.gold::before  { background:var(--gold); }
-    .number-card:hover{
-      transform:translateY(-4px);
-      box-shadow:var(--shadow-md);
-    }
-    .number-card strong{
-      display:block;
-      font-family:'Poppins', sans-serif;
-      font-weight:800;
-      font-size:clamp(2.2rem, 3.2vw, 2.8rem);
-      color:var(--purple);
-      margin-bottom:8px; line-height:1;
-    }
-    .number-card.teal strong { color:var(--teal); }
-    .number-card.green strong{ color:var(--green); }
-    .number-card.gold strong { color:var(--gold); }
-    .number-card span{
-      display:block; color:var(--text-muted);
-      font-size:14px; line-height:1.55;
-    }
-
-    /* =========== HISTÓRIA =========== */
-    .section-history{
-      background:var(--bg-lilac);
-      position:relative; overflow:hidden;
-    }
-    .history-grid{
-      display:grid;
-      grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);
-      gap:60px; align-items:center;
-    }
-    .history-image{
-      width:100%; aspect-ratio: 4 / 5;
-      object-fit:cover;
-      border-radius:var(--radius-lg);
-      box-shadow:var(--shadow-lg);
-    }
-    .history-placeholder{
-      width:100%; aspect-ratio: 4 / 5;
-      border-radius:var(--radius-lg);
-      background:linear-gradient(135deg, var(--teal), var(--blue));
-      box-shadow:var(--shadow-lg);
-      position:relative; overflow:hidden;
-    }
-    .history-placeholder::after{
-      content:""; position:absolute; inset:20px;
-      border:2px dashed rgba(255,255,255,0.35);
-      border-radius:calc(var(--radius-lg) - 10px);
-    }
-    .quote-card{
-      background:#fff;
-      border-radius:var(--radius-md);
-      padding:28px 30px; margin-top:24px;
-      border-left:4px solid var(--purple);
-      box-shadow:var(--shadow-sm);
-    }
-    .quote-card p{
-      margin:0; color:var(--text-dark);
-      font-size:1.05rem; line-height:1.7;
-      font-weight:500; font-style:italic;
-    }
-
-    /* =========== METODOLOGIA (ESCURO) =========== */
-    .section-method{
-      background:
-        radial-gradient(circle at 10% 20%, rgba(91, 46, 255, 0.35), transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(0, 184, 217, 0.22), transparent 40%),
-        linear-gradient(160deg, var(--purple-deep) 0%, #0D062A 100%);
-      color:var(--text-white);
-      position:relative; overflow:hidden;
-    }
-    .section-method::before{
-      content:""; position:absolute; inset:0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size:80px 80px;
-      opacity:0.5; pointer-events:none;
-    }
-    .section-method .container{ position:relative; z-index:2; }
-    .section-header{
-      text-align:center; margin-bottom:56px;
-      max-width:800px; margin-left:auto; margin-right:auto;
-    }
-    .section-header .eyebrow{ justify-content:center; }
-    .section-header .subtitle{ margin:0 auto; }
-
-    .pillars-grid{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0, 1fr));
-      gap:24px;
-    }
-    .pillar-card{
-      background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.12);
-      border-radius:var(--radius-lg);
-      overflow:hidden;
-      display:flex; flex-direction:column;
-      transition:transform .25s ease, border-color .25s ease;
-      backdrop-filter:blur(10px);
-    }
-    .pillar-card:hover{
-      transform:translateY(-6px);
-      border-color:rgba(255,255,255,0.25);
-    }
-    .pillar-image{
-      width:100%; aspect-ratio: 4 / 3;
-      object-fit:cover;
-      border-bottom:1px solid rgba(255,255,255,0.08);
-    }
-    .pillar-image-ph{
-      width:100%; aspect-ratio: 4 / 3;
-      background:linear-gradient(135deg, var(--purple), var(--teal));
-      border-bottom:1px solid rgba(255,255,255,0.08);
-    }
-    .pillar-image-ph.p2{ background:linear-gradient(135deg, var(--teal), var(--green)); }
-    .pillar-image-ph.p3{ background:linear-gradient(135deg, var(--gold), var(--purple)); }
-    .pillar-content{
-      padding:26px 24px 28px;
-      display:flex; flex-direction:column; flex:1;
-    }
-    .pillar-icon{
-      width:54px; height:54px;
-      border-radius:16px;
-      display:grid; place-items:center;
-      font-size:24px;
-      background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.16);
-      margin-bottom:18px;
-    }
-    .pillar-content h3{
-      margin:0 0 12px;
-      font-family:'Poppins', sans-serif;
-      font-size:1.35rem; font-weight:700; color:#fff;
-    }
-    .pillar-content p{
-      margin:0 0 20px;
-      color:var(--text-lilac);
-      line-height:1.7; font-size:15px;
-    }
-    .feature-list{
-      list-style:none; padding:0; margin:0;
-      display:grid; gap:10px; font-size:14px;
-    }
-    .feature-list li{
-      display:flex; align-items:flex-start; gap:10px;
-      color:rgba(255,255,255,0.88);
-    }
-    .feature-list li::before{
-      content:"✓"; color:var(--green); font-weight:800;
-      flex:0 0 auto; line-height:1.4;
-    }
-
-    /* =========== PRODUTOS (CLARO) =========== */
-    .section-products{ background:var(--bg-white); }
-    .products-grid{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0, 1fr));
-      gap:26px;
-    }
-    .product-card{
-      background:#fff;
-      border:1px solid var(--border-light);
-      border-radius:var(--radius-lg);
-      overflow:hidden;
-      display:flex; flex-direction:column;
-      transition:transform .25s ease, box-shadow .25s ease;
-      box-shadow:var(--shadow-sm);
-    }
-    .product-card:hover{
-      transform:translateY(-6px);
-      box-shadow:var(--shadow-lg);
-    }
-    .product-image{
-      width:100%; aspect-ratio: 16 / 10;
-      object-fit:cover;
-    }
-    .product-image-ph{
-      width:100%; aspect-ratio: 16 / 10;
-      position:relative; overflow:hidden;
-    }
-    .product-image-ph.purple{ background:linear-gradient(135deg, var(--purple-deep), var(--purple)); }
-    .product-image-ph.teal  { background:linear-gradient(135deg, var(--teal), var(--teal-soft)); }
-    .product-image-ph.green { background:linear-gradient(135deg, var(--green), var(--blue)); }
-    .product-content{
-      padding:28px 26px 30px;
-      display:flex; flex-direction:column; flex:1;
-    }
-    .product-badge{
-      display:inline-flex; align-items:center;
-      gap:6px; width:max-content;
-      padding:6px 14px; border-radius:999px;
-      font-size:11px; font-weight:800;
-      letter-spacing:1.3px; text-transform:uppercase;
-      margin-bottom:14px;
-    }
-    .product-badge::before{
-      content:""; width:6px; height:6px;
-      border-radius:50%; background:currentColor;
-    }
-    .badge-available{ background:rgba(94, 211, 140, 0.14); color:#2D9C5A; }
-    .badge-soon     { background:rgba(245, 158, 11, 0.14); color:#B87A06; }
-
-    .product-card h3{
-      margin:0 0 10px;
-      font-family:'Poppins', sans-serif;
-      font-size:1.45rem; font-weight:800;
-      color:var(--text-dark);
-    }
-    .product-card p{
-      margin:0 0 20px;
-      color:var(--text-muted);
-      font-size:15px; line-height:1.65;
-    }
-    .product-card .feature-list li{ color:var(--text-body); }
-    .product-card .feature-list li::before{ color:var(--purple); content:"✓"; }
-    .product-card.teal-accent .feature-list li::before{ color:var(--teal); }
-    .product-card.green-accent .feature-list li::before{ color:var(--green); }
-    .product-card .btn-area{
-      margin-top:22px; padding-top:22px;
-      border-top:1px solid var(--border-soft);
-    }
-
-    /* =========== DIFERENCIAIS =========== */
-    .section-diff{
-      background:
-        radial-gradient(circle at 85% 15%, rgba(94, 211, 140, 0.18), transparent 45%),
-        radial-gradient(circle at 10% 90%, rgba(0, 184, 217, 0.15), transparent 40%),
-        linear-gradient(135deg, var(--purple) 0%, var(--purple-deep) 100%);
-      color:var(--text-white);
-      position:relative; overflow:hidden;
-    }
-    .diff-grid{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0, 1fr));
-      gap:22px;
-    }
-    .diff-card{
-      background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.16);
-      border-radius:var(--radius-lg);
-      padding:32px 28px;
-      backdrop-filter:blur(12px);
-      transition:transform .25s ease;
-    }
-    .diff-card:hover{ transform:translateY(-4px); }
-    .diff-icon{
-      width:64px; height:64px; border-radius:18px;
-      display:grid; place-items:center;
-      font-size:28px; margin-bottom:20px; color:#fff;
-    }
-    .diff-icon.purple{ background:linear-gradient(135deg, var(--purple-light), var(--purple)); }
-    .diff-icon.teal  { background:linear-gradient(135deg, var(--teal), var(--blue)); }
-    .diff-icon.green { background:linear-gradient(135deg, var(--green), var(--teal-soft)); }
-    .diff-card h3{
-      margin:0 0 12px;
-      font-family:'Poppins', sans-serif;
-      font-size:1.3rem; font-weight:700; color:#fff;
-    }
-    .diff-card p{
-      margin:0; color:rgba(255,255,255,0.85);
-      line-height:1.7; font-size:15px;
-    }
-
-    /* =========== CONFIANÇA =========== */
-    .section-trust{ background:var(--bg-lilac); }
-    .trust-hero{
-      display:grid;
-      grid-template-columns:minmax(0, 1.05fr) minmax(0, .95fr);
-      gap:48px; align-items:center;
-      margin-bottom:60px;
-    }
-    .trust-image{
-      width:100%; aspect-ratio: 5 / 4;
-      object-fit:cover;
-      border-radius:var(--radius-lg);
-      box-shadow:var(--shadow-lg);
-    }
-    .trust-image-ph{
-      width:100%; aspect-ratio: 5 / 4;
-      border-radius:var(--radius-lg);
-      background:linear-gradient(135deg, var(--purple-deep), var(--blue));
-      box-shadow:var(--shadow-lg);
-    }
-    .stat-row{
-      display:grid;
-      grid-template-columns:repeat(4, minmax(0, 1fr));
-      gap:16px; margin-top:30px;
-    }
-    .stat-mini{
-      background:#fff;
-      border-radius:var(--radius-md);
-      padding:20px 18px;
-      text-align:center;
-      border:1px solid var(--border-light);
-      transition:transform .2s ease, box-shadow .2s ease;
-    }
-    .stat-mini:hover{
-      transform:translateY(-2px);
-      box-shadow:var(--shadow-sm);
-    }
-    .stat-mini strong{
-      display:block;
-      font-family:'Poppins', sans-serif;
-      font-weight:800;
-      font-size:1.6rem; color:var(--purple);
-      line-height:1; margin-bottom:6px;
-    }
-    .stat-mini.teal strong { color:var(--teal); }
-    .stat-mini.green strong{ color:var(--green); }
-    .stat-mini.gold strong { color:var(--gold); }
-    .stat-mini span{
-      font-size:12px; color:var(--text-muted);
+    .eco-dd-tag{
+      font-size:9px; font-weight:800; letter-spacing:.8px; text-transform:uppercase;
+      padding:2px 8px; border-radius:99px;
+      background:rgba(245,158,11,.15); color:#B87A06;
+    }
+    .eco-dd-desc{
+      font-size:12.5px; color:var(--text-muted);
       line-height:1.4;
     }
 
-    .trust-grid-2{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr));
-      gap:24px;
+    /* CTA */
+    .eco-nav-cta{
+      background:linear-gradient(135deg, var(--teal), var(--blue));
+      color:#fff !important;
+      padding:10px 22px;
+      border-radius:999px;
+      font-weight:700; font-size:14px;
+      box-shadow:var(--shadow-teal);
+      transition:transform .2s, box-shadow .2s;
+      margin-left:8px;
     }
-    .trust-card{
-      background:#fff;
-      border-radius:var(--radius-lg);
-      padding:32px 30px;
-      border:1px solid var(--border-light);
-      box-shadow:var(--shadow-sm);
-      border-left:5px solid var(--purple);
+    .eco-nav-cta:hover{ transform:translateY(-1px); background:linear-gradient(135deg, var(--teal), var(--blue)) !important; }
+
+    /* Hamburger mobile */
+    .eco-hamburger{
+      display:none; flex-direction:column; gap:5px;
+      cursor:pointer; padding:8px; background:none; border:none; z-index:201;
     }
-    .trust-card.teal{ border-left-color:var(--teal); }
-    .trust-card h4{
-      margin:0 0 12px;
-      font-family:'Poppins', sans-serif;
-      font-size:1.2rem; font-weight:700;
-      color:var(--text-dark);
+    .eco-hamburger span{ width:24px; height:2px; background:#fff; border-radius:2px; transition:all .3s; }
+    .eco-hamburger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+    .eco-hamburger.open span:nth-child(2){ opacity:0; }
+    .eco-hamburger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+    .eco-mobile-menu{
+      display:none;
+      position:fixed; inset:0;
+      background:rgba(26,10,94,.98);
+      backdrop-filter:blur(24px);
+      z-index:150; padding:90px 24px 40px;
+      overflow-y:auto;
     }
-    .trust-card p{
-      margin:0; color:var(--text-body);
-      line-height:1.7;
+    .eco-mobile-menu.open{ display:block; }
+    .eco-mobile-section{ margin-bottom:24px; }
+    .eco-mobile-section-title{
+      font-family:'Poppins',sans-serif; font-size:11px; font-weight:700;
+      letter-spacing:1.6px; text-transform:uppercase;
+      color:var(--teal); margin-bottom:8px;
+      padding:0 8px;
+    }
+    .eco-mobile-link{
+      display:flex; align-items:center; gap:12px;
+      padding:14px 16px;
+      color:rgba(255,255,255,.92);
+      font-family:'Poppins',sans-serif; font-size:17px; font-weight:600;
+      border-radius:12px;
+      transition:background .2s;
+    }
+    .eco-mobile-link:hover{ background:rgba(255,255,255,.06); }
+    .eco-mobile-link .eco-dd-tag{ font-size:9px; }
+    .eco-mobile-cta{
+      display:block; text-align:center;
+      margin-top:8px;
+      background:linear-gradient(135deg, var(--teal), var(--blue));
+      color:#fff; padding:16px;
+      border-radius:14px;
+      font-weight:700; font-size:16px;
+      box-shadow:var(--shadow-teal);
     }
 
-    /* =========== CTA / FORM =========== */
-    .section-cta{
-      background:var(--bg-white);
-      padding:var(--section-space) 0 140px;
+    @media (max-width:1024px){
+      .eco-nav-links, .eco-nav-cta{ display:none; }
+      .eco-hamburger{ display:flex; }
     }
-    .cta-panel{
-      background:
-        radial-gradient(circle at 85% 15%, rgba(0, 184, 217, 0.28), transparent 45%),
-        radial-gradient(circle at 15% 85%, rgba(94, 211, 140, 0.2), transparent 40%),
-        linear-gradient(135deg, var(--purple) 0%, var(--purple-deep) 100%);
-      border-radius:var(--radius-xl);
-      padding:60px 40px;
+
+    /* ========== ESTILOS DA PÁGINA ========== */
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--purple);margin-bottom:20px}
+    .eyebrow::before{content:"";width:28px;height:2px;background:linear-gradient(90deg,var(--purple),var(--teal));display:block;flex:0 0 auto;border-radius:2px}
+    .eyebrow.light{color:var(--teal)}
+    .eyebrow.light::before{background:linear-gradient(90deg,var(--teal),var(--green))}
+
+    .title{font-family:'Poppins',sans-serif;font-size:clamp(2rem,4.5vw,3.8rem);font-weight:800;line-height:1.08;letter-spacing:-.025em;margin:0 0 20px;color:var(--text-dark)}
+    .title.on-dark{color:var(--text-white)}
+    .title .hl-purple{color:var(--purple)}
+    .title .hl-teal{color:var(--teal)}
+    .title .hl-green{color:var(--green)}
+    .title .hl-gradient{background:linear-gradient(90deg,var(--purple),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+    .subtitle{font-size:clamp(1rem,1.2vw,1.1rem);line-height:1.7;color:var(--text-muted);max-width:760px;margin:0}
+    .subtitle.on-dark{color:var(--text-lilac)}
+
+    .btn-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:14px 26px;border-radius:999px;font-weight:700;font-size:15px;text-align:center;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s;border:1px solid transparent;font-family:'Inter',sans-serif}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:linear-gradient(135deg,var(--purple),var(--purple-light));color:#fff;box-shadow:var(--shadow-purple)}
+    .btn-primary:hover{box-shadow:0 22px 48px rgba(91,46,255,.32)}
+    .btn-secondary{background:#fff;color:var(--purple);border-color:var(--border-light);box-shadow:var(--shadow-sm)}
+    .btn-secondary:hover{border-color:var(--purple);color:var(--purple)}
+    .btn-teal{background:linear-gradient(135deg,var(--teal),var(--blue));color:#fff;box-shadow:var(--shadow-teal)}
+    .btn-green{background:linear-gradient(135deg,var(--green),var(--teal-soft));color:#fff;box-shadow:var(--shadow-green)}
+    .btn-gold{background:linear-gradient(135deg,var(--gold),#FFC94A);color:var(--purple-deep);box-shadow:0 14px 40px -14px rgba(245,158,11,.75);font-weight:800}
+
+    /* HERO */
+    .hero{position:relative;padding:80px 0 100px;background:radial-gradient(circle at 15% 20%,rgba(91,46,255,.09),transparent 40%),radial-gradient(circle at 90% 85%,rgba(0,184,217,.10),transparent 40%),linear-gradient(180deg,#fff 0%,var(--bg-lilac) 100%);overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(91,46,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(91,46,255,.04) 1px,transparent 1px);background-size:60px 60px;opacity:.6;pointer-events:none;mask-image:radial-gradient(circle at 50% 50%,#000 30%,transparent 75%);-webkit-mask-image:radial-gradient(circle at 50% 50%,#000 30%,transparent 75%)}
+    .hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:50px;align-items:center}
+    .hero-content{position:relative;z-index:2}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 16px 8px 10px;border-radius:999px;background:#fff;border:1px solid var(--border-light);font-size:13px;font-weight:600;color:var(--text-dark);box-shadow:var(--shadow-sm);margin-bottom:24px}
+    .pill::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(94,211,140,.2)}
+    .hero-visual{position:relative;aspect-ratio:4/5;border-radius:var(--radius-lg)}
+    .hero-image-wrap{position:relative;width:100%;height:100%;border-radius:var(--radius-lg);overflow:hidden;background:linear-gradient(135deg,var(--purple-deep),var(--purple));box-shadow:var(--shadow-lg)}
+    .hero-image{width:100%;height:100%;object-fit:cover;display:block}
+    .hero-card-float{position:absolute;background:#fff;border-radius:var(--radius-md);padding:16px 18px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:12px;min-width:200px}
+    .hero-card-float .dot{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:20px;flex:0 0 auto}
+    .hero-card-float strong{display:block;font-family:'Poppins',sans-serif;font-size:16px;color:var(--text-dark);line-height:1.1}
+    .hero-card-float span{display:block;font-size:12px;color:var(--text-muted);margin-top:2px}
+    .float-tl{top:24px;left:-30px}
+    .float-br{bottom:32px;right:-28px}
+    .float-tl .dot{background:rgba(94,211,140,.15);color:var(--green)}
+    .float-br .dot{background:rgba(0,184,217,.15);color:var(--teal)}
+
+    /* NÚMEROS */
+    .numbers-band{padding:60px 0;background:var(--bg-white)}
+    .numbers-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+    .number-card{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);padding:28px 24px;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s}
+    .number-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--purple)}
+    .number-card.teal::before{background:var(--teal)}
+    .number-card.green::before{background:var(--green)}
+    .number-card.gold::before{background:var(--gold)}
+    .number-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+    .number-card strong{display:block;font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(2.2rem,3.2vw,2.8rem);color:var(--purple);margin-bottom:8px;line-height:1}
+    .number-card.teal strong{color:var(--teal)}
+    .number-card.green strong{color:var(--green)}
+    .number-card.gold strong{color:var(--gold)}
+    .number-card span{display:block;color:var(--text-muted);font-size:14px;line-height:1.55}
+
+    /* HISTÓRIA */
+    .section-history{background:var(--bg-lilac);position:relative;overflow:hidden}
+    .history-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:60px;align-items:center}
+    .history-image{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg)}
+    .history-placeholder{width:100%;aspect-ratio:4/5;border-radius:var(--radius-lg);background:linear-gradient(135deg,var(--teal),var(--blue));box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+    .history-placeholder::after{content:"";position:absolute;inset:20px;border:2px dashed rgba(255,255,255,.35);border-radius:calc(var(--radius-lg) - 10px)}
+    .quote-card{background:#fff;border-radius:var(--radius-md);padding:28px 30px;margin-top:24px;border-left:4px solid var(--purple);box-shadow:var(--shadow-sm)}
+    .quote-card p{margin:0;color:var(--text-dark);font-size:1.05rem;line-height:1.7;font-weight:500;font-style:italic}
+
+    /* METODOLOGIA */
+    .section-method{background:radial-gradient(circle at 10% 20%,rgba(91,46,255,.35),transparent 40%),radial-gradient(circle at 90% 80%,rgba(0,184,217,.22),transparent 40%),linear-gradient(160deg,var(--purple-deep) 0%,#0D062A 100%);color:var(--text-white);position:relative;overflow:hidden}
+    .section-method::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:80px 80px;opacity:.5;pointer-events:none}
+    .section-method .container{position:relative;z-index:2}
+    .section-header{text-align:center;margin-bottom:56px;max-width:800px;margin-left:auto;margin-right:auto}
+    .section-header .eyebrow{justify-content:center}
+    .section-header .subtitle{margin:0 auto}
+    .pillars-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+    .pillar-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,border-color .25s;backdrop-filter:blur(10px)}
+    .pillar-card:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.25)}
+    .pillar-image{width:100%;aspect-ratio:4/3;object-fit:cover;border-bottom:1px solid rgba(255,255,255,.08)}
+    .pillar-image-ph{width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,var(--purple),var(--teal));border-bottom:1px solid rgba(255,255,255,.08)}
+    .pillar-image-ph.p2{background:linear-gradient(135deg,var(--teal),var(--green))}
+    .pillar-image-ph.p3{background:linear-gradient(135deg,var(--gold),var(--purple))}
+    .pillar-content{padding:26px 24px 28px;display:flex;flex-direction:column;flex:1}
+    .pillar-icon{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-size:24px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);margin-bottom:18px}
+    .pillar-content h3{margin:0 0 12px;font-family:'Poppins',sans-serif;font-size:1.35rem;font-weight:700;color:#fff}
+    .pillar-content p{margin:0 0 20px;color:var(--text-lilac);line-height:1.7;font-size:15px}
+    .feature-list{list-style:none;padding:0;margin:0;display:grid;gap:10px;font-size:14px}
+    .feature-list li{display:flex;align-items:flex-start;gap:10px;color:rgba(255,255,255,.88)}
+    .feature-list li::before{content:"✓";color:var(--green);font-weight:800;flex:0 0 auto;line-height:1.4}
+
+    /* PRODUTOS */
+    .section-products{background:var(--bg-white)}
+    .products-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+    .products-grid-4{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+    @media(max-width:1100px){.products-grid-4{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.products-grid-4{grid-template-columns:1fr}}
+    .product-card{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s;box-shadow:var(--shadow-sm)}
+    .product-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+    .product-image{width:100%;aspect-ratio:16/10;object-fit:cover}
+    .product-image-ph{width:100%;aspect-ratio:16/10;position:relative;overflow:hidden}
+    .product-image-ph.purple{background:linear-gradient(135deg,var(--purple-deep),var(--purple))}
+    .product-image-ph.teal{background:linear-gradient(135deg,var(--teal),var(--teal-soft))}
+    .product-image-ph.green{background:linear-gradient(135deg,var(--green),var(--blue))}
+    .product-image-ph.pink{background:linear-gradient(135deg,#FF4D8F,var(--purple))}
+    .product-content{padding:28px 26px 30px;display:flex;flex-direction:column;flex:1}
+    .product-badge{display:inline-flex;align-items:center;gap:6px;width:max-content;padding:6px 14px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;margin-bottom:14px}
+    .product-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+    .badge-available{background:rgba(94,211,140,.14);color:#2D9C5A}
+    .badge-soon{background:rgba(245,158,11,.14);color:#B87A06}
+    .badge-new{background:rgba(255,77,143,.14);color:#C9275F}
+    .product-card h3{margin:0 0 10px;font-family:'Poppins',sans-serif;font-size:1.45rem;font-weight:800;color:var(--text-dark)}
+    .product-card p{margin:0 0 20px;color:var(--text-muted);font-size:15px;line-height:1.65}
+    .product-card .feature-list li{color:var(--text-body)}
+    .product-card .feature-list li::before{color:var(--purple);content:"✓"}
+    .product-card.teal-accent .feature-list li::before{color:var(--teal)}
+    .product-card.green-accent .feature-list li::before{color:var(--green)}
+    .product-card.pink-accent .feature-list li::before{color:#FF4D8F}
+    .product-card .btn-area{margin-top:22px;padding-top:22px;border-top:1px solid var(--border-soft)}
+    .btn-pink{background:linear-gradient(135deg,#FF4D8F,var(--purple-light));color:#fff;box-shadow:0 18px 40px rgba(255,77,143,.22)}
+
+    /* BANNER NR-1 */
+    .nr1-banner{
+      background: linear-gradient(135deg, #1A0A5E 0%, #3A1D8F 60%, #FF4D8F 130%);
+      padding: 56px 0;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      border-top: 3px solid var(--gold);
+    }
+    .nr1-banner::before{
+      content:''; position:absolute; inset:0;
+      background-image: radial-gradient(circle at 80% 30%, rgba(255,210,176,.15), transparent 40%);
+      pointer-events:none;
+    }
+    .nr1-inner{
+      position:relative; z-index:1;
+      display:grid; grid-template-columns: auto 1fr auto;
+      gap:32px; align-items:center;
+      max-width: var(--max); margin:0 auto;
+    }
+    @media(max-width:980px){
+      .nr1-inner{ grid-template-columns:1fr; text-align:left; }
+    }
+    .nr1-tag{
+      display:inline-flex; align-items:center; gap:10px;
+      background: rgba(245,158,11,.22);
+      border:1px solid rgba(245,158,11,.5);
+      padding:8px 18px; border-radius:999px;
+      font-size:11px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase;
+      color: #FFD2B0; white-space:nowrap;
+      grid-row: 1;
+    }
+    .nr1-pulse{
+      width:8px; height:8px; border-radius:50%; background:#FFD2B0;
+      box-shadow:0 0 0 0 rgba(255,210,176,.7); animation: nr1pulse 2s infinite;
+    }
+    @keyframes nr1pulse{
+      0%,100%{ box-shadow:0 0 0 0 rgba(255,210,176,.7); }
+      50%{ box-shadow:0 0 0 8px rgba(255,210,176,0); }
+    }
+    .nr1-title{
+      font-family:'Poppins',sans-serif; font-weight:800;
+      font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+      line-height:1.2; letter-spacing:-.015em; margin:0;
       color:#fff;
-      box-shadow:var(--shadow-lg);
+    }
+    .nr1-sub{
+      grid-column: 1 / -1;
+      font-size: 15.5px; line-height:1.65;
+      color:rgba(255,255,255,.84);
+      margin:0; max-width:920px;
+    }
+    .nr1-sub strong{ color:#FFD2B0; }
+    .nr1-actions{
+      grid-column: 1 / -1;
+      display:flex; gap:14px; flex-wrap:wrap; align-items:center;
+      margin-top:8px;
+    }
+    .btn-link-light{
+      color: rgba(255,255,255,.85);
+      font-weight:600; font-size:14px;
+      padding:8px 4px;
+      border-bottom: 1px solid rgba(255,255,255,.3);
+      transition: border-color .2s, color .2s;
+    }
+    .btn-link-light:hover{ color:#fff; border-color:#fff; }
+
+    /* SEÇÃO B2C — destaque */
+    .section-b2c{
+      background:
+        radial-gradient(circle at 80% 20%, rgba(255,77,143,.10), transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(245,158,11,.08), transparent 50%),
+        linear-gradient(180deg, var(--bg-lilac) 0%, #fff 100%);
       position:relative; overflow:hidden;
     }
-    .cta-panel::before{
-      content:""; position:absolute; inset:0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-      background-size:60px 60px;
-      opacity:0.6; pointer-events:none;
-    }
-    .cta-inner{ position:relative; z-index:2; }
-    .cta-panel .section-header{ margin-bottom:40px; }
-    .cta-panel h2{
-      margin:0 0 14px;
-      font-family:'Poppins', sans-serif;
-      font-size:clamp(1.9rem, 3vw, 2.8rem);
-      font-weight:800; line-height:1.15; color:#fff;
-    }
-    .cta-panel .section-header p{
-      color:rgba(255,255,255,0.88);
-      max-width:680px; margin:0 auto;
-      font-size:1.05rem;
-    }
-
-    .form-wrap{
-      max-width:580px; margin:0 auto;
-      background:rgba(255,255,255,0.06);
-      border:1px solid rgba(255,255,255,0.15);
+    .b2c-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+    @media(max-width:880px){.b2c-grid{grid-template-columns:1fr}}
+    .b2c-card{
+      background:#fff;
+      border:1px solid var(--border-light);
       border-radius:var(--radius-lg);
-      padding:36px 32px;
-      backdrop-filter:blur(12px);
+      padding:32px 28px;
+      transition:transform .25s, box-shadow .25s, border-color .25s;
+      position:relative; overflow:hidden;
     }
-    .form-wrap label{
-      display:block; margin-bottom:8px;
-      font-weight:700; font-size:14px; color:#fff;
+    .b2c-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-lg); border-color:transparent; }
+    .b2c-card::before{
+      content:''; position:absolute; top:0; left:0; right:0; height:4px;
+      background:linear-gradient(90deg, var(--purple), var(--teal));
     }
-    .form-wrap input,
-    .form-wrap textarea{
-      width:100%; padding:14px 16px;
+    .b2c-card[data-c="teal"]::before{ background:linear-gradient(90deg, var(--teal), var(--green)); }
+    .b2c-card[data-c="gold"]::before{ background:linear-gradient(90deg, var(--gold), #FF4D8F); }
+    .b2c-icon{
+      width:56px; height:56px; border-radius:16px;
+      display:grid; place-items:center; font-size:26px;
+      background:rgba(91,46,255,.10); color:var(--purple);
       margin-bottom:18px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,0.2);
-      background:rgba(255,255,255,0.08);
-      color:#fff;
-      font-family:'Inter', sans-serif;
-      font-size:15px;
-      transition:border-color .2s ease, background .2s ease;
     }
-    .form-wrap input::placeholder,
-    .form-wrap textarea::placeholder{ color:rgba(255,255,255,0.5); }
-    .form-wrap input:focus,
-    .form-wrap textarea:focus{
-      outline:none;
-      border-color:var(--teal);
-      background:rgba(255,255,255,0.12);
+    .b2c-card[data-c="teal"] .b2c-icon{ background:rgba(0,184,217,.12); color:var(--teal); }
+    .b2c-card[data-c="gold"] .b2c-icon{ background:rgba(245,158,11,.14); color:var(--gold); }
+    .b2c-card h3{
+      font-family:'Poppins',sans-serif; font-size:22px; font-weight:800;
+      color:var(--text-dark); margin:0 0 10px; line-height:1.2;
     }
-    .form-wrap textarea{ resize:vertical; min-height:120px; }
-    .form-wrap button{
-      width:100%;
-      background:linear-gradient(135deg, var(--green), var(--teal));
-      color:#fff; border:none;
-      padding:16px; border-radius:14px;
-      font-weight:800; font-size:15px;
-      cursor:pointer;
-      box-shadow:var(--shadow-green);
-      transition:transform .2s ease;
+    .b2c-card p{ font-size:14.5px; color:var(--text-muted); margin:0 0 20px; line-height:1.65; }
+    .b2c-cta{
+      display:inline-flex; align-items:center; gap:6px;
+      font-family:'Poppins',sans-serif; font-size:14px; font-weight:700;
+      color:var(--purple);
+      transition:gap .2s;
     }
-    .form-wrap button:hover{ transform:translateY(-2px); }
-    .form-status{
-      margin-top:12px; color:#fff;
-      font-size:14px; text-align:center;
-    }
+    .b2c-cta:hover{ gap:12px; }
+    .b2c-card[data-c="teal"] .b2c-cta{ color:var(--teal); }
+    .b2c-card[data-c="gold"] .b2c-cta{ color:var(--gold); }
 
-    .divider-or{
-      display:flex; align-items:center; gap:14px;
-      margin:30px 0 20px;
-      color:rgba(255,255,255,0.75);
-      font-size:13px; font-weight:600;
-      letter-spacing:1.5px; text-transform:uppercase;
-    }
-    .divider-or::before,
-    .divider-or::after{
-      content:""; flex:1; height:1px;
-      background:rgba(255,255,255,0.2);
-    }
-    .calendar-wrap{ text-align:center; }
-    .calendar-wrap p{
-      margin:0 0 14px;
-      color:rgba(255,255,255,0.88);
-      font-size:14px;
-    }
+    /* DIFERENCIAIS */
+    .section-diff{background:radial-gradient(circle at 85% 15%,rgba(94,211,140,.18),transparent 45%),radial-gradient(circle at 10% 90%,rgba(0,184,217,.15),transparent 40%),linear-gradient(135deg,var(--purple) 0%,var(--purple-deep) 100%);color:var(--text-white);position:relative;overflow:hidden}
+    .diff-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+    .diff-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:var(--radius-lg);padding:32px 28px;backdrop-filter:blur(12px);transition:transform .25s}
+    .diff-card:hover{transform:translateY(-4px)}
+    .diff-icon{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;font-size:28px;margin-bottom:20px;color:#fff}
+    .diff-icon.purple{background:linear-gradient(135deg,var(--purple-light),var(--purple))}
+    .diff-icon.teal{background:linear-gradient(135deg,var(--teal),var(--blue))}
+    .diff-icon.green{background:linear-gradient(135deg,var(--green),var(--teal-soft))}
+    .diff-card h3{margin:0 0 12px;font-family:'Poppins',sans-serif;font-size:1.3rem;font-weight:700;color:#fff}
+    .diff-card p{margin:0;color:rgba(255,255,255,.85);line-height:1.7;font-size:15px}
 
-    /* =========== FOOTER =========== */
-    .site-footer{
-      padding:32px 0 40px;
-      background:var(--bg-white);
-      border-top:1px solid var(--border-soft);
-      color:var(--text-muted);
-      font-size:14px;
-    }
-    .footer-row{
-      display:flex; justify-content:space-between;
-      align-items:center; gap:18px; flex-wrap:wrap;
-    }
-    .footer-brand{
-      display:flex; align-items:center; gap:12px;
-    }
-    .footer-logo{
-      height:36px; width:auto; display:block;
-    }
-    .footer-brand strong{
-      font-family:'Poppins', sans-serif;
-      color:var(--text-dark);
-      font-weight:800; font-size:14px;
-    }
+    /* CONFIANÇA */
+    .section-trust{background:var(--bg-lilac)}
+    .trust-hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:48px;align-items:center;margin-bottom:60px}
+    .trust-image{width:100%;aspect-ratio:5/4;object-fit:cover;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg)}
+    .trust-image-ph{width:100%;aspect-ratio:5/4;border-radius:var(--radius-lg);background:linear-gradient(135deg,var(--purple-deep),var(--blue));box-shadow:var(--shadow-lg)}
+    .stat-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:30px}
+    .stat-mini{background:#fff;border-radius:var(--radius-md);padding:20px 18px;text-align:center;border:1px solid var(--border-light);transition:transform .2s,box-shadow .2s}
+    .stat-mini:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+    .stat-mini strong{display:block;font-family:'Poppins',sans-serif;font-weight:800;font-size:1.6rem;color:var(--purple);line-height:1;margin-bottom:6px}
+    .stat-mini.teal strong{color:var(--teal)}
+    .stat-mini.green strong{color:var(--green)}
+    .stat-mini.gold strong{color:var(--gold)}
+    .stat-mini span{font-size:12px;color:var(--text-muted);line-height:1.4}
+    .trust-grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+    .trust-card{background:#fff;border-radius:var(--radius-lg);padding:32px 30px;border:1px solid var(--border-light);box-shadow:var(--shadow-sm);border-left:5px solid var(--purple)}
+    .trust-card.teal{border-left-color:var(--teal)}
+    .trust-card h4{margin:0 0 12px;font-family:'Poppins',sans-serif;font-size:1.2rem;font-weight:700;color:var(--text-dark)}
+    .trust-card p{margin:0;color:var(--text-body);line-height:1.7}
 
-    /* =========== RESPONSIVO =========== */
-    @media (max-width: 1080px){
-      .nav-links > a:not(.nav-cta){ display:none; }
-      .nav-hamburger{ display:flex; }
-      .nav-links .nav-dropdown{ display:none; }
-    }
-    @media (max-width: 980px){
-      :root{ --section-space:80px; }
-      .hero-grid,
-      .history-grid,
-      .trust-hero,
-      .pillars-grid,
-      .products-grid,
-      .diff-grid,
-      .trust-grid-2{
-        grid-template-columns:1fr;
-      }
-      .numbers-grid,
-      .stat-row{ grid-template-columns:repeat(2, 1fr); }
-      .hero{ padding:60px 0 80px; }
-      .hero-visual{ max-width:440px; margin:0 auto; }
-      .float-tl{ left:-10px; }
-      .float-br{ right:-10px; }
-    }
+    /* CTA / FORM */
+    .section-cta{background:var(--bg-white);padding:var(--section-space) 0 140px}
+    .cta-panel{background:radial-gradient(circle at 85% 15%,rgba(0,184,217,.28),transparent 45%),radial-gradient(circle at 15% 85%,rgba(94,211,140,.2),transparent 40%),linear-gradient(135deg,var(--purple) 0%,var(--purple-deep) 100%);border-radius:var(--radius-xl);padding:60px 40px;color:#fff;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+    .cta-panel::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:60px 60px;opacity:.6;pointer-events:none}
+    .cta-inner{position:relative;z-index:2}
+    .cta-panel .section-header{margin-bottom:40px}
+    .cta-panel h2{margin:0 0 14px;font-family:'Poppins',sans-serif;font-size:clamp(1.9rem,3vw,2.8rem);font-weight:800;line-height:1.15;color:#fff}
+    .cta-panel .section-header p{color:rgba(255,255,255,.88);max-width:680px;margin:0 auto;font-size:1.05rem}
+    .form-wrap{max-width:580px;margin:0 auto;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-lg);padding:36px 32px;backdrop-filter:blur(12px)}
+    .form-wrap label{display:block;margin-bottom:8px;font-weight:700;font-size:14px;color:#fff}
+    .form-wrap input,.form-wrap textarea{width:100%;padding:14px 16px;margin-bottom:18px;border-radius:14px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;font-family:'Inter',sans-serif;font-size:15px;transition:border-color .2s,background .2s}
+    .form-wrap input::placeholder,.form-wrap textarea::placeholder{color:rgba(255,255,255,.5)}
+    .form-wrap input:focus,.form-wrap textarea:focus{outline:none;border-color:var(--teal);background:rgba(255,255,255,.12)}
+    .form-wrap textarea{resize:vertical;min-height:120px}
+    .form-wrap button{width:100%;background:linear-gradient(135deg,var(--green),var(--teal));color:#fff;border:none;padding:16px;border-radius:14px;font-weight:800;font-size:15px;cursor:pointer;box-shadow:var(--shadow-green);transition:transform .2s}
+    .form-wrap button:hover{transform:translateY(-2px)}
+    .form-status{margin-top:12px;color:#fff;font-size:14px;text-align:center}
+    .divider-or{display:flex;align-items:center;gap:14px;margin:30px 0 20px;color:rgba(255,255,255,.75);font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase}
+    .divider-or::before,.divider-or::after{content:"";flex:1;height:1px;background:rgba(255,255,255,.2)}
+    .calendar-wrap{text-align:center}
+    .calendar-wrap p{margin:0 0 14px;color:rgba(255,255,255,.88);font-size:14px}
 
-    @media (max-width: 640px){
-      :root{ --gutter:16px; --section-space:64px; }
-      .hero{ padding:48px 0 64px; }
-      .cta-panel{ padding:40px 24px; }
-      .form-wrap{ padding:28px 20px; }
-      .btn-row{ flex-direction:column; }
-      .btn{ width:100%; }
-      .footer-row{ flex-direction:column; align-items:flex-start; }
-      .numbers-grid,
-      .stat-row{ grid-template-columns:1fr 1fr; }
-      .hero-card-float{ display:none; }
-    }
+    /* FOOTER */
+    .site-footer{padding:32px 0 40px;background:var(--bg-white);border-top:1px solid var(--border-soft);color:var(--text-muted);font-size:14px}
+    .footer-row{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+    .footer-brand{display:flex;align-items:center;gap:12px}
+    .footer-logo{height:36px;width:auto;display:block}
+    .footer-logo-text{font-family:'Poppins',sans-serif;font-weight:800;font-size:18px;color:var(--text-dark);letter-spacing:-.02em}
+    .footer-logo-text em{font-style:normal;font-weight:400;opacity:.6;font-size:12px;margin:0 2px}
+    .footer-brand strong{font-family:'Poppins',sans-serif;color:var(--text-dark);font-weight:800;font-size:14px}
 
-    @media (prefers-reduced-motion: reduce){
-      html{ scroll-behavior:auto; }
-      *{ animation:none !important; transition:none !important; }
+    @media (max-width:980px){
+      :root{--section-space:80px}
+      .hero-grid,.history-grid,.trust-hero,.pillars-grid,.products-grid,.diff-grid,.trust-grid-2{grid-template-columns:1fr}
+      .numbers-grid,.stat-row{grid-template-columns:repeat(2,1fr)}
+      .hero{padding:60px 0 80px}
+      .hero-visual{max-width:440px;margin:0 auto}
+      .float-tl{left:-10px}
+      .float-br{right:-10px}
+    }
+    @media (max-width:640px){
+      :root{--gutter:16px;--section-space:64px}
+      .hero{padding:48px 0 64px}
+      .cta-panel{padding:40px 24px}
+      .form-wrap{padding:28px 20px}
+      .btn-row{flex-direction:column}
+      .btn{width:100%}
+      .footer-row{flex-direction:column;align-items:flex-start}
+      .numbers-grid,.stat-row{grid-template-columns:1fr 1fr}
+      .hero-card-float{display:none}
+    }
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *{animation:none !important;transition:none !important}
     }
   </style>
   <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
@@ -997,101 +544,128 @@
 </head>
 <body>
 
-  <!-- ============ HEADER ============ -->
-  <header class="site-header">
-    <div class="container nav">
-      <a href="index.html" class="brand" aria-label="ECO do B.E.M. — página inicial">
-        <img src="img/logo-branco.png" alt="ECO do B.E.M." class="brand-logo"
-             onerror="this.outerHTML='<span class=&quot;brand-logo-text&quot;>eco <em>do</em> bem</span>';" />
+  <!-- ============ MENU UNIFICADO ECO ============ -->
+  <header class="eco-nav">
+    <div class="eco-nav-inner">
+      <a href="index.html" class="eco-brand" aria-label="ECO do B.E.M. — Home">
+        <img src="img/logo-branco.png" alt="ECO do B.E.M."
+             onerror="this.outerHTML='<span class=&quot;eco-brand-fb&quot;>eco <em>do</em> bem</span>'" />
       </a>
 
-      <nav class="nav-links" id="navLinks" aria-label="Navegação principal">
+      <nav class="eco-nav-links">
+        <a href="index.html" class="eco-nav-link active">Início</a>
+        <a href="eco-lideres.html" class="eco-nav-link featured">ECO Líderes</a>
 
-        <!-- Dropdown: Para Empresas -->
-        <div class="nav-dropdown" id="dropEmpresas">
-          <button class="nav-drop-btn" aria-haspopup="true" aria-expanded="false">
+        <div class="eco-nav-item">
+          <button class="eco-nav-link" type="button">
             Para Empresas
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
-          <div class="nav-drop-menu" role="menu">
-            <span class="drop-label">Produtos B2B</span>
-            <a href="eco-lideres.html" class="drop-highlight" role="menuitem">
-              <span class="drop-icon" style="background:rgba(91,46,255,0.25);">🏆</span>
-              ECO Líderes
-              <span class="drop-badge badge-star">Destaque</span>
+          <div class="eco-dropdown">
+            <div class="eco-dd-section">Produtos B2B</div>
+            <a href="eco-lideres.html" class="eco-dd-link" data-color="purple">
+              <div class="eco-dd-icon">🎯</div>
+              <div class="eco-dd-body">
+                <div class="eco-dd-title">ECO Líderes</div>
+                <div class="eco-dd-desc">Certificação de liderança em 6 meses</div>
+              </div>
             </a>
-            <a href="eco-times.html" role="menuitem">
-              <span class="drop-icon" style="background:rgba(0,184,217,0.18);">👥</span>
-              ECO Times
+            <a href="eco-times.html" class="eco-dd-link" data-color="teal">
+              <div class="eco-dd-icon">👥</div>
+              <div class="eco-dd-body">
+                <div class="eco-dd-title">ECO Times <span class="eco-dd-tag">Em breve</span></div>
+                <div class="eco-dd-desc">Desenvolvimento coletivo de equipes</div>
+              </div>
             </a>
-            <a href="plataforma-pdi.html" role="menuitem">
-              <span class="drop-icon" style="background:rgba(94,211,140,0.18);">📊</span>
-              Plataforma de PDI
+            <a href="plataforma-pdi.html" class="eco-dd-link" data-color="green">
+              <div class="eco-dd-icon">📊</div>
+              <div class="eco-dd-body">
+                <div class="eco-dd-title">Plataforma de PDI <span class="eco-dd-tag">Em breve</span></div>
+                <div class="eco-dd-desc">Gestão de PDI corporativo com dado real</div>
+              </div>
             </a>
-            <div class="drop-sep"></div>
-            <a href="convenio-corporativo.html" role="menuitem">
-              <span class="drop-icon" style="background:rgba(245,158,11,0.18);">🤝</span>
-              Convênio Corporativo
+            <a href="bem-nr1.html" class="eco-dd-link" data-color="pink">
+              <div class="eco-dd-icon">⚖️</div>
+              <div class="eco-dd-body">
+                <div class="eco-dd-title">BEM NR-1 <span class="eco-dd-tag" style="background:rgba(255,77,143,.15);color:#C9275F">Novo</span></div>
+                <div class="eco-dd-desc">Gestão de riscos psicossociais — obrigatório a partir de 26/05/2026</div>
+              </div>
+            </a>
+            <a href="convenio-corporativo.html" class="eco-dd-link" data-color="gold">
+              <div class="eco-dd-icon">🤝</div>
+              <div class="eco-dd-body">
+                <div class="eco-dd-title">Convênio Corporativo</div>
+                <div class="eco-dd-desc">Sua empresa como conveniada ECO</div>
+              </div>
             </a>
           </div>
         </div>
 
-        <!-- Dropdown: Desenvolvimento Individual -->
-        <div class="nav-dropdown" id="dropIndividual">
-          <button class="nav-drop-btn" aria-haspopup="true" aria-expanded="false">
+        <div class="eco-nav-item">
+          <button class="eco-nav-link" type="button">
             Desenvolvimento Individual
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
-          <div class="nav-drop-menu" role="menu">
-            <span class="drop-label">Produtos B2C</span>
-            <a href="para-voce.html#eco-carreira" role="menuitem">
-              <span class="drop-icon" style="background:rgba(91,46,255,0.18);">🚀</span>
-              ECO Carreira
+          <div class="eco-dropdown">
+            <div class="eco-dd-section">Para o seu desenvolvimento</div>
+            <a href="para-voce.html#carreira" class="eco-dd-link" data-color="purple">
+              <div class="eco-dd-icon">🧭</div>
+              <div class="eco-dd-body">
+                <div class="eco-dd-title">ECO Carreira</div>
+                <div class="eco-dd-desc">Direção, propósito e plano de carreira</div>
+              </div>
             </a>
-            <a href="para-voce.html#eco-desenvolvimento" role="menuitem">
-              <span class="drop-icon" style="background:rgba(0,184,217,0.18);">🌱</span>
-              ECO Desenvolvimento
+            <a href="para-voce.html#desenvolvimento" class="eco-dd-link" data-color="teal">
+              <div class="eco-dd-icon">📈</div>
+              <div class="eco-dd-body">
+                <div class="eco-dd-title">ECO Desenvolvimento</div>
+                <div class="eco-dd-desc">Comportamento, prática e evolução real</div>
+              </div>
             </a>
-            <a href="para-voce.html#eco-empregabilidade" role="menuitem">
-              <span class="drop-icon" style="background:rgba(94,211,140,0.18);">💼</span>
-              ECO Empregabilidade
+            <a href="para-voce.html#empregabilidade" class="eco-dd-link" data-color="pink">
+              <div class="eco-dd-icon">🎯</div>
+              <div class="eco-dd-body">
+                <div class="eco-dd-title">ECO Empregabilidade</div>
+                <div class="eco-dd-desc">Recolocação com estratégia</div>
+              </div>
             </a>
           </div>
         </div>
 
-        <a href="#historia">Nossa História</a>
-        <a href="#metodologia">Metodologia</a>
-        <a href="#contato" class="nav-cta">Fale conosco</a>
+        <a href="#contato" class="eco-nav-link eco-nav-cta">Fale Conosco</a>
       </nav>
 
-      <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" style="display:none;">
+      <button class="eco-hamburger" id="ecoHamburger" aria-label="Abrir menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </header>
 
-  <!-- Mobile menu overlay -->
-  <div class="nav-mobile" id="navMobile" aria-hidden="true">
-    <div class="nav-mobile-section-title">Para Empresas</div>
-    <div class="nav-mobile-sub">
-      <a href="eco-lideres.html">🏆 ECO Líderes</a>
-      <a href="eco-times.html">👥 ECO Times</a>
-      <a href="plataforma-pdi.html">📊 Plataforma de PDI</a>
-      <a href="convenio-corporativo.html">🤝 Convênio Corporativo</a>
+  <!-- Mobile menu -->
+  <div class="eco-mobile-menu" id="ecoMobileMenu">
+    <div class="eco-mobile-section">
+      <a href="index.html" class="eco-mobile-link">Início</a>
+      <a href="eco-lideres.html" class="eco-mobile-link" style="color:var(--teal);font-weight:700">ECO Líderes →</a>
     </div>
-    <div class="nav-mobile-section-title">Desenvolvimento Individual</div>
-    <div class="nav-mobile-sub">
-      <a href="para-voce.html#eco-carreira">🚀 ECO Carreira</a>
-      <a href="para-voce.html#eco-desenvolvimento">🌱 ECO Desenvolvimento</a>
-      <a href="para-voce.html#eco-empregabilidade">💼 ECO Empregabilidade</a>
+    <div class="eco-mobile-section">
+      <div class="eco-mobile-section-title">Para Empresas</div>
+      <a href="eco-lideres.html" class="eco-mobile-link">🎯 ECO Líderes</a>
+      <a href="eco-times.html" class="eco-mobile-link">👥 ECO Times <span class="eco-dd-tag">Em breve</span></a>
+      <a href="plataforma-pdi.html" class="eco-mobile-link">📊 Plataforma de PDI <span class="eco-dd-tag">Em breve</span></a>
+      <a href="bem-nr1.html" class="eco-mobile-link">⚖️ BEM NR-1 <span class="eco-dd-tag" style="background:rgba(255,77,143,.15);color:#FFB3CB">Novo</span></a>
+      <a href="convenio-corporativo.html" class="eco-mobile-link">🤝 Convênio Corporativo</a>
     </div>
-    <a href="#historia">Nossa História</a>
-    <a href="#metodologia">Metodologia</a>
-    <a href="#contato" class="nav-cta-mobile">Fale conosco</a>
+    <div class="eco-mobile-section">
+      <div class="eco-mobile-section-title">Desenvolvimento Individual</div>
+      <a href="para-voce.html#carreira" class="eco-mobile-link">🧭 ECO Carreira</a>
+      <a href="para-voce.html#desenvolvimento" class="eco-mobile-link">📈 ECO Desenvolvimento</a>
+      <a href="para-voce.html#empregabilidade" class="eco-mobile-link">🎯 ECO Empregabilidade</a>
+    </div>
+    <a href="#contato" class="eco-mobile-cta" onclick="document.getElementById('ecoMobileMenu').classList.remove('open');document.getElementById('ecoHamburger').classList.remove('open');document.body.style.overflow=''">Fale Conosco</a>
   </div>
 
   <main>
-    <!-- ============ HERO ============ -->
+    <!-- HERO -->
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-content">
@@ -1118,91 +692,61 @@
           </div>
           <div class="hero-card-float float-tl">
             <div class="dot">✓</div>
-            <div>
-              <strong>PDI ativo</strong>
-              <span>em tempo real</span>
-            </div>
+            <div><strong>PDI ativo</strong><span>em tempo real</span></div>
           </div>
           <div class="hero-card-float float-br">
             <div class="dot">📊</div>
-            <div>
-              <strong>7 indicadores</strong>
-              <span>de evolução</span>
-            </div>
+            <div><strong>7 indicadores</strong><span>de evolução</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ NÚMEROS ============ -->
+    <!-- NÚMEROS -->
     <section class="numbers-band">
       <div class="container">
         <div class="numbers-grid">
-          <div class="number-card">
-            <strong>30+</strong>
-            <span>Anos de expertise em psicologia organizacional.</span>
-          </div>
-          <div class="number-card teal">
-            <strong>300+</strong>
-            <span>Colaboradores em desenvolvimento ativo.</span>
-          </div>
-          <div class="number-card green">
-            <strong>1036+</strong>
-            <span>Ações de PDI criadas na plataforma.</span>
-          </div>
-          <div class="number-card gold">
-            <strong>3</strong>
-            <span>Produtos para toda a jornada de desenvolvimento.</span>
-          </div>
+          <div class="number-card"><strong>30+</strong><span>Anos de expertise em psicologia organizacional.</span></div>
+          <div class="number-card teal"><strong>300+</strong><span>Colaboradores em desenvolvimento ativo.</span></div>
+          <div class="number-card green"><strong>1036+</strong><span>Ações de PDI criadas na plataforma.</span></div>
+          <div class="number-card gold"><strong>7</strong><span>Produtos para toda a jornada de desenvolvimento.</span></div>
         </div>
       </div>
     </section>
 
-    <!-- ============ HISTÓRIA ============ -->
+    <!-- HISTÓRIA -->
     <section class="section section-history" id="historia">
       <div class="container">
         <div class="history-grid">
           <div>
             <div class="eyebrow">Nossa história</div>
-            <h2 class="title">
-              Nascemos de uma convicção: desenvolvimento <span class="hl-purple">precisa ser real.</span>
-            </h2>
+            <h2 class="title">Nascemos de uma convicção: desenvolvimento <span class="hl-purple">precisa ser real.</span></h2>
             <p class="subtitle">
               Por décadas, vimos PDIs serem criados e esquecidos, treinamentos acontecerem sem mudar comportamento e líderes serem promovidos sem suporte. A ECO do B.E.M. nasceu para fazer diferente. Cada ação parte de um diagnóstico comportamental preciso, segue uma trilha personalizada e termina com comprovação real de impacto.
             </p>
             <div class="quote-card">
-              <p>
-                "Não criamos cursos. Criamos jornadas. Não medimos presença. Medimos transformação. Não entregamos conteúdo. Entregamos mudança de comportamento com impacto comprovado."
-              </p>
+              <p>"Não criamos cursos. Criamos jornadas. Não medimos presença. Medimos transformação. Não entregamos conteúdo. Entregamos mudança de comportamento com impacto comprovado."</p>
             </div>
           </div>
           <div>
-            <img src="img/historia.jpg"
-                 alt="Psicólogo organizacional em sessão de mentoria com líder"
-                 class="history-image"
+            <img src="img/historia.jpg" alt="Psicólogo organizacional em sessão de mentoria" class="history-image"
                  onerror="this.outerHTML='<div class=&quot;history-placeholder&quot;></div>'" />
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ METODOLOGIA (ESCURO IMPACTANTE) ============ -->
+    <!-- METODOLOGIA -->
     <section class="section section-method" id="metodologia">
       <div class="container">
         <div class="section-header">
           <div class="eyebrow light">Metodologia</div>
-          <h2 class="title on-dark">
-            Ciência <span class="hl-teal">+</span> tecnologia <span class="hl-teal">+</span> humanidade
-          </h2>
-          <p class="subtitle on-dark">
-            Nossa metodologia integra diagnóstico comportamental, conteúdo imersivo e acompanhamento contínuo, transformando aprendizado em resultado real e mensurável.
-          </p>
+          <h2 class="title on-dark">Ciência <span class="hl-teal">+</span> tecnologia <span class="hl-teal">+</span> humanidade</h2>
+          <p class="subtitle on-dark">Nossa metodologia integra diagnóstico comportamental, conteúdo imersivo e acompanhamento contínuo, transformando aprendizado em resultado real e mensurável.</p>
         </div>
         <div class="pillars-grid">
           <article class="pillar-card">
-            <img src="img/metodologia-disc.jpg"
-                 alt="Profissional analisando resultado de assessment DISC"
-                 class="pillar-image"
+            <img src="img/metodologia-disc.jpg" alt="Diagnóstico" class="pillar-image"
                  onerror="this.outerHTML='<div class=&quot;pillar-image-ph&quot;></div>'" />
             <div class="pillar-content">
               <div class="pillar-icon">🧬</div>
@@ -1216,9 +760,7 @@
             </div>
           </article>
           <article class="pillar-card">
-            <img src="img/metodologia-conteudo.jpg"
-                 alt="Curadoria de conteúdo imersivo: filmes, livros, TED Talks"
-                 class="pillar-image"
+            <img src="img/metodologia-conteudo.jpg" alt="Conteúdo imersivo" class="pillar-image"
                  onerror="this.outerHTML='<div class=&quot;pillar-image-ph p2&quot;></div>'" />
             <div class="pillar-content">
               <div class="pillar-icon">🎬</div>
@@ -1232,9 +774,7 @@
             </div>
           </article>
           <article class="pillar-card">
-            <img src="img/metodologia-dashboard.jpg"
-                 alt="Dashboard com indicadores de evolução em tempo real"
-                 class="pillar-image"
+            <img src="img/metodologia-dashboard.jpg" alt="Indicadores" class="pillar-image"
                  onerror="this.outerHTML='<div class=&quot;pillar-image-ph p3&quot;></div>'" />
             <div class="pillar-content">
               <div class="pillar-icon">📈</div>
@@ -1251,23 +791,35 @@
       </div>
     </section>
 
-    <!-- ============ PRODUTOS (CLARO) ============ -->
+    <!-- FAIXA URGÊNCIA BEM NR-1 -->
+    <section class="nr1-banner">
+      <div class="container">
+        <div class="nr1-inner">
+          <div class="nr1-tag">
+            <span class="nr1-pulse"></span>
+            URGENTE · Vigência em 26/05/2026
+          </div>
+          <h2 class="nr1-title">NR-1: riscos psicossociais agora são <span style="color:#FFD2B0">obrigação de gestão</span></h2>
+          <p class="nr1-sub">Sua organização precisa identificar, avaliar, classificar, controlar e documentar os fatores de risco psicossociais. Empresas, prefeituras e órgãos públicos podem ser autuados. O <strong>BEM NR-1</strong> da CKM organiza diagnóstico, plano de ação, desenvolvimento de lideranças e evidências em um único processo.</p>
+          <div class="nr1-actions">
+            <a href="bem-nr1.html" class="btn btn-gold">Preparar minha organização →</a>
+            <a href="bem-nr1.html#obrigatoriedade" class="btn-link-light">Entenda a obrigatoriedade</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUTOS B2B -->
     <section class="section section-products" id="produtos">
       <div class="container">
         <div class="section-header">
-          <div class="eyebrow">Nosso ecossistema</div>
-          <h2 class="title">
-            Três produtos. <span class="hl-purple">Uma transformação.</span>
-          </h2>
-          <p class="subtitle">
-            Cada produto atende uma necessidade específica — e juntos cobrem a jornada de desenvolvimento humano da empresa, do líder ao colaborador.
-          </p>
+          <div class="eyebrow">Para empresas e RH</div>
+          <h2 class="title">Soluções B2B para <span class="hl-purple">desenvolvimento e conformidade.</span></h2>
+          <p class="subtitle">Cada produto atende uma necessidade específica — e juntos cobrem a jornada de desenvolvimento humano da empresa, do líder ao colaborador, com responsabilidade legal.</p>
         </div>
-        <div class="products-grid">
+        <div class="products-grid products-grid-4">
           <article class="product-card">
-            <img src="img/produto-lideres.jpg"
-                 alt="Líder em sessão de mentoria individual com psicólogo organizacional"
-                 class="product-image"
+            <img src="img/produto-lideres.jpg" alt="ECO Líderes" class="product-image"
                  onerror="this.outerHTML='<div class=&quot;product-image-ph purple&quot;></div>'" />
             <div class="product-content">
               <div class="product-badge badge-available">Disponível</div>
@@ -1277,8 +829,7 @@
                 <li>Diagnóstico Comportamental + autopercepção</li>
                 <li>6 mentorias individuais mensais</li>
                 <li>7 indicadores em tempo real</li>
-                <li>Casos de sucesso com impacto mensurável</li>
-                <li>Certificado digital e múltiplos ciclos</li>
+                <li>Certificado digital ao final do ciclo</li>
               </ul>
               <div class="btn-area">
                 <a class="btn btn-primary" href="eco-lideres.html" style="width:100%;">Ver o produto completo</a>
@@ -1287,33 +838,29 @@
           </article>
 
           <article class="product-card teal-accent">
-            <img src="img/produto-times.jpg"
-                 alt="Equipe diversa colaborando em projeto de desenvolvimento coletivo"
-                 class="product-image"
+            <img src="img/produto-times.jpg" alt="ECO Times" class="product-image"
                  onerror="this.outerHTML='<div class=&quot;product-image-ph teal&quot;></div>'" />
             <div class="product-content">
-              <div class="product-badge badge-available">Disponível</div>
+              <div class="product-badge badge-soon">Em breve</div>
               <h3>ECO Times</h3>
               <p>Desenvolvimento de equipes e colaboradores com trilhas de soft skills, dashboards gerenciais e rastreabilidade do desenvolvimento.</p>
               <ul class="feature-list">
                 <li>Trilhas para times inteiros</li>
-                <li>Gestão de PDI corporativo</li>
+                <li>Gestão de PDI coletiva</li>
                 <li>Dashboards por área e competência</li>
                 <li>Relatórios estratégicos para RH</li>
               </ul>
               <div class="btn-area">
-                <a class="btn btn-teal" href="eco-times.html" style="width:100%;">Conhecer o ECO Times</a>
+                <a class="btn btn-teal" href="eco-times.html" style="width:100%;">Conhecer ECO Times</a>
               </div>
             </div>
           </article>
 
           <article class="product-card green-accent">
-            <img src="img/produto-evoluir.jpg"
-                 alt="RH acessando dashboard de gestão de PDI corporativo"
-                 class="product-image"
+            <img src="img/produto-evoluir.jpg" alt="Plataforma de PDI" class="product-image"
                  onerror="this.outerHTML='<div class=&quot;product-image-ph green&quot;></div>'" />
             <div class="product-content">
-              <div class="product-badge badge-available">Disponível</div>
+              <div class="product-badge badge-soon">Em breve</div>
               <h3>Plataforma de PDI</h3>
               <p>Sistema de gestão de PDI corporativo com funil de execução, alertas automáticos, visão por colaborador e centralização da jornada.</p>
               <ul class="feature-list">
@@ -1323,7 +870,26 @@
                 <li>Integração com ecossistema ECO</li>
               </ul>
               <div class="btn-area">
-                <a class="btn btn-green" href="plataforma-pdi.html" style="width:100%;">Conhecer a Plataforma</a>
+                <a class="btn btn-green" href="plataforma-pdi.html" style="width:100%;">Conhecer Plataforma</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card pink-accent">
+            <img src="img/produto-nr1.jpg" alt="BEM NR-1" class="product-image"
+                 onerror="this.outerHTML='<div class=&quot;product-image-ph pink&quot;></div>'" />
+            <div class="product-content">
+              <div class="product-badge badge-new">Novo · NR-1</div>
+              <h3>BEM NR-1</h3>
+              <p>Solução completa para gestão de riscos psicossociais segundo a NR-1: diagnóstico, plano de ação, desenvolvimento de lideranças e evidências.</p>
+              <ul class="feature-list">
+                <li>Diagnóstico psicossocial por área</li>
+                <li>Matriz de riscos + plano de ação</li>
+                <li>Desenvolvimento de lideranças</li>
+                <li>Relatórios e evidências organizados</li>
+              </ul>
+              <div class="btn-area">
+                <a class="btn btn-pink" href="bem-nr1.html" style="width:100%;">Conhecer BEM NR-1</a>
               </div>
             </div>
           </article>
@@ -1331,15 +897,47 @@
       </div>
     </section>
 
-    <!-- ============ DIFERENCIAIS ============ -->
+    <!-- SEÇÃO B2C -->
+    <section class="section section-b2c" id="para-voce">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow" style="color:#FF4D8F">Para o seu desenvolvimento</div>
+          <h2 class="title">Não trabalha em uma empresa parceira?<br><span class="hl-gradient">Temos jornadas individuais.</span></h2>
+          <p class="subtitle">Acompanhamento de psicólogas organizacionais, plano individual de desenvolvimento e mentorias 1:1 — direto para você, sem precisar passar pelo RH.</p>
+        </div>
+        <div class="b2c-grid">
+          <a href="para-voce.html#carreira" class="b2c-card" data-c="purple">
+            <div class="b2c-icon">🧭</div>
+            <h3>ECO Carreira</h3>
+            <p>Para quem está perdido na rota — ou quer pular pra próxima cadeira. Direção, propósito e plano sólido em 90-120 dias.</p>
+            <span class="b2c-cta">Saber mais →</span>
+          </a>
+          <a href="para-voce.html#desenvolvimento" class="b2c-card" data-c="teal">
+            <div class="b2c-icon">📈</div>
+            <h3>ECO Desenvolvimento</h3>
+            <p>Para quem já sabe o que precisa melhorar mas não consegue praticar sozinho. Comportamento, prática e evolução real.</p>
+            <span class="b2c-cta">Saber mais →</span>
+          </a>
+          <a href="para-voce.html#empregabilidade" class="b2c-card" data-c="gold">
+            <div class="b2c-icon">🎯</div>
+            <h3>ECO Empregabilidade</h3>
+            <p>Para quem precisa recolocar agora — com estratégia, não com sorte. LinkedIn, currículo, entrevista e busca ativa.</p>
+            <span class="b2c-cta">Saber mais →</span>
+          </a>
+        </div>
+        <div style="text-align:center;margin-top:48px">
+          <a href="para-voce.html" class="btn btn-primary">Ver todas as jornadas individuais</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIFERENCIAIS -->
     <section class="section section-diff">
       <div class="container">
         <div class="section-header">
           <div class="eyebrow light">Diferenciais</div>
           <h2 class="title on-dark">O que nos torna únicos</h2>
-          <p class="subtitle on-dark">
-            Não somos mais uma plataforma de treinamento. Somos um ecossistema que une diagnóstico, conteúdo imersivo, mentoria e comprovação de impacto em um processo contínuo.
-          </p>
+          <p class="subtitle on-dark">Não somos mais uma plataforma de treinamento. Somos um ecossistema que une diagnóstico, conteúdo imersivo, mentoria e comprovação de impacto em um processo contínuo.</p>
         </div>
         <div class="diff-grid">
           <article class="diff-card">
@@ -1361,47 +959,25 @@
       </div>
     </section>
 
-    <!-- ============ CONFIANÇA / SEBRAE ============ -->
+    <!-- CONFIANÇA -->
     <section class="section section-trust">
       <div class="container">
         <div class="section-header">
           <div class="eyebrow">Validação</div>
-          <h2 class="title">
-            Validados pela prática, <span class="hl-teal">na escala real.</span>
-          </h2>
-          <p class="subtitle">
-            Somos parceiros estratégicos de empresas focadas no desenvolvimento de líderes e equipes de todo o Brasil, validando a metodologia na prática — com resultados documentados.
-          </p>
+          <h2 class="title">Validados pela prática, <span class="hl-teal">na escala real.</span></h2>
+          <p class="subtitle">Somos parceiros estratégicos de empresas focadas no desenvolvimento de líderes e equipes de todo o Brasil, validando a metodologia na prática — com resultados documentados.</p>
         </div>
         <div class="trust-hero">
-          <img src="img/confianca-sebrae.jpg"
-               alt="Grupo diverso de profissionais representando parcerias"
-               class="trust-image"
+          <img src="img/confianca-sebrae.jpg" alt="Parceiros" class="trust-image"
                onerror="this.outerHTML='<div class=&quot;trust-image-ph&quot;></div>'" />
           <div>
-            <h3 style="font-family:'Poppins',sans-serif;font-size:1.6rem;color:var(--text-dark);margin:0 0 16px;font-weight:700;">
-              Parceiros estratégicos
-            </h3>
-            <p style="margin:0;color:var(--text-body);line-height:1.7;">
-              Já desenvolvemos mais de 300 colaboradores com metodologia validada em escala. Mais do que presença em treinamentos, buscamos mudança de comportamento, aplicação prática e evolução acompanhada ao longo do tempo.
-            </p>
+            <h3 style="font-family:'Poppins',sans-serif;font-size:1.6rem;color:var(--text-dark);margin:0 0 16px;font-weight:700;">Parceiros estratégicos</h3>
+            <p style="margin:0;color:var(--text-body);line-height:1.7;">Já desenvolvemos mais de 300 colaboradores com metodologia validada em escala. Mais do que presença em treinamentos, buscamos mudança de comportamento, aplicação prática e evolução acompanhada ao longo do tempo.</p>
             <div class="stat-row">
-              <div class="stat-mini">
-                <strong>300+</strong>
-                <span>colaboradores</span>
-              </div>
-              <div class="stat-mini teal">
-                <strong>1036+</strong>
-                <span>ações de PDI</span>
-              </div>
-              <div class="stat-mini green">
-                <strong>6</strong>
-                <span>meses de ciclo</span>
-              </div>
-              <div class="stat-mini gold">
-                <strong>4</strong>
-                <span>fases estruturadas</span>
-              </div>
+              <div class="stat-mini"><strong>300+</strong><span>colaboradores</span></div>
+              <div class="stat-mini teal"><strong>1036+</strong><span>ações de PDI</span></div>
+              <div class="stat-mini green"><strong>6</strong><span>meses de ciclo</span></div>
+              <div class="stat-mini gold"><strong>4</strong><span>fases estruturadas</span></div>
             </div>
           </div>
         </div>
@@ -1418,18 +994,15 @@
       </div>
     </section>
 
-    <!-- ============ CTA + FORM ============ -->
+    <!-- CTA + FORM -->
     <section class="section-cta" id="contato">
       <div class="container">
         <div class="cta-panel">
           <div class="cta-inner">
             <div class="section-header">
               <h2>Pronto para transformar o desenvolvimento da sua empresa?</h2>
-              <p>
-                Agende uma conversa com nossa equipe. Vamos entender seu contexto, apresentar o produto mais adequado e montar uma proposta sob medida para sua realidade.
-              </p>
+              <p>Agende uma conversa com nossa equipe. Vamos entender seu contexto, apresentar o produto mais adequado e montar uma proposta sob medida para sua realidade.</p>
             </div>
-
             <div class="form-wrap">
               <form id="contato-form" action="https://formspree.io/f/mojpbgal" method="POST">
                 <input type="hidden" name="_language" value="pt-BR">
@@ -1442,9 +1015,7 @@
                 <button id="btn-enviar" type="submit">Enviar mensagem</button>
                 <p id="form-status" class="form-status"></p>
               </form>
-
               <div class="divider-or">ou</div>
-
               <div class="calendar-wrap">
                 <p>Prefere falar direto? Agende uma demonstração:</p>
                 <script>
@@ -1470,7 +1041,7 @@
     </section>
   </main>
 
-  <!-- ============ FOOTER ============ -->
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container footer-row">
       <div class="footer-brand">
@@ -1483,63 +1054,33 @@
   </footer>
 
   <script>
-    // ── Dropdown menus ──────────────────────────────────────────
-    document.querySelectorAll('.nav-dropdown').forEach(drop => {
-      const btn = drop.querySelector('.nav-drop-btn');
+    /* MENU MOBILE */
+    const ecoHamb = document.getElementById('ecoHamburger');
+    const ecoMobile = document.getElementById('ecoMobileMenu');
+    if (ecoHamb && ecoMobile) {
+      ecoHamb.addEventListener('click', () => {
+        const open = ecoHamb.classList.toggle('open');
+        ecoMobile.classList.toggle('open', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+      });
+      ecoMobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        ecoHamb.classList.remove('open');
+        ecoMobile.classList.remove('open');
+        document.body.style.overflow = '';
+      }));
+    }
+    /* DROPDOWN — tap on mobile/touch */
+    document.querySelectorAll('.eco-nav-item > .eco-nav-link').forEach(btn => {
       btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isOpen = drop.classList.contains('open');
-        document.querySelectorAll('.nav-dropdown').forEach(d => {
-          d.classList.remove('open');
-          d.querySelector('.nav-drop-btn').setAttribute('aria-expanded', 'false');
-        });
-        if (!isOpen) {
-          drop.classList.add('open');
-          btn.setAttribute('aria-expanded', 'true');
-        }
+        if (window.matchMedia('(hover: hover)').matches) return;
+        e.preventDefault();
+        const item = btn.parentElement;
+        document.querySelectorAll('.eco-nav-item.open').forEach(i => { if (i !== item) i.classList.remove('open'); });
+        item.classList.toggle('open');
       });
     });
-    document.addEventListener('click', () => {
-      document.querySelectorAll('.nav-dropdown').forEach(d => {
-        d.classList.remove('open');
-        d.querySelector('.nav-drop-btn').setAttribute('aria-expanded', 'false');
-      });
-    });
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') {
-        document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
-      }
-    });
 
-    // ── Hamburger / mobile menu ─────────────────────────────────
-    const hamburger = document.getElementById('navHamburger');
-    const mobileMenu = document.getElementById('navMobile');
-    // Show hamburger only on small screens
-    function checkHamburger() {
-      const show = window.innerWidth <= 1080;
-      hamburger.style.display = show ? 'flex' : 'none';
-    }
-    checkHamburger();
-    window.addEventListener('resize', checkHamburger);
-
-    if (hamburger && mobileMenu) {
-      hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('open');
-        mobileMenu.classList.toggle('open');
-        mobileMenu.setAttribute('aria-hidden', mobileMenu.classList.contains('open') ? 'false' : 'true');
-        document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-      });
-      mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          hamburger.classList.remove('open');
-          mobileMenu.classList.remove('open');
-          mobileMenu.setAttribute('aria-hidden', 'true');
-          document.body.style.overflow = '';
-        });
-      });
-    }
-
-    // ── Form submit ─────────────────────────────────────────────
+    /* FORM */
     const form = document.getElementById("contato-form");
     const status = document.getElementById("form-status");
     const botao = document.getElementById("btn-enviar");
@@ -1550,27 +1091,17 @@
       botao.textContent = "Enviando...";
       const data = new FormData(form);
       try {
-        const response = await fetch(form.action, {
-          method: form.method,
-          body: data,
-          headers: { "Accept": "application/json" }
-        });
+        const response = await fetch(form.action, {method: form.method, body: data, headers: {"Accept": "application/json"}});
         if (response.ok) {
           window.location.href = "https://www.ecodobem.com/obrigado.html";
         } else {
-          const resultado = await response.json();
-          if (resultado.errors) {
-            status.textContent = resultado.errors.map(erro => erro.message).join(", ");
-          } else {
-            status.textContent = "Não foi possível enviar agora. Tente novamente em instantes.";
-          }
-          botao.disabled = false;
-          botao.textContent = "Enviar mensagem";
+          const r = await response.json();
+          status.textContent = r.errors ? r.errors.map(e => e.message).join(", ") : "Não foi possível enviar agora. Tente novamente.";
+          botao.disabled = false; botao.textContent = "Enviar mensagem";
         }
-      } catch (error) {
-        status.textContent = "Não foi possível enviar agora. Verifique sua conexão e tente novamente.";
-        botao.disabled = false;
-        botao.textContent = "Enviar mensagem";
+      } catch (e) {
+        status.textContent = "Não foi possível enviar agora. Verifique sua conexão.";
+        botao.disabled = false; botao.textContent = "Enviar mensagem";
       }
     }
     form.addEventListener("submit", handleSubmit);

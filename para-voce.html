@@ -1873,45 +1873,54 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
   line-height:1.6;
 }
 
-/* =========== STICKY CTA (botão flutuante) =========== */
+/* =========== STICKY CTA (botão flutuante PERMANENTE) =========== */
 .sticky-cta{
   position:fixed;
-  bottom:24px; right:24px;
-  z-index:40;
-  display:flex; align-items:center; gap:8px;
-  background:linear-gradient(135deg, var(--gold), #FFC94A);
+  bottom:28px; right:28px;
+  z-index:9999;
+  display:flex; align-items:center; gap:10px;
+  background:linear-gradient(135deg, var(--gold) 0%, #FFC94A 50%, #FF9F40 100%);
   color:var(--purple-deep);
-  font-family:'Poppins',sans-serif; font-weight:800; font-size:14.5px;
-  padding:14px 22px;
+  font-family:'Poppins',sans-serif; font-weight:900; font-size:15.5px;
+  letter-spacing:-.01em;
+  padding:18px 28px;
   border-radius:99px;
-  box-shadow:0 12px 32px rgba(245,158,11,.45);
+  box-shadow:
+    0 18px 45px rgba(245,158,11,.55),
+    0 4px 12px rgba(245,158,11,.3),
+    0 0 0 0 rgba(245,158,11,.45);
   text-decoration:none;
-  opacity:0;
-  pointer-events:none;
-  transform:translateY(20px);
-  transition:opacity .3s ease, transform .3s ease, box-shadow .2s ease;
+  transition:transform .25s ease, box-shadow .25s ease;
+  animation: stickyPulse 2.6s ease-in-out infinite;
+  border:2px solid rgba(255,255,255,.4);
 }
-.sticky-cta.is-visible{
-  opacity:1;
-  pointer-events:auto;
-  transform:translateY(0);
+@keyframes stickyPulse{
+  0%, 100% { box-shadow: 0 18px 45px rgba(245,158,11,.55), 0 4px 12px rgba(245,158,11,.3), 0 0 0 0 rgba(245,158,11,.7); }
+  50% { box-shadow: 0 18px 45px rgba(245,158,11,.55), 0 4px 12px rgba(245,158,11,.3), 0 0 0 14px rgba(245,158,11,0); }
 }
 .sticky-cta:hover{
-  transform:translateY(-3px);
-  box-shadow:0 18px 42px rgba(245,158,11,.6);
+  transform:translateY(-4px) scale(1.04);
+  box-shadow:0 24px 56px rgba(245,158,11,.7), 0 6px 16px rgba(245,158,11,.4);
+  animation:none;
 }
 .sticky-cta-icon{
   display:flex; align-items:center; justify-content:center;
-  width:24px; height:24px; border-radius:50%;
-  background:rgba(26,10,94,.15);
-  font-size:12px; font-weight:900;
+  width:28px; height:28px; border-radius:50%;
+  background:var(--purple-deep);
+  color:var(--gold);
+  font-size:14px; font-weight:900;
+  transition:transform .25s ease;
+}
+.sticky-cta:hover .sticky-cta-icon{
+  transform:translateX(3px);
 }
 @media(max-width:520px){
   .sticky-cta{
-    bottom:16px; right:16px; left:16px;
+    bottom:14px; right:14px; left:14px;
     justify-content:center;
-    padding:14px;
-    font-size:14px;
+    padding:16px 18px;
+    font-size:14.5px;
+    border-radius:14px;
   }
 }
 
@@ -3316,9 +3325,9 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
   </div>
 </section>
 
-<!-- STICKY CTA -->
+<!-- STICKY CTA PERMANENTE -->
 <a href="#quiz" class="sticky-cta" id="stickyCta">
-  <span>Descobrir minha jornada</span>
+  <span>Quero fechar agora</span>
   <span class="sticky-cta-icon">→</span>
 </a>
 
@@ -3718,24 +3727,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 
 /* ============================================================
-   9. STICKY CTA — aparece depois do hero
+   9. STICKY CTA — agora é PERMANENTE, sem JS de visibilidade
    ============================================================ */
-(function(){
-  const sticky = document.getElementById('stickyCta');
-  if (!sticky) return;
-  const hero = document.querySelector('.hero');
-  const heroH = hero ? hero.offsetHeight : 600;
-
-  function check(){
-    if (window.scrollY > heroH * 0.8) {
-      sticky.classList.add('is-visible');
-    } else {
-      sticky.classList.remove('is-visible');
-    }
-  }
-  window.addEventListener('scroll', check, { passive: true });
-  check();
-})();
+/* (botão visível desde o primeiro pixel — sem lógica de scroll) */
 
 /* ============================================================
    10. CALCULADORA DE ROI

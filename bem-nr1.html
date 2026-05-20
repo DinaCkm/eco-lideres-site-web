@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -369,6 +369,30 @@ img{max-width:100%;height:auto;display:block}
 .entrega-item span{ font-size:14px; color: var(--text-body); line-height:1.5; }
 
 /* ===== BLOCO 10: TABELA RISCO × COMPETÊNCIA ===== */
+.rc-split{
+  display:grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap:40px;
+  align-items:center;
+  max-width:1100px;
+  margin:0 auto;
+}
+@media(max-width:900px){
+  .rc-split{
+    grid-template-columns:1fr;
+    gap:32px;
+  }
+}
+.rc-image-wrap{
+  aspect-ratio:4/5;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:var(--shadow-lg);
+  background:linear-gradient(135deg, var(--purple-deep), var(--purple));
+}
+.rc-image-wrap img{
+  width:100%; height:100%; object-fit:cover; display:block;
+}
 .rc-table{
   width:100%;
   background:#fff;
@@ -520,9 +544,10 @@ img{max-width:100%;height:auto;display:block}
 /* ===== CTA FINAL ===== */
 .cta-final{
   background:
-    radial-gradient(circle at 85% 15%, rgba(245,158,11,.22), transparent 45%),
-    radial-gradient(circle at 15% 85%, rgba(255,77,143,.18), transparent 40%),
-    linear-gradient(135deg, var(--purple-deep) 0%, #2B1466 100%);
+    radial-gradient(circle at 85% 15%, rgba(245,158,11,.32), transparent 45%),
+    radial-gradient(circle at 15% 85%, rgba(255,77,143,.28), transparent 40%),
+    linear-gradient(135deg, rgba(26,10,94,.92) 0%, rgba(43,20,102,.88) 100%),
+    url('img/nr1-cta-bg.jpg') center/cover no-repeat;
   color:#fff;
   padding: 90px 0;
   text-align:center;
@@ -578,10 +603,12 @@ img{max-width:100%;height:auto;display:block}
 <header class="eco-nav">
   <div class="eco-nav-inner">
     <a href="index.html" class="eco-brand" aria-label="ECO do B.E.M. — Home">
-      <img src="img/logo-branco.png" alt="ECO do B.E.M." onerror="this.outerHTML='<span class=&quot;eco-brand-fb&quot;>eco <em>do</em> bem</span>'" />
+      <img src="img/logo-branco.png" alt="ECO do B.E.M."
+           onerror="this.outerHTML='<span class=&quot;eco-brand-fb&quot;>eco <em>do</em> bem</span>'" />
     </a>
     <nav class="eco-nav-links">
       <a href="index.html" class="eco-nav-link">Início</a>
+      <a href="eco-lideres.html" class="eco-nav-link featured">ECO Líderes</a>
       <div class="eco-nav-item">
         <button class="eco-nav-link" type="button">
           Para Empresas
@@ -595,15 +622,15 @@ img{max-width:100%;height:auto;display:block}
           </a>
           <a href="eco-times.html" class="eco-dd-link" data-color="teal">
             <div class="eco-dd-icon">👥</div>
-            <div class="eco-dd-body"><div class="eco-dd-title">ECO Times</div><div class="eco-dd-desc">Desenvolvimento coletivo de equipes</div></div>
+            <div class="eco-dd-body"><div class="eco-dd-title">ECO Times <span class="eco-dd-tag">Em breve</span></div><div class="eco-dd-desc">Desenvolvimento coletivo de equipes</div></div>
           </a>
           <a href="plataforma-pdi.html" class="eco-dd-link" data-color="green">
             <div class="eco-dd-icon">📊</div>
-            <div class="eco-dd-body"><div class="eco-dd-title">Plataforma de PDI</div><div class="eco-dd-desc">Gestão de PDI corporativo com dado real</div></div>
+            <div class="eco-dd-body"><div class="eco-dd-title">Plataforma de PDI <span class="eco-dd-tag">Em breve</span></div><div class="eco-dd-desc">Gestão de PDI corporativo com dado real</div></div>
           </a>
           <a href="bem-nr1.html" class="eco-dd-link" data-color="pink">
             <div class="eco-dd-icon">⚖️</div>
-            <div class="eco-dd-body"><div class="eco-dd-title">BEM NR-1</div><div class="eco-dd-desc">Gestão de riscos psicossociais</div></div>
+            <div class="eco-dd-body"><div class="eco-dd-title">BEM NR-1 <span class="eco-dd-tag" style="background:rgba(255,77,143,.15);color:#C9275F">Novo</span></div><div class="eco-dd-desc">Gestão de riscos psicossociais — obrigatório a partir de 26/05/2026</div></div>
           </a>
           <a href="convenio-corporativo.html" class="eco-dd-link" data-color="gold">
             <div class="eco-dd-icon">🤝</div>
@@ -618,17 +645,13 @@ img{max-width:100%;height:auto;display:block}
         </button>
         <div class="eco-dropdown">
           <div class="eco-dd-section">Para o seu desenvolvimento</div>
-          <a href="https://produtos.ecodobem.com/eco-lideres.html" class="eco-dd-link" data-color="teal">
-            <div class="eco-dd-icon">🎯</div>
-            <div class="eco-dd-body"><div class="eco-dd-title">ECO Líderes</div><div class="eco-dd-desc">Certificação individual de liderança em 6 meses</div></div>
-          </a>
           <a href="para-voce.html#carreira" class="eco-dd-link" data-color="purple">
             <div class="eco-dd-icon">🧭</div>
             <div class="eco-dd-body"><div class="eco-dd-title">ECO Carreira</div><div class="eco-dd-desc">Direção, propósito e plano de carreira</div></div>
           </a>
-          <a href="para-voce.html#desenvolvimento" class="eco-dd-link" data-color="green">
+          <a href="para-voce.html#desenvolvimento" class="eco-dd-link" data-color="teal">
             <div class="eco-dd-icon">📈</div>
-            <div class="eco-dd-body"><div class="eco-dd-title">ECO Desenvolvimento</div><div class="eco-dd-desc">Comportamento, prática e evolução</div></div>
+            <div class="eco-dd-body"><div class="eco-dd-title">ECO Desenvolvimento</div><div class="eco-dd-desc">Comportamento, prática e evolução real</div></div>
           </a>
           <a href="para-voce.html#empregabilidade" class="eco-dd-link" data-color="pink">
             <div class="eco-dd-icon">🎯</div>
@@ -644,18 +667,18 @@ img{max-width:100%;height:auto;display:block}
 <div class="eco-mobile-menu" id="ecoMobileMenu">
   <div class="eco-mobile-section">
     <a href="index.html" class="eco-mobile-link">Início</a>
+    <a href="eco-lideres.html" class="eco-mobile-link" style="color:var(--teal);font-weight:700">ECO Líderes →</a>
   </div>
   <div class="eco-mobile-section">
     <div class="eco-mobile-section-title">Para Empresas</div>
     <a href="eco-lideres.html" class="eco-mobile-link">🎯 ECO Líderes</a>
-    <a href="eco-times.html" class="eco-mobile-link">👥 ECO Times</a>
-    <a href="plataforma-pdi.html" class="eco-mobile-link">📊 Plataforma de PDI</a>
-    <a href="bem-nr1.html" class="eco-mobile-link">⚖️ BEM NR-1</a>
+    <a href="eco-times.html" class="eco-mobile-link">👥 ECO Times <span class="eco-dd-tag">Em breve</span></a>
+    <a href="plataforma-pdi.html" class="eco-mobile-link">📊 Plataforma de PDI <span class="eco-dd-tag">Em breve</span></a>
+    <a href="bem-nr1.html" class="eco-mobile-link">⚖️ BEM NR-1 <span class="eco-dd-tag" style="background:rgba(255,77,143,.15);color:#FFB3CB">Novo</span></a>
     <a href="convenio-corporativo.html" class="eco-mobile-link">🤝 Convênio Corporativo</a>
   </div>
   <div class="eco-mobile-section">
     <div class="eco-mobile-section-title">Desenvolvimento Individual</div>
-    <a href="https://produtos.ecodobem.com/eco-lideres.html" class="eco-mobile-link">🎯 ECO Líderes</a>
     <a href="para-voce.html#carreira" class="eco-mobile-link">🧭 ECO Carreira</a>
     <a href="para-voce.html#desenvolvimento" class="eco-mobile-link">📈 ECO Desenvolvimento</a>
     <a href="para-voce.html#empregabilidade" class="eco-mobile-link">🎯 ECO Empregabilidade</a>
@@ -754,6 +777,9 @@ img{max-width:100%;height:auto;display:block}
       <h2 class="section-title on-dark">Quais riscos precisam ser <em>observados</em>.</h2>
       <p class="section-lead on-dark">Os riscos psicossociais estão ligados à forma como o trabalho é planejado, distribuído, cobrado, liderado e vivenciado pelas equipes.</p>
     </div>
+    <div style="max-width:920px;margin:0 auto 48px;border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.4);aspect-ratio:16/9;background:linear-gradient(135deg,var(--purple-deep),var(--pink));">
+      <img src="img/nr1-riscos.jpg" alt="Equipe diversa em ambiente de trabalho corporativo, representando a dimensão humana dos riscos psicossociais" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" />
+    </div>
     <div class="risk-grid">
       <div class="risk-chip">Sobrecarga de trabalho</div>
       <div class="risk-chip">Pressão excessiva</div>
@@ -817,6 +843,9 @@ img{max-width:100%;height:auto;display:block}
       <h2 class="section-title on-dark">BEM NR-1: um caminho simples para <em>cumprir, desenvolver e evidenciar</em>.</h2>
       <p class="section-lead on-dark">A CKM oferece uma solução integrada com diagnóstico, plano de ação, desenvolvimento de competências socioemocionais, mentorias, acompanhamento e evidências.</p>
     </div>
+    <div style="max-width:920px;margin:0 auto 48px;border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);aspect-ratio:16/9;border:1px solid rgba(255,255,255,.12);background:linear-gradient(135deg,var(--purple-deep),var(--purple));">
+      <img src="img/nr1-solucao.jpg" alt="Reunião de planejamento com gestores analisando plano de ação para gestão de riscos psicossociais" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" />
+    </div>
     <div class="solucao-grid">
       <div class="solucao-step">
         <div class="solucao-step-num">01</div>
@@ -875,19 +904,24 @@ img{max-width:100%;height:auto;display:block}
       <h2 class="section-title">Lideranças preparadas <em>reduzem riscos</em>.</h2>
       <p class="section-lead">Muitos riscos psicossociais estão ligados à forma como as equipes são conduzidas. O BEM NR-1 conecta cada risco identificado a uma competência específica a ser desenvolvida.</p>
     </div>
-    <table class="rc-table">
-      <thead>
-        <tr><th>Risco identificado</th><th>Competência a desenvolver</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Falta de apoio da liderança</td><td>Escuta, orientação e feedback</td></tr>
-        <tr><td>Conflitos recorrentes</td><td>Comunicação e gestão de conflitos</td></tr>
-        <tr><td>Sobrecarga</td><td>Priorização e organização</td></tr>
-        <tr><td>Baixa segurança psicológica</td><td>Confiança, respeito e diálogo</td></tr>
-        <tr><td>Mudanças mal conduzidas</td><td>Comunicação e adaptação</td></tr>
-        <tr><td>Condutas inadequadas</td><td>Ética e responsabilidade nas relações</td></tr>
-      </tbody>
-    </table>
+    <div class="rc-split">
+      <div class="rc-image-wrap">
+        <img src="img/nr1-liderancas.jpg" alt="Líder em sessão de desenvolvimento de competências de comunicação e escuta ativa" onerror="this.style.display='none'" />
+      </div>
+      <table class="rc-table">
+        <thead>
+          <tr><th>Risco identificado</th><th>Competência a desenvolver</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Falta de apoio da liderança</td><td>Escuta, orientação e feedback</td></tr>
+          <tr><td>Conflitos recorrentes</td><td>Comunicação e gestão de conflitos</td></tr>
+          <tr><td>Sobrecarga</td><td>Priorização e organização</td></tr>
+          <tr><td>Baixa segurança psicológica</td><td>Confiança, respeito e diálogo</td></tr>
+          <tr><td>Mudanças mal conduzidas</td><td>Comunicação e adaptação</td></tr>
+          <tr><td>Condutas inadequadas</td><td>Ética e responsabilidade nas relações</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </section>
 

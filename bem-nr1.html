@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BEM NR-1 | Gestão de Riscos Psicossociais — ECO do B.E.M. / CKM</title>
+<meta name="description" content="Sua organização precisa cumprir a NR-1. BEM NR-1 organiza diagnóstico psicossocial, plano de ação, desenvolvimento de lideranças e evidências em um único processo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --purple:#5B2EFF; --purple-deep:#1A0A5E; --purple-dark:#3A1D8F; --purple-light:#8C68FF;
+  --teal:#00B8D9; --teal-soft:#5DCAA5; --green:#5ED38C; --blue:#4A9FFF; --gold:#F59E0B;
+  --pink:#FF4D8F; --pink-soft:#FFB3CB;
+  --bg-white:#FFFFFF; --bg-lilac:#F5F3FF; --bg-lilac-2:#E8E4FF; --bg-night:#0E0530;
+  --text-dark:#1A0A5E; --text-body:#3A3559; --text-muted:#6B6389; --text-white:#FFFFFF; --text-lilac:#C4B8FF;
+  --border-light:#E8E4FF; --border-soft:#EFECFF;
+  --shadow-sm:0 4px 16px rgba(26,10,94,.06);
+  --shadow-md:0 12px 32px rgba(26,10,94,.08);
+  --shadow-lg:0 24px 60px rgba(26,10,94,.12);
+  --shadow-pink:0 18px 40px rgba(255,77,143,.22);
+  --radius-sm:12px; --radius-md:20px; --radius-lg:28px; --radius-xl:36px;
+  --max:1180px; --gutter:20px;
+}
+*{box-sizing:border-box;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{margin:0;font-family:'Inter',sans-serif;color:var(--text-body);background:var(--bg-white);overflow-x:hidden;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+.container{width:100%;max-width:calc(var(--max) + (var(--gutter)*2));margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
+
+/* ===== MENU UNIFICADO ECO (mesmo do index) ===== */
+.eco-nav{position:sticky;top:0;z-index:100;background:rgba(26,10,94,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08)}
+.eco-nav-inner{max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:72px}
+.eco-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.eco-brand img{height:42px;width:auto;display:block;transition:transform .25s}
+.eco-brand:hover img{transform:scale(1.03)}
+.eco-brand-fb{font-family:'Poppins',sans-serif;font-weight:800;font-size:20px;color:#fff;letter-spacing:-.02em;line-height:1}
+.eco-brand-fb em{font-style:normal;font-weight:400;opacity:.7;font-size:13px;margin:0 2px}
+.eco-nav-links{display:flex;align-items:center;gap:6px;flex-wrap:nowrap}
+.eco-nav-item{position:relative}
+.eco-nav-link{display:inline-flex;align-items:center;gap:6px;padding:10px 14px;color:rgba(255,255,255,.88);font-size:14px;font-weight:600;border-radius:10px;transition:color .18s,background .18s;white-space:nowrap;cursor:pointer;background:none;border:none;font-family:inherit}
+.eco-nav-link:hover,.eco-nav-link.active{color:#fff;background:rgba(255,255,255,.06)}
+.eco-nav-link .caret{width:10px;height:10px;transition:transform .25s;opacity:.7}
+.eco-nav-item:hover .eco-nav-link .caret,.eco-nav-item.open .eco-nav-link .caret{transform:rotate(180deg)}
+.eco-nav-link.featured{color:var(--teal);font-weight:700}
+.eco-nav-link.featured:hover{color:#fff;background:rgba(0,184,217,.14)}
+.eco-dropdown{position:absolute;top:calc(100% + 8px);left:0;min-width:300px;background:#fff;border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.25),0 2px 8px rgba(0,0,0,.12);padding:10px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .22s,visibility .22s,transform .22s;z-index:200}
+.eco-nav-item:hover .eco-dropdown,.eco-nav-item.open .eco-dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+.eco-dropdown::before{content:'';position:absolute;top:-6px;left:24px;width:12px;height:12px;background:#fff;transform:rotate(45deg)}
+.eco-dd-section{padding:6px 8px 4px;font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--text-muted)}
+.eco-dd-link{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border-radius:10px;color:var(--text-dark);transition:background .15s,transform .15s;position:relative}
+.eco-dd-link:hover{background:var(--bg-lilac);transform:translateX(2px)}
+.eco-dd-icon{flex-shrink:0;width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--purple),var(--purple-light));display:grid;place-items:center;color:#fff;font-size:16px}
+.eco-dd-link[data-color="teal"] .eco-dd-icon{background:linear-gradient(135deg,var(--teal),var(--blue))}
+.eco-dd-link[data-color="green"] .eco-dd-icon{background:linear-gradient(135deg,var(--green),var(--teal-soft))}
+.eco-dd-link[data-color="gold"] .eco-dd-icon{background:linear-gradient(135deg,var(--gold),#FFC94A)}
+.eco-dd-link[data-color="pink"] .eco-dd-icon{background:linear-gradient(135deg,var(--pink),var(--purple-light))}
+.eco-dd-body{flex:1;min-width:0}
+.eco-dd-title{font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;color:var(--text-dark);line-height:1.2;display:flex;align-items:center;gap:8px;margin-bottom:2px}
+.eco-dd-tag{font-size:9px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:2px 8px;border-radius:99px;background:rgba(245,158,11,.15);color:#B87A06}
+.eco-dd-desc{font-size:12.5px;color:var(--text-muted);line-height:1.4}
+.eco-nav-cta{background:linear-gradient(135deg,var(--teal),var(--blue));color:#fff !important;padding:10px 22px;border-radius:999px;font-weight:700;font-size:14px;box-shadow:0 18px 40px rgba(0,184,217,.22);transition:transform .2s,box-shadow .2s;margin-left:8px}
+.eco-nav-cta:hover{transform:translateY(-1px)}
+.eco-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:201}
+.eco-hamburger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+.eco-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.eco-hamburger.open span:nth-child(2){opacity:0}
+.eco-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.eco-mobile-menu{display:none;position:fixed;inset:0;background:rgba(26,10,94,.98);backdrop-filter:blur(24px);z-index:150;padding:90px 24px 40px;overflow-y:auto}
+.eco-mobile-menu.open{display:block}
+.eco-mobile-section{margin-bottom:24px}
+.eco-mobile-section-title{font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--teal);margin-bottom:8px;padding:0 8px}
+.eco-mobile-link{display:flex;align-items:center;gap:12px;padding:14px 16px;color:rgba(255,255,255,.92);font-family:'Poppins',sans-serif;font-size:17px;font-weight:600;border-radius:12px;transition:background .2s}
+.eco-mobile-link:hover{background:rgba(255,255,255,.06)}
+.eco-mobile-link .eco-dd-tag{font-size:9px}
+.eco-mobile-cta{display:block;text-align:center;margin-top:8px;background:linear-gradient(135deg,var(--teal),var(--blue));color:#fff;padding:16px;border-radius:14px;font-weight:700;font-size:16px;box-shadow:0 18px 40px rgba(0,184,217,.22)}
+@media(max-width:1024px){.eco-nav-links,.eco-nav-cta{display:none}.eco-hamburger{display:flex}}
+
+/* ===== BOTÕES ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:54px;padding:14px 28px;border-radius:999px;font-family:'Inter',sans-serif;font-weight:700;font-size:15px;cursor:pointer;transition:transform .2s,box-shadow .2s;border:1px solid transparent;text-align:center}
+.btn:hover{transform:translateY(-2px)}
+.btn-pink{background:linear-gradient(135deg,var(--pink),var(--purple-light));color:#fff;box-shadow:var(--shadow-pink)}
+.btn-gold{background:linear-gradient(135deg,var(--gold),#FFC94A);color:var(--purple-deep);box-shadow:0 14px 40px -14px rgba(245,158,11,.75);font-weight:800}
+.btn-ghost-light{background:transparent;color:#fff;border-color:rgba(255,255,255,.3)}
+.btn-ghost-light:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.btn-ghost-dark{background:#fff;color:var(--text-dark);border-color:var(--border-light)}
+.btn-ghost-dark:hover{border-color:var(--pink)}
+
+/* ===== HERO NR-1 ===== */
+.nr1-hero{
+  background:
+    radial-gradient(circle at 85% 15%, rgba(255,77,143,.20), transparent 40%),
+    radial-gradient(circle at 10% 90%, rgba(245,158,11,.15), transparent 40%),
+    linear-gradient(165deg, var(--purple-deep) 0%, #2B1466 55%, #4A1F7A 100%);
+  color:#fff;
+  padding: 80px 0 100px;
+  position:relative;
+  overflow:hidden;
+}
+.nr1-hero::before{
+  content:''; position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size:80px 80px; opacity:.4; pointer-events:none;
+}
+.nr1-hero-inner{
+  position:relative; z-index:1;
+  display:grid; grid-template-columns: 1.1fr .9fr;
+  gap:64px; align-items:center;
+}
+@media(max-width:900px){
+  .nr1-hero{padding:60px 0 72px}
+  .nr1-hero-inner{ grid-template-columns:1fr; gap:48px; }
+}
+.urgency-tag{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:10px 20px;
+  background: linear-gradient(90deg, rgba(245,158,11,.18), rgba(255,77,143,.15));
+  border:1px solid rgba(255,210,176,.4);
+  border-radius:999px;
+  font-size:11.5px; font-weight:800;
+  letter-spacing:1.8px; text-transform:uppercase;
+  color: #FFD2B0;
+  margin-bottom:28px;
+}
+.urgency-pulse{
+  width:9px; height:9px; border-radius:50%; background:#FFD2B0;
+  box-shadow:0 0 0 0 rgba(255,210,176,.7); animation:nr1pulse 2s infinite;
+}
+@keyframes nr1pulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(255,210,176,.7)}
+  50%{box-shadow:0 0 0 10px rgba(255,210,176,0)}
+}
+.nr1-h1{
+  font-family:'Poppins',sans-serif;
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  font-weight:800; line-height:1.06; letter-spacing:-.025em;
+  margin:0 0 22px; color:#fff;
+}
+.nr1-h1 span{ color:#FFD2B0; }
+.nr1-h1-sub{
+  font-size:18px; color:rgba(255,255,255,.82);
+  line-height:1.65; margin:0 0 36px; max-width:560px;
+}
+.nr1-actions{ display:flex; gap:14px; flex-wrap:wrap; }
+.nr1-hero-visual{
+  position:relative;
+  aspect-ratio: 4 / 5;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  background: linear-gradient(150deg, var(--pink) 0%, var(--purple) 50%, var(--purple-deep) 100%);
+  box-shadow:0 30px 80px rgba(0,0,0,.4);
+}
+.nr1-hero-visual::after{
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse at 30% 30%, rgba(255,255,255,.18), transparent 55%);
+}
+.nr1-hero-visual img{width:100%; height:100%; object-fit:cover;}
+.nr1-hero-card{
+  position:absolute; bottom:24px; left:24px; right:24px;
+  background:rgba(255,255,255,.96);
+  border-radius:18px;
+  padding:20px 22px;
+  backdrop-filter: blur(14px);
+  box-shadow:0 20px 60px rgba(0,0,0,.4);
+}
+.nr1-hero-card-label{
+  font-size:10.5px; font-weight:800; letter-spacing:1.8px; text-transform:uppercase;
+  color: var(--pink); margin-bottom:8px;
+}
+.nr1-hero-card h3{
+  font-family:'Poppins',sans-serif;
+  font-size: 19px; font-weight:800;
+  color: var(--text-dark); margin:0 0 6px; line-height:1.25;
+}
+.nr1-hero-card p{
+  font-size:13.5px; color:var(--text-muted); margin:0; line-height:1.55;
+}
+
+/* ===== SEÇÕES PADRÃO ===== */
+.section{ padding:90px 0; }
+.section-lilac{ background: var(--bg-lilac); }
+.section-dark{
+  background: radial-gradient(circle at 10% 20%, rgba(91,46,255,.32), transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(255,77,143,.18), transparent 40%),
+              linear-gradient(160deg, var(--purple-deep) 0%, #0D062A 100%);
+  color:#fff;
+}
+.eyebrow{
+  display:inline-flex; align-items:center; gap:10px;
+  font-size:11.5px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase;
+  color: var(--pink); margin-bottom:18px;
+}
+.eyebrow::before{
+  content:''; width:28px; height:2px; border-radius:2px;
+  background: linear-gradient(90deg, var(--pink), var(--gold));
+}
+.eyebrow.on-dark{ color: #FFD2B0; }
+.eyebrow.on-dark::before{ background: linear-gradient(90deg, #FFD2B0, var(--pink)); }
+.eyebrow.center{ justify-content:center; }
+.section-title{
+  font-family:'Poppins',sans-serif;
+  font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+  font-weight:800; line-height:1.1; letter-spacing:-.025em;
+  margin:0 0 18px; color: var(--text-dark);
+}
+.section-title.on-dark{ color:#fff; }
+.section-title em{ font-style:normal; color: var(--pink); }
+.section-title.on-dark em{ color: #FFD2B0; }
+.section-lead{
+  font-size:17px; line-height:1.7; color: var(--text-muted);
+  max-width:760px; margin:0;
+}
+.section-lead.on-dark{ color:rgba(255,255,255,.78); }
+.section-header{ max-width:880px; margin: 0 auto 56px; text-align:center; }
+.section-header .section-lead{ margin:0 auto; }
+
+/* ===== BLOCO 2: O QUE EXIGE ===== */
+.exige-grid{
+  display:grid; grid-template-columns: repeat(3,1fr); gap:18px;
+}
+@media(max-width:900px){.exige-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.exige-grid{grid-template-columns:1fr}}
+.exige-card{
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding:26px 24px;
+  transition: transform .25s, box-shadow .25s;
+}
+.exige-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow-md); }
+.exige-num{
+  width:40px; height:40px; border-radius:12px;
+  background: linear-gradient(135deg, var(--pink), var(--purple-light));
+  color:#fff; display:grid; place-items:center;
+  font-family:'Poppins',sans-serif; font-weight:800; font-size:16px;
+  margin-bottom:14px;
+}
+.exige-card h4{
+  font-family:'Poppins',sans-serif; font-size: 16.5px; font-weight:700;
+  color: var(--text-dark); margin:0 0 8px; line-height:1.3;
+}
+.exige-card p{ font-size:14px; color: var(--text-muted); margin:0; line-height:1.6; }
+
+/* ===== BLOCO 3: PARA QUEM SE APLICA ===== */
+.aplica-grid{
+  display:grid; grid-template-columns: repeat(4,1fr); gap:12px;
+  margin-bottom:28px;
+}
+@media(max-width:900px){.aplica-grid{grid-template-columns:repeat(2,1fr)}}
+.aplica-tag{
+  padding:14px 16px;
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius: 12px;
+  text-align:center;
+  font-size:13.5px; font-weight:600; color: var(--text-body);
+  transition: border-color .2s, color .2s, transform .2s;
+}
+.aplica-tag:hover{ border-color: var(--pink); color: var(--pink); transform:translateY(-2px); }
+.aplica-note{
+  background: linear-gradient(135deg, rgba(255,77,143,.08), rgba(91,46,255,.05));
+  border:1px solid rgba(255,77,143,.18);
+  border-radius: var(--radius-md);
+  padding:22px 26px;
+  font-size:15px; color: var(--text-body); line-height:1.65;
+}
+.aplica-note strong{ color: var(--pink); }
+
+/* ===== BLOCO 4: RISCOS PSICOSSOCIAIS ===== */
+.risk-grid{
+  display:grid; grid-template-columns: repeat(3,1fr); gap:10px;
+}
+@media(max-width:900px){.risk-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.risk-grid{grid-template-columns:1fr}}
+.risk-chip{
+  display:flex; align-items:center; gap:10px;
+  padding:14px 16px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;
+  color:rgba(255,255,255,.88);
+  font-size:14px;
+  transition: background .2s, border-color .2s;
+}
+.risk-chip:hover{ background:rgba(255,77,143,.12); border-color:rgba(255,210,176,.3); }
+.risk-chip::before{
+  content:'⚠️'; flex-shrink:0; font-size:14px;
+}
+.risk-focus{
+  background: rgba(255,210,176,.08);
+  border:1px solid rgba(255,210,176,.25);
+  border-radius:14px; padding:22px 26px;
+  margin-top:24px;
+  font-size:15px; color: rgba(255,255,255,.92); line-height:1.7;
+}
+.risk-focus strong{ color:#FFD2B0; }
+
+/* ===== BLOCO 5: RISCOS DE NÃO AGIR ===== */
+.warn-grid{
+  display:grid; grid-template-columns: 1fr 1fr; gap:18px;
+}
+@media(max-width:780px){.warn-grid{grid-template-columns:1fr}}
+.warn-list{
+  list-style:none; padding:0; margin:0;
+  display:grid; gap:10px;
+}
+.warn-list li{
+  padding:14px 18px;
+  background:#fff;
+  border-left:4px solid var(--pink);
+  border-radius: 0 12px 12px 0;
+  font-size:14.5px; color: var(--text-body);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ===== BLOCO 7: SOLUÇÃO ===== */
+.solucao-grid{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:14px;
+  margin-top:36px;
+}
+@media(max-width:1100px){.solucao-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.solucao-grid{grid-template-columns:1fr}}
+.solucao-step{
+  background: rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--radius-md);
+  padding:24px 22px;
+  position:relative;
+  transition: transform .25s, border-color .25s;
+  backdrop-filter: blur(10px);
+}
+.solucao-step:hover{ transform:translateY(-4px); border-color:rgba(255,255,255,.24); }
+.solucao-step-num{
+  font-family:'Poppins',sans-serif;
+  font-size:48px; font-weight:900; line-height:1;
+  color: rgba(255,210,176,.4);
+  margin-bottom:8px;
+}
+.solucao-step h4{
+  font-family:'Poppins',sans-serif; font-size: 17px; font-weight:700;
+  color:#fff; margin:0 0 8px;
+}
+.solucao-step p{ font-size:14px; color:rgba(255,255,255,.78); margin:0; line-height:1.6; }
+
+/* ===== BLOCO 9: O QUE ENTREGAMOS ===== */
+.entrega-grid{
+  display:grid; grid-template-columns: repeat(3,1fr); gap:12px;
+}
+@media(max-width:900px){.entrega-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.entrega-grid{grid-template-columns:1fr}}
+.entrega-item{
+  display:flex; gap:12px; align-items:flex-start;
+  padding:16px 18px;
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius:12px;
+  transition: border-color .2s, transform .2s;
+}
+.entrega-item:hover{ border-color:var(--pink); transform:translateX(3px); }
+.entrega-check{
+  flex-shrink:0; width:24px; height:24px; border-radius:50%;
+  background: rgba(255,77,143,.14); color: var(--pink);
+  display:grid; place-items:center; font-size:13px; font-weight:800;
+}
+.entrega-item span{ font-size:14px; color: var(--text-body); line-height:1.5; }
+
+/* ===== BLOCO 10: TABELA RISCO × COMPETÊNCIA ===== */
+.rc-table{
+  width:100%;
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  overflow:hidden;
+  box-shadow: var(--shadow-sm);
+  border-collapse:separate; border-spacing:0;
+}
+.rc-table th, .rc-table td{
+  padding: 16px 22px; text-align:left;
+  font-size:14.5px; line-height:1.5;
+  border-bottom:1px solid var(--border-soft);
+}
+.rc-table th{
+  background: linear-gradient(135deg, var(--purple-deep), var(--purple-dark));
+  color:#fff;
+  font-family:'Poppins',sans-serif;
+  font-size:13px; font-weight:700; letter-spacing:.5px;
+  text-transform:uppercase;
+}
+.rc-table tr:last-child td{ border-bottom:none; }
+.rc-table tr:nth-child(even) td{ background:var(--bg-lilac); }
+.rc-table td:first-child{ color: var(--pink); font-weight:600; }
+.rc-table td:last-child{ color: var(--text-body); }
+
+/* ===== BLOCO 14: FORMATOS DE CONTRATAÇÃO ===== */
+.formatos-grid{
+  display:grid; grid-template-columns: repeat(4,1fr); gap:18px;
+}
+@media(max-width:1100px){.formatos-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.formatos-grid{grid-template-columns:1fr}}
+.formato-card{
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding:30px 26px;
+  display:flex; flex-direction:column;
+  transition: transform .25s, box-shadow .25s, border-color .25s;
+  position:relative;
+}
+.formato-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-lg); border-color:transparent; }
+.formato-card.featured{
+  background: linear-gradient(160deg, var(--purple-deep) 0%, var(--purple) 100%);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow: var(--shadow-pink);
+}
+.formato-card.featured::before{
+  content:'Mais completo';
+  position:absolute; top:-12px; right:24px;
+  background: var(--gold); color: var(--purple-deep);
+  padding:5px 14px; border-radius:99px;
+  font-size:10px; font-weight:800; letter-spacing:1px; text-transform:uppercase;
+}
+.formato-step{
+  font-size:11px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase;
+  color: var(--pink); margin-bottom:10px;
+}
+.formato-card.featured .formato-step{ color: #FFD2B0; }
+.formato-card h4{
+  font-family:'Poppins',sans-serif; font-size: 20px; font-weight:800;
+  margin:0 0 12px; line-height:1.2;
+  color: var(--text-dark);
+}
+.formato-card.featured h4{ color:#fff; }
+.formato-card p{
+  font-size:14px; line-height:1.6;
+  color: var(--text-muted); margin:0 0 18px;
+}
+.formato-card.featured p{ color:rgba(255,255,255,.8); }
+.formato-card ul{
+  list-style:none; padding:0; margin:0 0 24px;
+  display:grid; gap:8px;
+}
+.formato-card ul li{
+  font-size:13.5px; line-height:1.45;
+  display:flex; gap:9px; align-items:flex-start;
+  color: var(--text-body);
+}
+.formato-card.featured ul li{ color: rgba(255,255,255,.88); }
+.formato-card ul li::before{
+  content:'✓'; color: var(--pink); font-weight:800; flex-shrink:0;
+}
+.formato-card.featured ul li::before{ color: #FFD2B0; }
+.formato-card .btn{ width:100%; margin-top:auto; }
+
+/* ===== BLOCO 15: CICLO 90 DIAS ===== */
+.ciclo-table{
+  width:100%; background:#fff; border-radius: var(--radius-md);
+  overflow:hidden; box-shadow:var(--shadow-sm);
+  border:1px solid var(--border-light);
+  border-collapse: separate; border-spacing:0;
+}
+.ciclo-table th, .ciclo-table td{
+  padding:18px 24px; text-align:left;
+  font-size:15px; line-height:1.5;
+  border-bottom:1px solid var(--border-soft);
+}
+.ciclo-table th{
+  background: linear-gradient(135deg, var(--pink), var(--purple-light));
+  color:#fff; font-family:'Poppins',sans-serif;
+  font-size:13px; font-weight:700; letter-spacing:.5px; text-transform:uppercase;
+}
+.ciclo-table td:first-child{ font-weight:700; color: var(--purple-deep); width:35%; }
+.ciclo-table tr:last-child td{ border-bottom:none; }
+@media(max-width:600px){
+  .ciclo-table td:first-child{ width:auto; }
+  .ciclo-table th, .ciclo-table td{ padding:12px 16px; font-size:13.5px; }
+}
+
+/* ===== BLOCO 16: FAQ ===== */
+.faq-list{ max-width:880px; margin:0 auto; }
+.faq-item{
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius:14px;
+  margin-bottom:10px;
+  overflow:hidden;
+  transition: border-color .2s, box-shadow .2s;
+}
+.faq-item.open{ border-color: var(--pink); box-shadow:var(--shadow-sm); }
+.faq-btn{
+  width:100%; padding:20px 24px;
+  background:none; border:none;
+  text-align:left;
+  font-family:'Poppins',sans-serif; font-size:16.5px; font-weight:700;
+  color: var(--text-dark);
+  cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:20px;
+  transition: color .2s;
+}
+.faq-btn:hover{ color: var(--pink); }
+.faq-toggle{
+  flex-shrink:0; width:30px; height:30px; border-radius:50%;
+  background: var(--bg-lilac); color: var(--purple);
+  display:grid; place-items:center; font-size:18px; font-weight:300;
+  transition: all .3s;
+}
+.faq-item.open .faq-toggle{ background: var(--pink); color:#fff; transform:rotate(45deg); }
+.faq-answer{
+  max-height:0; overflow:hidden; transition: max-height .4s ease;
+}
+.faq-item.open .faq-answer{ max-height:600px; }
+.faq-answer-inner{
+  padding:0 24px 22px;
+  font-size:14.5px; color: var(--text-body); line-height:1.7;
+}
+
+/* ===== CTA FINAL ===== */
+.cta-final{
+  background:
+    radial-gradient(circle at 85% 15%, rgba(245,158,11,.22), transparent 45%),
+    radial-gradient(circle at 15% 85%, rgba(255,77,143,.18), transparent 40%),
+    linear-gradient(135deg, var(--purple-deep) 0%, #2B1466 100%);
+  color:#fff;
+  padding: 90px 0;
+  text-align:center;
+  position:relative; overflow:hidden;
+}
+.cta-final-tag{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:8px 18px;
+  background: rgba(245,158,11,.18);
+  border:1px solid rgba(245,158,11,.32);
+  border-radius:999px;
+  font-size:11px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase;
+  color: #FFD2B0; margin-bottom:22px;
+}
+.cta-final h2{
+  font-family:'Poppins',sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight:800; line-height:1.1; letter-spacing:-.025em;
+  margin:0 0 18px; color:#fff;
+  max-width:780px; margin-left:auto; margin-right:auto;
+}
+.cta-final h2 em{ font-style:normal; color:#FFD2B0; }
+.cta-final-sub{
+  font-size:17px; color: rgba(255,255,255,.78);
+  line-height:1.65; max-width:640px; margin:0 auto 36px;
+}
+.cta-final-actions{
+  display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
+}
+
+/* ===== FOOTER ===== */
+.eco-footer{
+  background: var(--purple-deep);
+  color: rgba(255,255,255,.65);
+  padding: 50px 0 30px;
+}
+.eco-footer-row{
+  display:flex; justify-content:space-between; align-items:center;
+  gap:18px; flex-wrap:wrap;
+}
+.eco-footer-row a{ color: rgba(255,255,255,.65); transition: color .2s; }
+.eco-footer-row a:hover{ color: #FFD2B0; }
+.eco-footer-brand{ display:flex; align-items:center; gap:12px; }
+.eco-footer-brand img{ height:32px; opacity:.9; }
+.eco-footer-brand strong{
+  font-family:'Poppins',sans-serif; color:#fff; font-size:14px; font-weight:800;
+}
+</style>
+</head>
+<body>
+
+<!-- ============ MENU UNIFICADO ============ -->
+<header class="eco-nav">
+  <div class="eco-nav-inner">
+    <a href="index.html" class="eco-brand" aria-label="ECO do B.E.M. — Home">
+      <img src="img/logo-branco.png" alt="ECO do B.E.M."
+           onerror="this.outerHTML='<span class=&quot;eco-brand-fb&quot;>eco <em>do</em> bem</span>'" />
+    </a>
+    <nav class="eco-nav-links">
+      <a href="index.html" class="eco-nav-link">Início</a>
+      <a href="eco-lideres.html" class="eco-nav-link featured">ECO Líderes</a>
+      <div class="eco-nav-item">
+        <button class="eco-nav-link" type="button">
+          Para Empresas
+          <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="eco-dropdown">
+          <div class="eco-dd-section">Produtos B2B</div>
+          <a href="eco-lideres.html" class="eco-dd-link" data-color="purple">
+            <div class="eco-dd-icon">🎯</div>
+            <div class="eco-dd-body"><div class="eco-dd-title">ECO Líderes</div><div class="eco-dd-desc">Certificação de liderança em 6 meses</div></div>
+          </a>
+          <a href="eco-times.html" class="eco-dd-link" data-color="teal">
+            <div class="eco-dd-icon">👥</div>
+            <div class="eco-dd-body"><div class="eco-dd-title">ECO Times <span class="eco-dd-tag">Em breve</span></div><div class="eco-dd-desc">Desenvolvimento coletivo de equipes</div></div>
+          </a>
+          <a href="plataforma-pdi.html" class="eco-dd-link" data-color="green">
+            <div class="eco-dd-icon">📊</div>
+            <div class="eco-dd-body"><div class="eco-dd-title">Plataforma de PDI <span class="eco-dd-tag">Em breve</span></div><div class="eco-dd-desc">Gestão de PDI corporativo com dado real</div></div>
+          </a>
+          <a href="bem-nr1.html" class="eco-dd-link" data-color="pink">
+            <div class="eco-dd-icon">⚖️</div>
+            <div class="eco-dd-body"><div class="eco-dd-title">BEM NR-1 <span class="eco-dd-tag" style="background:rgba(255,77,143,.15);color:#C9275F">Novo</span></div><div class="eco-dd-desc">Gestão de riscos psicossociais — obrigatório a partir de 26/05/2026</div></div>
+          </a>
+          <a href="convenio-corporativo.html" class="eco-dd-link" data-color="gold">
+            <div class="eco-dd-icon">🤝</div>
+            <div class="eco-dd-body"><div class="eco-dd-title">Convênio Corporativo</div><div class="eco-dd-desc">Sua empresa como conveniada ECO</div></div>
+          </a>
+        </div>
+      </div>
+      <div class="eco-nav-item">
+        <button class="eco-nav-link" type="button">
+          Desenvolvimento Individual
+          <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="eco-dropdown">
+          <div class="eco-dd-section">Para o seu desenvolvimento</div>
+          <a href="para-voce.html#carreira" class="eco-dd-link" data-color="purple">
+            <div class="eco-dd-icon">🧭</div>
+            <div class="eco-dd-body"><div class="eco-dd-title">ECO Carreira</div><div class="eco-dd-desc">Direção, propósito e plano de carreira</div></div>
+          </a>
+          <a href="para-voce.html#desenvolvimento" class="eco-dd-link" data-color="teal">
+            <div class="eco-dd-icon">📈</div>
+            <div class="eco-dd-body"><div class="eco-dd-title">ECO Desenvolvimento</div><div class="eco-dd-desc">Comportamento, prática e evolução real</div></div>
+          </a>
+          <a href="para-voce.html#empregabilidade" class="eco-dd-link" data-color="pink">
+            <div class="eco-dd-icon">🎯</div>
+            <div class="eco-dd-body"><div class="eco-dd-title">ECO Empregabilidade</div><div class="eco-dd-desc">Recolocação com estratégia</div></div>
+          </a>
+        </div>
+      </div>
+      <a href="#contato" class="eco-nav-link eco-nav-cta">Fale Conosco</a>
+    </nav>
+    <button class="eco-hamburger" id="ecoHamburger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="eco-mobile-menu" id="ecoMobileMenu">
+  <div class="eco-mobile-section">
+    <a href="index.html" class="eco-mobile-link">Início</a>
+    <a href="eco-lideres.html" class="eco-mobile-link" style="color:var(--teal);font-weight:700">ECO Líderes →</a>
+  </div>
+  <div class="eco-mobile-section">
+    <div class="eco-mobile-section-title">Para Empresas</div>
+    <a href="eco-lideres.html" class="eco-mobile-link">🎯 ECO Líderes</a>
+    <a href="eco-times.html" class="eco-mobile-link">👥 ECO Times <span class="eco-dd-tag">Em breve</span></a>
+    <a href="plataforma-pdi.html" class="eco-mobile-link">📊 Plataforma de PDI <span class="eco-dd-tag">Em breve</span></a>
+    <a href="bem-nr1.html" class="eco-mobile-link">⚖️ BEM NR-1 <span class="eco-dd-tag" style="background:rgba(255,77,143,.15);color:#FFB3CB">Novo</span></a>
+    <a href="convenio-corporativo.html" class="eco-mobile-link">🤝 Convênio Corporativo</a>
+  </div>
+  <div class="eco-mobile-section">
+    <div class="eco-mobile-section-title">Desenvolvimento Individual</div>
+    <a href="para-voce.html#carreira" class="eco-mobile-link">🧭 ECO Carreira</a>
+    <a href="para-voce.html#desenvolvimento" class="eco-mobile-link">📈 ECO Desenvolvimento</a>
+    <a href="para-voce.html#empregabilidade" class="eco-mobile-link">🎯 ECO Empregabilidade</a>
+  </div>
+  <a href="#contato" class="eco-mobile-cta">Fale Conosco</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="nr1-hero">
+  <div class="container nr1-hero-inner">
+    <div>
+      <div class="urgency-tag">
+        <span class="urgency-pulse"></span>
+        URGENTE · Vigência em 26/05/2026
+      </div>
+      <h1 class="nr1-h1">
+        NR-1: riscos psicossociais agora são <span>obrigação de gestão</span>.
+      </h1>
+      <p class="nr1-h1-sub">
+        A NR-1 passou a exigir que organizações identifiquem, avaliem, classifiquem, controlem e documentem os fatores de risco psicossociais relacionados ao trabalho. Empresas, prefeituras, órgãos públicos e instituições precisam se preparar com diagnóstico, plano de ação, desenvolvimento de lideranças e evidências.
+      </p>
+      <div class="nr1-actions">
+        <a href="#contato" class="btn btn-gold">Quero preparar minha organização →</a>
+        <a href="#obrigatoriedade" class="btn btn-ghost-light">Entenda a obrigatoriedade</a>
+      </div>
+    </div>
+    <div class="nr1-hero-visual">
+      <img src="img/nr1-hero.jpg" alt="Liderança preparada para gestão de riscos psicossociais"
+           onerror="this.style.display='none'" />
+      <div class="nr1-hero-card">
+        <div class="nr1-hero-card-label">— BEM NR-1 · CKM</div>
+        <h3>De obrigação legal para gestão preventiva.</h3>
+        <p>Diagnóstico, plano de ação, desenvolvimento e evidências em um único processo organizado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCO 2: O QUE EXIGE ============ -->
+<section class="section" id="obrigatoriedade">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow center">A obrigatoriedade</div>
+      <h2 class="section-title">O que a NR-1 exige <em>na prática</em>.</h2>
+      <p class="section-lead">A organização precisa incluir os fatores psicossociais no gerenciamento de riscos ocupacionais, com registro, plano de ação e acompanhamento.</p>
+    </div>
+    <div class="exige-grid">
+      <div class="exige-card"><div class="exige-num">1</div><h4>Identificar</h4><p>Fatores psicossociais relacionados ao trabalho em cada área, setor, função ou grupo.</p></div>
+      <div class="exige-card"><div class="exige-num">2</div><h4>Avaliar</h4><p>Quais áreas, setores, funções ou grupos estão mais expostos aos riscos identificados.</p></div>
+      <div class="exige-card"><div class="exige-num">3</div><h4>Classificar</h4><p>Os riscos por prioridade, considerando impacto e probabilidade de ocorrência.</p></div>
+      <div class="exige-card"><div class="exige-num">4</div><h4>Registrar</h4><p>Os riscos no processo de gestão ocupacional da organização, com documentação formal.</p></div>
+      <div class="exige-card"><div class="exige-num">5</div><h4>Agir</h4><p>Criar plano de ação com responsáveis, prazos e medidas preventivas claras.</p></div>
+      <div class="exige-card"><div class="exige-num">6</div><h4>Acompanhar</h4><p>Execução das ações e gerar evidências para RH, gestão, SST, direção e órgãos de controle.</p></div>
+    </div>
+    <div class="aplica-note" style="margin-top:36px">
+      <strong>Importante:</strong> o PGR continua sendo o documento técnico do gerenciamento de riscos ocupacionais. O BEM NR-1 apoia a organização especialmente na gestão dos fatores psicossociais, no plano de ação, no desenvolvimento de competências e na organização das evidências.
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCO 3: PARA QUEM SE APLICA ============ -->
+<section class="section section-lilac">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow center">Para quem se aplica</div>
+      <h2 class="section-title">A exigência não é apenas para <em>empresas privadas</em>.</h2>
+      <p class="section-lead">O tema também alcança organizações públicas e instituições que possuem trabalhadores, equipes contratadas, terceirizadas ou ambientes de trabalho sob sua responsabilidade.</p>
+    </div>
+    <div class="aplica-grid">
+      <div class="aplica-tag">Empresas privadas</div>
+      <div class="aplica-tag">Prefeituras</div>
+      <div class="aplica-tag">Autarquias</div>
+      <div class="aplica-tag">Fundações públicas</div>
+      <div class="aplica-tag">Órgãos com CLT</div>
+      <div class="aplica-tag">Empresas públicas</div>
+      <div class="aplica-tag">Sociedades de economia mista</div>
+      <div class="aplica-tag">Organizações sociais</div>
+      <div class="aplica-tag">Terceiro setor</div>
+      <div class="aplica-tag">Instituições de ensino</div>
+      <div class="aplica-tag">Hospitais</div>
+      <div class="aplica-tag">Cooperativas</div>
+      <div class="aplica-tag">Consórcios públicos</div>
+      <div class="aplica-tag">Entidades do Sistema S</div>
+    </div>
+    <div class="aplica-note">
+      No setor público, além da obrigação trabalhista quando houver empregados regidos pela CLT, o tema também se conecta à <strong>governança, prevenção de assédio, saúde ocupacional, clima institucional, continuidade dos serviços e responsabilidade da administração</strong>.
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCO 4: RISCOS PSICOSSOCIAIS ============ -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow center on-dark">Riscos psicossociais</div>
+      <h2 class="section-title on-dark">Quais riscos precisam ser <em>observados</em>.</h2>
+      <p class="section-lead on-dark">Os riscos psicossociais estão ligados à forma como o trabalho é planejado, distribuído, cobrado, liderado e vivenciado pelas equipes.</p>
+    </div>
+    <div class="risk-grid">
+      <div class="risk-chip">Sobrecarga de trabalho</div>
+      <div class="risk-chip">Pressão excessiva</div>
+      <div class="risk-chip">Metas incompatíveis</div>
+      <div class="risk-chip">Falta de clareza de responsabilidades</div>
+      <div class="risk-chip">Comunicação falha</div>
+      <div class="risk-chip">Conflitos recorrentes</div>
+      <div class="risk-chip">Falta de apoio da liderança</div>
+      <div class="risk-chip">Baixa autonomia</div>
+      <div class="risk-chip">Insegurança psicológica</div>
+      <div class="risk-chip">Assédio moral ou sexual</div>
+      <div class="risk-chip">Condutas inadequadas</div>
+      <div class="risk-chip">Mudanças mal conduzidas</div>
+      <div class="risk-chip">Alta exigência emocional</div>
+      <div class="risk-chip">Esforço sem reconhecimento</div>
+      <div class="risk-chip">Isolamento e repetitividade</div>
+      <div class="risk-chip">Atendimento ao público sob tensão</div>
+    </div>
+    <div class="risk-focus">
+      <strong>O foco não é diagnosticar a saúde mental individual do trabalhador.</strong> O foco é entender quais condições de trabalho podem gerar risco e precisam ser tratadas pela gestão.
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCO 5: RISCOS DE NÃO AGIR ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow center">O que está em jogo</div>
+      <h2 class="section-title">O que sua organização arrisca ao <em>não agir</em>.</h2>
+      <p class="section-lead">A falta de gestão dos riscos psicossociais pode gerar autuações, multas, fragilidade jurídica, afastamentos, denúncias, conflitos e desgaste institucional.</p>
+    </div>
+    <div class="warn-grid">
+      <ul class="warn-list">
+        <li>Autuação pela fiscalização</li>
+        <li>Multas administrativas</li>
+        <li>Dificuldade de comprovar prevenção</li>
+        <li>Fragilidade em ações trabalhistas</li>
+        <li>Questionamentos do Ministério Público do Trabalho</li>
+        <li>Questionamentos de órgãos de controle</li>
+        <li>Aumento de afastamentos</li>
+      </ul>
+      <ul class="warn-list">
+        <li>Aumento de conflitos internos</li>
+        <li>Denúncias de assédio ou violência</li>
+        <li>Aumento de rotatividade</li>
+        <li>Queda de produtividade</li>
+        <li>Desgaste da imagem institucional</li>
+        <li>Responsabilização por omissão</li>
+        <li><strong>Setor público:</strong> risco à governança e à continuidade dos serviços</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCO 7: SOLUÇÃO ============ -->
+<section class="section section-dark" id="solucao">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow center on-dark">A solução</div>
+      <h2 class="section-title on-dark">BEM NR-1: um caminho simples para <em>cumprir, desenvolver e evidenciar</em>.</h2>
+      <p class="section-lead on-dark">A CKM oferece uma solução integrada com diagnóstico, plano de ação, desenvolvimento de competências socioemocionais, mentorias, acompanhamento e evidências.</p>
+    </div>
+    <div class="solucao-grid">
+      <div class="solucao-step">
+        <div class="solucao-step-num">01</div>
+        <h4>Diagnóstico objetivo</h4>
+        <p>Mapeamos os fatores psicossociais relacionados ao trabalho por área, setor, secretaria, unidade ou grupo.</p>
+      </div>
+      <div class="solucao-step">
+        <div class="solucao-step-num">02</div>
+        <h4>Plano de ação preventivo</h4>
+        <p>Transformamos os achados em ações claras, com prioridade, responsável, prazo, indicador e evidência esperada.</p>
+      </div>
+      <div class="solucao-step">
+        <div class="solucao-step-num">03</div>
+        <h4>Desenvolvimento de competências</h4>
+        <p>Conectamos os riscos identificados às competências que precisam ser fortalecidas em lideranças e equipes.</p>
+      </div>
+      <div class="solucao-step">
+        <div class="solucao-step-num">04</div>
+        <h4>Acompanhamento e evidências</h4>
+        <p>Acompanhamos execução das ações, mentorias, registros e evolução dos indicadores, gerando relatórios para a gestão.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCO 9: O QUE ENTREGAMOS ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow center">O que entregamos</div>
+      <h2 class="section-title">O que sua organização <em>recebe</em>.</h2>
+      <p class="section-lead">A organização recebe diagnóstico, mapa de riscos, plano de ação, desenvolvimento de lideranças, mentorias e relatórios — tudo organizado e rastreável.</p>
+    </div>
+    <div class="entrega-grid">
+      <div class="entrega-item"><div class="entrega-check">✓</div><span>Levantamento inicial da organização</span></div>
+      <div class="entrega-item"><div class="entrega-check">✓</div><span>Diagnóstico de fatores psicossociais</span></div>
+      <div class="entrega-item"><div class="entrega-check">✓</div><span>Mapa de riscos por área, setor ou unidade</span></div>
+      <div class="entrega-item"><div class="entrega-check">✓</div><span>Matriz de prioridades</span></div>
+      <div class="entrega-item"><div class="entrega-check">✓</div><span>Plano de ação preventivo</span></div>
+      <div class="entrega-item"><div class="entrega-check">✓</div><span>Avaliação de competências das lideranças</span></div>
+      <div class="entrega-item"><div class="entrega-check">✓</div><span>Plano de Desenvolvimento de Lideranças</span></div>
+      <div class="entrega-item"><div class="entrega-check">✓</div><span>Jornada de Desenvolvimento dos Trabalhadores</span></div>
+      <div class="entrega-item"><div class="entrega-check">✓</div><span>Mentorias individuais ou coletivas</span></div>
+      <div class="entrega-item"><div class="entrega-check">✓</div><span>Encontros de acompanhamento</span></div>
+      <div class="entrega-item"><div class="entrega-check">✓</div><span>Relatórios executivos com indicadores</span></div>
+      <div class="entrega-item"><div class="entrega-check">✓</div><span>Evidências organizadas e recomendações</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCO 10: TABELA RISCO × COMPETÊNCIA ============ -->
+<section class="section section-lilac">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow center">Desenvolvimento de lideranças</div>
+      <h2 class="section-title">Lideranças preparadas <em>reduzem riscos</em>.</h2>
+      <p class="section-lead">Muitos riscos psicossociais estão ligados à forma como as equipes são conduzidas. O BEM NR-1 conecta cada risco identificado a uma competência específica a ser desenvolvida.</p>
+    </div>
+    <table class="rc-table">
+      <thead>
+        <tr><th>Risco identificado</th><th>Competência a desenvolver</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Falta de apoio da liderança</td><td>Escuta, orientação e feedback</td></tr>
+        <tr><td>Conflitos recorrentes</td><td>Comunicação e gestão de conflitos</td></tr>
+        <tr><td>Sobrecarga</td><td>Priorização e organização</td></tr>
+        <tr><td>Baixa segurança psicológica</td><td>Confiança, respeito e diálogo</td></tr>
+        <tr><td>Mudanças mal conduzidas</td><td>Comunicação e adaptação</td></tr>
+        <tr><td>Condutas inadequadas</td><td>Ética e responsabilidade nas relações</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ BLOCO 14: FORMATOS DE CONTRATAÇÃO ============ -->
+<section class="section" id="formatos">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow center">Formatos de contratação</div>
+      <h2 class="section-title">Escolha o melhor formato para <em>sua organização</em>.</h2>
+      <p class="section-lead">Sua organização pode começar pelo diagnóstico e evoluir para desenvolvimento, mentorias, plataforma e acompanhamento contínuo.</p>
+    </div>
+    <div class="formatos-grid">
+      <div class="formato-card">
+        <div class="formato-step">Etapa 1</div>
+        <h4>Diagnóstico BEM NR-1</h4>
+        <p>Para organizações que querem começar agora.</p>
+        <ul>
+          <li>Diagnóstico psicossocial</li>
+          <li>Mapa de riscos</li>
+          <li>Relatório executivo</li>
+          <li>Recomendações iniciais</li>
+        </ul>
+        <a href="#contato" class="btn btn-ghost-dark">Quero começar</a>
+      </div>
+      <div class="formato-card">
+        <div class="formato-step">Etapa 2</div>
+        <h4>BEM NR-1 Essencial</h4>
+        <p>Para organizar risco e ação.</p>
+        <ul>
+          <li>Diagnóstico</li>
+          <li>Matriz de riscos</li>
+          <li>Plano de ação</li>
+          <li>Devolutivas</li>
+          <li>Recomendações de desenvolvimento</li>
+        </ul>
+        <a href="#contato" class="btn btn-ghost-dark">Saber mais</a>
+      </div>
+      <div class="formato-card">
+        <div class="formato-step">Etapa 3</div>
+        <h4>Lideranças Saudáveis</h4>
+        <p>Para preparar lideranças, chefias e gestores.</p>
+        <ul>
+          <li>Tudo do Essencial</li>
+          <li>Avaliação de competências</li>
+          <li>Plano de Desenvolvimento de Lideranças</li>
+          <li>Mentorias</li>
+          <li>Relatório de evolução</li>
+        </ul>
+        <a href="#contato" class="btn btn-ghost-dark">Saber mais</a>
+      </div>
+      <div class="formato-card featured">
+        <div class="formato-step">Etapa 4</div>
+        <h4>BEM NR-1 Completo</h4>
+        <p>Solução integrada de ponta a ponta.</p>
+        <ul>
+          <li>Tudo das etapas anteriores</li>
+          <li>Jornada de Desenvolvimento dos Trabalhadores</li>
+          <li>Plataforma com indicadores</li>
+          <li>Mentorias contínuas</li>
+          <li>Reavaliação dos riscos</li>
+        </ul>
+        <a href="#contato" class="btn btn-gold">Quero o Completo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCO 15: CICLO 90 DIAS ============ -->
+<section class="section section-lilac">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow center">Projeto simples</div>
+      <h2 class="section-title">Um projeto com <em>começo, meio e fim</em>.</h2>
+      <p class="section-lead">O BEM NR-1 pode ser implantado em um ciclo inicial de 90 dias, com etapas claras e entregas objetivas — adaptável para empresas privadas, prefeituras, órgãos públicos, autarquias, fundações e demais instituições.</p>
+    </div>
+    <table class="ciclo-table">
+      <thead><tr><th>Fase</th><th>O que acontece</th></tr></thead>
+      <tbody>
+        <tr><td>Semana 1</td><td>Alinhamento com gestão de pessoas, SST e alta administração</td></tr>
+        <tr><td>Semanas 2 e 3</td><td>Aplicação do diagnóstico psicossocial</td></tr>
+        <tr><td>Semana 4</td><td>Análise dos resultados</td></tr>
+        <tr><td>Semana 5</td><td>Devolutiva e construção do plano de ação</td></tr>
+        <tr><td>Semanas 6 a 11</td><td>Desenvolvimento de competências, mentorias e acompanhamento</td></tr>
+        <tr><td>Semana 12</td><td>Relatório final e recomendações para o próximo ciclo</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ BLOCO 12: PROTEÇÃO DE DADOS ============ -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow center on-dark">Proteção das informações</div>
+      <h2 class="section-title on-dark">Dados protegidos e informações <em>bem separadas</em>.</h2>
+      <p class="section-lead on-dark">O BEM NR-1 separa dados coletivos de risco, dados individuais de desenvolvimento, registros de mentoria e evidências organizacionais. A organização não expõe respostas individuais dos trabalhadores.</p>
+    </div>
+    <div class="risk-grid">
+      <div class="risk-chip" style="--c:teal">Resultados consolidados</div>
+      <div class="risk-chip">Análise por grupos e áreas</div>
+      <div class="risk-chip">Cuidado com confidencialidade</div>
+      <div class="risk-chip">Proteção de registros individuais</div>
+      <div class="risk-chip">Separação entre diagnóstico e registros pessoais</div>
+      <div class="risk-chip">Relatórios voltados para gestão</div>
+    </div>
+    <div class="risk-focus" style="margin-top:24px">
+      <strong>O objetivo é proteger os trabalhadores e, ao mesmo tempo, oferecer informações úteis para que a organização tome decisões.</strong>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCO 16: FAQ ============ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow center">Perguntas frequentes</div>
+      <h2 class="section-title">Dúvidas <em>comuns</em>.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-btn">A NR-1 é obrigatória?<span class="faq-toggle">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Sim. A NR-1 integra as Normas Regulamentadoras de Segurança e Saúde no Trabalho e define disposições gerais e gerenciamento de riscos ocupacionais. A partir de 26 de maio de 2026, a fiscalização poderá autuar organizações que não demonstrarem gestão adequada dos fatores psicossociais.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn">Prefeituras e órgãos públicos também devem cumprir?<span class="faq-toggle">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Sim, especialmente quando possuem trabalhadores regidos pela legislação trabalhista, empregados públicos, terceirizados ou ambientes de trabalho sob sua responsabilidade. Além disso, o tema é relevante para governança, prevenção de assédio, saúde ocupacional, clima institucional e continuidade dos serviços.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn">O BEM NR-1 substitui o PGR?<span class="faq-toggle">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Não. O BEM NR-1 apoia a organização na gestão dos fatores psicossociais, no plano de ação, no desenvolvimento de competências e na organização de evidências. O PGR continua sendo o documento próprio do gerenciamento de riscos ocupacionais.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn">O diagnóstico é psicológico?<span class="faq-toggle">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Não. O foco é organizacional e relacionado ao trabalho. Não fazemos diagnóstico clínico individual nem substituímos atendimento médico ou psicológico.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn">A organização verá respostas individuais dos trabalhadores?<span class="faq-toggle">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Não recomendamos. Os resultados devem ser consolidados para proteger os trabalhadores e preservar a qualidade da análise. Trabalhamos com dados agregados por grupos, áreas ou unidades.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn">Preciso contratar tudo de uma vez?<span class="faq-toggle">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Não. A organização pode começar pelo Diagnóstico BEM NR-1 e evoluir para plano de ação, desenvolvimento de competências, mentorias e plataforma conforme amadurecimento e necessidade.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="cta-final" id="contato">
+  <div class="container">
+    <div class="cta-final-tag">
+      <span class="urgency-pulse"></span>
+      Não espere a fiscalização para agir
+    </div>
+    <h2>A NR-1 já definiu o caminho.<br><em>A CKM simplifica esse processo para sua organização.</em></h2>
+    <p class="cta-final-sub">Identificar, avaliar, classificar, agir, acompanhar e documentar. Com método, simplicidade e acompanhamento, sua organização sai da dúvida e dá os primeiros passos com segurança.</p>
+    <div class="cta-final-actions">
+      <a href="mailto:relacionamento@ckmtalents.net?subject=BEM%20NR-1%20%E2%80%94%20Quero%20preparar%20minha%20organiza%C3%A7%C3%A3o" class="btn btn-gold">Agendar uma conversa →</a>
+      <a href="#formatos" class="btn btn-ghost-light">Ver formatos de contratação</a>
+    </div>
+    <p style="margin-top:24px;font-size:13px;color:rgba(255,255,255,.5)">relacionamento@ckmtalents.net · Dina Makiyama · ECO do B.E.M. / CKM Talents</p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="eco-footer">
+  <div class="container eco-footer-row">
+    <div class="eco-footer-brand">
+      <img src="img/logo-branco.png" alt="ECO do B.E.M." onerror="this.style.display='none'" />
+      <strong>BEM NR-1 · Produto CKM Talents</strong>
+    </div>
+    <div>
+      <a href="index.html">Voltar para o início</a> · 
+      <a href="mailto:relacionamento@ckmtalents.net">relacionamento@ckmtalents.net</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Menu mobile */
+const h = document.getElementById('ecoHamburger');
+const m = document.getElementById('ecoMobileMenu');
+if (h && m) {
+  h.addEventListener('click', () => {
+    const o = h.classList.toggle('open');
+    m.classList.toggle('open', o);
+    document.body.style.overflow = o ? 'hidden' : '';
+  });
+  m.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    h.classList.remove('open'); m.classList.remove('open'); document.body.style.overflow = '';
+  }));
+}
+/* Dropdown — tap on touch */
+document.querySelectorAll('.eco-nav-item > .eco-nav-link').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    if (window.matchMedia('(hover: hover)').matches) return;
+    e.preventDefault();
+    const item = btn.parentElement;
+    document.querySelectorAll('.eco-nav-item.open').forEach(i => { if (i !== item) i.classList.remove('open'); });
+    item.classList.toggle('open');
+  });
+});
+/* FAQ */
+document.querySelectorAll('.faq-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!open) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

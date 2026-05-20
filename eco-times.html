@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ECO Times | Desenvolvimento de equipes — ECO do B.E.M.</title>
+<meta name="description" content="ECO Times: desenvolvimento coletivo de equipes com diagnóstico, trilhas, mentoria e indicadores compartilhados. Lançamento em breve.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --purple:#5B2EFF; --purple-deep:#1A0A5E; --purple-dark:#3A1D8F; --purple-light:#8C68FF;
+  --teal:#00B8D9; --teal-soft:#5DCAA5; --green:#5ED38C; --blue:#4A9FFF; --gold:#F59E0B; --pink:#FF4D8F;
+  --bg-white:#FFFFFF; --bg-lilac:#F5F3FF; --bg-lilac-2:#E8E4FF;
+  --text-dark:#1A0A5E; --text-body:#3A3559; --text-muted:#6B6389; --text-white:#FFFFFF; --text-lilac:#C4B8FF;
+  --border-light:#E8E4FF; --border-soft:#EFECFF;
+  --shadow-sm:0 4px 16px rgba(26,10,94,.06); --shadow-md:0 12px 32px rgba(26,10,94,.08); --shadow-lg:0 24px 60px rgba(26,10,94,.12);
+  --shadow-teal:0 18px 40px rgba(0,184,217,.22);
+  --radius-md:20px; --radius-lg:28px; --radius-xl:36px;
+  --max:1180px; --gutter:20px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{margin:0;font-family:'Inter',sans-serif;color:var(--text-body);background:var(--bg-white);overflow-x:hidden;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+.container{width:100%;max-width:calc(var(--max) + (var(--gutter)*2));margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
+
+/* === MENU UNIFICADO === */
+.eco-nav{position:sticky;top:0;z-index:100;background:rgba(26,10,94,.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08)}
+.eco-nav-inner{max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:72px}
+.eco-brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.eco-brand img{height:42px;width:auto;display:block;transition:transform .25s}
+.eco-brand:hover img{transform:scale(1.03)}
+.eco-brand-fb{font-family:'Poppins',sans-serif;font-weight:800;font-size:20px;color:#fff;letter-spacing:-.02em;line-height:1}
+.eco-brand-fb em{font-style:normal;font-weight:400;opacity:.7;font-size:13px;margin:0 2px}
+.eco-nav-links{display:flex;align-items:center;gap:6px}
+.eco-nav-item{position:relative}
+.eco-nav-link{display:inline-flex;align-items:center;gap:6px;padding:10px 14px;color:rgba(255,255,255,.88);font-size:14px;font-weight:600;border-radius:10px;transition:color .18s,background .18s;white-space:nowrap;cursor:pointer;background:none;border:none;font-family:inherit}
+.eco-nav-link:hover,.eco-nav-link.active{color:#fff;background:rgba(255,255,255,.06)}
+.eco-nav-link .caret{width:10px;height:10px;transition:transform .25s;opacity:.7}
+.eco-nav-item:hover .eco-nav-link .caret,.eco-nav-item.open .eco-nav-link .caret{transform:rotate(180deg)}
+.eco-nav-link.featured{color:var(--teal);font-weight:700}
+.eco-nav-link.featured:hover{color:#fff;background:rgba(0,184,217,.14)}
+.eco-dropdown{position:absolute;top:calc(100% + 8px);left:0;min-width:300px;background:#fff;border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.25),0 2px 8px rgba(0,0,0,.12);padding:10px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .22s,visibility .22s,transform .22s;z-index:200}
+.eco-nav-item:hover .eco-dropdown,.eco-nav-item.open .eco-dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+.eco-dropdown::before{content:'';position:absolute;top:-6px;left:24px;width:12px;height:12px;background:#fff;transform:rotate(45deg)}
+.eco-dd-section{padding:6px 8px 4px;font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--text-muted)}
+.eco-dd-link{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border-radius:10px;color:var(--text-dark);transition:background .15s,transform .15s}
+.eco-dd-link:hover{background:var(--bg-lilac);transform:translateX(2px)}
+.eco-dd-icon{flex-shrink:0;width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--purple),var(--purple-light));display:grid;place-items:center;color:#fff;font-size:16px}
+.eco-dd-link[data-color="teal"] .eco-dd-icon{background:linear-gradient(135deg,var(--teal),var(--blue))}
+.eco-dd-link[data-color="green"] .eco-dd-icon{background:linear-gradient(135deg,var(--green),var(--teal-soft))}
+.eco-dd-link[data-color="gold"] .eco-dd-icon{background:linear-gradient(135deg,var(--gold),#FFC94A)}
+.eco-dd-link[data-color="pink"] .eco-dd-icon{background:linear-gradient(135deg,var(--pink),var(--purple-light))}
+.eco-dd-body{flex:1;min-width:0}
+.eco-dd-title{font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;color:var(--text-dark);line-height:1.2;display:flex;align-items:center;gap:8px;margin-bottom:2px}
+.eco-dd-tag{font-size:9px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:2px 8px;border-radius:99px;background:rgba(245,158,11,.15);color:#B87A06}
+.eco-dd-desc{font-size:12.5px;color:var(--text-muted);line-height:1.4}
+.eco-nav-cta{background:linear-gradient(135deg,var(--teal),var(--blue));color:#fff !important;padding:10px 22px;border-radius:999px;font-weight:700;font-size:14px;box-shadow:var(--shadow-teal);transition:transform .2s;margin-left:8px}
+.eco-nav-cta:hover{transform:translateY(-1px)}
+.eco-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:201}
+.eco-hamburger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+.eco-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.eco-hamburger.open span:nth-child(2){opacity:0}
+.eco-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.eco-mobile-menu{display:none;position:fixed;inset:0;background:rgba(26,10,94,.98);backdrop-filter:blur(24px);z-index:150;padding:90px 24px 40px;overflow-y:auto}
+.eco-mobile-menu.open{display:block}
+.eco-mobile-section{margin-bottom:24px}
+.eco-mobile-section-title{font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--teal);margin-bottom:8px;padding:0 8px}
+.eco-mobile-link{display:flex;align-items:center;gap:12px;padding:14px 16px;color:rgba(255,255,255,.92);font-family:'Poppins',sans-serif;font-size:17px;font-weight:600;border-radius:12px}
+.eco-mobile-cta{display:block;text-align:center;margin-top:8px;background:linear-gradient(135deg,var(--teal),var(--blue));color:#fff;padding:16px;border-radius:14px;font-weight:700;font-size:16px;box-shadow:var(--shadow-teal)}
+@media(max-width:1024px){.eco-nav-links,.eco-nav-cta{display:none}.eco-hamburger{display:flex}}
+
+/* === HERO === */
+.hero{
+  background:
+    radial-gradient(circle at 10% 20%, rgba(0,184,217,.25), transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(94,211,140,.18), transparent 40%),
+    linear-gradient(160deg, var(--purple-deep) 0%, #0D062A 100%);
+  color:#fff;
+  padding:90px 0 80px;
+  position:relative; overflow:hidden;
+}
+.hero::before{
+  content:''; position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size:80px 80px; opacity:.4; pointer-events:none;
+}
+.hero-inner{
+  position:relative; z-index:1;
+  display:grid; grid-template-columns: 1.1fr .9fr; gap:56px; align-items:center;
+}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr; gap:48px}}
+.soon-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 18px;
+  background:rgba(245,158,11,.15);
+  border:1px solid rgba(245,158,11,.32);
+  border-radius:999px;
+  font-size:11px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase;
+  color:#FDE68A; margin-bottom:28px;
+}
+.soon-pulse{width:8px;height:8px;border-radius:50%;background:#FDE68A;animation:p 2s infinite}
+@keyframes p{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{
+  font-family:'Poppins',sans-serif;
+  font-size:clamp(2.2rem, 4.6vw, 3.6rem);
+  font-weight:800; line-height:1.06; letter-spacing:-.025em;
+  margin:0 0 22px; color:#fff;
+}
+.hero h1 span{color:var(--teal)}
+.hero-sub{font-size:18px; color:rgba(255,255,255,.82); line-height:1.65; margin:0 0 36px; max-width:560px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:54px;padding:14px 28px;border-radius:999px;font-family:'Inter',sans-serif;font-weight:700;font-size:15px;cursor:pointer;transition:transform .2s,box-shadow .2s;border:1px solid transparent}
+.btn:hover{transform:translateY(-2px)}
+.btn-teal{background:linear-gradient(135deg,var(--teal),var(--blue));color:#fff;box-shadow:var(--shadow-teal)}
+.btn-gold{background:linear-gradient(135deg,var(--gold),#FFC94A);color:var(--purple-deep);font-weight:800;box-shadow:0 14px 40px -14px rgba(245,158,11,.75)}
+.btn-ghost-light{background:transparent;color:#fff;border-color:rgba(255,255,255,.3)}
+.btn-ghost-light:hover{background:rgba(255,255,255,.1)}
+.hero-visual{position:relative;aspect-ratio:4/5;border-radius:var(--radius-lg);overflow:hidden;background:linear-gradient(150deg,var(--teal) 0%, var(--green) 60%, var(--purple-light) 100%);box-shadow:0 30px 80px rgba(0,0,0,.4)}
+.hero-visual::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 30%, rgba(255,255,255,.18), transparent 55%)}
+.hero-visual img{width:100%;height:100%;object-fit:cover}
+
+/* === SEÇÕES === */
+.section{padding:90px 0}
+.section-lilac{background:var(--bg-lilac)}
+.section-header{max-width:880px;margin:0 auto 56px;text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);margin-bottom:18px;justify-content:center}
+.eyebrow::before{content:'';width:28px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--teal),var(--green))}
+.section-title{font-family:'Poppins',sans-serif;font-size:clamp(1.8rem,3.6vw,2.6rem);font-weight:800;line-height:1.1;letter-spacing:-.025em;margin:0 0 18px;color:var(--text-dark)}
+.section-title em{font-style:normal;color:var(--teal)}
+.section-lead{font-size:17px;line-height:1.7;color:var(--text-muted);max-width:720px;margin:0 auto}
+
+/* === FEATURES === */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:900px){.feat-grid{grid-template-columns:1fr}}
+.feat-card{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);padding:32px 28px;transition:transform .25s,box-shadow .25s}
+.feat-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.feat-icon{width:54px;height:54px;border-radius:16px;background:linear-gradient(135deg,var(--teal),var(--blue));color:#fff;display:grid;place-items:center;font-size:24px;margin-bottom:18px}
+.feat-card:nth-child(2) .feat-icon{background:linear-gradient(135deg,var(--green),var(--teal-soft))}
+.feat-card:nth-child(3) .feat-icon{background:linear-gradient(135deg,var(--purple),var(--purple-light))}
+.feat-card h3{font-family:'Poppins',sans-serif;font-size:1.2rem;font-weight:800;color:var(--text-dark);margin:0 0 10px}
+.feat-card p{font-size:14.5px;line-height:1.65;color:var(--text-muted);margin:0}
+
+/* === CTA === */
+.cta-final{background:radial-gradient(circle at 85% 15%, rgba(0,184,217,.22), transparent 45%),radial-gradient(circle at 15% 85%, rgba(94,211,140,.18), transparent 40%),linear-gradient(135deg,var(--purple-deep) 0%, #2B1466 100%);color:#fff;padding:90px 0;text-align:center}
+.cta-final h2{font-family:'Poppins',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;line-height:1.1;margin:0 0 18px;color:#fff;max-width:740px;margin-left:auto;margin-right:auto}
+.cta-final h2 em{font-style:normal;color:var(--teal)}
+.cta-final-sub{font-size:17px;color:rgba(255,255,255,.78);line-height:1.65;max-width:580px;margin:0 auto 36px}
+.cta-final-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* === NOTIFY FORM === */
+.notify-box{
+  max-width:520px; margin: 0 auto;
+  background: rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:var(--radius-md);
+  padding:32px 28px;
+  backdrop-filter: blur(12px);
+}
+.notify-box h4{font-family:'Poppins',sans-serif;font-size:18px;color:#fff;margin:0 0 8px}
+.notify-box p{font-size:14px;color:rgba(255,255,255,.7);margin:0 0 20px}
+.notify-row{display:flex;gap:10px;flex-wrap:wrap}
+.notify-row input{flex:1;min-width:200px;padding:14px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;font-family:'Inter',sans-serif;font-size:14.5px}
+.notify-row input::placeholder{color:rgba(255,255,255,.5)}
+.notify-row input:focus{outline:none;border-color:var(--teal)}
+.notify-row button{padding:14px 24px;border-radius:999px;border:none;background:linear-gradient(135deg,var(--teal),var(--blue));color:#fff;font-weight:700;cursor:pointer;font-family:inherit;font-size:14.5px}
+
+/* === FOOTER === */
+.eco-footer{background:var(--purple-deep);color:rgba(255,255,255,.65);padding:50px 0 30px}
+.eco-footer-row{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.eco-footer-row a{color:rgba(255,255,255,.65);transition:color .2s}
+.eco-footer-row a:hover{color:var(--teal)}
+.eco-footer-brand{display:flex;align-items:center;gap:12px}
+.eco-footer-brand img{height:32px;opacity:.9}
+.eco-footer-brand strong{font-family:'Poppins',sans-serif;color:#fff;font-size:14px;font-weight:800}
+</style>
+</head>
+<body>
+
+<!-- ============ MENU ============ -->
+<header class="eco-nav">
+  <div class="eco-nav-inner">
+    <a href="index.html" class="eco-brand" aria-label="ECO do B.E.M. — Home">
+      <img src="img/logo-branco.png" alt="ECO do B.E.M." onerror="this.outerHTML='<span class=&quot;eco-brand-fb&quot;>eco <em>do</em> bem</span>'" />
+    </a>
+    <nav class="eco-nav-links">
+      <a href="index.html" class="eco-nav-link">Início</a>
+      <a href="eco-lideres.html" class="eco-nav-link featured">ECO Líderes</a>
+      <div class="eco-nav-item">
+        <button class="eco-nav-link" type="button">Para Empresas <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="eco-dropdown">
+          <div class="eco-dd-section">Produtos B2B</div>
+          <a href="eco-lideres.html" class="eco-dd-link" data-color="purple"><div class="eco-dd-icon">🎯</div><div class="eco-dd-body"><div class="eco-dd-title">ECO Líderes</div><div class="eco-dd-desc">Certificação de liderança em 6 meses</div></div></a>
+          <a href="eco-times.html" class="eco-dd-link" data-color="teal"><div class="eco-dd-icon">👥</div><div class="eco-dd-body"><div class="eco-dd-title">ECO Times <span class="eco-dd-tag">Em breve</span></div><div class="eco-dd-desc">Desenvolvimento coletivo de equipes</div></div></a>
+          <a href="plataforma-pdi.html" class="eco-dd-link" data-color="green"><div class="eco-dd-icon">📊</div><div class="eco-dd-body"><div class="eco-dd-title">Plataforma de PDI <span class="eco-dd-tag">Em breve</span></div><div class="eco-dd-desc">Gestão de PDI corporativo</div></div></a>
+          <a href="bem-nr1.html" class="eco-dd-link" data-color="pink"><div class="eco-dd-icon">⚖️</div><div class="eco-dd-body"><div class="eco-dd-title">BEM NR-1 <span class="eco-dd-tag" style="background:rgba(255,77,143,.15);color:#C9275F">Novo</span></div><div class="eco-dd-desc">Gestão de riscos psicossociais</div></div></a>
+          <a href="convenio-corporativo.html" class="eco-dd-link" data-color="gold"><div class="eco-dd-icon">🤝</div><div class="eco-dd-body"><div class="eco-dd-title">Convênio Corporativo</div><div class="eco-dd-desc">Sua empresa como conveniada ECO</div></div></a>
+        </div>
+      </div>
+      <div class="eco-nav-item">
+        <button class="eco-nav-link" type="button">Desenvolvimento Individual <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="eco-dropdown">
+          <div class="eco-dd-section">Para o seu desenvolvimento</div>
+          <a href="para-voce.html#carreira" class="eco-dd-link" data-color="purple"><div class="eco-dd-icon">🧭</div><div class="eco-dd-body"><div class="eco-dd-title">ECO Carreira</div><div class="eco-dd-desc">Direção, propósito e plano de carreira</div></div></a>
+          <a href="para-voce.html#desenvolvimento" class="eco-dd-link" data-color="teal"><div class="eco-dd-icon">📈</div><div class="eco-dd-body"><div class="eco-dd-title">ECO Desenvolvimento</div><div class="eco-dd-desc">Comportamento, prática e evolução</div></div></a>
+          <a href="para-voce.html#empregabilidade" class="eco-dd-link" data-color="pink"><div class="eco-dd-icon">🎯</div><div class="eco-dd-body"><div class="eco-dd-title">ECO Empregabilidade</div><div class="eco-dd-desc">Recolocação com estratégia</div></div></a>
+        </div>
+      </div>
+      <a href="#contato" class="eco-nav-link eco-nav-cta">Fale Conosco</a>
+    </nav>
+    <button class="eco-hamburger" id="ecoHamburger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="eco-mobile-menu" id="ecoMobileMenu">
+  <div class="eco-mobile-section">
+    <a href="index.html" class="eco-mobile-link">Início</a>
+    <a href="eco-lideres.html" class="eco-mobile-link" style="color:var(--teal);font-weight:700">ECO Líderes →</a>
+  </div>
+  <div class="eco-mobile-section">
+    <div class="eco-mobile-section-title">Para Empresas</div>
+    <a href="eco-lideres.html" class="eco-mobile-link">🎯 ECO Líderes</a>
+    <a href="eco-times.html" class="eco-mobile-link">👥 ECO Times <span class="eco-dd-tag">Em breve</span></a>
+    <a href="plataforma-pdi.html" class="eco-mobile-link">📊 Plataforma de PDI <span class="eco-dd-tag">Em breve</span></a>
+    <a href="bem-nr1.html" class="eco-mobile-link">⚖️ BEM NR-1 <span class="eco-dd-tag" style="background:rgba(255,77,143,.15);color:#FFB3CB">Novo</span></a>
+    <a href="convenio-corporativo.html" class="eco-mobile-link">🤝 Convênio Corporativo</a>
+  </div>
+  <div class="eco-mobile-section">
+    <div class="eco-mobile-section-title">Desenvolvimento Individual</div>
+    <a href="para-voce.html#carreira" class="eco-mobile-link">🧭 ECO Carreira</a>
+    <a href="para-voce.html#desenvolvimento" class="eco-mobile-link">📈 ECO Desenvolvimento</a>
+    <a href="para-voce.html#empregabilidade" class="eco-mobile-link">🎯 ECO Empregabilidade</a>
+  </div>
+  <a href="#contato" class="eco-mobile-cta">Fale Conosco</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div>
+      <div class="soon-badge"><span class="soon-pulse"></span>Em breve · Lançamento próximo ciclo</div>
+      <h1>ECO Times: desenvolvimento <span>coletivo</span> de equipes.</h1>
+      <p class="hero-sub">A força do ECO Líderes aplicada a times inteiros. Diagnóstico coletivo, trilhas compartilhadas, mentorias para grupos e dashboards com a evolução de cada pessoa e do time como um todo.</p>
+      <div class="hero-actions">
+        <a href="#contato" class="btn btn-gold">Quero ser notificado no lançamento →</a>
+        <a href="#sobre" class="btn btn-ghost-light">Saber mais</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="img/eco-times-hero.jpg" alt="Equipe diversa em sessão de desenvolvimento coletivo" onerror="this.style.display='none'" />
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOBRE ============ -->
+<section class="section" id="sobre">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Sobre o produto</div>
+      <h2 class="section-title">Desenvolvimento que <em>conecta pessoas</em>, não apenas indivíduos.</h2>
+      <p class="section-lead">O ECO Times leva a metodologia ECO para o trabalho coletivo. Cada pessoa conhece seu próprio perfil comportamental, entende o perfil dos colegas e participa de um processo que acompanha a evolução de todos juntos.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">👥</div>
+        <h3>Diagnóstico coletivo</h3>
+        <p>Mapeamento comportamental de cada pessoa do time, com leitura do perfil coletivo, complementaridades e pontos de tensão.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📚</div>
+        <h3>Trilhas compartilhadas</h3>
+        <p>Conteúdos para times inteiros sobre comunicação, colaboração, gestão de conflitos, confiança e cultura organizacional.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📊</div>
+        <h3>Dashboards do time</h3>
+        <p>Visão consolidada da evolução do grupo com indicadores individuais e coletivos, sem expor dados sensíveis dos integrantes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta-final" id="contato">
+  <div class="container">
+    <h2>O ECO Times ainda está em <em>construção</em>.</h2>
+    <p class="cta-final-sub">Quer receber prioridade no lançamento, ou conversar agora sobre desenvolvimento da sua equipe com o ECO Líderes? Nossa equipe está disponível.</p>
+    <div class="notify-box">
+      <h4>Quero ser notificado quando lançar</h4>
+      <p>Deixe seu e-mail. Avisamos pessoalmente quando o ECO Times estiver disponível.</p>
+      <form class="notify-row" action="https://formspree.io/f/mojpbgal" method="POST">
+        <input type="hidden" name="_subject" value="Interesse em ECO Times — Notificar no lançamento">
+        <input type="email" name="email" placeholder="seu@email.com" required>
+        <button type="submit">Avise-me</button>
+      </form>
+    </div>
+    <div class="cta-final-actions" style="margin-top:36px">
+      <a href="mailto:relacionamento@ckmtalents.net?subject=ECO%20Times%20%E2%80%94%20Quero%20conversar%20sobre%20minha%20equipe" class="btn btn-gold">Contate-nos para saber mais →</a>
+      <a href="eco-lideres.html" class="btn btn-ghost-light">Conhecer o ECO Líderes</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="eco-footer">
+  <div class="container eco-footer-row">
+    <div class="eco-footer-brand">
+      <img src="img/logo-branco.png" alt="ECO do B.E.M." onerror="this.style.display='none'" />
+      <strong>ECO Times · Em breve</strong>
+    </div>
+    <div>
+      <a href="index.html">Voltar para o início</a> · 
+      <a href="mailto:relacionamento@ckmtalents.net">relacionamento@ckmtalents.net</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const h=document.getElementById('ecoHamburger'),m=document.getElementById('ecoMobileMenu');
+if(h&&m){h.addEventListener('click',()=>{const o=h.classList.toggle('open');m.classList.toggle('open',o);document.body.style.overflow=o?'hidden':''});m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{h.classList.remove('open');m.classList.remove('open');document.body.style.overflow=''}))}
+document.querySelectorAll('.eco-nav-item > .eco-nav-link').forEach(btn=>btn.addEventListener('click',e=>{if(window.matchMedia('(hover: hover)').matches)return;e.preventDefault();const i=btn.parentElement;document.querySelectorAll('.eco-nav-item.open').forEach(x=>{if(x!==i)x.classList.remove('open')});i.classList.toggle('open')}));
+</script>
+</body>
+</html>

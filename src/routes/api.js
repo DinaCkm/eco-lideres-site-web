@@ -224,7 +224,7 @@ router.post('/admin/posts', requireAuth, async (req, res) => {
     let { title, content, excerpt, cover_url, status, category_id, seo_title, seo_description } = req.body;
 
     const cleanContent = sanitizeHtml(content || '', {
-      allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img', 'h1', 'h2', 'iframe']),
+      allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img', 'figure', 'h1', 'h2', 'h3', 'iframe']),
       allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, '*': ['class', 'style', 'id'], 'iframe': ['src', 'allowfullscreen', 'frameborder'] }
     });
 
@@ -261,7 +261,7 @@ router.put('/admin/posts/:id', requireAuth, async (req, res) => {
     let { title, content, excerpt, cover_url, status, category_id, seo_title, seo_description } = req.body;
 
     const cleanContent = sanitizeHtml(content || '', {
-      allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img', 'h1', 'h2', 'iframe']),
+      allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img', 'figure', 'h1', 'h2', 'h3', 'iframe']),
       allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, '*': ['class', 'style', 'id'], 'iframe': ['src', 'allowfullscreen', 'frameborder'] }
     });
 

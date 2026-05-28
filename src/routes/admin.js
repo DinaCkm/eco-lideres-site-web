@@ -1,7 +1,11 @@
 const express = require('express');
 const path = require('path');
-const { requireAuth } = require('../middleware/auth');
 const router = express.Router();
+
+function requireAuth(req, res, next) {
+  if (req.session && req.session.userId) return next();
+  res.redirect('/admin/login');
+}
 
 // Login — público
 router.get('/login', (req, res) => {

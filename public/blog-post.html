@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title id="meta-title">Post — ECO do B.E.M.</title>
+  <meta name="description" id="meta-desc" content=""/>
+  <meta property="og:title" id="og-title" content=""/>
+  <meta property="og:description" id="og-desc" content=""/>
+  <meta property="og:image" id="og-image" content=""/>
+  <meta property="og:type" content="article"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --purple:#5B2EFF;--purple-deep:#1A0A5E;--purple-dark:#3A1D8F;--purple-light:#8C68FF;
+      --teal:#00B8D9;--gold:#F59E0B;--green:#5ED38C;
+      --bg:#FFFFFF;--bg-lilac:#F5F3FF;--text-dark:#1A0A5E;--text-body:#3A3559;--text-muted:#6B6389;
+      --border:#E8E4FF;--radius-md:20px;--radius-lg:28px;--max:760px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;color:var(--text-body);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;height:auto;display:block}
+    .container{width:100%;max-width:calc(var(--max) + 40px);margin:0 auto;padding:0 20px;}
+    .container-wide{width:100%;max-width:1180px;margin:0 auto;padding:0 20px;}
+
+    /* NAV */
+    .eco-nav{
+      position:sticky;top:0;z-index:100;
+      background:rgba(26,10,94,.92);backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .eco-nav-inner{
+      max-width:1280px;margin:0 auto;padding:14px 24px;
+      display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:72px;
+    }
+    .eco-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
+    .eco-brand img{height:38px;width:auto;}
+    .eco-brand-fb{font-family:'Poppins',sans-serif;font-weight:800;font-size:18px;color:#fff;letter-spacing:-.02em;}
+    .eco-brand-fb em{font-style:normal;font-weight:400;opacity:.7;font-size:12px;margin:0 2px;}
+    .nav-links{display:flex;align-items:center;gap:4px;}
+    .nav-link{padding:9px 14px;color:rgba(255,255,255,.85);font-size:14px;font-weight:600;border-radius:10px;transition:all .18s;}
+    .nav-link:hover{color:#fff;background:rgba(255,255,255,.06);}
+    .nav-link.active{color:var(--teal);}
+    .nav-cta{background:rgba(91,46,255,.4);color:#fff;border:1px solid rgba(91,46,255,.5);}
+    .nav-cta:hover{background:rgba(91,46,255,.6);}
+    @media(max-width:768px){.nav-links{display:none;}}
+
+    /* POST HEADER */
+    .post-header{padding:56px 0 0;}
+    .breadcrumb{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted);margin-bottom:24px;}
+    .breadcrumb a{color:var(--purple);font-weight:600;}
+    .breadcrumb a:hover{text-decoration:underline;}
+    .breadcrumb span{opacity:.5;}
+    .post-cat-pill{
+      display:inline-flex;align-items:center;gap:6px;
+      padding:5px 14px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.5px;
+      margin-bottom:18px;
+    }
+    .post-cat-pill.purple{background:rgba(91,46,255,.12);color:var(--purple);border:1px solid rgba(91,46,255,.2);}
+    .post-cat-pill.teal{background:rgba(0,184,217,.12);color:var(--teal);border:1px solid rgba(0,184,217,.2);}
+    .post-cat-pill.gold{background:rgba(245,158,11,.12);color:var(--gold);border:1px solid rgba(245,158,11,.2);}
+    .post-cat-pill.green{background:rgba(94,211,140,.12);color:#2d8f5e;border:1px solid rgba(94,211,140,.25);}
+    .post-title{
+      font-family:'Poppins',sans-serif;font-weight:900;
+      font-size:clamp(2rem,4vw,2.8rem);color:var(--text-dark);
+      line-height:1.15;letter-spacing:-.025em;margin-bottom:18px;
+    }
+    .post-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:13.5px;color:var(--text-muted);margin-bottom:32px;}
+    .post-meta span{display:flex;align-items:center;gap:5px;}
+    .post-meta strong{color:var(--text-body);}
+
+    /* COVER */
+    .post-cover{
+      width:100%;aspect-ratio:16/9;border-radius:var(--radius-lg);overflow:hidden;
+      margin-bottom:48px;background:linear-gradient(135deg,var(--purple-deep),var(--purple));
+    }
+    .post-cover img{width:100%;height:100%;object-fit:cover;}
+
+    /* CONTENT */
+    .post-content{padding-bottom:56px;}
+    .post-body{font-size:17px;line-height:1.85;color:var(--text-body);}
+    .post-body h1,.post-body h2{font-family:'Poppins',sans-serif;font-weight:700;color:var(--text-dark);margin:40px 0 16px;line-height:1.25;}
+    .post-body h2{font-size:1.65rem;}
+    .post-body h3{font-family:'Poppins',sans-serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin:30px 0 12px;}
+    .post-body p{margin-bottom:22px;}
+    .post-body ul,.post-body ol{padding-left:24px;margin-bottom:22px;}
+    .post-body li{margin-bottom:8px;}
+    .post-body blockquote{
+      border-left:4px solid var(--purple);margin:32px 0;padding:20px 24px;
+      background:rgba(91,46,255,.05);border-radius:0 12px 12px 0;
+      font-style:italic;color:var(--text-dark);font-size:18px;
+    }
+    .post-body strong{color:var(--text-dark);font-weight:700;}
+    .post-body a{color:var(--purple);font-weight:600;border-bottom:1px solid rgba(91,46,255,.25);transition:border-color .2s;}
+    .post-body a:hover{border-color:var(--purple);}
+    .post-body img{border-radius:16px;margin:28px 0;box-shadow:0 8px 32px rgba(26,10,94,.1);}
+    .post-body hr{border:none;border-top:1px solid var(--border);margin:40px 0;}
+    .post-body code{font-family:monospace;background:rgba(91,46,255,.08);padding:2px 7px;border-radius:5px;font-size:.9em;}
+    .post-body pre{background:var(--purple-deep);color:#c4b8ff;padding:20px;border-radius:12px;overflow-x:auto;margin-bottom:22px;}
+    .post-body pre code{background:none;padding:0;}
+
+    /* COMPARTILHAR */
+    .share-bar{
+      margin-top:48px;padding-top:32px;border-top:1px solid var(--border);
+      display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    }
+    .share-label{font-weight:600;font-size:14px;color:var(--text-muted);}
+    .share-btn{
+      display:inline-flex;align-items:center;gap:7px;padding:9px 18px;
+      border-radius:999px;font-size:13px;font-weight:700;cursor:pointer;
+      border:2px solid var(--border);background:transparent;color:var(--text-body);
+      transition:all .18s;
+    }
+    .share-btn:hover{border-color:var(--purple);color:var(--purple);}
+    .share-btn.linkedin{border-color:#0A66C2;color:#0A66C2;}
+    .share-btn.linkedin:hover{background:#0A66C2;color:#fff;}
+
+    /* CTA BOX */
+    .cta-box{
+      background:linear-gradient(135deg,var(--purple) 0%,var(--purple-deep) 100%);
+      border-radius:var(--radius-lg);padding:40px 36px;margin:56px 0;
+      position:relative;overflow:hidden;
+    }
+    .cta-box::before{
+      content:'';position:absolute;inset:0;
+      background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+      background-size:40px 40px;opacity:.5;
+    }
+    .cta-box-inner{position:relative;z-index:2;}
+    .cta-box .pill{
+      display:inline-block;padding:4px 14px;border-radius:999px;margin-bottom:14px;
+      background:rgba(0,184,217,.2);border:1px solid rgba(0,184,217,.4);
+      font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--teal);
+    }
+    .cta-box h3{font-family:'Poppins',sans-serif;font-size:1.6rem;font-weight:800;color:#fff;margin-bottom:10px;line-height:1.2;}
+    .cta-box p{color:rgba(255,255,255,.8);font-size:15px;margin-bottom:22px;}
+    .cta-btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:14px 28px;background:#fff;color:var(--purple);
+      border-radius:12px;font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;
+      transition:transform .2s,box-shadow .2s;
+    }
+    .cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2);}
+
+    /* RELACIONADOS */
+    .related-section{background:var(--bg-lilac);padding:64px 0;}
+    .related-title{font-family:'Poppins',sans-serif;font-size:1.5rem;font-weight:800;color:var(--text-dark);margin-bottom:28px;}
+    .related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;}
+    .related-card{
+      background:#fff;border-radius:var(--radius-md);overflow:hidden;
+      border:1px solid var(--border);transition:transform .25s,box-shadow .25s;
+      display:flex;flex-direction:column;
+    }
+    .related-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(26,10,94,.1);}
+    .related-cover{aspect-ratio:16/9;overflow:hidden;background:linear-gradient(135deg,var(--purple-deep),var(--purple));}
+    .related-cover img{width:100%;height:100%;object-fit:cover;}
+    .related-body{padding:18px;}
+    .related-cat{font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--teal);margin-bottom:6px;}
+    .related-title2{font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;color:var(--text-dark);line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+
+    /* FOOTER */
+    .site-footer{background:var(--purple-deep);color:#fff;padding:32px 0;}
+    .footer-row{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+    .footer-brand{display:flex;align-items:center;gap:10px;}
+    .footer-brand img{height:28px;}
+    .footer-brand strong{font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;}
+    .footer-row span{font-size:13px;color:rgba(255,255,255,.6);}
+
+    /* LOADING */
+    #loadingState{text-align:center;padding:80px 20px;}
+    .spinner{width:40px;height:40px;border:3px solid rgba(91,46,255,.2);border-top-color:var(--purple);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 16px;}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* ERROR */
+    #errorState{display:none;text-align:center;padding:80px 20px;}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="eco-nav">
+  <div class="eco-nav-inner">
+    <a href="/" class="eco-brand">
+      <img src="/img/logo-branco.png" alt="ECO do B.E.M."
+           onerror="this.outerHTML='<span class=&quot;eco-brand-fb&quot;>eco <em>do</em> bem</span>'"/>
+    </a>
+    <nav class="nav-links">
+      <a href="/" class="nav-link">Início</a>
+      <a href="/blog" class="nav-link active">Blog</a>
+      <a href="/#contato" class="nav-link nav-cta">Fale Conosco</a>
+    </nav>
+  </div>
+</header>
+
+<!-- CONTEÚDO DINÂMICO -->
+<div id="loadingState">
+  <div class="spinner"></div>
+  <p style="color:#888;font-size:14px">Carregando post...</p>
+</div>
+
+<div id="errorState">
+  <p style="font-size:48px;margin-bottom:16px">😕</p>
+  <h2 style="font-family:Poppins;font-size:24px;color:#1a0a5e;margin-bottom:10px">Post não encontrado</h2>
+  <p style="color:#888;margin-bottom:24px">Este post pode ter sido removido ou o endereço está incorreto.</p>
+  <a href="/blog" style="display:inline-block;padding:12px 24px;background:#5B2EFF;color:#fff;border-radius:12px;font-weight:700;font-family:Poppins">← Voltar ao Blog</a>
+</div>
+
+<div id="postContent" style="display:none">
+  <article>
+    <section class="post-header">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="/">Início</a><span>/</span>
+          <a href="/blog">Blog</a><span>/</span>
+          <span id="breadCat"></span>
+        </div>
+        <div id="catPill"></div>
+        <h1 class="post-title" id="postTitle"></h1>
+        <div class="post-meta" id="postMeta"></div>
+      </div>
+    </section>
+
+    <div class="container" id="coverWrap"></div>
+
+    <section class="post-content">
+      <div class="container">
+        <div class="post-body" id="postBody"></div>
+
+        <div class="share-bar">
+          <span class="share-label">Compartilhar:</span>
+          <button class="share-btn linkedin" onclick="shareLinkedIn()">🔗 LinkedIn</button>
+          <button class="share-btn" onclick="copyLink()">📋 Copiar link</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="cta-box">
+        <div class="cta-box-inner">
+          <div class="pill">ECO Líderes</div>
+          <h3>Desenvolvimento que vira<br/>número, não percepção.</h3>
+          <p>6 meses. 4 fases. 7 indicadores em tempo real. Psicólogos integrados. Certificação com comprovação de impacto.</p>
+          <a href="/#contato" class="cta-btn">Falar com a equipe →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+
+<!-- RELACIONADOS -->
+<section class="related-section" id="relatedSection" style="display:none">
+  <div class="container-wide">
+    <div class="related-title">Você também pode gostar</div>
+    <div class="related-grid" id="relatedGrid"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container-wide footer-row">
+    <div class="footer-brand">
+      <img src="/img/logo-branco.png" alt="ECO do B.E.M."
+           onerror="this.outerHTML='<span style=&quot;font-family:Poppins;font-weight:800;font-size:16px&quot;>ECO do B.E.M.</span>'"/>
+      <strong>© 2026</strong>
+    </div>
+    <span>relacionamento@ckmtalents.net · www.ecodobem.com</span>
+  </div>
+</footer>
+
+<script>
+const slug = location.pathname.split('/blog/')[1]?.replace(/\/$/, '');
+const colorMap = { purple: 'purple', teal: 'teal', gold: 'gold', green: 'green' };
+
+(async () => {
+  if (!slug) { showError(); return; }
+
+  const data = await fetch(`/api/posts/${slug}`).then(r => r.ok ? r.json() : null).catch(() => null);
+  if (!data) { showError(); return; }
+
+  const { post, related } = data;
+  renderPost(post);
+  if (related?.length) renderRelated(related);
+
+  document.getElementById('loadingState').style.display = 'none';
+  document.getElementById('postContent').style.display = 'block';
+})();
+
+function renderPost(post) {
+  const cat = post.category;
+  const color = colorMap[cat?.color] || 'purple';
+  const date = post.published_at
+    ? new Date(post.published_at).toLocaleDateString('pt-BR', { day:'2-digit', month:'long', year:'numeric' })
+    : '';
+
+  // Meta
+  const seoTitle = post.seo_title || `${post.title} — ECO do B.E.M.`;
+  const seoDesc = post.seo_description || post.excerpt || '';
+  document.getElementById('meta-title').textContent = seoTitle;
+  document.getElementById('meta-desc').content = seoDesc;
+  document.getElementById('og-title').content = seoTitle;
+  document.getElementById('og-desc').content = seoDesc;
+  if (post.cover_url) document.getElementById('og-image').content = post.cover_url;
+  document.title = seoTitle;
+
+  // Breadcrumb & categoria
+  document.getElementById('breadCat').textContent = cat?.name || 'Post';
+  if (cat) {
+    document.getElementById('catPill').innerHTML =
+      `<span class="post-cat-pill ${color}">${esc(cat.name)}</span>`;
+  }
+
+  // Título e meta
+  document.getElementById('postTitle').textContent = post.title;
+  let metaHtml = '';
+  if (date) metaHtml += `<span>📅 <strong>${date}</strong></span>`;
+  if (post.author?.name) metaHtml += `<span>✍️ <strong>${esc(post.author.name)}</strong></span>`;
+  metaHtml += `<span>⏱ <strong>${post.reading_time || 5} min de leitura</strong></span>`;
+  document.getElementById('postMeta').innerHTML = metaHtml;
+
+  // Capa
+  if (post.cover_url) {
+    document.getElementById('coverWrap').innerHTML = `
+      <div class="post-cover">
+        <img src="${esc(post.cover_url)}" alt="${esc(post.title)}" loading="eager"/>
+      </div>`;
+  }
+
+  // Conteúdo
+  document.getElementById('postBody').innerHTML = post.content;
+}
+
+function renderRelated(posts) {
+  const section = document.getElementById('relatedSection');
+  const grid = document.getElementById('relatedGrid');
+  section.style.display = 'block';
+  grid.innerHTML = posts.map(p => `
+    <a href="/blog/${p.slug}" class="related-card">
+      <div class="related-cover">
+        ${p.cover_url ? `<img src="${esc(p.cover_url)}" alt="${esc(p.title)}" loading="lazy"/>` : ''}
+      </div>
+      <div class="related-body">
+        ${p.category ? `<div class="related-cat">${esc(p.category.name)}</div>` : ''}
+        <div class="related-title2">${esc(p.title)}</div>
+      </div>
+    </a>
+  `).join('');
+}
+
+function showError() {
+  document.getElementById('loadingState').style.display = 'none';
+  document.getElementById('errorState').style.display = 'block';
+}
+
+function shareLinkedIn() {
+  window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(location.href)}`, '_blank');
+}
+
+function copyLink() {
+  navigator.clipboard.writeText(location.href).then(() => {
+    alert('Link copiado!');
+  });
+}
+
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+</script>
+</body>
+</html>

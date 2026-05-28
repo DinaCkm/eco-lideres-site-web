@@ -225,7 +225,12 @@ router.post('/admin/posts', requireAuth, async (req, res) => {
 
     const cleanContent = sanitizeHtml(content || '', {
       allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img', 'figure', 'h1', 'h2', 'h3', 'iframe']),
-      allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, '*': ['class', 'style', 'id'], 'iframe': ['src', 'allowfullscreen', 'frameborder'] }
+      allowedAttributes: {
+  ...sanitizeHtml.defaults.allowedAttributes,
+  '*': ['class', 'style', 'id', 'title'],
+  'img': ['src', 'alt', 'title', 'width', 'height', 'class', 'style'],
+  'iframe': ['src', 'title', 'allow', 'allowfullscreen', 'frameborder', 'width', 'height', 'loading', 'referrerpolicy', 'style']
+}
     });
 
     const slug = await uniqueSlug(title);
@@ -262,7 +267,12 @@ router.put('/admin/posts/:id', requireAuth, async (req, res) => {
 
     const cleanContent = sanitizeHtml(content || '', {
       allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img', 'figure', 'h1', 'h2', 'h3', 'iframe']),
-      allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, '*': ['class', 'style', 'id'], 'iframe': ['src', 'allowfullscreen', 'frameborder'] }
+      allowedAttributes: {
+  ...sanitizeHtml.defaults.allowedAttributes,
+  '*': ['class', 'style', 'id', 'title'],
+  'img': ['src', 'alt', 'title', 'width', 'height', 'class', 'style'],
+  'iframe': ['src', 'title', 'allow', 'allowfullscreen', 'frameborder', 'width', 'height', 'loading', 'referrerpolicy', 'style']
+}
     });
 
     const slug = title !== post.title ? await uniqueSlug(title, post.id) : post.slug;

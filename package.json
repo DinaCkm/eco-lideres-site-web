@@ -1,12 +1,24 @@
 {
-  "name": "ecodobem-site",
-  "version": "1.0.0",
-  "description": "Site institucional ECO do BEM com home e página do ECO Líderes",
-  "main": "server.js",
+  "name": "eco-lideres-site-web",
+  "version": "2.0.0",
+  "description": "ECO do B.E.M. — Site + Blog com painel admin",
+  "main": "src/server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node src/server.js",
+    "dev": "node src/server.js"
   },
   "dependencies": {
-    "express": "^4.19.2"
+    "bcryptjs": "^2.4.3",
+    "connect-session-sequelize": "^7.1.7",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "jsonwebtoken": "^9.0.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.6.0",
+    "sanitize-html": "^2.11.0",
+    "sequelize": "^6.33.0",
+    "sharp": "^0.32.6",
+    "slugify": "^1.6.6"
   }
 }

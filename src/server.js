@@ -11,6 +11,8 @@ const apiRoutes = require('./routes/api');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const ROOT_DIR = path.join(__dirname, '..');
+const PUBLIC_DIR = path.join(ROOT_DIR, 'public');
 
 // Middlewares
 app.use(express.json());
@@ -27,23 +29,42 @@ app.use(session({
   }
 }));
 
-// Arquivos estáticos — serve todos os HTMLs existentes do site
-app.use(express.static(path.join(__dirname, '../public')));
+// Arquivos estáticos do módulo novo: blog, admin, uploads e CSS do blog.
+app.use(express.static(PUBLIC_DIR));
 
-// Rotas
+// Rotas dinâmicas do blog/admin/API.
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 app.use('/admin', adminRoutes);
 app.use('/blog', blogRoutes);
 
-// Rota raiz → index.html
+// Rota raiz: preserva o index.html original que já estava na raiz do repositório.
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/index.html'));
+  res.sendFile(path.join(ROOT_DIR, 'index.html'));
 });
 
-// Qualquer outra rota → tenta servir o HTML correspondente ou 404
+// Compatibilidade com o site antigo: páginas HTML que continuam na raiz do repositório.
+app.get('/:page.html', (req, res, next) => {
+  const fileName = req.params.page + '.html';
+  const filePath = path.join(ROOT_DIR, fileName);
+
+  if (!filePath.startsWith(ROOT_DIR)) return next();
+  res.sendFile(filePath, (err) => {
+    if (err) next();
+  });
+});
+
+// Assets antigos que continuam na raiz do repositório.
+app.use('/img', express.static(path.join(ROOT_DIR, 'img')));
+app.use('/assets', express.static(path.join(ROOT_DIR, 'assets')));
+app.use('/css', express.static(path.join(ROOT_DIR, 'css')));
+app.use('/js', express.static(path.join(ROOT_DIR, 'js')));
+
+// 404 simples, com fallback seguro caso não exista public/404.html.
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, '../public/404.html'));
+  res.status(404).sendFile(path.join(PUBLIC_DIR, '404.html'), (err) => {
+    if (err) res.status(404).send('Not Found');
+  });
 });
 
 // Iniciar servidor

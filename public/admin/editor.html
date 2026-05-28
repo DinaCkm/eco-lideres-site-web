@@ -164,6 +164,39 @@
     .cover-placeholder .icon{font-size:28px;margin-bottom:6px;}
     .cover-actions{display:flex;gap:8px;margin-top:8px;}
     .help-text{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.45;}
+    .content-actions{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 12px;}
+    .embed-preview-note{font-size:12px;color:var(--muted);line-height:1.5;margin-top:8px;}
+    .html-textarea{
+      min-height:420px;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+      font-size:13px;
+      line-height:1.55;
+      color:#e5e7eb;
+      background:#0f0a2e;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:12px;
+      padding:14px;
+      resize:vertical;
+    }
+    .ql-editor .eco-embed-wrapper{
+      position:relative;
+      width:100%;
+      max-width:760px;
+      margin:32px auto;
+      aspect-ratio:16/9;
+      border-radius:16px;
+      overflow:hidden;
+      background:#111827;
+      box-shadow:0 8px 32px rgba(26,10,94,.12);
+    }
+    .ql-editor .eco-embed-wrapper iframe{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+      display:block;
+    }
 
     /* MODAL */
     .modal-overlay{
@@ -228,10 +261,14 @@
     </div>
     <div class="field">
       <label>Conteúdo</label>
+      <div class="content-actions">
+        <button type="button" class="btn btn-ghost" onclick="openEmbedModal()">Incorporar / Embed</button>
+        <button type="button" class="btn btn-ghost" onclick="openHtmlModal()">Editar HTML</button>
+      </div>
       <div id="editorContainer">
         <div id="quill"></div>
       </div>
-      <div class="help-text">Para inserir ou editar imagem no texto: clique no ícone de imagem ou clique duas vezes em uma imagem já inserida.</div>
+      <div class="help-text">Para inserir ou editar imagem no texto: clique no ícone de imagem ou clique duas vezes em uma imagem já inserida. Use "Incorporar / Embed" para YouTube, Vimeo, Typeform, Google Forms e outros iframes.</div>
     </div>
   </div>
 
@@ -321,6 +358,46 @@
       <div class="modal-actions-right">
         <button type="button" class="btn btn-ghost" onclick="closeImageModal()">Cancelar</button>
         <button type="button" class="btn btn-primary" onclick="insertImageFromModal()">Salvar imagem</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="embedModal" class="modal-overlay">
+  <div class="modal-card">
+    <h3>Incorporar conteúdo externo</h3>
+
+    <div class="field">
+      <label>Código embed / iframe</label>
+      <textarea id="embedCodeInput" rows="8" placeholder='<iframe src="https://..."></iframe>'></textarea>
+      <div class="embed-preview-note">Cole aqui o código de incorporação. O editor aceitará iframe com URL iniciada por http ou https.</div>
+    </div>
+
+    <div class="modal-actions">
+      <span></span>
+      <div class="modal-actions-right">
+        <button type="button" class="btn btn-ghost" onclick="closeEmbedModal()">Cancelar</button>
+        <button type="button" class="btn btn-primary" onclick="insertEmbedFromModal()">Inserir embed</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="htmlModal" class="modal-overlay">
+  <div class="modal-card" style="width:min(900px,94vw);">
+    <h3>Editar HTML do post</h3>
+
+    <div class="field">
+      <label>HTML do conteúdo</label>
+      <textarea id="htmlEditorTextarea" class="html-textarea" spellcheck="false"></textarea>
+      <div class="embed-preview-note">Use com cuidado. Ao salvar o post, o servidor ainda fará uma limpeza de segurança no HTML.</div>
+    </div>
+
+    <div class="modal-actions">
+      <span></span>
+      <div class="modal-actions-right">
+        <button type="button" class="btn btn-ghost" onclick="closeHtmlModal()">Cancelar</button>
+        <button type="button" class="btn btn-primary" onclick="applyHtmlFromModal()">Aplicar HTML</button>
       </div>
     </div>
   </div>
@@ -836,6 +913,102 @@ function removeBase64Images(html) {
   return wrapper.innerHTML;
 }
 
+
+// ── Embed e HTML manual ──────────────────────────────────────────────────────
+function openEmbedModal() {
+  document.getElementById('embedCodeInput').value = '';
+  document.getElementById('embedModal').style.display = 'flex';
+
+  setTimeout(() => {
+    document.getElementById('embedCodeInput').focus();
+  }, 50);
+}
+
+function closeEmbedModal() {
+  document.getElementById('embedModal').style.display = 'none';
+}
+
+function insertEmbedFromModal() {
+  const raw = document.getElementById('embedCodeInput').value.trim();
+
+  if (!raw) {
+    toast('Cole um código embed ou iframe.', 'error');
+    return;
+  }
+
+  const iframeHtml = buildSafeIframeEmbed(raw);
+
+  if (!iframeHtml) {
+    toast('Não encontrei um iframe válido com URL http/https.', 'error');
+    return;
+  }
+
+  const range = quill.getSelection(true);
+
+  quill.clipboard.dangerouslyPasteHTML(
+    range.index,
+    iframeHtml + '<p><br></p>'
+  );
+
+  quill.setSelection(range.index + 1);
+  closeEmbedModal();
+}
+
+function buildSafeIframeEmbed(raw) {
+  const doc = new DOMParser().parseFromString(raw, 'text/html');
+  const iframe = doc.querySelector('iframe');
+
+  if (!iframe) return null;
+
+  const src = iframe.getAttribute('src') || '';
+
+  if (!isValidUrl(src)) return null;
+
+  const title = escapeAttr(iframe.getAttribute('title') || 'Conteúdo incorporado');
+  const allow = escapeAttr(iframe.getAttribute('allow') || 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+  const srcSafe = escapeAttr(src);
+
+  return `<div class="eco-embed-wrapper" style="position:relative;width:100%;max-width:760px;margin:32px auto;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#111827;box-shadow:0 8px 32px rgba(26,10,94,.12);">
+    <iframe src="${srcSafe}" title="${title}" allow="${allow}" allowfullscreen frameborder="0" style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;"></iframe>
+  </div>`;
+}
+
+function openHtmlModal() {
+  normalizeExistingImages();
+  document.getElementById('htmlEditorTextarea').value = quill.root.innerHTML;
+  document.getElementById('htmlModal').style.display = 'flex';
+
+  setTimeout(() => {
+    document.getElementById('htmlEditorTextarea').focus();
+  }, 50);
+}
+
+function closeHtmlModal() {
+  document.getElementById('htmlModal').style.display = 'none';
+}
+
+function applyHtmlFromModal() {
+  const html = document.getElementById('htmlEditorTextarea').value.trim();
+
+  if (!html) {
+    toast('O HTML está vazio.', 'error');
+    return;
+  }
+
+  quill.root.innerHTML = removeBase64Images(html);
+  normalizeExistingImages();
+  closeHtmlModal();
+  toast('HTML aplicado ao editor.');
+}
+
+function escapeAttr(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
 // ── Excluir post ─────────────────────────────────────────────────────────────
 async function deletePost() {
   if (!postId) return;
@@ -942,6 +1115,8 @@ document.addEventListener('keydown', e => {
 
   if (e.key === 'Escape') {
     closeImageModal();
+    closeEmbedModal();
+    closeHtmlModal();
   }
 });
 </script>

@@ -7,15 +7,11 @@ function requireAuth(req, res, next) {
   res.redirect('/admin/login');
 }
 
-// Login — público
 router.get('/login', (req, res) => {
-  if (req.session && req.session.userId) {
-    return res.redirect('/admin');
-  }
+  if (req.session && req.session.userId) return res.redirect('/admin');
   res.sendFile(path.join(__dirname, '../../public/admin/login.html'));
 });
 
-// Tudo mais no /admin requer autenticação
 router.use(requireAuth);
 
 router.get('/', (req, res) => {

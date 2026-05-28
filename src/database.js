@@ -35,7 +35,7 @@ const Post = sequelize.define('Post', {
   title: { type: DataTypes.STRING(255), allowNull: false },
   slug: { type: DataTypes.STRING(255), unique: true, allowNull: false },
   excerpt: { type: DataTypes.TEXT, allowNull: true },
-  content: { type: DataTypes.LONGTEXT, allowNull: false },
+  content: { type: DataTypes.TEXT('long'), allowNull: false },
   cover_url: { type: DataTypes.STRING(500), allowNull: true },
   status: { type: DataTypes.ENUM('draft', 'published'), defaultValue: 'draft' },
   reading_time: { type: DataTypes.INTEGER, defaultValue: 5 },

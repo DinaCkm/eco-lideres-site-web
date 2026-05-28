@@ -310,9 +310,40 @@ const quill = new Quill('#quill', {
               return;
             }
 
-            const range = quill.getSelection(true);
-            quill.insertEmbed(range.index, 'image', url, 'user');
-            quill.setSelection(range.index + 1);
+            const larguraTexto = prompt('Largura da imagem em pixels. Exemplo: 600');
+let width = parseInt(larguraTexto || '600', 10);
+
+if (isNaN(width)) width = 600;
+if (width < 100) width = 100;
+if (width > 1200) width = 1200;
+
+const manterProporcao = confirm('Deseja manter a proporção original da imagem? Clique OK para sim ou Cancelar para informar altura.');
+
+let style = '';
+
+if (manterProporcao) {
+  style = `width:${width}px;max-width:100%;height:auto;border-radius:14px;margin:24px auto;display:block;`;
+} else {
+  const alturaTexto = prompt('Altura da imagem em pixels. Exemplo: 350');
+  let height = parseInt(alturaTexto || '350', 10);
+
+  if (isNaN(height)) height = 350;
+  if (height < 100) height = 100;
+  if (height > 900) height = 900;
+
+  style = `width:${width}px;max-width:100%;height:${height}px;object-fit:cover;border-radius:14px;margin:24px auto;display:block;`;
+}
+
+const range = quill.getSelection(true);
+
+quill.clipboard.dangerouslyPasteHTML(
+  range.index,
+  `<p style="text-align:center">
+    <img src="${url}" alt="" style="${style}">
+  </p>`
+);
+
+quill.setSelection(range.index + 1);
           } catch {
             toast('URL de imagem inválida.', 'error');
           }

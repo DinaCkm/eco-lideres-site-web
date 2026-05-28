@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Admin — ECO do B.E.M.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --purple:#5B2EFF;--purple-deep:#1A0A5E;--purple-dark:#3A1D8F;
+      --teal:#00B8D9;--gold:#F59E0B;--text-lilac:#C4B8FF;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Inter',sans-serif;
+      min-height:100vh;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,var(--purple-deep) 0%,var(--purple-dark) 50%,#1d0a6e 100%);
+      position:relative;overflow:hidden;
+    }
+    body::before{
+      content:'';position:absolute;inset:0;
+      background-image:radial-gradient(circle at 20% 20%,rgba(0,184,217,.12),transparent 40%),
+        radial-gradient(circle at 80% 80%,rgba(91,46,255,.2),transparent 40%);
+    }
+    /* grade sutil */
+    body::after{
+      content:'';position:absolute;inset:0;
+      background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+      background-size:48px 48px;
+    }
+    .card{
+      position:relative;z-index:2;
+      width:100%;max-width:420px;margin:20px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:24px;padding:44px 40px;
+      backdrop-filter:blur(20px);
+    }
+    .logo-area{text-align:center;margin-bottom:36px;}
+    .logo-area img{height:48px;width:auto;margin:0 auto 14px;}
+    .logo-fallback{
+      font-family:'Poppins',sans-serif;font-weight:900;font-size:26px;
+      color:#fff;letter-spacing:-.02em;
+    }
+    .logo-fallback em{font-style:normal;color:var(--teal);}
+    .subtitle{color:var(--text-lilac);font-size:13.5px;margin-top:6px;}
+    label{display:block;font-size:13px;font-weight:600;color:rgba(255,255,255,.8);margin-bottom:7px;margin-top:18px;}
+    input{
+      width:100%;padding:13px 16px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:12px;color:#fff;
+      font-family:'Inter',sans-serif;font-size:15px;
+      transition:border-color .2s,background .2s;
+    }
+    input::placeholder{color:rgba(255,255,255,.35);}
+    input:focus{outline:none;border-color:var(--teal);background:rgba(255,255,255,.12);}
+    .btn{
+      width:100%;margin-top:26px;padding:15px;
+      background:linear-gradient(135deg,var(--purple),var(--teal));
+      border:none;border-radius:12px;color:#fff;
+      font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;
+      cursor:pointer;transition:transform .15s,box-shadow .15s;
+      box-shadow:0 8px 24px rgba(91,46,255,.35);
+    }
+    .btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(91,46,255,.45);}
+    .btn:active{transform:translateY(0);}
+    .erro{
+      margin-top:14px;padding:11px 14px;
+      background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);
+      border-radius:10px;color:#fca5a5;font-size:13.5px;text-align:center;
+    }
+    .back{
+      text-align:center;margin-top:22px;
+      font-size:13px;color:rgba(255,255,255,.5);
+    }
+    .back a{color:var(--teal);font-weight:600;text-decoration:none;}
+    .back a:hover{text-decoration:underline;}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo-area">
+      <img src="/img/logo-branco.png" alt="ECO do B.E.M."
+           onerror="this.outerHTML='<div class=&quot;logo-fallback&quot;>eco <em>do</em> bem</div>'"/>
+      <p class="subtitle">Painel Administrativo</p>
+    </div>
+
+    <form method="POST" action="/auth/login">
+      <label for="email">E-mail</label>
+      <input id="email" type="email" name="email" required placeholder="admin@ecodobem.com" autocomplete="email"/>
+
+      <label for="password">Senha</label>
+      <input id="password" type="password" name="password" required placeholder="••••••••" autocomplete="current-password"/>
+
+      <button class="btn" type="submit">Entrar</button>
+    </form>
+
+    <div id="erro-box" class="erro" style="display:none"></div>
+
+    <div class="back"><a href="/">← Voltar ao site</a></div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const err = params.get('erro');
+    if (err) {
+      const box = document.getElementById('erro-box');
+      box.style.display = 'block';
+      box.textContent = err === 'credenciais'
+        ? 'E-mail ou senha incorretos. Tente novamente.'
+        : 'Erro no servidor. Tente novamente em instantes.';
+    }
+  </script>
+</body>
+</html>

@@ -286,15 +286,39 @@ const quill = new Quill('#quill', {
   theme: 'snow',
   placeholder: 'Escreva o conteúdo do post aqui...',
   modules: {
-    toolbar: [
-      [{ header: [1, 2, 3, false] }],
-      ['bold', 'italic', 'underline', 'strike'],
-      [{ list: 'ordered' }, { list: 'bullet' }],
-      ['blockquote', 'code-block'],
-      ['link', 'image'],
-      [{ color: [] }, { background: [] }],
-      ['clean']
-    ]
+    toolbar: {
+      container: [
+        [{ header: [1, 2, 3, false] }],
+        ['bold', 'italic', 'underline', 'strike'],
+        [{ list: 'ordered' }, { list: 'bullet' }],
+        ['blockquote', 'code-block'],
+        ['link', 'image'],
+        [{ color: [] }, { background: [] }],
+        ['clean']
+      ],
+      handlers: {
+        image: function () {
+          const url = prompt('Cole a URL da imagem:');
+
+          if (!url) return;
+
+          try {
+            const parsed = new URL(url);
+
+            if (!['http:', 'https:'].includes(parsed.protocol)) {
+              toast('Use uma URL começando com http ou https.', 'error');
+              return;
+            }
+
+            const range = quill.getSelection(true);
+            quill.insertEmbed(range.index, 'image', url, 'user');
+            quill.setSelection(range.index + 1);
+          } catch {
+            toast('URL de imagem inválida.', 'error');
+          }
+        }
+      }
+    }
   }
 });
 

@@ -1,424 +1,132 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Admin — ECO do B.E.M.</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-    :root{
-      --purple:#5B2EFF;--purple-deep:#1A0A5E;--purple-dark:#3A1D8F;
-      --teal:#00B8D9;--gold:#F59E0B;--green:#5ED38C;
-      --bg:#0f0a2e;--sidebar:#14093a;--surface:rgba(255,255,255,.05);
-      --border:rgba(255,255,255,.1);--text:#fff;--muted:rgba(255,255,255,.55);
-      --radius:14px;
-    }
+    :root{--purple:#5B2EFF;--teal:#00B8D9;--gold:#F59E0B;--green:#5ED38C;--bg:#0f0a2e;--sidebar:#14093a;--surface:rgba(255,255,255,.06);--border:rgba(255,255,255,.12);--text:#fff;--muted:rgba(255,255,255,.62);--danger:#ef4444;}
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;overflow:hidden;}
-
-    /* ── SIDEBAR ── */
-    .sidebar{
-      width:240px;flex-shrink:0;background:var(--sidebar);
-      border-right:1px solid var(--border);
-      display:flex;flex-direction:column;height:100vh;overflow-y:auto;
-    }
-    .sidebar-logo{
-      padding:22px 20px 18px;border-bottom:1px solid var(--border);
-      font-family:'Poppins',sans-serif;font-weight:800;font-size:17px;letter-spacing:-.01em;
-    }
-    .sidebar-logo em{font-style:normal;color:var(--teal);font-weight:400;font-size:12px;display:block;margin-top:2px;opacity:.8;}
-    .sidebar-logo img{height:32px;width:auto;margin-bottom:4px;}
-    .nav-section{padding:16px 12px 4px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
-    .nav-item{
-      display:flex;align-items:center;gap:10px;padding:10px 14px;
-      border-radius:10px;margin:2px 8px;cursor:pointer;
-      font-size:14px;font-weight:500;color:rgba(255,255,255,.75);
-      transition:background .15s,color .15s;border:none;background:none;width:calc(100% - 16px);text-align:left;
-      text-decoration:none;
-    }
-    .nav-item:hover{background:rgba(255,255,255,.06);color:#fff;}
-    .nav-item.active{background:rgba(91,46,255,.3);color:#fff;font-weight:600;}
-    .nav-item .icon{width:18px;text-align:center;font-size:15px;}
-    .sidebar-bottom{margin-top:auto;padding:16px 12px;border-top:1px solid var(--border);}
-    .user-chip{
-      display:flex;align-items:center;gap:10px;
-      padding:10px;border-radius:10px;
-      background:rgba(255,255,255,.04);
-    }
-    .user-avatar{
-      width:32px;height:32px;border-radius:50%;
-      background:linear-gradient(135deg,var(--purple),var(--teal));
-      display:grid;place-items:center;font-size:13px;font-weight:700;flex-shrink:0;
-    }
-    .user-name{font-size:13px;font-weight:600;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-    .btn-logout{
-      background:none;border:none;color:var(--muted);cursor:pointer;
-      font-size:18px;padding:4px;transition:color .15s;
-    }
-    .btn-logout:hover{color:#ff6b6b;}
-
-    /* ── MAIN ── */
-    .main{flex:1;display:flex;flex-direction:column;height:100vh;overflow:hidden;}
-    .topbar{
-      padding:16px 28px;border-bottom:1px solid var(--border);
-      display:flex;align-items:center;justify-content:space-between;
-      background:rgba(255,255,255,.02);flex-shrink:0;
-    }
-    .topbar-title{font-family:'Poppins',sans-serif;font-size:20px;font-weight:700;}
-    .topbar-actions{display:flex;gap:10px;}
-    .btn{
-      display:inline-flex;align-items:center;gap:7px;
-      padding:9px 18px;border-radius:10px;font-family:'Poppins',sans-serif;
-      font-weight:600;font-size:13.5px;cursor:pointer;border:none;
-      transition:transform .15s,box-shadow .15s;text-decoration:none;
-    }
-    .btn-primary{background:var(--purple);color:#fff;box-shadow:0 4px 16px rgba(91,46,255,.3);}
-    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(91,46,255,.4);}
-    .btn-ghost{background:rgba(255,255,255,.07);color:rgba(255,255,255,.8);border:1px solid var(--border);}
-    .btn-ghost:hover{background:rgba(255,255,255,.12);color:#fff;}
-    .btn-danger{background:rgba(239,68,68,.2);color:#fca5a5;border:1px solid rgba(239,68,68,.3);}
-    .btn-danger:hover{background:rgba(239,68,68,.3);}
-    .btn-sm{padding:6px 12px;font-size:12px;}
-    .btn-teal{background:rgba(0,184,217,.15);color:var(--teal);border:1px solid rgba(0,184,217,.25);}
-    .btn-teal:hover{background:rgba(0,184,217,.25);}
-
-    .content{flex:1;overflow-y:auto;padding:28px;}
-
-    /* ── VIEWS ── */
-    .view{display:none;}
-    .view.active{display:block;}
-
-    /* DASHBOARD */
-    .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:28px;}
-    .stat-card{
-      background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-      padding:22px 20px;position:relative;overflow:hidden;
-    }
-    .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
-    .stat-card.purple::before{background:var(--purple);}
-    .stat-card.teal::before{background:var(--teal);}
-    .stat-card.gold::before{background:var(--gold);}
-    .stat-card.green::before{background:var(--green);}
-    .stat-label{font-size:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
-    .stat-number{font-family:'Poppins',sans-serif;font-size:36px;font-weight:800;line-height:1;}
-    .stat-card.purple .stat-number{color:var(--purple);}
-    .stat-card.teal .stat-number{color:var(--teal);}
-    .stat-card.gold .stat-number{color:var(--gold);}
-    .stat-card.green .stat-number{color:var(--green);}
-
-    /* TABLE */
-    .table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
-    .table-header{
-      padding:16px 20px;border-bottom:1px solid var(--border);
-      display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
-    }
-    .table-header h3{font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;}
-    .search-box{
-      position:relative;display:flex;align-items:center;
-    }
-    .search-box input{
-      background:rgba(255,255,255,.06);border:1px solid var(--border);
-      border-radius:8px;padding:8px 12px 8px 34px;color:#fff;
-      font-size:13px;width:220px;
-    }
-    .search-box input::placeholder{color:var(--muted);}
-    .search-box input:focus{outline:none;border-color:var(--teal);}
-    .search-box::before{content:'🔍';position:absolute;left:10px;font-size:13px;}
-    .filter-row{display:flex;gap:6px;flex-wrap:wrap;}
-    .filter-btn{
-      padding:5px 12px;border-radius:7px;font-size:12px;font-weight:600;
-      cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--muted);
-      transition:all .15s;
-    }
-    .filter-btn.active,.filter-btn:hover{background:rgba(91,46,255,.2);color:#fff;border-color:var(--purple);}
-    table{width:100%;border-collapse:collapse;}
-    th{padding:11px 16px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);}
-    td{padding:13px 16px;font-size:13.5px;border-bottom:1px solid rgba(255,255,255,.05);vertical-align:middle;}
-    tr:last-child td{border-bottom:none;}
-    tr:hover td{background:rgba(255,255,255,.02);}
-    .badge{
-      display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.3px;
-    }
-    .badge-published{background:rgba(94,211,140,.15);color:#5ED38C;border:1px solid rgba(94,211,140,.25);}
-    .badge-draft{background:rgba(245,158,11,.12);color:#F59E0B;border:1px solid rgba(245,158,11,.25);}
-    .badge-cat{
-      background:rgba(91,46,255,.15);color:var(--text-lilac,#C4B8FF);
-      border:1px solid rgba(91,46,255,.2);font-size:11px;padding:2px 9px;border-radius:20px;
-    }
-    .badge-cat.teal{background:rgba(0,184,217,.12);color:var(--teal);border-color:rgba(0,184,217,.2);}
-    .badge-cat.gold{background:rgba(245,158,11,.12);color:var(--gold);border-color:rgba(245,158,11,.2);}
-    .actions-cell{display:flex;gap:6px;}
-    .pagination{display:flex;align-items:center;justify-content:center;gap:6px;padding:16px;}
-    .page-btn{
-      width:32px;height:32px;border-radius:8px;border:1px solid var(--border);
-      background:transparent;color:var(--muted);cursor:pointer;font-size:13px;
-      display:grid;place-items:center;transition:all .15s;
-    }
-    .page-btn:hover,.page-btn.active{background:rgba(91,46,255,.2);color:#fff;border-color:var(--purple);}
-
-    /* CATEGORIAS */
-    .cats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:20px;}
-    .cat-card{
-      background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-      padding:18px 16px;display:flex;align-items:center;justify-content:space-between;
-    }
-    .cat-info{display:flex;align-items:center;gap:10px;}
-    .cat-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
-    .cat-dot.purple{background:var(--purple);}
-    .cat-dot.teal{background:var(--teal);}
-    .cat-dot.gold{background:var(--gold);}
-    .cat-dot.green{background:var(--green);}
-    .cat-name{font-weight:600;font-size:14px;}
-    .cat-slug{font-size:11px;color:var(--muted);}
-
-    /* USUARIOS */
-    .user-form{
-      background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-      padding:24px;max-width:480px;margin-bottom:28px;
-    }
-    .user-form h3{font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;margin-bottom:16px;}
-    .field{margin-bottom:14px;}
-    .field label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;}
-    .field input,.field select{
-      width:100%;padding:10px 13px;background:rgba(255,255,255,.07);
-      border:1px solid var(--border);border-radius:9px;color:#fff;
-      font-family:'Inter',sans-serif;font-size:14px;
-    }
-    .field input:focus,.field select:focus{outline:none;border-color:var(--teal);}
-    .field select option{background:#1a0a5e;color:#fff;}
-
-    /* TOAST */
-    #toast{
-      position:fixed;bottom:24px;right:24px;z-index:999;
-      padding:12px 20px;border-radius:10px;font-size:14px;font-weight:600;
-      box-shadow:0 8px 24px rgba(0,0,0,.4);
-      transform:translateY(80px);opacity:0;transition:all .3s;pointer-events:none;
-    }
-    #toast.show{transform:translateY(0);opacity:1;}
-    #toast.success{background:#10b981;color:#fff;}
-    #toast.error{background:#ef4444;color:#fff;}
-
-    /* MODAL */
-    .modal-overlay{
-      position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:500;
-      display:none;place-items:center;
-    }
-    .modal-overlay.open{display:grid;}
-    .modal{
-      background:#14093a;border:1px solid var(--border);border-radius:20px;
-      padding:32px;max-width:440px;width:90%;
-    }
-    .modal h3{font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;margin-bottom:10px;}
-    .modal p{color:var(--muted);font-size:14px;margin-bottom:22px;}
-    .modal-actions{display:flex;gap:10px;justify-content:flex-end;}
-
-    /* MOBILE */
-    @media(max-width:768px){
-      .sidebar{width:200px;}
-      .content{padding:16px;}
-    }
-    @media(max-width:600px){
-      .sidebar{display:none;}
-      .topbar{padding:12px 16px;}
-    }
+    body{font-family:Inter,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;}
+    .sidebar{width:245px;background:var(--sidebar);border-right:1px solid var(--border);min-height:100vh;display:flex;flex-direction:column;}
+    .logo{padding:24px 20px;border-bottom:1px solid var(--border);font-family:Poppins,sans-serif;font-weight:800;font-size:18px;}
+    .logo em{display:block;color:var(--teal);font-size:12px;font-style:normal;font-weight:500;margin-top:3px;}
+    .section{padding:18px 14px 6px;color:var(--muted);font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;}
+    .nav{display:flex;align-items:center;gap:10px;width:calc(100% - 18px);margin:3px 9px;padding:11px 14px;border:0;border-radius:10px;background:transparent;color:rgba(255,255,255,.78);font:500 14px Inter,sans-serif;text-align:left;text-decoration:none;cursor:pointer;}
+    .nav:hover,.nav.active{background:rgba(91,46,255,.28);color:#fff;}
+    .bottom{margin-top:auto;padding:16px;border-top:1px solid var(--border);}
+    .user{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border-radius:12px;padding:10px;}
+    .avatar{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--purple),var(--teal));font-weight:800;}
+    .user-name{font-size:13px;font-weight:700;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .logout{border:0;background:transparent;color:var(--muted);font-size:18px;cursor:pointer;}
+    .main{flex:1;min-width:0;display:flex;flex-direction:column;height:100vh;}
+    .top{height:66px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:rgba(255,255,255,.02);}
+    h1{font-family:Poppins,sans-serif;font-size:21px;}
+    .actions{display:flex;gap:10px;align-items:center;}
+    .content{padding:28px;overflow:auto;}
+    .view{display:none}.view.active{display:block;}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:26px;}
+    .card,.panel{background:var(--surface);border:1px solid var(--border);border-radius:16px;}
+    .card{padding:22px;}.label{font-size:12px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}.num{font:800 36px Poppins,sans-serif;color:var(--teal)}
+    .panel{overflow:hidden;margin-bottom:24px;}.panel-head{padding:16px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.panel-head h2{font:700 16px Poppins,sans-serif;}
+    table{width:100%;border-collapse:collapse}th,td{padding:13px 16px;border-bottom:1px solid rgba(255,255,255,.07);text-align:left;font-size:13.5px}th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.5px}tr:last-child td{border-bottom:0}.muted{color:var(--muted)}
+    .btn{display:inline-flex;align-items:center;gap:7px;border:0;border-radius:10px;padding:9px 15px;font:700 13px Poppins,sans-serif;text-decoration:none;cursor:pointer;color:#fff;background:rgba(255,255,255,.09);border:1px solid var(--border)}
+    .btn.primary{background:var(--purple);border-color:var(--purple)}.btn.teal{background:rgba(0,184,217,.16);color:var(--teal);border-color:rgba(0,184,217,.3)}.btn.danger{background:rgba(239,68,68,.18);color:#fca5a5;border-color:rgba(239,68,68,.3)}.btn.small{padding:6px 10px;font-size:12px}
+    .badge{display:inline-block;border-radius:999px;padding:3px 10px;font-size:11px;font-weight:800}.published{background:rgba(94,211,140,.16);color:var(--green);border:1px solid rgba(94,211,140,.3)}.draft{background:rgba(245,158,11,.16);color:var(--gold);border:1px solid rgba(245,158,11,.3)}.cat{background:rgba(91,46,255,.18);color:#d8d0ff;border:1px solid rgba(91,46,255,.3)}
+    input,select{width:100%;padding:11px 13px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.08);color:#fff;font:14px Inter,sans-serif}select option{background:#14093a;color:#fff}.form{display:grid;gap:13px;max-width:520px}.form label{font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:6px}.row{display:grid;grid-template-columns:1fr 130px auto;gap:10px;align-items:end}.filters{display:flex;gap:8px;flex-wrap:wrap}.filter.active{background:rgba(91,46,255,.3)}
+    .cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;padding:18px}.cat-card{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;padding:14px}.dot{width:11px;height:11px;border-radius:50%;background:var(--purple);display:inline-block;margin-right:8px}.dot.teal{background:var(--teal)}.dot.gold{background:var(--gold)}.dot.green{background:var(--green)}
+    #toast{position:fixed;right:24px;bottom:24px;padding:12px 18px;border-radius:10px;background:#10b981;color:white;font-weight:800;opacity:0;transform:translateY(30px);transition:.2s;z-index:10}#toast.show{opacity:1;transform:translateY(0)}#toast.error{background:#ef4444}
+    @media(max-width:760px){body{display:block}.sidebar{width:100%;min-height:auto}.main{height:auto}.content{padding:16px}.row{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
+  <aside class="sidebar">
+    <div class="logo">eco <em>do bem</em><em>Painel Admin</em></div>
+    <div class="section">Conteúdo</div>
+    <button type="button" class="nav active" data-view="dashboard" onclick="switchView('dashboard')">📊 Dashboard</button>
+    <button type="button" class="nav" data-view="posts" onclick="switchView('posts')">📝 Posts</button>
+    <button type="button" class="nav" data-view="categorias" onclick="switchView('categorias')">🏷️ Categorias</button>
+    <div class="section">Sistema</div>
+    <button type="button" class="nav" data-view="usuarios" onclick="switchView('usuarios')">👤 Usuários</button>
+    <a class="nav" href="/blog" target="_blank">🌐 Ver Blog</a>
+    <div class="bottom"><div class="user"><div class="avatar" id="avatarInitial">A</div><div class="user-name" id="adminName">Admin</div><form method="POST" action="/auth/logout"><button class="logout" title="Sair">⏻</button></form></div></div>
+  </aside>
 
-<!-- ── SIDEBAR ── -->
-<aside class="sidebar">
-  <div class="sidebar-logo">
-    <img src="/img/logo-branco.png" alt="ECO"
-         onerror="this.style.display='none'"/>
-    eco <em style="color:var(--teal);font-style:normal">do bem</em>
-    <em>Painel Admin</em>
-  </div>
+  <main class="main">
+    <div class="top"><h1 id="pageTitle">Dashboard</h1><div class="actions" id="topbarActions"></div></div>
+    <div class="content">
+      <section class="view active" id="view-dashboard">
+        <div class="grid"><div class="card"><div class="label">Total de Posts</div><div class="num" id="sTotal">—</div></div><div class="card"><div class="label">Publicados</div><div class="num" id="sPublished">—</div></div><div class="card"><div class="label">Rascunhos</div><div class="num" id="sDrafts">—</div></div><div class="card"><div class="label">Categorias</div><div class="num" id="sCats">—</div></div></div>
+        <div class="panel"><div class="panel-head"><h2>Posts recentes</h2></div><table><thead><tr><th>Título</th><th>Categoria</th><th>Status</th><th>Atualizado</th><th></th></tr></thead><tbody id="recentPostsBody"></tbody></table></div>
+      </section>
 
-  <div class="nav-section">Conteúdo</div>
-  <button class="nav-item active" data-view="dashboard"><span class="icon">📊</span> Dashboard</button>
-  <button class="nav-item" data-view="posts"><span class="icon">📝</span> Posts</button>
-  <button class="nav-item" data-view="categorias"><span class="icon">🏷️</span> Categorias</button>
+      <section class="view" id="view-posts">
+        <div class="panel"><div class="panel-head"><div class="filters"><button class="btn small filter active" data-status="todos">Todos</button><button class="btn small filter" data-status="published">Publicados</button><button class="btn small filter" data-status="draft">Rascunhos</button></div><input id="postSearch" placeholder="Buscar posts..." style="max-width:260px"></div><table><thead><tr><th>Título</th><th>Categoria</th><th>Status</th><th>Publicado</th><th>Ações</th></tr></thead><tbody id="postsBody"></tbody></table><div id="postsPagination" style="padding:16px;display:flex;gap:6px;justify-content:center"></div></div>
+      </section>
 
-  <div class="nav-section">Sistema</div>
-  <button class="nav-item" data-view="usuarios"><span class="icon">👤</span> Usuários</button>
-  <a class="nav-item" href="/blog" target="_blank"><span class="icon">🌐</span> Ver Blog</a>
+      <section class="view" id="view-categorias">
+        <div class="panel"><div class="panel-head"><h2>Nova Categoria</h2></div><div style="padding:18px"><div class="row"><div><label>Nome</label><input id="catName" placeholder="Ex: Liderança"></div><div><label>Cor</label><select id="catColor"><option value="purple">Roxo</option><option value="teal">Teal</option><option value="gold">Dourado</option><option value="green">Verde</option></select></div><button class="btn primary" onclick="createCategory()">+ Criar</button></div></div></div>
+        <div class="panel"><div class="panel-head"><h2>Categorias cadastradas</h2></div><div class="cats" id="catsGrid"></div></div>
+      </section>
 
-  <div class="sidebar-bottom">
-    <div class="user-chip">
-      <div class="user-avatar" id="avatarInitial">A</div>
-      <div class="user-name" id="adminName">Admin</div>
-      <form method="POST" action="/auth/logout" style="margin:0">
-        <button class="btn-logout" type="submit" title="Sair">⏻</button>
-      </form>
+      <section class="view" id="view-usuarios">
+        <div class="panel"><div class="panel-head"><h2>Adicionar Usuário</h2></div><div style="padding:18px"><div class="form"><div><label>Nome</label><input id="uName" placeholder="Nome completo"></div><div><label>E-mail</label><input id="uEmail" type="email" placeholder="email@ecodobem.com"></div><div><label>Senha</label><input id="uPass" type="password" placeholder="Mínimo 8 caracteres"></div><button class="btn primary" onclick="createUser()">+ Adicionar</button></div></div></div>
+        <div class="panel"><div class="panel-head"><h2>Usuários cadastrados</h2></div><table><thead><tr><th>Nome</th><th>E-mail</th><th>Criado em</th><th></th></tr></thead><tbody id="usersBody"></tbody></table></div>
+      </section>
     </div>
-  </div>
-</aside>
-
-<!-- ── MAIN ── -->
-<div class="main">
-  <div class="topbar">
-    <div class="topbar-title" id="pageTitle">Dashboard</div>
-    <div class="topbar-actions" id="topbarActions"></div>
-  </div>
-
-  <div class="content">
-
-    <!-- DASHBOARD -->
-    <div class="view active" id="view-dashboard">
-      <div class="stats-grid" id="statsGrid">
-        <div class="stat-card purple"><div class="stat-label">Total de Posts</div><div class="stat-number" id="sTotal">—</div></div>
-        <div class="stat-card green"><div class="stat-label">Publicados</div><div class="stat-number" id="sPublished">—</div></div>
-        <div class="stat-card gold"><div class="stat-label">Rascunhos</div><div class="stat-number" id="sDrafts">—</div></div>
-        <div class="stat-card teal"><div class="stat-label">Categorias</div><div class="stat-number" id="sCats">—</div></div>
-      </div>
-      <div class="table-wrap">
-        <div class="table-header"><h3>Posts recentes</h3></div>
-        <table>
-          <thead><tr><th>Título</th><th>Categoria</th><th>Status</th><th>Atualizado</th><th></th></tr></thead>
-          <tbody id="recentPostsBody"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- POSTS -->
-    <div class="view" id="view-posts">
-      <div class="table-wrap">
-        <div class="table-header">
-          <div class="filter-row" id="statusFilters">
-            <button class="filter-btn active" data-status="todos">Todos</button>
-            <button class="filter-btn" data-status="published">Publicados</button>
-            <button class="filter-btn" data-status="draft">Rascunhos</button>
-          </div>
-          <div class="search-box">
-            <input type="text" id="postSearch" placeholder="Buscar posts..." />
-          </div>
-        </div>
-        <table>
-          <thead><tr><th>Título</th><th>Categoria</th><th>Status</th><th>Publicado</th><th>Ações</th></tr></thead>
-          <tbody id="postsBody"></tbody>
-        </table>
-        <div class="pagination" id="postsPagination"></div>
-      </div>
-    </div>
-
-    <!-- CATEGORIAS -->
-    <div class="view" id="view-categorias">
-      <div class="user-form">
-        <h3>Nova Categoria</h3>
-        <div style="display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:end;">
-          <div class="field" style="margin:0">
-            <label>Nome</label>
-            <input type="text" id="catName" placeholder="Ex: Liderança"/>
-          </div>
-          <div class="field" style="margin:0">
-            <label>Cor</label>
-            <select id="catColor">
-              <option value="purple">Roxo</option>
-              <option value="teal">Teal</option>
-              <option value="gold">Dourado</option>
-              <option value="green">Verde</option>
-            </select>
-          </div>
-          <button class="btn btn-primary" onclick="createCategory()">+ Criar</button>
-        </div>
-      </div>
-      <div class="cats-grid" id="catsGrid"></div>
-    </div>
-
-    <!-- USUÁRIOS -->
-    <div class="view" id="view-usuarios">
-      <div class="user-form">
-        <h3>Adicionar Usuário</h3>
-        <div class="field"><label>Nome</label><input type="text" id="uName" placeholder="Nome completo"/></div>
-        <div class="field"><label>E-mail</label><input type="email" id="uEmail" placeholder="email@ecodobem.com"/></div>
-        <div class="field"><label>Senha</label><input type="password" id="uPass" placeholder="Mínimo 8 caracteres"/></div>
-        <button class="btn btn-primary" onclick="createUser()">+ Adicionar</button>
-      </div>
-      <div class="table-wrap">
-        <div class="table-header"><h3>Usuários cadastrados</h3></div>
-        <table>
-          <thead><tr><th>Nome</th><th>E-mail</th><th>Criado em</th><th></th></tr></thead>
-          <tbody id="usersBody"></tbody>
-        </table>
-      </div>
-    </div>
-
-  </div><!-- /content -->
-</div><!-- /main -->
-
-<!-- MODAL CONFIRMAÇÃO -->
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal">
-    <h3 id="modalTitle">Confirmar exclusão</h3>
-    <p id="modalText">Esta ação não pode ser desfeita.</p>
-    <div class="modal-actions">
-      <button class="btn btn-ghost" onclick="closeModal()">Cancelar</button>
-      <button class="btn btn-danger" id="modalConfirm">Excluir</button>
-    </div>
-  </div>
-</div>
-
-<div id="toast"></div>
+  </main>
+  <div id="toast"></div>
 
 <script>
-// ── Estado ──────────────────────────────────────────────────────────────────
-let currentView = 'dashboard';
 let postsFilter = { status: 'todos', busca: '', page: 1 };
-let deleteCallback = null;
 
-// ── Init ────────────────────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', async () => {
-  const me = await fetch('/api/admin/me').then(r => r.json()).catch(() => null);
-  if (me) {
+window.addEventListener('DOMContentLoaded', async () => {
+  const me = await api('/api/admin/me');
+  if (me && me.name) {
     document.getElementById('adminName').textContent = me.name;
     document.getElementById('avatarInitial').textContent = me.name.charAt(0).toUpperCase();
   }
 
-  loadDashboard();
-
-  // Nav
-  document.querySelectorAll('.nav-item[data-view]').forEach(btn => {
-    btn.addEventListener('click', () => switchView(btn.dataset.view));
+  document.querySelectorAll('.filter').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      postsFilter.status = btn.dataset.status;
+      postsFilter.page = 1;
+      loadPosts();
+    });
   });
 
-  // Filtros de status
-  document.getElementById('statusFilters').addEventListener('click', e => {
-    const btn = e.target.closest('.filter-btn');
-    if (!btn) return;
-    document.querySelectorAll('#statusFilters .filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    postsFilter.status = btn.dataset.status;
-    postsFilter.page = 1;
-    loadPosts();
-  });
-
-  // Busca
-  let searchTimer;
+  let timer;
   document.getElementById('postSearch').addEventListener('input', e => {
-    clearTimeout(searchTimer);
-    searchTimer = setTimeout(() => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
       postsFilter.busca = e.target.value;
       postsFilter.page = 1;
       loadPosts();
-    }, 400);
+    }, 350);
   });
+
+  loadDashboard();
 });
 
-// ── Navegação ────────────────────────────────────────────────────────────────
 function switchView(name) {
-  currentView = name;
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-  document.getElementById(`view-${name}`).classList.add('active');
-  document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
-  document.querySelector(`[data-view="${name}"]`)?.classList.add('active');
+  const view = document.getElementById('view-' + name);
+  if (view) view.classList.add('active');
 
-  const titles = { dashboard:'Dashboard', posts:'Posts', categorias:'Categorias', usuarios:'Usuários' };
+  document.querySelectorAll('.nav[data-view]').forEach(n => n.classList.remove('active'));
+  const nav = document.querySelector('.nav[data-view="' + name + '"]');
+  if (nav) nav.classList.add('active');
+
+  const titles = { dashboard: 'Dashboard', posts: 'Posts', categorias: 'Categorias', usuarios: 'Usuários' };
   document.getElementById('pageTitle').textContent = titles[name] || name;
-
   const actions = document.getElementById('topbarActions');
   actions.innerHTML = '';
+
   if (name === 'posts') {
-    actions.innerHTML = '<a class="btn btn-primary" href="/admin/posts/novo">+ Novo Post</a>';
+    actions.innerHTML = '<a class="btn primary" href="/admin/posts/novo">+ Novo Post</a>';
     loadPosts();
   } else if (name === 'categorias') {
     loadCategories();
@@ -429,7 +137,6 @@ function switchView(name) {
   }
 }
 
-// ── Dashboard ────────────────────────────────────────────────────────────────
 async function loadDashboard() {
   const data = await api('/api/admin/dashboard');
   if (!data) return;
@@ -437,80 +144,37 @@ async function loadDashboard() {
   document.getElementById('sPublished').textContent = data.published;
   document.getElementById('sDrafts').textContent = data.drafts;
   document.getElementById('sCats').textContent = data.categories;
-
-  const tbody = document.getElementById('recentPostsBody');
-  tbody.innerHTML = data.recentes.map(p => `
-    <tr>
-      <td style="font-weight:600;max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${p.title}</td>
-      <td>${p.category ? `<span class="badge-cat ${p.category.color}">${p.category.name}</span>` : '<span style="color:var(--muted)">—</span>'}</td>
-      <td><span class="badge badge-${p.status}">${p.status === 'published' ? 'Publicado' : 'Rascunho'}</span></td>
-      <td style="color:var(--muted);font-size:12px">${fmtDate(p.updatedAt)}</td>
-      <td><a class="btn btn-ghost btn-sm" href="/admin/posts/${p.id}/editar">Editar</a></td>
-    </tr>
-  `).join('') || '<tr><td colspan="5" style="text-align:center;padding:32px;color:var(--muted)">Nenhum post ainda.</td></tr>';
+  document.getElementById('recentPostsBody').innerHTML = (data.recentes || []).map(p => rowRecent(p)).join('') || emptyRow(5, 'Nenhum post ainda.');
 }
 
-// ── Posts ────────────────────────────────────────────────────────────────────
 async function loadPosts() {
-  const params = new URLSearchParams({
-    status: postsFilter.status,
-    busca: postsFilter.busca,
-    page: postsFilter.page
-  });
-  const data = await api(`/api/admin/posts?${params}`);
+  const params = new URLSearchParams(postsFilter);
+  const data = await api('/api/admin/posts?' + params.toString());
   if (!data) return;
-
-  const tbody = document.getElementById('postsBody');
-  tbody.innerHTML = data.posts.map(p => `
-    <tr>
-      <td style="font-weight:600;max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
-        ${p.title}
-        ${p.excerpt ? `<div style="font-size:11px;color:var(--muted);font-weight:400;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:260px">${p.excerpt}</div>` : ''}
-      </td>
-      <td>${p.category ? `<span class="badge-cat ${p.category.color}">${p.category.name}</span>` : '<span style="color:var(--muted)">—</span>'}</td>
-      <td><span class="badge badge-${p.status}">${p.status === 'published' ? 'Publicado' : 'Rascunho'}</span></td>
-      <td style="color:var(--muted);font-size:12px">${p.published_at ? fmtDate(p.published_at) : '—'}</td>
-      <td>
-        <div class="actions-cell">
-          <a class="btn btn-ghost btn-sm" href="/admin/posts/${p.id}/editar">✏️ Editar</a>
-          ${p.status === 'published'
-            ? `<a class="btn btn-teal btn-sm" href="/blog/${p.slug}" target="_blank">🔗 Ver</a>`
-            : ''}
-          <button class="btn btn-danger btn-sm" onclick="confirmDelete('post',${p.id},'${esc(p.title)}')">🗑️</button>
-        </div>
-      </td>
-    </tr>
-  `).join('') || '<tr><td colspan="5" style="text-align:center;padding:32px;color:var(--muted)">Nenhum post encontrado.</td></tr>';
-
-  // Paginação
+  document.getElementById('postsBody').innerHTML = (data.posts || []).map(p => rowPost(p)).join('') || emptyRow(5, 'Nenhum post encontrado.');
   const pag = document.getElementById('postsPagination');
-  if (data.pages <= 1) { pag.innerHTML = ''; return; }
-  let html = '';
-  for (let i = 1; i <= data.pages; i++) {
-    html += `<button class="page-btn${i === data.page ? ' active' : ''}" onclick="goPage(${i})">${i}</button>`;
+  pag.innerHTML = '';
+  for (let i = 1; i <= (data.pages || 0); i++) {
+    const b = document.createElement('button');
+    b.className = 'btn small' + (i === data.page ? ' primary' : '');
+    b.textContent = i;
+    b.onclick = () => { postsFilter.page = i; loadPosts(); };
+    pag.appendChild(b);
   }
-  pag.innerHTML = html;
 }
 
-function goPage(n) { postsFilter.page = n; loadPosts(); }
+function rowRecent(p) {
+  return '<tr><td><strong>' + safe(p.title) + '</strong></td><td>' + catBadge(p.category) + '</td><td>' + statusBadge(p.status) + '</td><td class="muted">' + fmtDate(p.updatedAt) + '</td><td><a class="btn small" href="/admin/posts/' + p.id + '/editar">Editar</a></td></tr>';
+}
 
-// ── Categorias ────────────────────────────────────────────────────────────────
+function rowPost(p) {
+  return '<tr><td><strong>' + safe(p.title) + '</strong><div class="muted" style="font-size:12px">' + safe(p.excerpt || '') + '</div></td><td>' + catBadge(p.category) + '</td><td>' + statusBadge(p.status) + '</td><td class="muted">' + (p.published_at ? fmtDate(p.published_at) : '—') + '</td><td><div style="display:flex;gap:6px;flex-wrap:wrap"><a class="btn small" href="/admin/posts/' + p.id + '/editar">Editar</a>' + (p.status === 'published' ? '<a class="btn small teal" href="/blog/' + p.slug + '" target="_blank">Ver</a>' : '') + '<button class="btn small danger" onclick="deleteItem(\'post\',' + p.id + ')">Excluir</button></div></td></tr>';
+}
+
 async function loadCategories() {
   const cats = await api('/api/admin/categorias');
   if (!cats) return;
-  const grid = document.getElementById('catsGrid');
-  grid.innerHTML = cats.map(c => `
-    <div class="cat-card">
-      <div class="cat-info">
-        <div class="cat-dot ${c.color}"></div>
-        <div>
-          <div class="cat-name">${c.name}</div>
-          <div class="cat-slug">/${c.slug}</div>
-        </div>
-      </div>
-      <button class="btn btn-danger btn-sm" onclick="confirmDelete('cat',${c.id},'${esc(c.name)}')">🗑️</button>
-    </div>
-  `).join('') || '<p style="color:var(--muted);padding:8px">Nenhuma categoria.</p>';
+  document.getElementById('catsGrid').innerHTML = cats.map(c => '<div class="cat-card"><div><span class="dot ' + safe(c.color) + '"></span><strong>' + safe(c.name) + '</strong><div class="muted" style="font-size:12px">/' + safe(c.slug) + '</div></div><button class="btn small danger" onclick="deleteItem(\'cat\',' + c.id + ')">Excluir</button></div>').join('') || '<p class="muted">Nenhuma categoria.</p>';
 }
 
 async function createCategory() {
@@ -518,84 +182,48 @@ async function createCategory() {
   const color = document.getElementById('catColor').value;
   if (!name) return toast('Digite um nome', 'error');
   const r = await api('/api/admin/categorias', 'POST', { name, color });
-  if (r) { toast('Categoria criada!'); document.getElementById('catName').value = ''; loadCategories(); }
+  if (r) { document.getElementById('catName').value = ''; toast('Categoria criada.'); loadCategories(); }
 }
 
-// ── Usuários ────────────────────────────────────────────────────────────────
 async function loadUsers() {
   const users = await api('/api/admin/usuarios');
   if (!users) return;
-  document.getElementById('usersBody').innerHTML = users.map(u => `
-    <tr>
-      <td style="font-weight:600">${u.name}</td>
-      <td style="color:var(--muted)">${u.email}</td>
-      <td style="color:var(--muted);font-size:12px">${fmtDate(u.createdAt)}</td>
-      <td><button class="btn btn-danger btn-sm" onclick="confirmDelete('user',${u.id},'${esc(u.name)}')">🗑️</button></td>
-    </tr>
-  `).join('');
+  document.getElementById('usersBody').innerHTML = users.map(u => '<tr><td><strong>' + safe(u.name) + '</strong></td><td class="muted">' + safe(u.email) + '</td><td class="muted">' + fmtDate(u.createdAt) + '</td><td><button class="btn small danger" onclick="deleteItem(\'user\',' + u.id + ')">Excluir</button></td></tr>').join('') || emptyRow(4, 'Nenhum usuário.');
 }
 
 async function createUser() {
   const name = document.getElementById('uName').value.trim();
   const email = document.getElementById('uEmail').value.trim();
   const password = document.getElementById('uPass').value;
-  if (!name || !email || !password) return toast('Preencha todos os campos', 'error');
+  if (!name || !email || !password) return toast('Preencha todos os campos.', 'error');
   const r = await api('/api/admin/usuarios', 'POST', { name, email, password });
-  if (r) {
-    toast('Usuário criado!');
-    ['uName','uEmail','uPass'].forEach(id => document.getElementById(id).value = '');
-    loadUsers();
-  }
+  if (r) { ['uName','uEmail','uPass'].forEach(id => document.getElementById(id).value = ''); toast('Usuário criado.'); loadUsers(); }
 }
 
-// ── Modal de exclusão ────────────────────────────────────────────────────────
-function confirmDelete(type, id, name) {
-  document.getElementById('modalText').textContent = `Excluir "${name}"? Esta ação não pode ser desfeita.`;
-  document.getElementById('modalOverlay').classList.add('open');
-  deleteCallback = async () => {
-    const endpoints = { post: `/api/admin/posts/${id}`, cat: `/api/admin/categorias/${id}`, user: `/api/admin/usuarios/${id}` };
-    const r = await api(endpoints[type], 'DELETE');
-    if (r) {
-      toast('Excluído com sucesso!');
-      if (type === 'post') loadPosts();
-      if (type === 'cat') loadCategories();
-      if (type === 'user') loadUsers();
-    }
-    closeModal();
-  };
-  document.getElementById('modalConfirm').onclick = deleteCallback;
+async function deleteItem(type, id) {
+  if (!confirm('Confirma a exclusão?')) return;
+  const endpoints = { post: '/api/admin/posts/' + id, cat: '/api/admin/categorias/' + id, user: '/api/admin/usuarios/' + id };
+  const r = await api(endpoints[type], 'DELETE');
+  if (r) { toast('Excluído.'); if (type === 'post') loadPosts(); if (type === 'cat') loadCategories(); if (type === 'user') loadUsers(); }
 }
 
-function closeModal() {
-  document.getElementById('modalOverlay').classList.remove('open');
-  deleteCallback = null;
-}
-
-// ── Helpers ──────────────────────────────────────────────────────────────────
 async function api(url, method = 'GET', body = null) {
   try {
     const opts = { method, headers: { 'Content-Type': 'application/json' } };
     if (body) opts.body = JSON.stringify(body);
     const r = await fetch(url, opts);
     if (r.status === 401) { location.href = '/admin/login'; return null; }
-    if (!r.ok) { const e = await r.json().catch(() => ({})); toast(e.error || 'Erro', 'error'); return null; }
-    return r.json();
-  } catch { toast('Erro de conexão', 'error'); return null; }
+    if (!r.ok) { const e = await r.json().catch(() => ({})); toast(e.error || 'Erro ao executar ação.', 'error'); return null; }
+    return await r.json();
+  } catch (e) { toast('Erro de conexão.', 'error'); return null; }
 }
 
-function toast(msg, type = 'success') {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.className = `show ${type}`;
-  clearTimeout(t._timer);
-  t._timer = setTimeout(() => t.className = '', 3500);
-}
-
-function fmtDate(d) {
-  if (!d) return '—';
-  return new Date(d).toLocaleDateString('pt-BR', { day:'2-digit', month:'short', year:'numeric' });
-}
-
-function esc(str) { return (str || '').replace(/'/g, "\\'"); }
+function catBadge(c) { return c ? '<span class="badge cat">' + safe(c.name) + '</span>' : '<span class="muted">—</span>'; }
+function statusBadge(s) { return '<span class="badge ' + (s === 'published' ? 'published' : 'draft') + '">' + (s === 'published' ? 'Publicado' : 'Rascunho') + '</span>'; }
+function emptyRow(cols, msg) { return '<tr><td colspan="' + cols + '" style="text-align:center;padding:32px" class="muted">' + msg + '</td></tr>'; }
+function fmtDate(d) { return d ? new Date(d).toLocaleDateString('pt-BR') : '—'; }
+function safe(v) { return String(v || '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
+function toast(msg, type = 'success') { const t = document.getElementById('toast'); t.textContent = msg; t.className = 'show ' + type; clearTimeout(t._timer); t._timer = setTimeout(() => t.className = '', 3000); }
 </script>
 </body>
 </html>

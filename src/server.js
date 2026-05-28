@@ -14,6 +14,9 @@ const PORT = process.env.PORT || 3000;
 const ROOT_DIR = path.join(__dirname, '..');
 const PUBLIC_DIR = path.join(ROOT_DIR, 'public');
 
+// Railway fica atrás de proxy HTTPS. Isto permite que o Express grave cookies seguros corretamente.
+app.set('trust proxy', 1);
+
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -22,8 +25,10 @@ app.use(session({
   secret: process.env.SESSION_SECRET || 'eco-blog-secret-2026',
   resave: false,
   saveUninitialized: false,
+  proxy: true,
   cookie: {
     secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
     httpOnly: true,
     maxAge: 7 * 24 * 60 * 60 * 1000 // 7 dias
   }

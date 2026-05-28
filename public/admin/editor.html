@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Editor — ECO do B.E.M.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css"/>
+  <style>
+    :root{
+      --purple:#5B2EFF;--purple-deep:#1A0A5E;--teal:#00B8D9;--gold:#F59E0B;--green:#5ED38C;
+      --bg:#0f0a2e;--surface:rgba(255,255,255,.05);--border:rgba(255,255,255,.1);
+      --muted:rgba(255,255,255,.5);--radius:14px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:#fff;min-height:100vh;}
+
+    /* TOPBAR */
+    .topbar{
+      position:sticky;top:0;z-index:100;
+      background:rgba(20,9,58,.95);backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);
+      display:flex;align-items:center;gap:12px;padding:12px 24px;
+    }
+    .topbar-left{display:flex;align-items:center;gap:10px;flex:1;}
+    .back-btn{
+      display:inline-flex;align-items:center;gap:6px;padding:8px 12px;
+      border-radius:9px;background:rgba(255,255,255,.07);border:1px solid var(--border);
+      color:var(--muted);font-size:13px;cursor:pointer;text-decoration:none;
+      transition:all .15s;
+    }
+    .back-btn:hover{color:#fff;background:rgba(255,255,255,.12);}
+    .page-label{font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;}
+    .topbar-right{display:flex;gap:8px;}
+    .btn{
+      display:inline-flex;align-items:center;gap:6px;
+      padding:9px 18px;border-radius:10px;font-family:'Poppins',sans-serif;
+      font-weight:600;font-size:13.5px;cursor:pointer;border:none;
+      transition:transform .15s;
+    }
+    .btn-ghost{background:rgba(255,255,255,.07);color:rgba(255,255,255,.8);border:1px solid var(--border);}
+    .btn-ghost:hover{background:rgba(255,255,255,.12);color:#fff;}
+    .btn-gold{background:rgba(245,158,11,.15);color:var(--gold);border:1px solid rgba(245,158,11,.3);}
+    .btn-gold:hover{background:rgba(245,158,11,.25);}
+    .btn-primary{background:var(--purple);color:#fff;box-shadow:0 4px 14px rgba(91,46,255,.3);}
+    .btn-primary:hover{transform:translateY(-1px);}
+    .btn:disabled{opacity:.5;cursor:not-allowed;transform:none!important;}
+
+    /* LAYOUT */
+    .layout{display:grid;grid-template-columns:1fr 320px;gap:0;height:calc(100vh - 57px);}
+    .editor-col{padding:24px;overflow-y:auto;border-right:1px solid var(--border);}
+    .sidebar-col{padding:20px;overflow-y:auto;background:rgba(0,0,0,.15);}
+
+    /* CAMPOS */
+    .field{margin-bottom:18px;}
+    .field label{display:block;font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-bottom:7px;}
+    input[type=text],input[type=url],textarea,select{
+      width:100%;padding:11px 14px;
+      background:rgba(255,255,255,.07);border:1px solid var(--border);
+      border-radius:10px;color:#fff;font-family:'Inter',sans-serif;font-size:14px;
+      transition:border-color .2s;
+    }
+    input:focus,textarea:focus,select:focus{outline:none;border-color:var(--teal);}
+    input::placeholder,textarea::placeholder{color:rgba(255,255,255,.3);}
+    select option{background:#14093a;color:#fff;}
+    .char-count{font-size:11px;color:var(--muted);text-align:right;margin-top:4px;}
+    .char-count.warn{color:var(--gold);}
+    .char-count.over{color:#ef4444;}
+
+    /* TITLE */
+    #titleInput{
+      font-family:'Poppins',sans-serif;font-size:24px;font-weight:700;
+      padding:14px 16px;letter-spacing:-.01em;
+    }
+
+    /* QUILL */
+    #editorContainer{border-radius:10px;overflow:hidden;border:1px solid var(--border);}
+    .ql-toolbar.ql-snow{
+      background:rgba(255,255,255,.06)!important;
+      border:none!important;border-bottom:1px solid var(--border)!important;
+      padding:10px 12px!important;
+    }
+    .ql-container.ql-snow{
+      border:none!important;background:rgba(255,255,255,.04)!important;
+      font-family:'Inter',sans-serif!important;font-size:15px!important;
+      min-height:400px;
+    }
+    .ql-editor{color:#fff!important;min-height:400px;padding:20px!important;line-height:1.8!important;}
+    .ql-editor.ql-blank::before{color:rgba(255,255,255,.3)!important;}
+    .ql-snow .ql-picker{color:rgba(255,255,255,.75)!important;}
+    .ql-snow .ql-stroke{stroke:rgba(255,255,255,.7)!important;}
+    .ql-snow .ql-fill{fill:rgba(255,255,255,.7)!important;}
+    .ql-snow.ql-toolbar button:hover .ql-stroke,
+    .ql-snow .ql-toolbar button.ql-active .ql-stroke{stroke:#fff!important;}
+    .ql-snow.ql-toolbar button:hover .ql-fill,
+    .ql-snow .ql-toolbar button.ql-active .ql-fill{fill:#fff!important;}
+    .ql-picker-options{background:#1a0a5e!important;border:1px solid var(--border)!important;}
+    .ql-picker-item{color:#fff!important;}
+
+    /* SIDEBAR PANELS */
+    .panel{
+      background:var(--surface);border:1px solid var(--border);
+      border-radius:var(--radius);padding:16px;margin-bottom:14px;
+    }
+    .panel-title{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+
+    /* STATUS */
+    .status-toggle{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+    .status-opt{
+      padding:9px;border-radius:9px;border:1px solid var(--border);
+      background:transparent;color:var(--muted);cursor:pointer;
+      font-family:'Inter',sans-serif;font-size:13px;font-weight:600;text-align:center;
+      transition:all .15s;
+    }
+    .status-opt.active.draft{background:rgba(245,158,11,.2);border-color:var(--gold);color:var(--gold);}
+    .status-opt.active.published{background:rgba(94,211,140,.2);border-color:var(--green);color:var(--green);}
+
+    /* COVER */
+    .cover-preview{
+      width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;
+      background:rgba(255,255,255,.05);border:2px dashed var(--border);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      cursor:pointer;transition:border-color .2s;margin-bottom:10px;position:relative;
+    }
+    .cover-preview:hover{border-color:var(--teal);}
+    .cover-preview img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+    .cover-placeholder{text-align:center;color:var(--muted);font-size:13px;}
+    .cover-placeholder .icon{font-size:28px;margin-bottom:6px;}
+    .upload-progress{
+      position:absolute;bottom:0;left:0;right:0;height:3px;
+      background:rgba(0,184,217,.3);display:none;
+    }
+    .upload-progress-bar{height:100%;background:var(--teal);transition:width .2s;}
+
+    /* TOAST */
+    #toast{
+      position:fixed;bottom:20px;right:20px;z-index:999;
+      padding:11px 18px;border-radius:10px;font-size:14px;font-weight:600;
+      box-shadow:0 6px 20px rgba(0,0,0,.4);
+      transform:translateY(60px);opacity:0;transition:all .3s;pointer-events:none;
+    }
+    #toast.show{transform:translateY(0);opacity:1;}
+    #toast.success{background:#10b981;color:#fff;}
+    #toast.error{background:#ef4444;color:#fff;}
+    #toast.info{background:var(--purple);color:#fff;}
+
+    @media(max-width:900px){
+      .layout{grid-template-columns:1fr;}
+      .sidebar-col{border-top:1px solid var(--border);}
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <a href="/admin" class="back-btn">← Voltar</a>
+    <span class="page-label" id="editorLabel">Novo Post</span>
+  </div>
+  <div class="topbar-right">
+    <button class="btn btn-gold" id="btnDraft" onclick="save('draft')">Salvar rascunho</button>
+    <button class="btn btn-primary" id="btnPublish" onclick="save('published')">Publicar</button>
+  </div>
+</div>
+
+<div class="layout">
+  <!-- EDITOR -->
+  <div class="editor-col">
+    <div class="field">
+      <label>Título do Post</label>
+      <input type="text" id="titleInput" placeholder="Digite o título do post..."/>
+    </div>
+    <div class="field">
+      <label>Resumo (excerpt)</label>
+      <textarea id="excerptInput" rows="2" placeholder="Breve descrição do post para listagens e SEO..."></textarea>
+      <div class="char-count" id="excerptCount">0 / 200</div>
+    </div>
+    <div class="field">
+      <label>Conteúdo</label>
+      <div id="editorContainer">
+        <div id="quill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar-col">
+    <!-- Status -->
+    <div class="panel">
+      <div class="panel-title">Status</div>
+      <div class="status-toggle">
+        <button class="status-opt draft active" id="optDraft" onclick="setStatus('draft')">Rascunho</button>
+        <button class="status-opt published" id="optPublished" onclick="setStatus('published')">Publicado</button>
+      </div>
+    </div>
+
+    <!-- Capa -->
+    <div class="panel">
+      <div class="panel-title">Imagem de Capa</div>
+      <div class="cover-preview" id="coverPreview" onclick="document.getElementById('coverFile').click()">
+        <img id="coverImg" src="" style="display:none"/>
+        <div class="cover-placeholder" id="coverPlaceholder">
+          <div class="icon">🖼️</div>
+          <div>Clique para enviar</div>
+          <div style="font-size:11px;margin-top:4px">JPG, PNG, WebP · máx 5MB</div>
+        </div>
+        <div class="upload-progress" id="uploadProgress">
+          <div class="upload-progress-bar" id="uploadBar" style="width:0%"></div>
+        </div>
+      </div>
+      <input type="file" id="coverFile" accept="image/*" style="display:none" onchange="uploadCover(this)"/>
+      <input type="url" id="coverUrl" placeholder="ou cole uma URL de imagem" style="font-size:12px;padding:8px 10px;"/>
+      <div style="font-size:11px;color:var(--muted);margin-top:6px;">Cole URL ou envie arquivo acima</div>
+    </div>
+
+    <!-- Categoria -->
+    <div class="panel">
+      <div class="panel-title">Categoria</div>
+      <select id="categorySelect">
+        <option value="">Sem categoria</option>
+      </select>
+    </div>
+
+    <!-- SEO -->
+    <div class="panel">
+      <div class="panel-title">SEO</div>
+      <div class="field">
+        <label>Título SEO</label>
+        <input type="text" id="seoTitle" placeholder="Título para Google (≤ 60 chars)"/>
+        <div class="char-count" id="seoTitleCount">0 / 60</div>
+      </div>
+      <div class="field" style="margin-bottom:0">
+        <label>Descrição SEO</label>
+        <textarea id="seoDesc" rows="3" placeholder="Descrição para Google (≤ 160 chars)"></textarea>
+        <div class="char-count" id="seoDescCount">0 / 160</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+<script>
+// ── Estado ──────────────────────────────────────────────────────────────────
+const postId = (() => {
+  const m = location.pathname.match(/\/admin\/posts\/(\d+)\/editar/);
+  return m ? parseInt(m[1]) : null;
+})();
+
+let currentStatus = 'draft';
+let saving = false;
+
+// ── Quill ────────────────────────────────────────────────────────────────────
+const quill = new Quill('#quill', {
+  theme: 'snow',
+  placeholder: 'Escreva o conteúdo do post aqui...',
+  modules: {
+    toolbar: [
+      [{ header: [1, 2, 3, false] }],
+      ['bold', 'italic', 'underline', 'strike'],
+      [{ list: 'ordered' }, { list: 'bullet' }],
+      ['blockquote', 'code-block'],
+      ['link', 'image'],
+      [{ color: [] }, { background: [] }],
+      ['clean']
+    ]
+  }
+});
+
+// ── Init ─────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadCategories();
+  if (postId) {
+    document.getElementById('editorLabel').textContent = 'Editando Post';
+    await loadPost();
+  }
+  bindCounters();
+});
+
+async function loadCategories() {
+  const cats = await api('/api/admin/categorias');
+  if (!cats) return;
+  const sel = document.getElementById('categorySelect');
+  cats.forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c.id; opt.textContent = c.name;
+    sel.appendChild(opt);
+  });
+}
+
+async function loadPost() {
+  const post = await api(`/api/admin/posts/${postId}`);
+  if (!post) return;
+
+  document.getElementById('titleInput').value = post.title;
+  document.getElementById('excerptInput').value = post.excerpt || '';
+  document.getElementById('coverUrl').value = post.cover_url || '';
+  document.getElementById('seoTitle').value = post.seo_title || '';
+  document.getElementById('seoDesc').value = post.seo_description || '';
+  document.getElementById('categorySelect').value = post.category_id || '';
+
+  if (post.cover_url) showCoverPreview(post.cover_url);
+
+  quill.root.innerHTML = post.content;
+  setStatus(post.status);
+  updateCounters();
+}
+
+// ── Status ────────────────────────────────────────────────────────────────────
+function setStatus(s) {
+  currentStatus = s;
+  document.getElementById('optDraft').classList.toggle('active', s === 'draft');
+  document.getElementById('optPublished').classList.toggle('active', s === 'published');
+}
+
+// ── Salvar ────────────────────────────────────────────────────────────────────
+async function save(forceStatus) {
+  if (saving) return;
+  const title = document.getElementById('titleInput').value.trim();
+  if (!title) { toast('Digite um título', 'error'); return; }
+
+  const content = quill.root.innerHTML;
+  if (content === '<p><br></p>') { toast('O conteúdo está vazio', 'error'); return; }
+
+  const status = forceStatus || currentStatus;
+  saving = true;
+  const btns = document.querySelectorAll('.topbar-right .btn');
+  btns.forEach(b => { b.disabled = true; b.textContent = 'Salvando...'; });
+
+  const body = {
+    title,
+    content,
+    excerpt: document.getElementById('excerptInput').value.trim(),
+    cover_url: document.getElementById('coverUrl').value.trim() || null,
+    status,
+    category_id: document.getElementById('categorySelect').value || null,
+    seo_title: document.getElementById('seoTitle').value.trim() || null,
+    seo_description: document.getElementById('seoDesc').value.trim() || null
+  };
+
+  const url = postId ? `/api/admin/posts/${postId}` : '/api/admin/posts';
+  const method = postId ? 'PUT' : 'POST';
+  const result = await api(url, method, body);
+
+  saving = false;
+  btns.forEach(b => b.disabled = false);
+  document.getElementById('btnDraft').textContent = 'Salvar rascunho';
+  document.getElementById('btnPublish').textContent = 'Publicar';
+
+  if (result) {
+    toast(status === 'published' ? '✅ Post publicado!' : '💾 Rascunho salvo!');
+    setStatus(status);
+    if (!postId) {
+      setTimeout(() => { location.href = `/admin/posts/${result.id}/editar`; }, 1200);
+    }
+  }
+}
+
+// ── Upload de capa ────────────────────────────────────────────────────────────
+async function uploadCover(input) {
+  const file = input.files[0];
+  if (!file) return;
+
+  const progress = document.getElementById('uploadProgress');
+  const bar = document.getElementById('uploadBar');
+  progress.style.display = 'block';
+  bar.style.width = '40%';
+
+  const fd = new FormData();
+  fd.append('image', file);
+
+  try {
+    const r = await fetch('/api/admin/upload', { method: 'POST', body: fd });
+    bar.style.width = '100%';
+    if (!r.ok) { toast('Erro no upload', 'error'); return; }
+    const { url } = await r.json();
+    document.getElementById('coverUrl').value = url;
+    showCoverPreview(url);
+    toast('Imagem enviada!');
+  } catch {
+    toast('Erro ao enviar imagem', 'error');
+  } finally {
+    setTimeout(() => { progress.style.display = 'none'; bar.style.width = '0%'; }, 600);
+    input.value = '';
+  }
+}
+
+function showCoverPreview(url) {
+  const img = document.getElementById('coverImg');
+  const ph = document.getElementById('coverPlaceholder');
+  img.src = url; img.style.display = 'block'; ph.style.display = 'none';
+}
+
+// Ao mudar URL manualmente
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('coverUrl').addEventListener('change', e => {
+    if (e.target.value) showCoverPreview(e.target.value);
+  });
+});
+
+// ── Contadores de caracteres ──────────────────────────────────────────────────
+function bindCounters() {
+  const fields = [
+    { input: 'excerptInput', count: 'excerptCount', max: 200 },
+    { input: 'seoTitle', count: 'seoTitleCount', max: 60 },
+    { input: 'seoDesc', count: 'seoDescCount', max: 160 }
+  ];
+  fields.forEach(({ input, count, max }) => {
+    const el = document.getElementById(input);
+    el.addEventListener('input', () => updateCount(input, count, max));
+  });
+}
+
+function updateCount(inputId, countId, max) {
+  const val = document.getElementById(inputId).value.length;
+  const el = document.getElementById(countId);
+  el.textContent = `${val} / ${max}`;
+  el.className = `char-count ${val > max ? 'over' : val > max * 0.85 ? 'warn' : ''}`;
+}
+
+function updateCounters() {
+  updateCount('excerptInput', 'excerptCount', 200);
+  updateCount('seoTitle', 'seoTitleCount', 60);
+  updateCount('seoDesc', 'seoDescCount', 160);
+}
+
+// ── Utils ─────────────────────────────────────────────────────────────────────
+async function api(url, method = 'GET', body = null) {
+  try {
+    const opts = { method, headers: { 'Content-Type': 'application/json' } };
+    if (body) opts.body = JSON.stringify(body);
+    const r = await fetch(url, opts);
+    if (r.status === 401) { location.href = '/admin/login'; return null; }
+    if (!r.ok) { const e = await r.json().catch(() => ({})); toast(e.error || 'Erro', 'error'); return null; }
+    return r.json();
+  } catch { toast('Erro de conexão', 'error'); return null; }
+}
+
+function toast(msg, type = 'success') {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.className = `show ${type}`;
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.className = '', 3500);
+}
+
+// Ctrl+S para salvar
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+    e.preventDefault();
+    save(currentStatus);
+  }
+});
+</script>
+</body>
+</html>

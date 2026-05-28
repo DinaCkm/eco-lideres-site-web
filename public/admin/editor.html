@@ -125,6 +125,8 @@
       height:auto;
     }
     .ql-snow .ql-picker{color:rgba(255,255,255,.75)!important;}
+    .ql-snow .ql-picker.ql-align .ql-picker-label::before,
+    .ql-snow .ql-picker.ql-align .ql-picker-item::before{color:rgba(255,255,255,.85)!important;}
     .ql-snow .ql-stroke{stroke:rgba(255,255,255,.7)!important;}
     .ql-snow .ql-fill{fill:rgba(255,255,255,.7)!important;}
     .ql-snow.ql-toolbar button:hover .ql-stroke,
@@ -196,6 +198,12 @@
       height:100%;
       border:0;
       display:block;
+    }
+    .ql-editor iframe{
+      max-width:100%;
+    }
+    .ql-editor div[style]{
+      max-width:100%;
     }
 
     /* MODAL */
@@ -390,7 +398,7 @@
     <div class="field">
       <label>HTML do conteúdo</label>
       <textarea id="htmlEditorTextarea" class="html-textarea" spellcheck="false"></textarea>
-      <div class="embed-preview-note">Use com cuidado. Ao salvar o post, o servidor ainda fará uma limpeza de segurança no HTML.</div>
+      <div class="embed-preview-note">Use com cuidado. Clique em "Aplicar HTML" para refletir no editor. Ao salvar o post, o servidor ainda fará uma limpeza de segurança no HTML.</div>
     </div>
 
     <div class="modal-actions">
@@ -508,6 +516,7 @@ const quill = new Quill('#quill', {
       container: [
         [{ header: [1, 2, 3, false] }],
         ['bold', 'italic', 'underline', 'strike'],
+        [{ align: [] }],
         [{ list: 'ordered' }, { list: 'bullet' }],
         ['blockquote', 'code-block'],
         ['link', 'image'],
@@ -995,8 +1004,18 @@ function applyHtmlFromModal() {
     return;
   }
 
-  quill.root.innerHTML = removeBase64Images(html);
+  const cleanHtml = removeBase64Images(html);
+
+  // Primeiro aplica direto no DOM, preservando melhor divs, estilos e iframes.
+  quill.root.innerHTML = cleanHtml;
+
+  // Garante que imagens sigam o padrão do editor sem apagar estilos manuais importantes.
   normalizeExistingImages();
+
+  // Mantém o cursor no fim e força o Quill a reconhecer mudança no conteúdo.
+  quill.update('user');
+  quill.setSelection(quill.getLength(), 0, 'silent');
+
   closeHtmlModal();
   toast('HTML aplicado ao editor.');
 }

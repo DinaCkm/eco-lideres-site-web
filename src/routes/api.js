@@ -6,8 +6,12 @@ const slugify = require('slugify');
 const sanitizeHtml = require('sanitize-html');
 const { Op } = require('sequelize');
 const { Post, Category, User } = require('../database');
-const { requireAuth } = require('../middleware/auth');
 const router = express.Router();
+
+function requireAuth(req, res, next) {
+  if (req.session && req.session.userId) return next();
+  res.status(401).json({ error: 'Não autorizado' });
+}
 
 // ── Upload de imagem ────────────────────────────────────────────────────────
 const uploadDir = path.join(__dirname, '../../public/uploads');

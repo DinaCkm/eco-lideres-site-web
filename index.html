@@ -483,6 +483,109 @@
     .trust-card h4{margin:0 0 12px;font-family:'Poppins',sans-serif;font-size:1.2rem;font-weight:700;color:var(--text-dark)}
     .trust-card p{margin:0;color:var(--text-body);line-height:1.7}
 
+/* BLOG RECENTE */
+.section-blog-home{
+  background:var(--bg-white);
+  padding:var(--section-space) 0;
+}
+
+.blog-home-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:24px;
+}
+
+.blog-home-card{
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+  display:flex;
+  flex-direction:column;
+  transition:transform .25s, box-shadow .25s;
+}
+
+.blog-home-card:hover{
+  transform:translateY(-6px);
+  box-shadow:var(--shadow-lg);
+}
+
+.blog-home-cover{
+  aspect-ratio:16/9;
+  background:linear-gradient(135deg,var(--purple-deep),var(--purple));
+  overflow:hidden;
+}
+
+.blog-home-cover img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.blog-home-placeholder{
+  width:100%;
+  height:100%;
+  display:grid;
+  place-items:center;
+  color:rgba(255,255,255,.5);
+  font-size:42px;
+}
+
+.blog-home-body{
+  padding:24px 22px 26px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+
+.blog-home-meta{
+  font-size:12px;
+  color:var(--text-muted);
+  margin-bottom:10px;
+}
+
+.blog-home-title{
+  font-family:'Poppins',sans-serif;
+  font-size:20px;
+  line-height:1.25;
+  color:var(--text-dark);
+  margin:0 0 10px;
+}
+
+.blog-home-excerpt{
+  font-size:14.5px;
+  color:var(--text-muted);
+  line-height:1.65;
+  margin:0 0 18px;
+  flex:1;
+}
+
+.blog-home-link{
+  font-family:'Poppins',sans-serif;
+  font-size:14px;
+  font-weight:700;
+  color:var(--purple);
+}
+
+.blog-home-actions{
+  text-align:center;
+  margin-top:40px;
+}
+
+.blog-home-empty{
+  grid-column:1/-1;
+  text-align:center;
+  color:var(--text-muted);
+  padding:32px;
+  background:var(--bg-lilac);
+  border-radius:var(--radius-md);
+}
+
+@media(max-width:980px){
+  .blog-home-grid{grid-template-columns:1fr;}
+}
+    
     /* CTA / FORM */
     .section-cta{background:var(--bg-white);padding:var(--section-space) 0 140px}
     .cta-panel{background:radial-gradient(circle at 85% 15%,rgba(0,184,217,.28),transparent 45%),radial-gradient(circle at 15% 85%,rgba(94,211,140,.2),transparent 40%),linear-gradient(135deg,var(--purple) 0%,var(--purple-deep) 100%);border-radius:var(--radius-xl);padding:60px 40px;color:#fff;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
@@ -966,6 +1069,26 @@
       </div>
     </section>
 
+    <!-- BLOG RECENTE -->
+<section class="section-blog-home" id="blog-home">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Conteúdos recentes</div>
+      <h2 class="title">Últimos artigos do <span class="hl-purple">Blog</span></h2>
+      <p class="subtitle">
+        Reflexões, práticas e orientações sobre liderança, PDI, desenvolvimento humano e cultura organizacional.
+      </p>
+    </div>
+
+    <div class="blog-home-grid" id="blogHomeGrid">
+      <div class="blog-home-empty">Carregando últimos artigos...</div>
+    </div>
+
+    <div class="blog-home-actions">
+      <a href="/blog" class="btn btn-primary">Ver todos os artigos</a>
+    </div>
+  </div>
+</section>
     <!-- CTA + FORM -->
     <section class="section-cta" id="contato">
       <div class="container">
@@ -1052,6 +1175,56 @@
       });
     });
 
+    /* BLOG HOME */
+async function carregarPostsRecentesHome() {
+  const grid = document.getElementById('blogHomeGrid');
+  if (!grid) return;
+
+  try {
+    const posts = await fetch('/api/posts/recentes').then(r => r.json());
+
+    if (!Array.isArray(posts) || posts.length === 0) {
+      grid.innerHTML = '<div class="blog-home-empty">Em breve, novos artigos estarão disponíveis aqui.</div>';
+      return;
+    }
+
+    grid.innerHTML = posts.map(post => {
+      const data = post.published_at
+        ? new Date(post.published_at).toLocaleDateString('pt-BR', { day:'2-digit', month:'short', year:'numeric' })
+        : '';
+
+      const categoria = post.category?.name ? post.category.name : 'Blog';
+
+      return `
+        <a href="/blog/${escBlogHome(post.slug)}" class="blog-home-card">
+          <div class="blog-home-cover">
+            ${post.cover_url
+              ? `<img src="${escBlogHome(post.cover_url)}" alt="${escBlogHome(post.title)}" loading="lazy">`
+              : `<div class="blog-home-placeholder">📝</div>`}
+          </div>
+          <div class="blog-home-body">
+            <div class="blog-home-meta">${escBlogHome(categoria)}${data ? ' · ' + data : ''}</div>
+            <h3 class="blog-home-title">${escBlogHome(post.title)}</h3>
+            ${post.excerpt ? `<p class="blog-home-excerpt">${escBlogHome(post.excerpt)}</p>` : ''}
+            <span class="blog-home-link">Ler artigo →</span>
+          </div>
+        </a>
+      `;
+    }).join('');
+  } catch (e) {
+    grid.innerHTML = '<div class="blog-home-empty">Não foi possível carregar os artigos agora.</div>';
+  }
+}
+
+function escBlogHome(s) {
+  return String(s || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+carregarPostsRecentesHome();
     /* FORM */
     const form = document.getElementById("contato-form");
     const status = document.getElementById("form-status");

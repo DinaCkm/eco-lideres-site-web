@@ -205,6 +205,28 @@
     .ql-editor div[style]{
       max-width:100%;
     }
+    .ql-editor[data-raw-html="true"]{
+      outline:3px solid rgba(0,184,217,.25);
+      outline-offset:-3px;
+    }
+    #htmlPreview{
+      display:none;
+      background:#ffffff;
+      color:#1f2937;
+      min-height:500px;
+      padding:28px 34px;
+      line-height:1.85;
+      border:1px solid var(--border);
+      border-radius:10px;
+      overflow:auto;
+    }
+    #htmlPreview img{
+      max-width:100%;
+      height:auto;
+    }
+    #htmlPreview iframe{
+      max-width:100%;
+    }
 
     /* MODAL */
     .modal-overlay{
@@ -276,7 +298,8 @@
       <div id="editorContainer">
         <div id="quill"></div>
       </div>
-      <div class="help-text">Para inserir ou editar imagem no texto: clique no ícone de imagem ou clique duas vezes em uma imagem já inserida. Use "Incorporar / Embed" para YouTube, Vimeo, Typeform, Google Forms e outros iframes.</div>
+      <div id="htmlPreview"></div>
+      <div class="help-text">Para inserir ou editar imagem no texto: clique no ícone de imagem ou clique duas vezes em uma imagem já inserida. Use "Incorporar / Embed" para YouTube, Vimeo, Typeform, Google Forms e outros iframes. Quando usar "Editar HTML", a prévia HTML real aparece nesta área.</div>
     </div>
   </div>
 
@@ -381,6 +404,16 @@
       <div class="embed-preview-note">Cole aqui o código de incorporação. O editor aceitará iframe com URL iniciada por http ou https.</div>
     </div>
 
+    <div class="field">
+      <label>Tamanho do embed</label>
+      <select id="embedSizeSelect">
+        <option value="760">Recomendado / Grande — 760px</option>
+        <option value="640">Médio — 640px</option>
+        <option value="480">Pequeno — 480px</option>
+        <option value="100%">Largura total disponível</option>
+      </select>
+    </div>
+
     <div class="modal-actions">
       <span></span>
       <div class="modal-actions-right">
@@ -424,6 +457,8 @@ const postId = (() => {
 let currentStatus = 'draft';
 let saving = false;
 let selectedImageNode = null;
+let rawHtmlMode = false;
+let rawHtmlContent = '';
 
 // ── Quill image format com largura/altura persistentes ──────────────────────
 const BaseImage = Quill.import('formats/image');
@@ -545,6 +580,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   bindCounters();
   bindImageEditing();
 
+  quill.on('text-change', () => {
+    if (rawHtmlMode) {
+      // Mantém o modo HTML ativo após aplicar HTML manual.
+      quill.root.setAttribute('data-raw-html', 'true');
+    }
+  });
+
   document.getElementById('coverUrl').addEventListener('change', e => {
     if (e.target.value) showCoverPreview(e.target.value);
   });
@@ -578,6 +620,11 @@ async function loadPost() {
 
   if (post.cover_url) showCoverPreview(post.cover_url);
 
+  rawHtmlMode = false;
+  rawHtmlContent = '';
+  document.getElementById('editorContainer').style.display = 'block';
+  document.getElementById('htmlPreview').style.display = 'none';
+
   quill.root.innerHTML = removeBase64Images(post.content || '');
   normalizeExistingImages();
 
@@ -602,9 +649,14 @@ async function save(forceStatus) {
     return;
   }
 
-  normalizeExistingImages();
+  let content;
 
-  let content = removeBase64Images(quill.root.innerHTML);
+  if (rawHtmlMode) {
+    content = removeBase64Images(rawHtmlContent || document.getElementById('htmlPreview').innerHTML);
+  } else {
+    normalizeExistingImages();
+    content = removeBase64Images(quill.root.innerHTML);
+  }
 
   if (content === '<p><br></p>' || !content.trim()) {
     toast('O conteúdo está vazio', 'error');
@@ -926,6 +978,7 @@ function removeBase64Images(html) {
 // ── Embed e HTML manual ──────────────────────────────────────────────────────
 function openEmbedModal() {
   document.getElementById('embedCodeInput').value = '';
+  document.getElementById('embedSizeSelect').value = '760';
   document.getElementById('embedModal').style.display = 'flex';
 
   setTimeout(() => {
@@ -945,10 +998,18 @@ function insertEmbedFromModal() {
     return;
   }
 
-  const iframeHtml = buildSafeIframeEmbed(raw);
+  const embedSize = document.getElementById('embedSizeSelect').value || '760';
+  const iframeHtml = buildSafeIframeEmbed(raw, embedSize);
 
   if (!iframeHtml) {
     toast('Não encontrei um iframe válido com URL http/https.', 'error');
+    return;
+  }
+
+  if (rawHtmlMode) {
+    rawHtmlContent = (rawHtmlContent || document.getElementById('htmlPreview').innerHTML) + iframeHtml + '<p><br></p>';
+    document.getElementById('htmlPreview').innerHTML = rawHtmlContent;
+    closeEmbedModal();
     return;
   }
 
@@ -963,7 +1024,7 @@ function insertEmbedFromModal() {
   closeEmbedModal();
 }
 
-function buildSafeIframeEmbed(raw) {
+function buildSafeIframeEmbed(raw, embedSize = '760') {
   const doc = new DOMParser().parseFromString(raw, 'text/html');
   const iframe = doc.querySelector('iframe');
 
@@ -977,14 +1038,28 @@ function buildSafeIframeEmbed(raw) {
   const allow = escapeAttr(iframe.getAttribute('allow') || 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
   const srcSafe = escapeAttr(src);
 
-  return `<div class="eco-embed-wrapper" style="position:relative;width:100%;max-width:760px;margin:32px auto;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#111827;box-shadow:0 8px 32px rgba(26,10,94,.12);">
+  let maxWidthStyle = 'max-width:760px;';
+  if (embedSize === '100%') {
+    maxWidthStyle = 'max-width:100%;';
+  } else {
+    const parsedSize = parseInt(embedSize, 10);
+    const safeSize = isNaN(parsedSize) ? 760 : Math.max(320, Math.min(parsedSize, 960));
+    maxWidthStyle = `max-width:${safeSize}px;`;
+  }
+
+  return `<div class="eco-embed-wrapper" style="position:relative;width:100%;${maxWidthStyle}margin:32px auto;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#111827;box-shadow:0 8px 32px rgba(26,10,94,.12);">
     <iframe src="${srcSafe}" title="${title}" allow="${allow}" allowfullscreen frameborder="0" style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;"></iframe>
   </div>`;
 }
 
 function openHtmlModal() {
-  normalizeExistingImages();
-  document.getElementById('htmlEditorTextarea').value = quill.root.innerHTML;
+  if (rawHtmlMode) {
+    document.getElementById('htmlEditorTextarea').value = rawHtmlContent || document.getElementById('htmlPreview').innerHTML;
+  } else {
+    normalizeExistingImages();
+    document.getElementById('htmlEditorTextarea').value = quill.root.innerHTML;
+  }
+
   document.getElementById('htmlModal').style.display = 'flex';
 
   setTimeout(() => {
@@ -1004,20 +1079,18 @@ function applyHtmlFromModal() {
     return;
   }
 
-  const cleanHtml = removeBase64Images(html);
+  rawHtmlMode = true;
+  rawHtmlContent = removeBase64Images(html);
 
-  // Primeiro aplica direto no DOM, preservando melhor divs, estilos e iframes.
-  quill.root.innerHTML = cleanHtml;
+  const editorContainer = document.getElementById('editorContainer');
+  const htmlPreview = document.getElementById('htmlPreview');
 
-  // Garante que imagens sigam o padrão do editor sem apagar estilos manuais importantes.
-  normalizeExistingImages();
-
-  // Mantém o cursor no fim e força o Quill a reconhecer mudança no conteúdo.
-  quill.update('user');
-  quill.setSelection(quill.getLength(), 0, 'silent');
+  editorContainer.style.display = 'none';
+  htmlPreview.style.display = 'block';
+  htmlPreview.innerHTML = rawHtmlContent;
 
   closeHtmlModal();
-  toast('HTML aplicado ao editor.');
+  toast('HTML aplicado na prévia.');
 }
 
 function escapeAttr(value) {

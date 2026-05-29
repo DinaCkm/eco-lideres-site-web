@@ -608,6 +608,57 @@
     .calendar-wrap{text-align:center}
     .calendar-wrap p{margin:0 0 14px;color:rgba(255,255,255,.88);font-size:14px}
 
+    /* WHATSAPP FLUTUANTE */
+.whatsapp-float{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:#25D366;
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-size:28px;
+  box-shadow:0 12px 32px rgba(0,0,0,.22);
+  z-index:300;
+  transition:transform .2s, box-shadow .2s;
+}
+
+.whatsapp-float:hover{
+  transform:translateY(-3px);
+  box-shadow:0 18px 42px rgba(0,0,0,.28);
+}
+
+@media(max-width:640px){
+  .whatsapp-float{
+    right:16px;
+    bottom:16px;
+    width:54px;
+    height:54px;
+    font-size:26px;
+  }
+}
+
+/* REDES SOCIAIS RODAPÉ */
+.footer-social{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.footer-social a{
+  color:var(--purple);
+  font-weight:700;
+  font-size:13px;
+  transition:color .2s;
+}
+
+.footer-social a:hover{
+  color:var(--teal);
+}
     /* FOOTER */
     .site-footer{padding:32px 0 40px;background:var(--bg-white);border-top:1px solid var(--border-soft);color:var(--text-muted);font-size:14px}
     .footer-row{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
@@ -650,7 +701,7 @@
   <!-- ============ MENU UNIFICADO ECO ============ -->
   <header class="eco-nav">
   <div class="eco-nav-inner">
-    <a href="index.html" class="eco-brand" aria-label="ECO do B.E.M. — Home">
+    <a href="index.html" class="eco-brand" aria-label="ECO do B.E.M. | Home">
       <img src="img/logo-branco.png" alt="ECO do B.E.M." onerror="this.outerHTML='<span class=&quot;eco-brand-fb&quot;>eco <em>do</em> bem</span>'" />
     </a>
     <nav class="eco-nav-links">
@@ -890,7 +941,7 @@
         <div class="section-header">
           <div class="eyebrow">Para empresas e RH</div>
           <h2 class="title">Soluções B2B para <span class="hl-purple">desenvolvimento e conformidade.</span></h2>
-          <p class="subtitle">Cada produto atende uma necessidade específica — e juntos cobrem a jornada de desenvolvimento humano da empresa, do líder ao colaborador, com responsabilidade legal.</p>
+          <p class="subtitle">Cada produto atende uma necessidade específica, e juntos cobrem a jornada de desenvolvimento humano da empresa, do líder ao colaborador, com responsabilidade legal.</p>
         </div>
         <div class="products-grid products-grid-4">
           <article class="product-card">
@@ -978,13 +1029,13 @@
         <div class="section-header">
           <div class="eyebrow" style="color:#FF4D8F">Para o seu desenvolvimento</div>
           <h2 class="title">Não trabalha em uma empresa parceira?<br><span class="hl-gradient">Temos jornadas individuais.</span></h2>
-          <p class="subtitle">Acompanhamento de psicólogas organizacionais, plano individual de desenvolvimento e mentorias 1:1 — direto para você, sem precisar passar pelo RH.</p>
+          <p class="subtitle">Acompanhamento de psicólogas organizacionais, plano individual de desenvolvimento e mentorias 1:1, direto para você, sem precisar passar pelo RH.</p>
         </div>
         <div class="b2c-grid">
           <a href="para-voce.html#carreira" class="b2c-card" data-c="purple">
             <div class="b2c-icon">🧭</div>
             <h3>ECO Carreira</h3>
-            <p>Para quem está perdido na rota — ou quer pular pra próxima cadeira. Direção, propósito e plano sólido em 90-120 dias.</p>
+            <p>Para quem está perdido na rota, ou quer pular pra próxima cadeira. Direção, propósito e plano sólido em 90-120 dias.</p>
             <span class="b2c-cta">Saber mais →</span>
           </a>
           <a href="para-voce.html#desenvolvimento" class="b2c-card" data-c="teal">
@@ -996,7 +1047,7 @@
           <a href="para-voce.html#empregabilidade" class="b2c-card" data-c="gold">
             <div class="b2c-icon">🎯</div>
             <h3>ECO Empregabilidade</h3>
-            <p>Para quem precisa recolocar agora — com estratégia, não com sorte. LinkedIn, currículo, entrevista e busca ativa.</p>
+            <p>Para quem precisa recolocar agora, com estratégia, não com sorte. LinkedIn, currículo, entrevista e busca ativa.</p>
             <span class="b2c-cta">Saber mais →</span>
           </a>
         </div>
@@ -1018,12 +1069,12 @@
           <article class="diff-card">
             <div class="diff-icon purple">🧠</div>
             <h3>Psicologia no core</h3>
-            <p>Psicólogos especializados integrados ao processo — não como consultoria separada, mas como parte viva da jornada.</p>
+            <p>Psicólogos especializados integrados ao processo, não como consultoria separada, mas como parte viva da jornada.</p>
           </article>
           <article class="diff-card">
             <div class="diff-icon teal">🤝</div>
             <h3>Acompanhamento humano</h3>
-            <p>Mentores e psicólogos presentes em cada etapa, garantindo desenvolvimento sustentado — não apenas um início promissor.</p>
+            <p>Mentores e psicólogos presentes em cada etapa, garantindo desenvolvimento sustentado, não apenas um início promissor.</p>
           </article>
           <article class="diff-card">
             <div class="diff-icon green">📊</div>
@@ -1040,7 +1091,7 @@
         <div class="section-header">
           <div class="eyebrow">Validação</div>
           <h2 class="title">Validados pela prática, <span class="hl-teal">na escala real.</span></h2>
-          <p class="subtitle">Somos parceiros estratégicos de empresas focadas no desenvolvimento de líderes e equipes de todo o Brasil, validando a metodologia na prática — com resultados documentados.</p>
+          <p class="subtitle">Somos parceiros estratégicos de empresas focadas no desenvolvimento de líderes e equipes de todo o Brasil, validando a metodologia na prática, com resultados documentados.</p>
         </div>
         <div class="trust-hero">
           <img src="img/confianca-sebrae.jpg" alt="Parceiros" class="trust-image"
@@ -1063,7 +1114,7 @@
           </div>
           <div class="trust-card teal">
             <h4>Resultados sustentáveis</h4>
-            <p>Mais do que presença em treinamentos, buscamos mudança de comportamento, aplicação prática e evolução acompanhada ao longo do tempo — com dado, não percepção.</p>
+            <p>Mais do que presença em treinamentos, buscamos mudança de comportamento, aplicação prática e evolução acompanhada ao longo do tempo, com dado, não percepção.</p>
           </div>
         </div>
       </div>
@@ -1144,9 +1195,23 @@
              onerror="this.outerHTML='<span class=&quot;footer-logo-text&quot;>eco <em>do</em> bem</span>';" />
         <strong>© 2026</strong>
       </div>
-      <span>relacionamento@ckmtalents.net · www.ecodobem.com</span>
+      <div class="footer-social" aria-label="Redes sociais">
+  <a href="https://www.instagram.com/ecodobemoficial/" target="_blank" rel="noopener">Instagram ECO</a>
+  <a href="https://www.linkedin.com/company/ecodobem/" target="_blank" rel="noopener">LinkedIn ECO</a>
+  <a href="https://www.linkedin.com/in/dinamar-makiyama-ckmtalents/" target="_blank" rel="noopener">LinkedIn Dina</a>
+</div>
     </div>
   </footer>
+
+  <a
+  href="https://wa.me/5511947557071?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20o%20ECO%20do%20B.E.M."
+  class="whatsapp-float"
+  target="_blank"
+  rel="noopener"
+  aria-label="Falar pelo WhatsApp"
+>
+  ☎
+</a>
 
   <script>
     /* MENU MOBILE */

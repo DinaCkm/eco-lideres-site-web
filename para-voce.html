@@ -3809,5 +3809,147 @@ function playVideo(frameId, ytId){
 window.playVideo = playVideo;
 </script>
 
+<!-- CTAs INTERMEDIÁRIOS DE COMPRA -->
+<script>
+(function inserirBotoesCompraIntermediarios() {
+  function criarEstiloCta() {
+    if (document.getElementById('style-ctas-compra-intermediarios')) return;
+
+    const style = document.createElement('style');
+    style.id = 'style-ctas-compra-intermediarios';
+    style.textContent = `
+      .product-mid-cta{
+        margin:42px auto 10px;
+        text-align:center;
+        max-width:720px;
+        padding:0 20px;
+      }
+
+      .product-mid-cta-box{
+        background:#fff;
+        border:1px solid var(--border-light);
+        border-radius:24px;
+        padding:28px 24px;
+        box-shadow:var(--shadow-md);
+      }
+
+      .product-mid-cta-text{
+        font-size:15.5px;
+        color:var(--text-body);
+        margin:0 0 18px;
+        line-height:1.6;
+      }
+
+      .product-mid-cta-text strong{
+        color:var(--purple-deep);
+        font-weight:800;
+      }
+
+      .product-mid-cta .btn{
+        background:linear-gradient(135deg, var(--purple), var(--purple-light));
+        color:#fff;
+        box-shadow:var(--shadow-purple);
+      }
+
+      .product-section[data-color="teal"] .product-mid-cta .btn{
+        background:linear-gradient(135deg, var(--teal-deep), var(--teal));
+        color:#fff;
+        box-shadow:var(--shadow-teal);
+      }
+
+      .product-section[data-color="gold"] .product-mid-cta .btn{
+        background:linear-gradient(135deg, var(--gold-deep), var(--gold));
+        color:var(--purple-deep);
+        box-shadow:var(--shadow-gold);
+      }
+
+      @media(max-width:640px){
+        .product-mid-cta{
+          margin-top:30px;
+        }
+
+        .product-mid-cta-box{
+          padding:24px 18px;
+        }
+
+        .product-mid-cta .btn{
+          width:100%;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  function nomeProduto(produto) {
+    const nomes = {
+      carreira: 'ECO Carreira',
+      desenvolvimento: 'ECO Desenvolvimento',
+      empregabilidade: 'ECO Empregabilidade'
+    };
+
+    return nomes[produto] || 'esta jornada';
+  }
+
+  function textoCta(produto, etapa) {
+    const nome = nomeProduto(produto);
+
+    if (etapa === 'primeiro') {
+      return `Essa jornada fez sentido para você? Veja os valores do <strong>${nome}</strong> e escolha a melhor versão para começar.`;
+    }
+
+    return `Gostou do que essa jornada entrega? Veja agora os valores do <strong>${nome}</strong> e avance para sua inscrição.`;
+  }
+
+  function criarCta(produto, etapa) {
+    const wrap = document.createElement('div');
+    wrap.className = 'product-mid-cta';
+    wrap.dataset.autoCtaCompra = `${produto}-${etapa}`;
+
+    wrap.innerHTML = `
+      <div class="product-mid-cta-box">
+        <p class="product-mid-cta-text">${textoCta(produto, etapa)}</p>
+        <a href="#preco-${produto}" class="btn">
+          Quero ver valores e começar <span class="arrow">→</span>
+        </a>
+      </div>
+    `;
+
+    return wrap;
+  }
+
+  function inserirDepoisDoElemento(elemento, cta) {
+    if (!elemento || !elemento.parentNode) return;
+    elemento.parentNode.insertBefore(cta, elemento.nextSibling);
+  }
+
+  function configurarProduto(produto) {
+    const section = document.querySelector(`#${produto}-section`);
+    if (!section) return;
+
+    const priceSection = section.querySelector('.price-section');
+    if (priceSection) {
+      priceSection.id = `preco-${produto}`;
+    }
+
+    if (section.querySelector(`[data-auto-cta-compra="${produto}-primeiro"]`)) return;
+
+    const promessa = section.querySelector('.product-promise');
+    if (promessa) {
+      inserirDepoisDoElemento(promessa, criarCta(produto, 'primeiro'));
+    }
+
+    const resultado = section.querySelector('.result-box');
+    if (resultado) {
+      const blocoResultado = resultado.closest('.product-block') || resultado;
+      inserirDepoisDoElemento(blocoResultado, criarCta(produto, 'resultado'));
+    }
+  }
+
+  criarEstiloCta();
+
+  ['carreira', 'desenvolvimento', 'empregabilidade'].forEach(configurarProduto);
+})();
+</script>
+  
 </body>
 </html>

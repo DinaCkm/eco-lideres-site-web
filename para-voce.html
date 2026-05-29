@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Para Você — Carreira, Desenvolvimento e Empregabilidade | ECO do B.E.M.</title>
 <meta name="description" content="Jornadas individuais com mentoria de psicólogas, assessment DISC e plano estruturado. Pare de andar em círculos profissionais.">
-<meta property="og:title" content="Para Você — ECO do B.E.M.">
+<meta property="og:title" content="Para Você | ECO do B.E.M.">
 <meta property="og:description" content="3 jornadas individuais para quem quer parar de andar em círculos profissionais.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1946,6 +1946,25 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
 .simple-footer a:hover{color:#fff}
 .simple-footer a + a{margin-left:18px}
 
+  .simple-footer-social{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+.simple-footer-social a{
+  color:rgba(255,255,255,.9);
+  font-weight:700;
+  font-size:13px;
+}
+
+.simple-footer-social a:hover{
+  color:var(--gold);
+}
+  
 /* Reveal */
 .rv{opacity:0; transform:translateY(20px); transition:opacity .7s ease, transform .7s ease}
 .rv.vis{opacity:1; transform:translateY(0)}
@@ -1980,12 +1999,11 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
       <p class="hero-lead">
         Você sente que tem potencial, mas não sabe o próximo passo.
         Tenta sozinho, lê livros, faz curso. <strong>E nada destrava.</strong>
-        Nós sabemos exatamente por quê — e construímos um método para resolver isso.
+        Nós sabemos exatamente por quê, e construímos um método para resolver isso.
       </p>
       <div class="hero-cta-row">
-        <a href="#quiz" class="btn btn-gold">Descobrir minha jornada <span class="arrow">→</span></a>
-        <a href="#selector" class="btn btn-ghost-light">Ver as 3 opções</a>
-      </div>
+  <a href="#quiz" class="btn btn-gold">Descobrir a minha jornada <span class="arrow">→</span></a>
+</div>
       <div class="hero-stats">
         <div class="hero-stat">
           <div class="hero-stat-num">300+</div>
@@ -2016,7 +2034,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
     <div class="quiz-wrap">
       <span class="quiz-eyebrow">Em 30 segundos</span>
       <h2 class="quiz-title">Vou te dizer <span class="hl">exatamente</span> qual jornada é a sua.</h2>
-      <p class="quiz-sub">Responde rápido — 3 perguntas. Sem cadastro, sem e-mail.</p>
+      <p class="quiz-sub">Responde rápido, 3 perguntas. Sem cadastro, sem e-mail.</p>
 
       <div class="quiz-card" id="quizCard">
         <div class="quiz-progress">
@@ -2032,15 +2050,15 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
           <div class="quiz-options">
             <button class="quiz-option" data-value="lost">
               <span class="quiz-option-emoji">🧭</span>
-              <span class="quiz-option-text">Estou perdido(a) — não sei pra onde ir</span>
+              <span class="quiz-option-text">Estou perdido(a), não sei pra onde ir</span>
             </button>
             <button class="quiz-option" data-value="stuck">
               <span class="quiz-option-emoji">🪨</span>
-              <span class="quiz-option-text">Estou travado(a) — sei onde quero ir, mas não destravo</span>
+              <span class="quiz-option-text">Estou travado(a), sei onde quero ir, mas não destravo</span>
             </button>
             <button class="quiz-option" data-value="searching">
               <span class="quiz-option-emoji">🔍</span>
-              <span class="quiz-option-text">Estou em busca ativa — preciso de uma vaga (ou de mudar de área)</span>
+              <span class="quiz-option-text">Estou em busca ativa, preciso de uma vaga (ou de mudar de área)</span>
             </button>
           </div>
         </div>
@@ -2140,14 +2158,14 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
       <span class="vitrine-eyebrow">★ Cases reais de quem passou pela jornada</span>
       <h2 class="vitrine-title">Não é promessa. <span class="hl">É histórico.</span></h2>
       <p class="vitrine-sub">
-        Esta é a <strong>vitrine real</strong> dos profissionais e parceiros que confiaram no nosso método e colheram resultado. Cada peça aqui representa <strong>uma pessoa que evoluiu</strong> — e que hoje toma decisões com mais clareza, comportamento e estratégia.
+        Esta é a <strong>vitrine real</strong> dos profissionais e parceiros que confiaram no nosso método e colheram resultado. Cada peça aqui representa <strong>uma pessoa que evoluiu</strong>, e que hoje toma decisões com mais clareza, comportamento e estratégia.
       </p>
     </div>
 
     <div class="vitrine-frame-wrap">
       <div class="vitrine-frame">
         <img src="img/vitrine-sucesso.jpg" alt="Vitrine de cases de sucesso da comunidade ECO do B.E.M."
-             onerror="imgFallback(this, '<div class=&quot;vitrine-frame-fb&quot;><span style=&quot;font-size:42px&quot;>★</span><span>Vitrine de cases — em breve carregando</span></div>')" />
+             onerror="imgFallback(this, '<div class=&quot;vitrine-frame-fb&quot;><span style=&quot;font-size:42px&quot;>★</span><span>Vitrine de cases, em breve carregando</span></div>')" />
       </div>
 
       <div class="vitrine-badges">
@@ -2208,7 +2226,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
         <div class="selector-btn-body">
           <span class="sel-tag">Carreira</span>
           <h3>Está perdido(a) sobre o que fazer?</h3>
-          <p class="sel-tagline">Quando o problema não é trabalhar mais — é entender pra onde ir.</p>
+          <p class="sel-tagline">Quando o problema não é trabalhar mais, é entender pra onde ir.</p>
           <div class="sel-for">
             <div class="sel-for-item">Está em transição ou pensando em mudar de área</div>
             <div class="sel-for-item">Sente que estagnou e não vê pra onde crescer</div>
@@ -2251,7 +2269,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
         </div>
         <div class="selector-btn-body">
           <span class="sel-tag">Desenvolvimento</span>
-          <h3>Quer crescer — mas falta método?</h3>
+          <h3>Quer crescer, mas falta método?</h3>
           <p class="sel-tagline">Pra quem já sabe o caminho. Falta acelerar e ter quem desafie de verdade.</p>
           <div class="sel-for">
             <div class="sel-for-item">Quer evoluir competências específicas com profundidade</div>
@@ -2298,7 +2316,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
         <div class="selector-btn-body">
           <span class="sel-tag">Empregabilidade</span>
           <h3>Está em busca ativa de vaga?</h3>
-          <p class="sel-tagline">Pra quem precisa entrar de novo no mercado — com estratégia, não com sorte.</p>
+          <p class="sel-tagline">Pra quem precisa entrar de novo no mercado com estratégia, não com sorte.</p>
           <div class="sel-for">
             <div class="sel-for-item">Está desempregado(a) ou prestes a sair do atual</div>
             <div class="sel-for-item">Manda currículo e quase nunca tem resposta</div>
@@ -2310,7 +2328,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
     </div>
 
     <p class="selector-helper">
-      💡 <strong>Em dúvida?</strong> Use o quiz acima — ele recomenda em 30 segundos.
+      💡 <strong>Em dúvida?</strong> Use o quiz acima: ele recomenda em 30 segundos.
     </p>
   </div>
 </section>
@@ -2343,7 +2361,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
         <div class="pain-item rv"><div class="pain-item-icon">!</div><div><strong>"Será que mudo de área?"</strong>Você fica pensando nisso há meses. E nada acontece.</div></div>
         <div class="pain-item rv rv1"><div class="pain-item-icon">!</div><div><strong>"Aceito a proposta ou não?"</strong>Decidir grande, sozinho, com cabeça quente, dá medo.</div></div>
         <div class="pain-item rv"><div class="pain-item-icon">!</div><div><strong>"Tô estagnado(a)"</strong>Anos no mesmo lugar e não enxerga pra onde crescer.</div></div>
-        <div class="pain-item rv rv1"><div class="pain-item-icon">!</div><div><strong>"E agora?"</strong>Conquistou o que queria — e descobriu que não era isso.</div></div>
+        <div class="pain-item rv rv1"><div class="pain-item-icon">!</div><div><strong>"E agora?"</strong>Conquistou o que queria e descobriu que não era isso.</div></div>
       </div>
 
       <!-- IMAGEM CONTEXTUAL -->
@@ -2362,7 +2380,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
     <div class="container">
       <div class="product-promise-inner">
         <div class="promise-label">O que muda em 90 a 120 dias</div>
-        <h3>Você sai daqui sabendo exatamente qual é o seu próximo passo — e por quê.</h3>
+        <h3>Você sai daqui sabendo exatamente qual é o seu próximo passo e por quê.</h3>
         <div class="promise-grid">
           <div class="promise-item rv">
             <div class="promise-item-icon">
@@ -2376,7 +2394,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
               <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2v10l6 4"/></svg>
             </div>
             <h4>Direção, não suposição</h4>
-            <p>Análise dos seus cenários reais — quem você é, o que o mercado oferece, e suas escolhas concretas.</p>
+            <p>Análise dos seus cenários reais: quem você é, o que o mercado oferece, e suas escolhas concretas.</p>
           </div>
           <div class="promise-item rv rv2">
             <div class="promise-item-icon">
@@ -2401,7 +2419,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
         <div class="who-card rv"><strong>Está em transição</strong>Quer mudar de área ou de função, mas tem medo de errar de novo.</div>
         <div class="who-card rv rv1"><strong>Sente que estagnou</strong>Já está há tempos no mesmo lugar e não enxerga por onde crescer.</div>
         <div class="who-card rv rv2"><strong>Recebeu uma proposta</strong>Não sabe se aceita ou recusa. Quer uma análise com cabeça fria.</div>
-        <div class="who-card rv"><strong>Vive crise de meio</strong>Conquistou o que queria — e agora se pergunta "e agora?".</div>
+        <div class="who-card rv"><strong>Vive crise de meio</strong>Conquistou o que queria e se pergunta "e agora?".</div>
         <div class="who-card rv rv1"><strong>Saiu do CLT recente</strong>Está pensando em ser PJ, abrir negócio próprio ou voltar a estudar.</div>
         <div class="who-card rv rv2"><strong>Quer um plano real</strong>Cansou de planejamento genérico. Quer algo feito pra sua vida.</div>
       </div>
@@ -2414,7 +2432,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
       <div class="block-header rv">
         <div class="block-eyebrow">Como funciona · método</div>
         <h2 class="block-title">4 etapas, conduzidas por <span class="hl">psicóloga organizacional.</span></h2>
-        <p class="block-sub">Nada de auto-coaching solitário. Você tem alguém do seu lado para fazer as perguntas certas — e provocar quando você travar.</p>
+        <p class="block-sub">Nada de auto-coaching solitário. Você tem alguém do seu lado para fazer as perguntas certas, e provocar quando você travar.</p>
       </div>
       <div class="method-timeline rv">
         <div class="method-step"><div class="method-num">1</div><h4>Assessment</h4><p>Mapeamento DISC + leitura da sua trajetória profissional até aqui.</p></div>
@@ -2509,7 +2527,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
       <div class="block-header rv">
         <div class="block-eyebrow">Depoimento real</div>
         <h2 class="block-title">Veja o que dizem quem já <span class="hl">passou pelo nosso método.</span></h2>
-        <p class="block-sub">Embora esse depoimento seja de uma profissional do programa ECO Líderes, a essência do método é a mesma — psicóloga organizacional, assessment DISC e mentoria estruturada.</p>
+        <p class="block-sub">Embora esse depoimento seja de uma profissional do programa ECO Líderes, a essência do método é a mesma, psicóloga organizacional, assessment DISC e mentoria estruturada.</p>
       </div>
       <div class="video-wrap rv">
         <div class="video-frame" id="videoFrame1">
@@ -2582,9 +2600,9 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
         <div class="result-label">No final dessa jornada</div>
         <h3>Você vai conseguir responder, com convicção:</h3>
         <div class="result-list">
-          <div class="result-item"><div class="result-item-num">01</div><div>Por que estou exatamente onde estou — e o que me trouxe até aqui.</div></div>
+          <div class="result-item"><div class="result-item-num">01</div><div>Por que estou exatamente onde estou, e o que me trouxe até aqui.</div></div>
           <div class="result-item"><div class="result-item-num">02</div><div>O que quero da minha carreira nos próximos 2, 5 e 10 anos.</div></div>
-          <div class="result-item"><div class="result-item-num">03</div><div>Qual é o meu próximo passo concreto — e quando dar.</div></div>
+          <div class="result-item"><div class="result-item-num">03</div><div>Qual é o meu próximo passo concreto, e quando dar.</div></div>
           <div class="result-item"><div class="result-item-num">04</div><div>Como decidir sem reiniciar do zero a cada dúvida.</div></div>
         </div>
       </div>
@@ -2627,7 +2645,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
       <div class="price-header rv">
         <span class="price-eyebrow">Quanto custa investir em si</span>
         <h3>Menos do que muita gente gasta em <span style="background:linear-gradient(135deg, var(--purple), var(--pink)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;">delivery por mês.</span></h3>
-        <p>Você escolhe a duração que faz sentido pra você. Em ambas, o método é o mesmo — a diferença é tempo de aprofundamento.</p>
+        <p>Você escolhe a duração que faz sentido pra você. Em ambas, o método é o mesmo! A diferença é tempo de aprofundamento.</p>
       </div>
 
       <div class="price-grid">
@@ -2712,12 +2730,12 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
       <div class="hook-inner rv">
         <div class="hook-eyebrow">A verdade que ninguém te conta</div>
         <h2><span class="hl">Aprender</span> é o primeiro passo.<br>Mudar de verdade exige <span class="hl">prática, acompanhamento e ação.</span></h2>
-        <p class="hook-lead">Você já fez MBA, leu os livros certos, viu as palestras. <strong>Mas continua tropeçando nas mesmas dificuldades.</strong> O problema não é o que você sabe — é como você aplica. E isso só evolui com alguém que te desafia de verdade.</p>
+        <p class="hook-lead">Você já fez MBA, leu os livros certos, viu as palestras. <strong>Mas continua tropeçando nas mesmas dificuldades.</strong> O problema não é o que você sabe, é como você aplica. E isso só evolui com alguém que te desafia de verdade.</p>
       </div>
       <div class="pain-grid">
 <div class="pain-item rv"><div class="pain-item-icon">!</div><div><strong>"Sei tudo na teoria"</strong>Mas na hora H você ainda trava ou reage no piloto automático.</div></div>
 <div class="pain-item rv rv1"><div class="pain-item-icon">!</div><div><strong>"Lidero pela 1ª vez"</strong>Acabou de virar líder e o cargo veio sem manual.</div></div>
-<div class="pain-item rv"><div class="pain-item-icon">!</div><div><strong>"Sou bom técnico"</strong>Agora precisam que eu lidere — e isso é outro jogo.</div></div>
+<div class="pain-item rv"><div class="pain-item-icon">!</div><div><strong>"Sou bom técnico"</strong>Agora precisam que eu lidere e isso é outro jogo.</div></div>
 <div class="pain-item rv rv1"><div class="pain-item-icon">!</div><div><strong>"Não cresço mais"</strong>Continuo entregando, mas sei que poderia ir muito além.</div></div>
       </div>
 
@@ -2767,7 +2785,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
         <h2 class="block-title">Se você se reconhece aqui, <span class="hl">esta é a sua jornada.</span></h2>
       </div>
       <div class="who-grid">
-<div class="who-card rv"><strong>Vai assumir nova posição</strong>Promoção, lateral ou nova empresa — e quer chegar pronto.</div>
+<div class="who-card rv"><strong>Vai assumir nova posição</strong>Promoção, lateral ou nova empresa e quer chegar pronto.</div>
 <div class="who-card rv rv1"><strong>Lidera pela primeira vez</strong>Acabou de virar líder e precisa amadurecer o estilo rápido.</div>
 <div class="who-card rv rv2"><strong>Já é líder, quer aprimorar</strong>Quer desenvolver comportamentos específicos com método.</div>
 <div class="who-card rv"><strong>Sente que travou</strong>Continua entregando, mas sabe que poderia ir muito além.</div>
@@ -2783,7 +2801,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
       <div class="block-header rv">
         <div class="block-eyebrow">Como funciona · método</div>
         <h2 class="block-title">4 etapas, conduzidas por <span class="hl">psicóloga organizacional.</span></h2>
-        <p class="block-sub">Você não recebe um curso — você ganha uma parceira que conhece psicologia comportamental e o mundo corporativo.</p>
+        <p class="block-sub">Você não recebe um curso: você ganha uma parceira que conhece psicologia comportamental e o mundo corporativo.</p>
       </div>
       <div class="method-timeline rv">
 <div class="method-step"><div class="method-num">1</div><h4>Assessment</h4><p>DISC + identificação das competências prioritárias para esse momento.</p></div>
@@ -2920,7 +2938,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
       <div class="price-header rv">
         <span class="price-eyebrow">Quanto custa</span>
         <h3>Tem gente que paga mais em curso solto <span class="hl-purple">sem método.</span></h3>
-        <p>Aqui você não compra "horas de conteúdo" — você compra resultado comportamental real.</p>
+        <p>Aqui você não compra "horas de conteúdo", você compra resultado comportamental real.</p>
       </div>
       <div class="price-grid">
         <div class="price-card">
@@ -3003,7 +3021,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
       </div>
       <div class="pain-grid">
 <div class="pain-item rv"><div class="pain-item-icon">!</div><div><strong>"Mando 50 CVs, ninguém chama"</strong>O problema não é a quantidade. É o posicionamento.</div></div>
-<div class="pain-item rv rv1"><div class="pain-item-icon">!</div><div><strong>"Trava nas entrevistas"</strong>Você é bom no trabalho — mas não consegue mostrar isso falando.</div></div>
+<div class="pain-item rv rv1"><div class="pain-item-icon">!</div><div><strong>"Trava nas entrevistas"</strong>Você é bom no trabalho, mas não consegue mostrar isso falando.</div></div>
 <div class="pain-item rv"><div class="pain-item-icon">!</div><div><strong>"LinkedIn parado"</strong>Sente que o perfil não te representa nem te encontra.</div></div>
 <div class="pain-item rv rv1"><div class="pain-item-icon">!</div><div><strong>"Não sei negociar salário"</strong>Aceita o que oferecem com medo de perder a vaga.</div></div>
       </div>
@@ -3024,7 +3042,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
     <div class="container">
       <div class="product-promise-inner">
         <div class="promise-label">O que muda em 90 a 120 dias</div>
-        <h3>Você sai daqui sendo encontrado — e selecionado — pelas vagas certas.</h3>
+        <h3>Você sai daqui sendo encontrado e selecionado pelas vagas certas.</h3>
         <div class="promise-grid">
 <div class="promise-item rv">
             <div class="promise-item-icon"><svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
@@ -3164,10 +3182,10 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
     <div class="container">
       <div class="result-box rv">
         <div class="result-label">No final dessa jornada</div>
-        <h3>Sua busca por trabalho vira projeto — e projeto tem entrega.</h3>
+        <h3>Sua busca por trabalho vira projeto, e projeto tem entrega.</h3>
         <div class="result-list">
 <div class="result-item"><div class="result-item-num">01</div><div>Currículo, LinkedIn e narrativa pessoal afinados com seu próximo passo.</div></div>
-<div class="result-item"><div class="result-item-num">02</div><div>Confiança em entrevistas — você sabe o que dizer e como dizer.</div></div>
+<div class="result-item"><div class="result-item-num">02</div><div>Confiança em entrevistas: você sabe o que dizer e como dizer.</div></div>
 <div class="result-item"><div class="result-item-num">03</div><div>Rotina de busca ativa que gera conversas, em vez de espera.</div></div>
 <div class="result-item"><div class="result-item-num">04</div><div>Capacidade de negociar salário e benefícios com base, não com susto.</div></div>
         </div>
@@ -3277,7 +3295,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
     <div class="faq-list">
       <div class="faq-item">
         <button class="faq-q">Como sei qual jornada escolher? <span class="faq-q-icon">+</span></button>
-        <div class="faq-a">A diferença não é nível de senioridade — é momento. Se você está perdido(a) sobre o que fazer, escolha <strong>Carreira</strong>. Se quer crescer no que já faz, <strong>Desenvolvimento</strong>. Se está em busca ativa de vaga, <strong>Empregabilidade</strong>. Em dúvida, use o quiz no topo da página — ele recomenda em 30 segundos.</div>
+        <div class="faq-a">A diferença não é nível de senioridade, é momento. Se você está perdido(a) sobre o que fazer, escolha <strong>Carreira</strong>. Se quer crescer no que já faz, <strong>Desenvolvimento</strong>. Se está em busca ativa de vaga, <strong>Empregabilidade</strong>. Em dúvida, use o quiz no topo da página: ele recomenda em 30 segundos.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q">Qual a diferença entre Básico e Estendido? <span class="faq-q-icon">+</span></button>
@@ -3289,7 +3307,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
       </div>
       <div class="faq-item">
         <button class="faq-q">Vocês garantem resultado? <span class="faq-q-icon">+</span></button>
-        <div class="faq-a">Garantimos método, acompanhamento profissional e dedicação. Não garantimos resultado específico (como obter emprego ou promoção) — isso depende do mercado, do seu setor e da sua dedicação. O que sabemos, com mais de 300 profissionais desenvolvidos, é que <strong>quem aplica o método, melhora.</strong></div>
+        <div class="faq-a">Garantimos método, acompanhamento profissional e dedicação. Não garantimos resultado específico (como obter emprego ou promoção), isso depende do mercado, do seu setor e da sua dedicação. O que sabemos, com mais de 300 profissionais desenvolvidos, é que <strong>quem aplica o método, melhora.</strong></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">Posso pedir reembolso? <span class="faq-q-icon">+</span></button>
@@ -3297,7 +3315,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
       </div>
       <div class="faq-item">
         <button class="faq-q">Como funciona o pagamento? <span class="faq-q-icon">+</span></button>
-        <div class="faq-a">Pagamento processado pelo Mercado Pago. Aceita Pix, cartão de crédito (parcelamento em até 12x) e boleto bancário. A ECO do B.E.M. <strong>não armazena dados do seu cartão</strong> — tudo processado com a segurança do MP.</div>
+        <div class="faq-a">Pagamento processado pelo Mercado Pago. Aceita Pix, cartão de crédito (parcelamento em até 12x) e boleto bancário. A ECO do B.E.M. <strong>não armazena dados do seu cartão</strong>, tudo processado com a segurança do MP.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q">O que acontece depois que eu pago? <span class="faq-q-icon">+</span></button>
@@ -3319,7 +3337,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
     <div class="cta-final-inner">
       <span class="cta-final-eyebrow">É agora ou daqui a 6 meses na mesma situação</span>
       <h2>O ano que vem começa <em>na decisão que você toma hoje.</em></h2>
-      <p>Você já leu até aqui — então alguma coisa precisa mudar. Escolha sua jornada e dê o primeiro passo.</p>
+      <p>Você já leu até aqui, então alguma coisa precisa mudar. Escolha sua jornada e dê o primeiro passo.</p>
       <a href="#quiz" class="btn btn-gold">Descobrir minha jornada <span class="arrow">→</span></a>
     </div>
   </div>
@@ -3345,6 +3363,11 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
     </div>
     <div style="margin-top:20px; opacity:.5; font-size:11px">© 2026 ECO do B.E.M. · CKM Talents</div>
   </div>
+  <div class="simple-footer-social" aria-label="Redes sociais">
+  <a href="https://www.instagram.com/ecodobemoficial/" target="_blank" rel="noopener">Instagram ECO</a>
+  <a href="https://www.linkedin.com/company/ecodobem/" target="_blank" rel="noopener">LinkedIn ECO</a>
+  <a href="https://www.linkedin.com/in/dinamar-makiyama-ckmtalents/" target="_blank" rel="noopener">LinkedIn Dina</a>
+</div>
 </footer>
 
 <script>

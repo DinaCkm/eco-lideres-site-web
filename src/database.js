@@ -54,7 +54,7 @@ User.hasMany(Post, { foreignKey: 'author_id' });
 // ─── SYNC + SEED ────────────────────────────────────────────────────────────
 async function syncDB() {
   await sequelize.authenticate();
-  await sequelize.sync({ alter: true }); // cria/atualiza tabelas automaticamente
+  await sequelize.sync(); // não altera tabelas automaticamente em produção
 
   // Criar admin padrão se não existir
   const bcrypt = require('bcryptjs');

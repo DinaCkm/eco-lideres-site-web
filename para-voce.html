@@ -305,6 +305,10 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
   animation:fadeInUp 1.4s ease;
 }
 
+  <a href="#compra-rapida" class="btn btn-ghost-light">
+  Já sabe qual jornada quer fazer? Clique aqui
+</a>
+
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:10px;
   font-family:'Poppins',sans-serif; font-weight:700; font-size:15px;
@@ -1893,7 +1897,114 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
   display:inline-flex; align-items:center; gap:8px;
   font-weight:500;
 }
+/* =========== COMPRA RÁPIDA =========== */
+.quick-buy-section{
+  background:linear-gradient(180deg, #fff 0%, var(--bg-lilac) 100%);
+  padding:70px 0;
+}
 
+.quick-buy-box{
+  background:#fff;
+  border:1px solid var(--border-light);
+  border-radius:28px;
+  padding:34px 28px;
+  box-shadow:var(--shadow-lg);
+}
+
+.quick-buy-head{
+  text-align:center;
+  max-width:680px;
+  margin:0 auto 26px;
+}
+
+.quick-buy-eyebrow{
+  display:inline-block;
+  font-family:'Poppins',sans-serif;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--purple);
+  background:rgba(91,46,255,.08);
+  padding:6px 14px;
+  border-radius:99px;
+  margin-bottom:12px;
+}
+
+.quick-buy-head h3{
+  font-family:'Poppins',sans-serif;
+  font-size:clamp(24px,3vw,34px);
+  line-height:1.15;
+  color:var(--purple-deep);
+  margin:0 0 8px;
+}
+
+.quick-buy-head p{
+  margin:0;
+  color:var(--text-body);
+  font-size:15.5px;
+}
+
+.quick-buy-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.quick-buy-card{
+  background:var(--bg-lilac);
+  border:1px solid var(--border-light);
+  border-radius:20px;
+  padding:22px;
+}
+
+.quick-buy-card h4{
+  font-family:'Poppins',sans-serif;
+  font-size:18px;
+  color:var(--purple-deep);
+  margin:0 0 8px;
+}
+
+.quick-buy-card p{
+  margin:0 0 18px;
+  font-size:13.5px;
+  color:var(--text-muted);
+  line-height:1.5;
+}
+
+.quick-buy-actions{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.quick-buy-actions a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:12px 14px;
+  border-radius:12px;
+  font-family:'Poppins',sans-serif;
+  font-weight:800;
+  font-size:13.5px;
+  background:linear-gradient(135deg,var(--purple),var(--purple-light));
+  color:#fff;
+  box-shadow:var(--shadow-purple);
+  transition:transform .15s, box-shadow .2s;
+}
+
+.quick-buy-actions a:hover{
+  transform:translateY(-2px);
+  box-shadow:0 18px 36px rgba(91,46,255,.28);
+}
+
+@media(max-width:900px){
+  .quick-buy-grid{
+    grid-template-columns:1fr;
+  }
+}
+  
 /* =========== FAQ =========== */
 .section-faq{padding:90px 0; background:var(--bg-white)}
 .faq-list{max-width:780px; margin:0 auto}
@@ -2472,6 +2583,51 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
     </p>
   </div>
 </section>
+
+<!-- ========================================================== -->
+<!-- COMPRA RÁPIDA                                              -->
+<!-- ========================================================== -->
+<section class="quick-buy-section" id="compra-rapida">
+  <div class="container">
+    <div class="quick-buy-box">
+      <div class="quick-buy-head">
+        <span class="quick-buy-eyebrow">Compra rápida</span>
+        <h3>Já sabe qual jornada quer fazer?</h3>
+        <p>Escolha sua jornada e versão para ir direto ao cadastro e pagamento seguro.</p>
+      </div>
+
+      <div class="quick-buy-grid">
+        <div class="quick-buy-card">
+          <h4>ECO Carreira</h4>
+          <p>Para quem busca direção, clareza e decisão profissional.</p>
+          <div class="quick-buy-actions">
+            <a href="formulario.html?jornada=carreira&versao=basico">Básico · R$ 2.197</a>
+            <a href="formulario.html?jornada=carreira&versao=estendido">Estendido · R$ 2.997</a>
+          </div>
+        </div>
+
+        <div class="quick-buy-card">
+          <h4>ECO Desenvolvimento</h4>
+          <p>Para quem quer evoluir competências e acelerar crescimento.</p>
+          <div class="quick-buy-actions">
+            <a href="formulario.html?jornada=desenvolvimento&versao=basico">Básico · R$ 2.197</a>
+            <a href="formulario.html?jornada=desenvolvimento&versao=estendido">Estendido · R$ 2.997</a>
+          </div>
+        </div>
+
+        <div class="quick-buy-card">
+          <h4>ECO Empregabilidade</h4>
+          <p>Para quem quer recolocação, currículo, LinkedIn e entrevista.</p>
+          <div class="quick-buy-actions">
+            <a href="formulario.html?jornada=empregabilidade&versao=basico">Básico · R$ 2.047</a>
+            <a href="formulario.html?jornada=empregabilidade&versao=estendido">Estendido · R$ 2.897</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
 <!-- ========================================================== -->
 <!-- PRODUTO 1 — CARREIRA                                       -->
 <!-- ========================================================== -->

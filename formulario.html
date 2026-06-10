@@ -334,13 +334,13 @@ button{font-family:inherit; cursor:pointer; border:none; background:none}
         <div class="radio-grid" id="versionGrid">
           <label class="radio-card" data-version="basico">
             <input type="radio" name="versao" value="basico" required>
-            <div class="radio-card-title">Básico</div>
-            <p class="radio-card-desc">90 dias · 5 mentorias</p>
+           <div class="radio-card-title">Jornada Curta</div>
+<p class="radio-card-desc">90 dias · assessment + 3 mentorias · plataforma por 6 meses</p>
           </label>
           <label class="radio-card" data-version="estendido">
             <input type="radio" name="versao" value="estendido">
-            <div class="radio-card-title">Estendido</div>
-            <p class="radio-card-desc">120 dias · 7 mentorias</p>
+           <div class="radio-card-title">Jornada Estendida</div>
+<p class="radio-card-desc">120 dias · assessment + 4 mentorias · plataforma por 6 meses</p>
           </label>
         </div>
       </div>
@@ -404,20 +404,20 @@ const PRODUCTS = {
   carreira: {
     icon: "🧭",
     title: "ECO Carreira",
-    basico: { label:"Básico · 90 dias · 5 mentorias", price: 2197 },
-    estendido: { label:"Estendido · 120 dias · 7 mentorias", price: 2997 }
+    basico: { label:"Jornada Curta · 90 dias · assessment + 3 mentorias · plataforma por 6 meses", price: 1554 },
+    estendido: { label:"Jornada Estendida · 120 dias · assessment + 4 mentorias · plataforma por 6 meses", price: 1998 }
   },
   desenvolvimento: {
     icon: "📈",
     title: "ECO Desenvolvimento Profissional",
-    basico: { label:"Básico · 90 dias · 5 mentorias", price: 2197 },
-    estendido: { label:"Estendido · 120 dias · 7 mentorias", price: 2997 }
+    basico: { label:"Jornada Curta · 90 dias · assessment + 3 mentorias · plataforma por 6 meses", price: 1554 },
+    estendido: { label:"Jornada Estendida · 120 dias · assessment + 4 mentorias · plataforma por 6 meses", price: 1998 }
   },
   empregabilidade: {
     icon: "🎯",
     title: "ECO Empregabilidade",
-    basico: { label:"Básico · 90 dias · 5 mentorias", price: 2047 },
-    estendido: { label:"Estendido · 120 dias · 7 mentorias", price: 2897 }
+    basico: { label:"Jornada Curta · 90 dias · assessment + 3 mentorias · plataforma por 6 meses", price: 1554 },
+    estendido: { label:"Jornada Estendida · 120 dias · assessment + 4 mentorias · plataforma por 6 meses", price: 1998 }
   }
 };
 
@@ -464,7 +464,7 @@ function updateSummary(){
     meta.textContent = ver.label;
     price.textContent = brl(ver.price);
   } else {
-    meta.textContent = 'Escolha a versão Básico ou Estendido';
+    meta.textContent = 'Escolha entre Jornada Curta ou Jornada Estendida';
     price.textContent = `a partir de ${brl(p.basico.price)}`;
   }
 }

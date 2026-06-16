@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
@@ -13,6 +14,25 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const ROOT_DIR = path.join(__dirname, '..');
 const PUBLIC_DIR = path.join(ROOT_DIR, 'public');
+const HOME_FILE = path.join(ROOT_DIR, 'index.html');
+
+function withClientAreaMenu(html) {
+  if (html.includes('href="clientes.html"')) return html;
+
+  const desktopLink = '      <a href="clientes.html" class="eco-nav-link">Área de Clientes</a>\n';
+  const mobileLink = '    <a href="clientes.html" class="eco-mobile-link">🔐 Área de Clientes</a>\n';
+
+  return html
+    .replace('      <a href="/blog" class="eco-nav-link">Blog</a>\n', '      <a href="/blog" class="eco-nav-link">Blog</a>\n' + desktopLink)
+    .replace('    <a href="/blog" class="eco-mobile-link">Blog</a>\n', '    <a href="/blog" class="eco-mobile-link">Blog</a>\n' + mobileLink);
+}
+
+function sendHome(req, res, next) {
+  fs.readFile(HOME_FILE, 'utf8', (err, html) => {
+    if (err) return next(err);
+    res.type('html').send(withClientAreaMenu(html));
+  });
+}
 
 // Railway fica atrás de proxy HTTPS. Isto permite que o Express grave cookies seguros corretamente.
 app.set('trust proxy', 1);
@@ -43,10 +63,8 @@ app.use('/api', apiRoutes);
 app.use('/admin', adminRoutes);
 app.use('/blog', blogRoutes);
 
-// Rota raiz: preserva o index.html original que já estava na raiz do repositório.
-app.get('/', (req, res) => {
-  res.sendFile(path.join(ROOT_DIR, 'index.html'));
-});
+// Rota raiz: preserva o index.html original e injeta o link da Área de Clientes no menu.
+app.get(['/', '/index.html'], sendHome);
 
 // Compatibilidade com o site antigo: páginas HTML que continuam na raiz do repositório.
 app.get('/:page.html', (req, res, next) => {

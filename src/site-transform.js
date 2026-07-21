@@ -128,6 +128,50 @@ function replaceDifferentialsSection(html) {
   );
 }
 
+function applyLegacyMenuFix(html) {
+  if (!html.includes('Convênio Corporativo ECO Líderes')) return html;
+
+  let transformed = html;
+
+  if (!transformed.includes('css/menu-unificado.css')) {
+    transformed = transformed.replace(
+      '</head>',
+      '  <link rel="stylesheet" href="css/menu-unificado.css">\n</head>'
+    );
+  }
+
+  if (!transformed.includes('/* MENU UNIFICADO MOBILE */')) {
+    const mobileScript = `
+<script>
+/* MENU UNIFICADO MOBILE */
+(function () {
+  const hamburger = document.getElementById('ecoHamburger');
+  const mobileMenu = document.getElementById('ecoMobileMenu');
+
+  if (!hamburger || !mobileMenu) return;
+
+  hamburger.addEventListener('click', function () {
+    const isOpen = hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+</script>`;
+
+    transformed = transformed.replace('</body>', `${mobileScript}\n</body>`);
+  }
+
+  return transformed;
+}
+
 function transformSiteHtml(html, { isHome = false } = {}) {
   let transformed = updateMenuLabels(html);
 
@@ -136,6 +180,7 @@ function transformSiteHtml(html, { isHome = false } = {}) {
     transformed = replaceDifferentialsSection(transformed);
   }
 
+  transformed = applyLegacyMenuFix(transformed);
   return transformed;
 }
 

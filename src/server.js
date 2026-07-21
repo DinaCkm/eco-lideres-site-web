@@ -9,6 +9,7 @@ const blogRoutes = require('./routes/blog');
 const adminRoutes = require('./routes/admin');
 const authRoutes = require('./routes/auth');
 const apiRoutes = require('./routes/api');
+const { transformSiteHtml } = require('./site-transform');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -16,23 +17,16 @@ const ROOT_DIR = path.join(__dirname, '..');
 const PUBLIC_DIR = path.join(ROOT_DIR, 'public');
 const HOME_FILE = path.join(ROOT_DIR, 'index.html');
 
-function withClientAreaMenu(html) {
-  if (html.includes('href="clientes.html"')) return html;
-
-  const desktopLink = '      <a href="clientes.html" class="eco-nav-link">Área de Clientes</a>\n';
-  const mobileLink = '    <a href="clientes.html" class="eco-mobile-link">🔐 Área de Clientes</a>\n';
-
-  return html
-    .replace('      <a href="/blog" class="eco-nav-link">Blog</a>\n', '      <a href="/blog" class="eco-nav-link">Blog</a>\n' + desktopLink)
-    .replace('    <a href="/blog" class="eco-mobile-link">Blog</a>\n', '    <a href="/blog" class="eco-mobile-link">Blog</a>\n' + mobileLink);
+function sendTransformedHtml(filePath, options = {}) {
+  return (req, res, next) => {
+    fs.readFile(filePath, 'utf8', (err, html) => {
+      if (err) return next(err);
+      res.type('html').send(transformSiteHtml(html, options));
+    });
+  };
 }
 
-function sendHome(req, res, next) {
-  fs.readFile(HOME_FILE, 'utf8', (err, html) => {
-    if (err) return next(err);
-    res.type('html').send(withClientAreaMenu(html));
-  });
-}
+const sendHome = sendTransformedHtml(HOME_FILE, { isHome: true });
 
 // Railway fica atrás de proxy HTTPS. Isto permite que o Express grave cookies seguros corretamente.
 app.set('trust proxy', 1);
@@ -63,7 +57,7 @@ app.use('/api', apiRoutes);
 app.use('/admin', adminRoutes);
 app.use('/blog', blogRoutes);
 
-// Rota raiz: preserva o index.html original e injeta o link da Área de Clientes no menu.
+// Rota raiz: preserva o index.html original e aplica os ajustes institucionais.
 app.get(['/', '/index.html'], sendHome);
 
 // Compatibilidade com o site antigo: páginas HTML que continuam na raiz do repositório.
@@ -72,8 +66,10 @@ app.get('/:page.html', (req, res, next) => {
   const filePath = path.join(ROOT_DIR, fileName);
 
   if (!filePath.startsWith(ROOT_DIR)) return next();
-  res.sendFile(filePath, (err) => {
-    if (err) next();
+
+  fs.readFile(filePath, 'utf8', (err, html) => {
+    if (err) return next();
+    res.type('html').send(transformSiteHtml(html));
   });
 });
 

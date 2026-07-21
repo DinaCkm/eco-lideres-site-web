@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projetos Personalizados | ECO do B.E.M.</title>
+  <meta name="description" content="Projetos corporativos personalizados em desenvolvimento humano, liderança, equipes, PDI e gestão de pessoas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/solucoes-empresas.css">
+</head>
+<body>
+  <header class="eco-nav">
+    <div class="eco-nav-inner">
+      <a href="index.html" class="eco-brand"><img src="img/logo-branco.png" alt="ECO do B.E.M."></a>
+      <nav class="eco-nav-links">
+        <a href="index.html#sobre-nos" class="eco-nav-link">Sobre Nós</a>
+        <a href="/blog" class="eco-nav-link">Blog</a>
+        <a href="solucoes-empresas.html" class="eco-nav-link active">Soluções para Empresas</a>
+        <a href="para-voce.html" class="eco-nav-link">Desenvolvimento Individual</a>
+        <a href="index.html#contato" class="eco-nav-link eco-nav-cta">Fale Conosco</a>
+      </nav>
+      <button class="eco-hamburger" id="ecoHamburger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="eco-mobile-menu" id="ecoMobileMenu">
+    <a href="index.html#sobre-nos" class="eco-mobile-link">Sobre Nós</a>
+    <a href="/blog" class="eco-mobile-link">Blog</a>
+    <a href="solucoes-empresas.html" class="eco-mobile-link">Soluções para Empresas</a>
+    <a href="para-voce.html" class="eco-mobile-link">Desenvolvimento Individual</a>
+    <a href="index.html#contato" class="eco-mobile-link">Fale Conosco</a>
+  </div>
+
+  <main>
+    <section class="product-hero">
+      <div class="container">
+        <div class="eyebrow">Soluções sob medida</div>
+        <h1>Projetos Personalizados</h1>
+        <p>Quando o desafio da organização não cabe em uma solução pronta, estruturamos diagnósticos, jornadas, programas e intervenções conectados ao contexto, aos públicos e aos resultados esperados.</p>
+      </div>
+    </section>
+
+    <section class="product-content">
+      <div class="container">
+        <div class="product-grid">
+          <article class="product-block">
+            <h2>O que podemos construir</h2>
+            <p>Programas de liderança, trilhas de desenvolvimento, diagnósticos, projetos de sucessão, integração de equipes, desenvolvimento comportamental e iniciativas de Gestão de Pessoas.</p>
+          </article>
+          <article class="product-block">
+            <h2>Como trabalhamos</h2>
+            <p>Partimos da escuta e da leitura do contexto para definir objetivos, públicos, metodologia, etapas, indicadores, acompanhamento e entregáveis.</p>
+          </article>
+          <article class="product-block">
+            <h2>Para quem é indicado</h2>
+            <p>Organizações com necessidades específicas, múltiplos públicos, processos de mudança, programas estratégicos ou desafios que exigem integração de diferentes soluções.</p>
+          </article>
+        </div>
+
+        <div class="product-steps">
+          <h2>Etapas de construção do projeto</h2>
+          <div class="steps-grid">
+            <div class="step"><b>1. Compreensão</b><span>Leitura do desafio, do contexto e das necessidades da organização.</span></div>
+            <div class="step"><b>2. Desenho</b><span>Definição da solução, dos públicos, das etapas e dos resultados esperados.</span></div>
+            <div class="step"><b>3. Aplicação</b><span>Execução acompanhada, com interação entre conteúdo, prática e apoio humano.</span></div>
+            <div class="step"><b>4. Evidências</b><span>Registro de participação, aplicação, evolução e aprendizados do projeto.</span></div>
+          </div>
+        </div>
+
+        <div class="cta-panel">
+          <div>
+            <h2>Conte-nos qual desafio precisa ser resolvido.</h2>
+            <p>Vamos avaliar o contexto e estruturar uma proposta conectada à realidade da sua organização.</p>
+          </div>
+          <a href="index.html#contato" class="cta-button">Solicitar uma conversa</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-row"><img src="img/logo-branco.png" alt="ECO do B.E.M."><span>Desenvolvimento humano conectado à realidade das organizações.</span></div></footer>
+  <script>
+    const hamburger = document.getElementById('ecoHamburger');
+    const mobileMenu = document.getElementById('ecoMobileMenu');
+    hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.remove('open')));
+  </script>
+</body>
+</html>

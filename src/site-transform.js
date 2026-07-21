@@ -59,6 +59,109 @@ const DIFFERENTIALS_SECTION = `    <!-- DIFERENCIAIS -->
       </div>
     </section>`;
 
+const CORPORATE_SOLUTIONS = [
+  {
+    href: 'solucoes-empresas.html',
+    title: 'Visão geral das soluções',
+    description: 'Compare e escolha a solução mais adequada',
+    icon: '🧭',
+    color: 'teal'
+  },
+  {
+    href: 'eco-lideres.html',
+    title: 'ECO Líderes',
+    description: 'Certificação de liderança em 6 meses',
+    icon: '🎯',
+    color: 'purple'
+  },
+  {
+    href: 'eco-disc-360.html',
+    title: 'ECO DISC 360',
+    description: 'Diagnóstico comportamental com múltiplas percepções',
+    icon: '🧠',
+    color: 'purple'
+  },
+  {
+    href: 'eco-times.html',
+    title: 'ECO Times',
+    description: 'Desenvolvimento coletivo de equipes',
+    icon: '👥',
+    color: 'teal'
+  },
+  {
+    href: 'plataforma-pdi.html',
+    title: 'Plataforma de PDI',
+    description: 'Gestão de PDI corporativo com dado real',
+    icon: '📊',
+    color: 'green'
+  },
+  {
+    href: 'bem-nr1.html',
+    title: 'BEM NR-1',
+    description: 'Gestão de riscos psicossociais',
+    icon: '⚖️',
+    color: 'pink'
+  },
+  {
+    href: 'convenio-corporativo.html',
+    title: 'Convênio Corporativo',
+    description: 'Sua empresa como conveniada ECO',
+    icon: '🤝',
+    color: 'gold'
+  },
+  {
+    href: 'projetos-personalizados.html',
+    title: 'Projetos Personalizados',
+    description: 'Soluções desenhadas para desafios específicos',
+    icon: '🛠️',
+    color: 'teal'
+  }
+];
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function corporateDropdownLink(solution) {
+  return `<a href="${solution.href}" class="eco-dd-link" data-color="${solution.color}">
+            <div class="eco-dd-icon">${solution.icon}</div>
+            <div class="eco-dd-body"><div class="eco-dd-title">${solution.title}</div><div class="eco-dd-desc">${solution.description}</div></div>
+          </a>`;
+}
+
+function normalizeCorporateSolutionMenus(html) {
+  let transformed = html;
+  const overview = CORPORATE_SOLUTIONS[0];
+  const overviewDropdownPattern = /<a\b(?=[^>]*\bhref=["']solucoes-empresas\.html["'])(?=[^>]*\bclass=["'][^"']*eco-dd-link[^"']*["'])[^>]*>/i;
+
+  if (!overviewDropdownPattern.test(transformed)) {
+    transformed = transformed.replace(
+      /(<div\b[^>]*class=["'][^"']*eco-dd-section[^"']*["'][^>]*>[^<]*(?:Produtos B2B|Atalhos para as soluções)[^<]*<\/div>)/i,
+      `$1\n          ${corporateDropdownLink(overview)}`
+    );
+  }
+
+  CORPORATE_SOLUTIONS.forEach((solution) => {
+    const escapedHref = escapeRegExp(solution.href);
+    const dropdownPattern = new RegExp(
+      `<a\\b(?=[^>]*\\bhref=["']${escapedHref}["'])(?=[^>]*\\bclass=["'][^"']*eco-dd-link[^"']*["'])[^>]*>[\\s\\S]*?<\\/a>`,
+      'g'
+    );
+    transformed = transformed.replace(dropdownPattern, corporateDropdownLink(solution));
+
+    const mobilePattern = new RegExp(
+      `(<a\\b(?=[^>]*\\bhref=["']${escapedHref}["'])(?=[^>]*\\bclass=["'][^"']*eco-mobile-link[^"']*["'])[^>]*>)[\\s\\S]*?(<\\/a>)`,
+      'g'
+    );
+    transformed = transformed.replace(
+      mobilePattern,
+      `$1${solution.icon} ${solution.title}$2`
+    );
+  });
+
+  return transformed;
+}
+
 function updateMenuLabels(html) {
   let transformed = html.replace(
     /(<a\b[^>]*class=["'][^"']*(?:eco-nav-link|eco-mobile-link|nav-link)[^"']*["'][^>]*>\s*)Início(\s*<\/a>)/g,
@@ -78,32 +181,32 @@ function updateMenuLabels(html) {
   if (!transformed.includes('href="eco-disc-360.html"')) {
     transformed = transformed.replace(
       /(<div class="eco-dd-section">Produtos B2B<\/div>)/,
-      '$1\n          <a href="solucoes-empresas.html" class="eco-dd-link" data-color="teal"><div class="eco-dd-body"><div class="eco-dd-title">Visão geral das soluções</div><div class="eco-dd-desc">Compare e escolha a solução mais adequada</div></div></a>\n          <a href="eco-disc-360.html" class="eco-dd-link" data-color="purple"><div class="eco-dd-body"><div class="eco-dd-title">ECO DISC 360</div><div class="eco-dd-desc">Diagnóstico comportamental com múltiplas percepções</div></div></a>'
+      `$1\n          ${corporateDropdownLink(CORPORATE_SOLUTIONS[0])}\n          ${corporateDropdownLink(CORPORATE_SOLUTIONS[2])}`
     );
   }
 
   if (!transformed.includes('href="projetos-personalizados.html"')) {
     transformed = transformed.replace(
       /(<a href="convenio-corporativo\.html" class="eco-dd-link"[\s\S]*?<\/a>)/,
-      '$1\n          <a href="projetos-personalizados.html" class="eco-dd-link" data-color="teal"><div class="eco-dd-body"><div class="eco-dd-title">Projetos Personalizados</div><div class="eco-dd-desc">Soluções desenhadas para desafios específicos</div></div></a>'
+      `$1\n          ${corporateDropdownLink(CORPORATE_SOLUTIONS[7])}`
     );
   }
 
-  if (!transformed.includes('class="eco-mobile-link">ECO DISC 360</a>')) {
+  if (!transformed.includes('class="eco-mobile-link">🧠 ECO DISC 360</a>')) {
     transformed = transformed.replace(
       /(<a href="solucoes-empresas\.html" class="eco-mobile-section-title">Soluções para Empresas<\/a>)/,
-      '$1\n    <a href="eco-disc-360.html" class="eco-mobile-link">ECO DISC 360</a>'
+      '$1\n    <a href="eco-disc-360.html" class="eco-mobile-link">🧠 ECO DISC 360</a>'
     );
   }
 
-  if (!transformed.includes('class="eco-mobile-link">Projetos Personalizados</a>')) {
+  if (!transformed.includes('class="eco-mobile-link">🛠️ Projetos Personalizados</a>')) {
     transformed = transformed.replace(
       /(<a href="convenio-corporativo\.html" class="eco-mobile-link">[^<]*Convênio Corporativo<\/a>)/,
-      '$1\n    <a href="projetos-personalizados.html" class="eco-mobile-link">Projetos Personalizados</a>'
+      '$1\n    <a href="projetos-personalizados.html" class="eco-mobile-link">🛠️ Projetos Personalizados</a>'
     );
   }
 
-  return transformed;
+  return normalizeCorporateSolutionMenus(transformed);
 }
 
 function withClientAreaMenu(html) {

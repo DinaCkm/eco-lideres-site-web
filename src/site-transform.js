@@ -60,19 +60,50 @@ const DIFFERENTIALS_SECTION = `    <!-- DIFERENCIAIS -->
     </section>`;
 
 function updateMenuLabels(html) {
-  return html
-    .replace(
-      /(<a\b[^>]*class=["'][^"']*(?:eco-nav-link|eco-mobile-link|nav-link)[^"']*["'][^>]*>\s*)Início(\s*<\/a>)/g,
-      '$1Sobre Nós$2'
-    )
-    .replace(
-      /(<button\b[^>]*class=["'][^"']*eco-nav-link[^"']*["'][^>]*>\s*)Para Empresas(\s*<svg\b)/g,
-      '$1Soluções para Empresas$2'
-    )
-    .replace(
-      /(<div\b[^>]*class=["'][^"']*eco-mobile-section-title[^"']*["'][^>]*>\s*)Para Empresas(\s*<\/div>)/g,
-      '$1Soluções para Empresas$2'
+  let transformed = html.replace(
+    /(<a\b[^>]*class=["'][^"']*(?:eco-nav-link|eco-mobile-link|nav-link)[^"']*["'][^>]*>\s*)Início(\s*<\/a>)/g,
+    '$1Sobre Nós$2'
+  );
+
+  transformed = transformed.replace(
+    /<button\b([^>]*class=["'][^"']*eco-nav-link[^"']*["'][^>]*)>\s*(?:Para Empresas|Soluções para Empresas)\s*(<svg\b[\s\S]*?<\/svg>)\s*<\/button>/g,
+    '<a href="solucoes-empresas.html" class="eco-nav-link">Soluções para Empresas $2</a>'
+  );
+
+  transformed = transformed.replace(
+    /<div\b[^>]*class=["'][^"']*eco-mobile-section-title[^"']*["'][^>]*>\s*(?:Para Empresas|Soluções para Empresas)\s*<\/div>/g,
+    '<a href="solucoes-empresas.html" class="eco-mobile-section-title">Soluções para Empresas</a>'
+  );
+
+  if (!transformed.includes('href="eco-disc-360.html"')) {
+    transformed = transformed.replace(
+      /(<div class="eco-dd-section">Produtos B2B<\/div>)/,
+      '$1\n          <a href="solucoes-empresas.html" class="eco-dd-link" data-color="teal"><div class="eco-dd-body"><div class="eco-dd-title">Visão geral das soluções</div><div class="eco-dd-desc">Compare e escolha a solução mais adequada</div></div></a>\n          <a href="eco-disc-360.html" class="eco-dd-link" data-color="purple"><div class="eco-dd-body"><div class="eco-dd-title">ECO DISC 360</div><div class="eco-dd-desc">Diagnóstico comportamental com múltiplas percepções</div></div></a>'
     );
+  }
+
+  if (!transformed.includes('href="projetos-personalizados.html"')) {
+    transformed = transformed.replace(
+      /(<a href="convenio-corporativo\.html" class="eco-dd-link"[\s\S]*?<\/a>)/,
+      '$1\n          <a href="projetos-personalizados.html" class="eco-dd-link" data-color="teal"><div class="eco-dd-body"><div class="eco-dd-title">Projetos Personalizados</div><div class="eco-dd-desc">Soluções desenhadas para desafios específicos</div></div></a>'
+    );
+  }
+
+  if (!transformed.includes('class="eco-mobile-link">ECO DISC 360</a>')) {
+    transformed = transformed.replace(
+      /(<a href="solucoes-empresas\.html" class="eco-mobile-section-title">Soluções para Empresas<\/a>)/,
+      '$1\n    <a href="eco-disc-360.html" class="eco-mobile-link">ECO DISC 360</a>'
+    );
+  }
+
+  if (!transformed.includes('class="eco-mobile-link">Projetos Personalizados</a>')) {
+    transformed = transformed.replace(
+      /(<a href="convenio-corporativo\.html" class="eco-mobile-link">[^<]*Convênio Corporativo<\/a>)/,
+      '$1\n    <a href="projetos-personalizados.html" class="eco-mobile-link">Projetos Personalizados</a>'
+    );
+  }
+
+  return transformed;
 }
 
 function withClientAreaMenu(html) {

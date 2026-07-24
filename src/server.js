@@ -17,11 +17,43 @@ const ROOT_DIR = path.join(__dirname, '..');
 const PUBLIC_DIR = path.join(ROOT_DIR, 'public');
 const HOME_FILE = path.join(ROOT_DIR, 'index.html');
 
+function addPublicMarketMenu(html) {
+  if (html.includes('href="mercado-publico.html"')) return html;
+
+  const desktopLink = '      <a href="mercado-publico.html" class="eco-nav-link">Mercado Público</a>\n';
+  const mobileLink = '    <a href="mercado-publico.html" class="eco-mobile-link">Mercado Público</a>\n';
+
+  let transformed = html;
+
+  transformed = transformed.replace(
+    /(\s*<a\b[^>]*href=["']para-voce\.html["'][^>]*class=["'][^"']*eco-nav-link[^"']*["'][^>]*>)/i,
+    `\n${desktopLink}$1`
+  );
+
+  transformed = transformed.replace(
+    /(\s*<a\b[^>]*href=["']para-voce\.html["'][^>]*class=["'][^"']*(?:eco-mobile-link|eco-mobile-title)[^"']*["'][^>]*>)/i,
+    `\n${mobileLink}$1`
+  );
+
+  if (!transformed.includes('href="mercado-publico.html"')) {
+    transformed = transformed.replace(
+      /(\s*<a\b[^>]*href=["'](?:index\.html)?#contato["'][^>]*class=["'][^"']*eco-nav-link[^"']*["'][^>]*>)/i,
+      `\n${desktopLink}$1`
+    );
+  }
+
+  return transformed;
+}
+
+function renderSiteHtml(html, options = {}) {
+  return addPublicMarketMenu(transformSiteHtml(html, options));
+}
+
 function sendTransformedHtml(filePath, options = {}) {
   return (req, res, next) => {
     fs.readFile(filePath, 'utf8', (err, html) => {
       if (err) return next(err);
-      res.type('html').send(transformSiteHtml(html, options));
+      res.type('html').send(renderSiteHtml(html, options));
     });
   };
 }
@@ -69,7 +101,7 @@ app.get('/:page.html', (req, res, next) => {
 
   fs.readFile(filePath, 'utf8', (err, html) => {
     if (err) return next();
-    res.type('html').send(transformSiteHtml(html));
+    res.type('html').send(renderSiteHtml(html));
   });
 });
 

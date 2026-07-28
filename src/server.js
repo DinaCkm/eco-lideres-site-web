@@ -17,12 +17,29 @@ const ROOT_DIR = path.join(__dirname, '..');
 const PUBLIC_DIR = path.join(ROOT_DIR, 'public');
 const HOME_FILE = path.join(ROOT_DIR, 'index.html');
 
+const MOBILE_MENU = `
+  <div class="eco-mobile-menu" id="ecoMobileMenu">
+    <a href="index.html#sobre-nos" class="eco-mobile-link">Sobre Nós</a>
+    <a href="/blog" class="eco-mobile-link">Blog</a>
+    <a href="clientes.html" class="eco-mobile-link">🔐 Área de Clientes</a>
+    <a href="solucoes-empresas.html" class="eco-mobile-link">🧭 Visão geral das soluções</a>
+    <a href="eco-lideres.html" class="eco-mobile-link">🎯 ECO Líderes</a>
+    <a href="eco-disc-360.html" class="eco-mobile-link">🧠 ECO DISC 360</a>
+    <a href="eco-times.html" class="eco-mobile-link">👥 ECO Times</a>
+    <a href="plataforma-pdi.html" class="eco-mobile-link">📊 Plataforma de PDI</a>
+    <a href="bem-nr1.html" class="eco-mobile-link">⚖️ BEM NR-1</a>
+    <a href="convenio-corporativo.html" class="eco-mobile-link">🤝 Convênio Corporativo</a>
+    <a href="projetos-personalizados.html" class="eco-mobile-link">🛠️ Projetos Personalizados</a>
+    <a href="mercado-publico.html" class="eco-mobile-link">Mercado Público</a>
+    <a href="para-voce.html" class="eco-mobile-link">Desenvolvimento Individual</a>
+    <a href="index.html#contato" class="eco-mobile-link">Fale Conosco</a>
+  </div>`;
+
 function addPublicMarketMenu(html) {
-  if (html.includes('href="mercado-publico.html"')) return html;
+  const desktopHasMarket = /<a\b(?=[^>]*href=["']mercado-publico\.html["'])(?=[^>]*class=["'][^"']*eco-nav-link[^"']*["'])/i.test(html);
+  if (desktopHasMarket) return html;
 
   const desktopLink = '      <a href="mercado-publico.html" class="eco-nav-link">Mercado Público</a>\n';
-  const mobileLink = '    <a href="mercado-publico.html" class="eco-mobile-link">Mercado Público</a>\n';
-
   let transformed = html;
 
   transformed = transformed.replace(
@@ -30,12 +47,7 @@ function addPublicMarketMenu(html) {
     `\n${desktopLink}$1`
   );
 
-  transformed = transformed.replace(
-    /(\s*<a\b[^>]*href=["']para-voce\.html["'][^>]*class=["'][^"']*(?:eco-mobile-link|eco-mobile-title)[^"']*["'][^>]*>)/i,
-    `\n${mobileLink}$1`
-  );
-
-  if (!transformed.includes('href="mercado-publico.html"')) {
+  if (!/<a\b(?=[^>]*href=["']mercado-publico\.html["'])(?=[^>]*class=["'][^"']*eco-nav-link[^"']*["'])/i.test(transformed)) {
     transformed = transformed.replace(
       /(\s*<a\b[^>]*href=["'](?:index\.html)?#contato["'][^>]*class=["'][^"']*eco-nav-link[^"']*["'][^>]*>)/i,
       `\n${desktopLink}$1`
@@ -45,8 +57,18 @@ function addPublicMarketMenu(html) {
   return transformed;
 }
 
+function normalizeMobileMenu(html) {
+  if (!/id=["']ecoMobileMenu["']/i.test(html)) return html;
+
+  return html.replace(
+    /\s*<div\b(?=[^>]*id=["']ecoMobileMenu["'])[^>]*>[\s\S]*?<\/div>\s*(?=<main\b)/i,
+    `\n${MOBILE_MENU}\n\n  `
+  );
+}
+
 function renderSiteHtml(html, options = {}) {
-  return addPublicMarketMenu(transformSiteHtml(html, options));
+  const transformed = transformSiteHtml(html, options);
+  return normalizeMobileMenu(addPublicMarketMenu(transformed));
 }
 
 function sendTransformedHtml(filePath, options = {}) {

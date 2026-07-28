@@ -1,0 +1,121 @@
+/* Hierarquia visual do menu ECO do B.E.M.
+   Mantém a identidade roxa e diferencia discretamente menu principal e submenus. */
+
+header.eco-nav{
+  background:linear-gradient(90deg,rgba(24,8,79,.98),rgba(33,16,107,.98))!important;
+  border-bottom:1px solid rgba(140,104,255,.22)!important;
+  box-shadow:0 6px 24px rgba(14,4,54,.14);
+}
+
+header.eco-nav .eco-nav-link:not(.eco-nav-cta){
+  background:rgba(255,255,255,.025);
+  border:1px solid transparent;
+}
+
+header.eco-nav .eco-nav-link:not(.eco-nav-cta):hover,
+header.eco-nav .eco-nav-link:not(.eco-nav-cta).active{
+  background:rgba(140,104,255,.14)!important;
+  border-color:rgba(196,184,255,.14);
+}
+
+header.eco-nav .eco-dropdown{
+  background:linear-gradient(180deg,#2d1975 0%,#24115f 100%)!important;
+  border:1px solid rgba(196,184,255,.18)!important;
+  box-shadow:0 24px 60px rgba(12,3,48,.34),0 2px 8px rgba(12,3,48,.20)!important;
+}
+
+header.eco-nav .eco-dropdown::before{
+  background:#2d1975!important;
+  border-left:1px solid rgba(196,184,255,.12);
+  border-top:1px solid rgba(196,184,255,.12);
+}
+
+header.eco-nav .eco-dd-section{
+  color:#62dff0!important;
+}
+
+header.eco-nav .eco-dd-link{
+  color:rgba(255,255,255,.94)!important;
+  background:rgba(255,255,255,.025);
+  border:1px solid transparent;
+}
+
+header.eco-nav .eco-dd-link:hover{
+  color:#fff!important;
+  background:rgba(140,104,255,.14)!important;
+  border-color:rgba(196,184,255,.12);
+}
+
+header.eco-nav .eco-dd-title{
+  color:#fff!important;
+}
+
+header.eco-nav .eco-dd-desc{
+  color:#c9c0ef!important;
+}
+
+.eco-mobile-menu{
+  background:linear-gradient(180deg,rgba(24,8,79,.995) 0%,rgba(35,17,95,.995) 100%)!important;
+}
+
+.eco-mobile-menu .eco-mobile-section{
+  margin-bottom:14px;
+}
+
+.eco-mobile-menu .eco-mobile-main-link{
+  margin-bottom:6px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.045);
+}
+
+.eco-mobile-menu .eco-mobile-main-link:hover,
+.eco-mobile-menu .eco-mobile-main-link.active{
+  background:rgba(140,104,255,.15)!important;
+  border-color:rgba(196,184,255,.16);
+}
+
+.eco-mobile-menu .eco-mobile-submenu{
+  padding:10px;
+  background:rgba(91,46,255,.14);
+  border:1px solid rgba(140,104,255,.22);
+  border-radius:18px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+.eco-mobile-menu .eco-mobile-section-title{
+  margin:0 0 8px!important;
+  padding:11px 12px!important;
+  color:#62dff0!important;
+  background:rgba(0,184,217,.08);
+  border-radius:11px;
+  font-size:12px!important;
+  letter-spacing:1.15px!important;
+}
+
+.eco-mobile-menu .eco-mobile-submenu-link{
+  margin-top:4px;
+  padding:12px 14px!important;
+  color:rgba(255,255,255,.88)!important;
+  background:rgba(255,255,255,.025);
+  border:1px solid transparent;
+  font-size:15.5px!important;
+  font-weight:600!important;
+}
+
+.eco-mobile-menu .eco-mobile-submenu-link:hover,
+.eco-mobile-menu .eco-mobile-submenu-link.active{
+  color:#fff!important;
+  background:rgba(255,255,255,.08)!important;
+  border-color:rgba(196,184,255,.12);
+}
+
+.eco-mobile-menu .eco-mobile-cta{
+  margin-top:14px!important;
+}
+
+@media(max-width:640px){
+  .eco-mobile-menu{
+    padding-left:18px!important;
+    padding-right:18px!important;
+  }
+}

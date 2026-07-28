@@ -19,20 +19,30 @@ const HOME_FILE = path.join(ROOT_DIR, 'index.html');
 
 const MOBILE_MENU = `
   <div class="eco-mobile-menu" id="ecoMobileMenu">
-    <a href="index.html#sobre-nos" class="eco-mobile-link">Sobre Nós</a>
-    <a href="/blog" class="eco-mobile-link">Blog</a>
-    <a href="clientes.html" class="eco-mobile-link">🔐 Área de Clientes</a>
-    <a href="solucoes-empresas.html" class="eco-mobile-link">🧭 Visão geral das soluções</a>
-    <a href="eco-lideres.html" class="eco-mobile-link">🎯 ECO Líderes</a>
-    <a href="eco-disc-360.html" class="eco-mobile-link">🧠 ECO DISC 360</a>
-    <a href="eco-times.html" class="eco-mobile-link">👥 ECO Times</a>
-    <a href="plataforma-pdi.html" class="eco-mobile-link">📊 Plataforma de PDI</a>
-    <a href="bem-nr1.html" class="eco-mobile-link">⚖️ BEM NR-1</a>
-    <a href="convenio-corporativo.html" class="eco-mobile-link">🤝 Convênio Corporativo</a>
-    <a href="projetos-personalizados.html" class="eco-mobile-link">🛠️ Projetos Personalizados</a>
-    <a href="mercado-publico.html" class="eco-mobile-link">Mercado Público</a>
-    <a href="para-voce.html" class="eco-mobile-link">Desenvolvimento Individual</a>
-    <a href="index.html#contato" class="eco-mobile-link">Fale Conosco</a>
+    <div class="eco-mobile-section">
+      <a href="index.html#sobre-nos" class="eco-mobile-link eco-mobile-main-link">Sobre Nós</a>
+      <a href="/blog" class="eco-mobile-link eco-mobile-main-link">Blog</a>
+      <a href="clientes.html" class="eco-mobile-link eco-mobile-main-link">🔐 Área de Clientes</a>
+    </div>
+
+    <div class="eco-mobile-section eco-mobile-submenu">
+      <a href="solucoes-empresas.html" class="eco-mobile-section-title">Soluções para Empresas</a>
+      <a href="solucoes-empresas.html" class="eco-mobile-link eco-mobile-submenu-link">🧭 Visão geral das soluções</a>
+      <a href="eco-lideres.html" class="eco-mobile-link eco-mobile-submenu-link">🎯 ECO Líderes</a>
+      <a href="eco-disc-360.html" class="eco-mobile-link eco-mobile-submenu-link">🧠 ECO DISC 360</a>
+      <a href="eco-times.html" class="eco-mobile-link eco-mobile-submenu-link">👥 ECO Times</a>
+      <a href="plataforma-pdi.html" class="eco-mobile-link eco-mobile-submenu-link">📊 Plataforma de PDI</a>
+      <a href="bem-nr1.html" class="eco-mobile-link eco-mobile-submenu-link">⚖️ BEM NR-1</a>
+      <a href="convenio-corporativo.html" class="eco-mobile-link eco-mobile-submenu-link">🤝 Convênio Corporativo</a>
+      <a href="projetos-personalizados.html" class="eco-mobile-link eco-mobile-submenu-link">🛠️ Projetos Personalizados</a>
+    </div>
+
+    <div class="eco-mobile-section">
+      <a href="mercado-publico.html" class="eco-mobile-link eco-mobile-main-link">Mercado Público</a>
+      <a href="para-voce.html" class="eco-mobile-link eco-mobile-main-link">Desenvolvimento Individual</a>
+    </div>
+
+    <a href="index.html#contato" class="eco-mobile-cta">Fale Conosco</a>
   </div>`;
 
 function addPublicMarketMenu(html) {
@@ -66,9 +76,20 @@ function normalizeMobileMenu(html) {
   );
 }
 
+function addMenuHierarchyStyles(html) {
+  if (html.includes('css/menu-hierarquia.css')) return html;
+
+  return html.replace(
+    '</head>',
+    '  <link rel="stylesheet" href="css/menu-hierarquia.css">\n</head>'
+  );
+}
+
 function renderSiteHtml(html, options = {}) {
   const transformed = transformSiteHtml(html, options);
-  return normalizeMobileMenu(addPublicMarketMenu(transformed));
+  const withDesktopMenu = addPublicMarketMenu(transformed);
+  const withMobileMenu = normalizeMobileMenu(withDesktopMenu);
+  return addMenuHierarchyStyles(withMobileMenu);
 }
 
 function sendTransformedHtml(filePath, options = {}) {

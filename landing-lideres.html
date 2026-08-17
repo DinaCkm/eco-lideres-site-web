@@ -1337,8 +1337,7 @@ details.faq-item[open] summary::after { transform: rotate(45deg); background: va
    CHECKOUT CONFIG
 ============================================ */
 const CONFIG = {
-  paymentLinks: { inicial: 'https://mpago.la/SEU-LINK-DE-236', completa: 'https://mpago.la/SEU-LINK-DE-2400' },
-  formspreeEndpoint: 'https://formspree.io/f/SEU-ID-FORMSPREE',
+  apiUrl: 'https://eco-backend-production-6229.up.railway.app',
   companyEmail: 'relacionamento@ckmtalents.net'
 };
 
@@ -1397,34 +1396,114 @@ function calcAccess() {
 function gid() { return `ECO-${Date.now().toString(36).toUpperCase().slice(-6)}-${Math.random().toString(36).slice(2,6).toUpperCase()}`; }
 
 document.getElementById('checkout-form').addEventListener('submit', async e => {
-  e.preventDefault(); let ok = true;
-  document.querySelectorAll('.form-row').forEach(r => r.classList.remove('has-error'));
-  const c = { nome: e.target.nome.value.trim(), email: e.target.email.value.trim(), tel: e.target.telefone.value.trim(), cpf: e.target.cpf.value.trim(), ocu: e.target.ocupacao.value };
-  if (c.nome.split(' ').length<2) { e.target.nome.closest('.form-row').classList.add('has-error'); ok=false; }
-  if (!/\S+@\S+\.\S+/.test(c.email)) { e.target.email.closest('.form-row').classList.add('has-error'); ok=false; }
-  if (c.tel.replace(/\D/g,'').length<10) { e.target.telefone.closest('.form-row').classList.add('has-error'); ok=false; }
-  if (c.cpf.replace(/\D/g,'').length!==11) { e.target.cpf.closest('.form-row').classList.add('has-error'); ok=false; }
-  if (!c.ocu) { e.target.ocupacao.closest('.form-row').classList.add('has-error'); ok=false; }
-  if (!ok) return;
-  const pid = gid(); const prod = document.getElementById('form-produto').value; const val = document.getElementById('form-valor').value;
-  const pnm = prod==='completa' ? 'Certificação ECO Líderes · 6 meses' : 'Assinatura Inicial · ECO Líderes';
-  const { msg, det } = calcAccess();
-  try {
-    if (CONFIG.formspreeEndpoint && !CONFIG.formspreeEndpoint.includes('SEU-ID')) {
-      fetch(CONFIG.formspreeEndpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({pedidoId:pid,produto:pnm,valor:val,...c,previsao:msg,ts:new Date().toLocaleString('pt-BR'),_replyto:c.email,_subject:`Nova compra ECO · ${pnm} · ${pid}`})}).catch(()=>{});
-    }
-  } catch(err){}
-  document.getElementById('access-time').textContent = msg;
-  document.getElementById('access-detail').textContent = det;
-  document.getElementById('receipt-product').textContent = pnm;
-  document.getElementById('receipt-name').textContent = c.nome;
-  document.getElementById('receipt-email').textContent = c.email;
-  document.getElementById('receipt-id').textContent = pid;
-  document.getElementById('receipt-amount').textContent = val;
-  document.getElementById('go-to-payment').onclick = () => window.open(CONFIG.paymentLinks[prod]||'#','_blank');
-  formStep.style.display='none'; succStep.style.display='block'; succStep.scrollTop=0;
-});
+  e.preventDefault();
 
+  let ok = true;
+  document.querySelectorAll('.form-row').forEach(r => r.classList.remove('has-error'));
+
+  const c = {
+    nome: e.target.nome.value.trim(),
+    email: e.target.email.value.trim(),
+    tel: e.target.telefone.value.trim(),
+    cpf: e.target.cpf.value.trim(),
+    ocu: e.target.ocupacao.value
+  };
+
+  if (c.nome.split(' ').length < 2) {
+    e.target.nome.closest('.form-row').classList.add('has-error');
+    ok = false;
+  }
+
+  if (!/\S+@\S+\.\S+/.test(c.email)) {
+    e.target.email.closest('.form-row').classList.add('has-error');
+    ok = false;
+  }
+
+  if (c.tel.replace(/\D/g, '').length < 10) {
+    e.target.telefone.closest('.form-row').classList.add('has-error');
+    ok = false;
+  }
+
+  if (c.cpf.replace(/\D/g, '').length !== 11) {
+    e.target.cpf.closest('.form-row').classList.add('has-error');
+    ok = false;
+  }
+
+  if (!c.ocu) {
+    e.target.ocupacao.closest('.form-row').classList.add('has-error');
+    ok = false;
+  }
+
+  if (!ok) return;
+
+  const prod = document.getElementById('form-produto').value;
+  const valorNumero = prod === 'completa' ? 2400 : 236;
+  const val = prod === 'completa' ? 'R$ 2.400,00' : 'R$ 236,00';
+  const pnm = prod === 'completa'
+    ? 'Certificação ECO Líderes · 6 meses'
+    : 'Assinatura Inicial · ECO Líderes';
+
+  const { msg, det } = calcAccess();
+
+  const submitBtn = e.target.querySelector('.form-cta');
+  const originalText = submitBtn.innerHTML;
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = '⏳ Preparando pagamento seguro...';
+
+  try {
+    const resp = await fetch(CONFIG.apiUrl + '/api/criar-pagamento', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        nome: c.nome,
+        email: c.email,
+        telefone: c.tel,
+        whatsapp: c.tel,
+        cpf: c.cpf,
+        profissao: c.ocu,
+        jornada: 'eco-lideres',
+        versao: prod,
+        produto_label: pnm,
+        valor: valorNumero,
+        objetivo: 'Inscrição ECO Líderes',
+        origem: 'landing-lideres'
+      })
+    });
+
+    const result = await resp.json();
+
+    if (!resp.ok || !result.ok || !result.init_point) {
+      throw new Error(result.error || result.detail || 'Não foi possível iniciar o pagamento.');
+    }
+
+    document.getElementById('access-time').textContent = msg;
+    document.getElementById('access-detail').textContent = det;
+    document.getElementById('receipt-product').textContent = pnm;
+    document.getElementById('receipt-name').textContent = c.nome;
+    document.getElementById('receipt-email').textContent = c.email;
+    document.getElementById('receipt-id').textContent = result.external_reference || '—';
+    document.getElementById('receipt-amount').textContent = val;
+
+    document.getElementById('go-to-payment').onclick = () => {
+      window.location.href = result.init_point;
+    };
+
+    formStep.style.display = 'none';
+    succStep.style.display = 'block';
+    succStep.scrollTop = 0;
+
+  } catch (err) {
+    console.error('Erro ao criar pagamento:', err);
+    alert(
+      'Não conseguimos iniciar o pagamento agora.\n\n' +
+      'Motivo: ' + (err.message || 'erro de conexão') + '\n\n' +
+      'Tente novamente em alguns segundos ou entre em contato em relacionamento@ckmtalents.net'
+    );
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = originalText;
+  }
+});
 /* FADE-UP */
 const io = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } }), { threshold:.10, rootMargin:'0px 0px -40px 0px' });
 document.querySelectorAll('.fade-up').forEach(el => io.observe(el));

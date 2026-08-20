@@ -275,6 +275,38 @@ function applyLegacyMenuFix(html) {
   return transformed;
 }
 
+function normalizeProductAvailabilityMessaging(html) {
+  let transformed = html;
+
+  transformed = transformed.replace(
+    '<h2>O ECO Times ainda está em <em>construção</em>.</h2>',
+    '<h2>Esta página do ECO Times está em <em>construção</em>.</h2>'
+  );
+
+  transformed = transformed
+    .replace(' Lançamento em breve.', '')
+    .replace('Em breve · Lançamento próximo ciclo', 'Produto disponível · Página em construção')
+    .replace('Quero ser notificado no lançamento →', 'Quero conversar sobre a Plataforma →')
+    .replace('<h2>A Plataforma de PDI ainda está em <em>construção</em>.</h2>', '<h2>Esta página da Plataforma de PDI está em <em>construção</em>.</h2>')
+    .replace('Quer receber prioridade no lançamento, ou conversar agora sobre gestão de desenvolvimento na sua empresa? Nossa equipe está disponível.', 'Quer conversar agora sobre gestão de desenvolvimento na sua empresa? Nossa equipe está disponível.')
+    .replace('<h4>Quero ser notificado quando lançar</h4>', '<h4>Quero conhecer a Plataforma de PDI</h4>')
+    .replace('Deixe seu e-mail. Avisamos pessoalmente quando a Plataforma de PDI estiver disponível.', 'Deixe seu e-mail e nossa equipe entra em contato para apresentar a Plataforma de PDI.')
+    .replace('Interesse em Plataforma de PDI — Notificar no lançamento', 'Interesse em Plataforma de PDI — Solicitar contato')
+    .replace('<button type="submit">Avise-me</button>', '<button type="submit">Quero conversar</button>');
+
+  transformed = transformed.replace(
+    /(<img src="img\/produto-times\.jpg"[\s\S]*?<div class="product-content">[\s\S]*?<div class="product-badge )badge-soon(\">)Em breve(<\/div>[\s\S]*?<h3>ECO Times<\/h3>)/,
+    '$1badge-available$2Disponível$3'
+  );
+
+  transformed = transformed.replace(
+    /(<img src="img\/produto-evoluir\.jpg"[\s\S]*?<div class="product-content">[\s\S]*?<div class="product-badge )badge-soon(\">)Em breve(<\/div>[\s\S]*?<h3>Plataforma de PDI<\/h3>)/,
+    '$1badge-available$2Disponível$3'
+  );
+
+  return transformed;
+}
+
 function transformSiteHtml(html, { isHome = false } = {}) {
   let transformed = updateMenuLabels(html);
 
@@ -283,6 +315,7 @@ function transformSiteHtml(html, { isHome = false } = {}) {
     transformed = replaceDifferentialsSection(transformed);
   }
 
+  transformed = normalizeProductAvailabilityMessaging(transformed);
   transformed = applyLegacyMenuFix(transformed);
   return transformed;
 }
